@@ -16,28 +16,40 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Audio.hpp"
 
-class State {
+class State
+{
 public:
-    State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
+    State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys);
     virtual ~State();
 
-    const bool& getQuit() const;
+    // Functions
+    const bool &getQuit() const;
     virtual void checkForQuit();
+    virtual void updateMousePosition();
 
     // Pure Functions
     virtual void endState() = 0;
     virtual void updateInput() = 0;
     virtual void update() = 0;
-    virtual void draw(sf::RenderTarget* target = nullptr) = 0;
+    virtual void draw(sf::RenderTarget *target = nullptr) = 0;
+
+    // Initialization
+    virtual void initKeybinds() = 0;
+    virtual void initFonts();
 
 protected:
-    virtual void initKeybinds() = 0;
-    sf::RenderWindow* mWindow;
+    sf::RenderWindow *mWindow;
+    std::map<std::string, int> *supportedKeys;
     bool quit;
-    std::map<std::string, int>* supportedKeys;
+    sf::Font font;
 
-    // Resources 
+    // Resources
     std::vector<sf::Texture> textures;
+
+    // Mouse Positions
+    sf::Vector2i mousePosScreen;
+    sf::Vector2i mousePosWindow;
+    sf::Vector2f mousePosView;
 };
 
 #endif

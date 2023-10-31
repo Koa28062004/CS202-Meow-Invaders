@@ -1,6 +1,8 @@
-CMakeFiles/cs202.dir/src/GUI/Button.cpp.o: \
-  /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp \
-  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/GUI/Button.h \
+CMakeFiles/cs202.dir/src/States/MenuState.cpp.o: \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/MenuState.cpp \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/MenuState.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/GameState.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/State.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__assert \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__config \
@@ -733,6 +735,28 @@ CMakeFiles/cs202.dir/src/GUI/Button.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/_types/_nl_item.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/sstream \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/fstream \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/filesystem \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/copy_options.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/directory_entry.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/file_status.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/file_type.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/perms.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/filesystem_error.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/path.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/iomanip \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/operations.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/perm_options.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/space_info.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/directory_iterator.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/directory_options.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/u8path.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/stack \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/deque \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/map \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tree \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/System.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Config.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/TargetConditionals.h \
@@ -799,8 +823,6 @@ CMakeFiles/cs202.dir/src/GUI/Button.cpp.o: \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Graphics/Glyph.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Graphics/Texture.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Graphics/Image.hpp \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/map \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tree \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Graphics/RectangleShape.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Graphics/RenderTarget.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Graphics/View.hpp \
@@ -829,4 +851,6 @@ CMakeFiles/cs202.dir/src/GUI/Button.cpp.o: \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileFactory.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileFactory.inl \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileReader.hpp \
-  /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileWriter.hpp
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileWriter.hpp \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Entity.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/GUI/Button.h

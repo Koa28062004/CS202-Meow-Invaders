@@ -40,6 +40,7 @@ void Application::initKeys() {
 
 // Init States
 void Application::initStates() {
+    states.push(new MenuState(mWindow, &supportedKeys));
     states.push(new GameState(mWindow, &supportedKeys));
 }
 

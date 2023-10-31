@@ -8,8 +8,8 @@ int main()
         Application application;
         application.run();
     }
-    catch (std::exception& e)
+    catch (std::exception& exception)
     {
-        std::cout << "\nEXCEPTION: " << e.what() << std::endl;
+        std::cout << "\nEXCEPTION: " << exception.what() << std::endl;
     }
 }

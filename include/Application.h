@@ -2,6 +2,7 @@
 #define APPLICATION_H
 
 #include "States/GameState.h"
+#include "States/MenuState.h"
 
 class Application
 {

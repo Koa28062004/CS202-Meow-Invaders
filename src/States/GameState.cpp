@@ -57,8 +57,8 @@ void GameState::endState()
 
 void GameState::update()
 {
+    updateMousePosition();
     updateInput();
-
     player.update();
 }
 

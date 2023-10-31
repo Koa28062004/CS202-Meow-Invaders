@@ -250,6 +250,30 @@ src/States/GameState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/GameState.cpp.s
 .PHONY : src/States/GameState.cpp.s
 
+src/States/MenuState.o: src/States/MenuState.cpp.o
+.PHONY : src/States/MenuState.o
+
+# target to build an object file
+src/States/MenuState.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/MenuState.cpp.o
+.PHONY : src/States/MenuState.cpp.o
+
+src/States/MenuState.i: src/States/MenuState.cpp.i
+.PHONY : src/States/MenuState.i
+
+# target to preprocess a source file
+src/States/MenuState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/MenuState.cpp.i
+.PHONY : src/States/MenuState.cpp.i
+
+src/States/MenuState.s: src/States/MenuState.cpp.s
+.PHONY : src/States/MenuState.s
+
+# target to generate assembly for a file
+src/States/MenuState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/MenuState.cpp.s
+.PHONY : src/States/MenuState.cpp.s
+
 src/States/State.o: src/States/State.cpp.o
 .PHONY : src/States/State.o
 
@@ -322,6 +346,9 @@ help:
 	@echo "... src/States/GameState.o"
 	@echo "... src/States/GameState.i"
 	@echo "... src/States/GameState.s"
+	@echo "... src/States/MenuState.o"
+	@echo "... src/States/MenuState.i"
+	@echo "... src/States/MenuState.s"
 	@echo "... src/States/State.o"
 	@echo "... src/States/State.i"
 	@echo "... src/States/State.s"
