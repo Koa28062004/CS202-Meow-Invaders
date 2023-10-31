@@ -1,12 +1,12 @@
-#include "Menu.h"
+#include "Application.h"
 #include <iostream>
 
 int main()
 {
     try
     {
-        Menu menu;
-        menu.run();
+        Application application;
+        application.run();
     }
     catch (std::exception& e)
     {

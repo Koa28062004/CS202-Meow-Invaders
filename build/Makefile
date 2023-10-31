@@ -130,29 +130,77 @@ cs202/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/build
 .PHONY : cs202/fast
 
-src/Context.o: src/Context.cpp.o
-.PHONY : src/Context.o
+src/Application.o: src/Application.cpp.o
+.PHONY : src/Application.o
 
 # target to build an object file
-src/Context.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Context.cpp.o
-.PHONY : src/Context.cpp.o
+src/Application.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Application.cpp.o
+.PHONY : src/Application.cpp.o
 
-src/Context.i: src/Context.cpp.i
-.PHONY : src/Context.i
+src/Application.i: src/Application.cpp.i
+.PHONY : src/Application.i
 
 # target to preprocess a source file
-src/Context.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Context.cpp.i
-.PHONY : src/Context.cpp.i
+src/Application.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Application.cpp.i
+.PHONY : src/Application.cpp.i
 
-src/Context.s: src/Context.cpp.s
-.PHONY : src/Context.s
+src/Application.s: src/Application.cpp.s
+.PHONY : src/Application.s
 
 # target to generate assembly for a file
-src/Context.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Context.cpp.s
-.PHONY : src/Context.cpp.s
+src/Application.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Application.cpp.s
+.PHONY : src/Application.cpp.s
+
+src/Entities/Entity.o: src/Entities/Entity.cpp.o
+.PHONY : src/Entities/Entity.o
+
+# target to build an object file
+src/Entities/Entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o
+.PHONY : src/Entities/Entity.cpp.o
+
+src/Entities/Entity.i: src/Entities/Entity.cpp.i
+.PHONY : src/Entities/Entity.i
+
+# target to preprocess a source file
+src/Entities/Entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Entity.cpp.i
+.PHONY : src/Entities/Entity.cpp.i
+
+src/Entities/Entity.s: src/Entities/Entity.cpp.s
+.PHONY : src/Entities/Entity.s
+
+# target to generate assembly for a file
+src/Entities/Entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Entity.cpp.s
+.PHONY : src/Entities/Entity.cpp.s
+
+src/GUI/Button.o: src/GUI/Button.cpp.o
+.PHONY : src/GUI/Button.o
+
+# target to build an object file
+src/GUI/Button.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GUI/Button.cpp.o
+.PHONY : src/GUI/Button.cpp.o
+
+src/GUI/Button.i: src/GUI/Button.cpp.i
+.PHONY : src/GUI/Button.i
+
+# target to preprocess a source file
+src/GUI/Button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GUI/Button.cpp.i
+.PHONY : src/GUI/Button.cpp.i
+
+src/GUI/Button.s: src/GUI/Button.cpp.s
+.PHONY : src/GUI/Button.s
+
+# target to generate assembly for a file
+src/GUI/Button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GUI/Button.cpp.s
+.PHONY : src/GUI/Button.cpp.s
 
 src/GlobalVars.o: src/GlobalVars.cpp.o
 .PHONY : src/GlobalVars.o
@@ -178,53 +226,53 @@ src/GlobalVars.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GlobalVars.cpp.s
 .PHONY : src/GlobalVars.cpp.s
 
-src/Menu.o: src/Menu.cpp.o
-.PHONY : src/Menu.o
+src/States/GameState.o: src/States/GameState.cpp.o
+.PHONY : src/States/GameState.o
 
 # target to build an object file
-src/Menu.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Menu.cpp.o
-.PHONY : src/Menu.cpp.o
+src/States/GameState.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/GameState.cpp.o
+.PHONY : src/States/GameState.cpp.o
 
-src/Menu.i: src/Menu.cpp.i
-.PHONY : src/Menu.i
+src/States/GameState.i: src/States/GameState.cpp.i
+.PHONY : src/States/GameState.i
 
 # target to preprocess a source file
-src/Menu.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Menu.cpp.i
-.PHONY : src/Menu.cpp.i
+src/States/GameState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/GameState.cpp.i
+.PHONY : src/States/GameState.cpp.i
 
-src/Menu.s: src/Menu.cpp.s
-.PHONY : src/Menu.s
+src/States/GameState.s: src/States/GameState.cpp.s
+.PHONY : src/States/GameState.s
 
 # target to generate assembly for a file
-src/Menu.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Menu.cpp.s
-.PHONY : src/Menu.cpp.s
+src/States/GameState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/GameState.cpp.s
+.PHONY : src/States/GameState.cpp.s
 
-src/State.o: src/State.cpp.o
-.PHONY : src/State.o
+src/States/State.o: src/States/State.cpp.o
+.PHONY : src/States/State.o
 
 # target to build an object file
-src/State.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/State.cpp.o
-.PHONY : src/State.cpp.o
+src/States/State.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/State.cpp.o
+.PHONY : src/States/State.cpp.o
 
-src/State.i: src/State.cpp.i
-.PHONY : src/State.i
+src/States/State.i: src/States/State.cpp.i
+.PHONY : src/States/State.i
 
 # target to preprocess a source file
-src/State.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/State.cpp.i
-.PHONY : src/State.cpp.i
+src/States/State.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/State.cpp.i
+.PHONY : src/States/State.cpp.i
 
-src/State.s: src/State.cpp.s
-.PHONY : src/State.s
+src/States/State.s: src/States/State.cpp.s
+.PHONY : src/States/State.s
 
 # target to generate assembly for a file
-src/State.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/State.cpp.s
-.PHONY : src/State.cpp.s
+src/States/State.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/State.cpp.s
+.PHONY : src/States/State.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -259,18 +307,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cs202"
-	@echo "... src/Context.o"
-	@echo "... src/Context.i"
-	@echo "... src/Context.s"
+	@echo "... src/Application.o"
+	@echo "... src/Application.i"
+	@echo "... src/Application.s"
+	@echo "... src/Entities/Entity.o"
+	@echo "... src/Entities/Entity.i"
+	@echo "... src/Entities/Entity.s"
+	@echo "... src/GUI/Button.o"
+	@echo "... src/GUI/Button.i"
+	@echo "... src/GUI/Button.s"
 	@echo "... src/GlobalVars.o"
 	@echo "... src/GlobalVars.i"
 	@echo "... src/GlobalVars.s"
-	@echo "... src/Menu.o"
-	@echo "... src/Menu.i"
-	@echo "... src/Menu.s"
-	@echo "... src/State.o"
-	@echo "... src/State.i"
-	@echo "... src/State.s"
+	@echo "... src/States/GameState.o"
+	@echo "... src/States/GameState.i"
+	@echo "... src/States/GameState.s"
+	@echo "... src/States/State.o"
+	@echo "... src/States/State.i"
+	@echo "... src/States/State.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
