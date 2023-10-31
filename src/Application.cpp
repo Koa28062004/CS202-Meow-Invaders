@@ -25,11 +25,17 @@ void Application::initWindow()
 
 // Init Keys
 void Application::initKeys() {
-    supportedKeys.emplace("Escape", sf::Keyboard::Key::Escape);
-    supportedKeys.emplace("A", sf::Keyboard::Key::A);
-    supportedKeys.emplace("W", sf::Keyboard::Key::W);
-    supportedKeys.emplace("S", sf::Keyboard::Key::S);
-    supportedKeys.emplace("D", sf::Keyboard::Key::D);
+    std::ifstream ifs("config/supportedKeys.ini");
+
+    if (ifs.is_open()) {
+        std::string key = "";
+        int key_value = 0;
+        while (ifs >> key >> key_value) {
+            supportedKeys[key] = key_value;
+        }
+    }
+
+    ifs.close();
 }
 
 // Init States

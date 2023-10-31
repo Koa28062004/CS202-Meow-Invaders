@@ -226,30 +226,6 @@ src/GUI/Button.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GUI/Button.cpp.s
 .PHONY : src/GUI/Button.cpp.s
 
-src/GlobalVars.o: src/GlobalVars.cpp.o
-.PHONY : src/GlobalVars.o
-
-# target to build an object file
-src/GlobalVars.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GlobalVars.cpp.o
-.PHONY : src/GlobalVars.cpp.o
-
-src/GlobalVars.i: src/GlobalVars.cpp.i
-.PHONY : src/GlobalVars.i
-
-# target to preprocess a source file
-src/GlobalVars.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GlobalVars.cpp.i
-.PHONY : src/GlobalVars.cpp.i
-
-src/GlobalVars.s: src/GlobalVars.cpp.s
-.PHONY : src/GlobalVars.s
-
-# target to generate assembly for a file
-src/GlobalVars.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GlobalVars.cpp.s
-.PHONY : src/GlobalVars.cpp.s
-
 src/States/GameState.o: src/States/GameState.cpp.o
 .PHONY : src/States/GameState.o
 
@@ -343,9 +319,6 @@ help:
 	@echo "... src/GUI/Button.o"
 	@echo "... src/GUI/Button.i"
 	@echo "... src/GUI/Button.s"
-	@echo "... src/GlobalVars.o"
-	@echo "... src/GlobalVars.i"
-	@echo "... src/GlobalVars.s"
 	@echo "... src/States/GameState.o"
 	@echo "... src/States/GameState.i"
 	@echo "... src/States/GameState.s"

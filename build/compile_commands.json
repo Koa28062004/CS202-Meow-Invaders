@@ -25,12 +25,6 @@
 },
 {
   "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
-  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/include -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/src/GlobalVars.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars.cpp",
-  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars.cpp",
-  "output": "CMakeFiles/cs202.dir/src/GlobalVars.cpp.o"
-},
-{
-  "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
   "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/include -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/src/States/GameState.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp",
   "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp",
   "output": "CMakeFiles/cs202.dir/src/States/GameState.cpp.o"

@@ -2565,9 +2565,6 @@ CMakeFiles/cs202.dir/src/Entities/Player.cpp.o: /Users/macbookair/Desktop/CS202-
 
 CMakeFiles/cs202.dir/src/GUI/Button.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp
 
-CMakeFiles/cs202.dir/src/GlobalVars.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars.cpp \
-  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/GlobalVars.h
-
 CMakeFiles/cs202.dir/src/States/GameState.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/Availability.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityInternal.h \
@@ -5136,8 +5133,6 @@ CMakeFiles/cs202.dir/src/main.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invade
 
 /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp:
 
-/Users/macbookair/Desktop/CS202-Meow-Invaders/include/GlobalVars.h:
-
 /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp:
 
 /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Player.h:
@@ -5983,8 +5978,6 @@ CMakeFiles/cs202.dir/src/main.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invade
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__ios/fpos.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__iterator/iterator.h:
-
-/Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars.cpp:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__iterator/permutable.h:
 
