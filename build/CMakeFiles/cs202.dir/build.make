@@ -69,10 +69,24 @@ include CMakeFiles/cs202.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cs202.dir/flags.make
 
+CMakeFiles/cs202.dir/src/Context.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/src/Context.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Context.cpp
+CMakeFiles/cs202.dir/src/Context.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cs202.dir/src/Context.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/Context.cpp.o -MF CMakeFiles/cs202.dir/src/Context.cpp.o.d -o CMakeFiles/cs202.dir/src/Context.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Context.cpp
+
+CMakeFiles/cs202.dir/src/Context.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/src/Context.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Context.cpp > CMakeFiles/cs202.dir/src/Context.cpp.i
+
+CMakeFiles/cs202.dir/src/Context.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/Context.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Context.cpp -o CMakeFiles/cs202.dir/src/Context.cpp.s
+
 CMakeFiles/cs202.dir/src/GlobalVars.cpp.o: CMakeFiles/cs202.dir/flags.make
 CMakeFiles/cs202.dir/src/GlobalVars.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars.cpp
 CMakeFiles/cs202.dir/src/GlobalVars.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cs202.dir/src/GlobalVars.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cs202.dir/src/GlobalVars.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/GlobalVars.cpp.o -MF CMakeFiles/cs202.dir/src/GlobalVars.cpp.o.d -o CMakeFiles/cs202.dir/src/GlobalVars.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars.cpp
 
 CMakeFiles/cs202.dir/src/GlobalVars.cpp.i: cmake_force
@@ -86,7 +100,7 @@ CMakeFiles/cs202.dir/src/GlobalVars.cpp.s: cmake_force
 CMakeFiles/cs202.dir/src/Menu.cpp.o: CMakeFiles/cs202.dir/flags.make
 CMakeFiles/cs202.dir/src/Menu.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Menu.cpp
 CMakeFiles/cs202.dir/src/Menu.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cs202.dir/src/Menu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cs202.dir/src/Menu.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/Menu.cpp.o -MF CMakeFiles/cs202.dir/src/Menu.cpp.o.d -o CMakeFiles/cs202.dir/src/Menu.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Menu.cpp
 
 CMakeFiles/cs202.dir/src/Menu.cpp.i: cmake_force
@@ -97,10 +111,24 @@ CMakeFiles/cs202.dir/src/Menu.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/Menu.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Menu.cpp -o CMakeFiles/cs202.dir/src/Menu.cpp.s
 
+CMakeFiles/cs202.dir/src/State.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/src/State.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/State.cpp
+CMakeFiles/cs202.dir/src/State.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cs202.dir/src/State.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/State.cpp.o -MF CMakeFiles/cs202.dir/src/State.cpp.o.d -o CMakeFiles/cs202.dir/src/State.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/State.cpp
+
+CMakeFiles/cs202.dir/src/State.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/src/State.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/src/State.cpp > CMakeFiles/cs202.dir/src/State.cpp.i
+
+CMakeFiles/cs202.dir/src/State.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/State.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/State.cpp -o CMakeFiles/cs202.dir/src/State.cpp.s
+
 CMakeFiles/cs202.dir/src/main.cpp.o: CMakeFiles/cs202.dir/flags.make
 CMakeFiles/cs202.dir/src/main.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/main.cpp
 CMakeFiles/cs202.dir/src/main.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cs202.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cs202.dir/src/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/main.cpp.o -MF CMakeFiles/cs202.dir/src/main.cpp.o.d -o CMakeFiles/cs202.dir/src/main.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/main.cpp
 
 CMakeFiles/cs202.dir/src/main.cpp.i: cmake_force
@@ -113,15 +141,19 @@ CMakeFiles/cs202.dir/src/main.cpp.s: cmake_force
 
 # Object files for target cs202
 cs202_OBJECTS = \
+"CMakeFiles/cs202.dir/src/Context.cpp.o" \
 "CMakeFiles/cs202.dir/src/GlobalVars.cpp.o" \
 "CMakeFiles/cs202.dir/src/Menu.cpp.o" \
+"CMakeFiles/cs202.dir/src/State.cpp.o" \
 "CMakeFiles/cs202.dir/src/main.cpp.o"
 
 # External object files for target cs202
 cs202_EXTERNAL_OBJECTS =
 
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/Context.cpp.o
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/GlobalVars.cpp.o
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/Menu.cpp.o
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/State.cpp.o
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/main.cpp.o
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/build.make
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib
@@ -129,7 +161,7 @@ cs202_EXTERNAL_OBJECTS =
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: /opt/homebrew/lib/libsfml-network.2.6.0.dylib
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: /opt/homebrew/lib/libsfml-system.2.6.0.dylib
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cs202.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

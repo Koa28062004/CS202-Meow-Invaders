@@ -130,6 +130,30 @@ cs202/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/build
 .PHONY : cs202/fast
 
+src/Context.o: src/Context.cpp.o
+.PHONY : src/Context.o
+
+# target to build an object file
+src/Context.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Context.cpp.o
+.PHONY : src/Context.cpp.o
+
+src/Context.i: src/Context.cpp.i
+.PHONY : src/Context.i
+
+# target to preprocess a source file
+src/Context.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Context.cpp.i
+.PHONY : src/Context.cpp.i
+
+src/Context.s: src/Context.cpp.s
+.PHONY : src/Context.s
+
+# target to generate assembly for a file
+src/Context.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Context.cpp.s
+.PHONY : src/Context.cpp.s
+
 src/GlobalVars.o: src/GlobalVars.cpp.o
 .PHONY : src/GlobalVars.o
 
@@ -178,6 +202,30 @@ src/Menu.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Menu.cpp.s
 .PHONY : src/Menu.cpp.s
 
+src/State.o: src/State.cpp.o
+.PHONY : src/State.o
+
+# target to build an object file
+src/State.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/State.cpp.o
+.PHONY : src/State.cpp.o
+
+src/State.i: src/State.cpp.i
+.PHONY : src/State.i
+
+# target to preprocess a source file
+src/State.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/State.cpp.i
+.PHONY : src/State.cpp.i
+
+src/State.s: src/State.cpp.s
+.PHONY : src/State.s
+
+# target to generate assembly for a file
+src/State.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/State.cpp.s
+.PHONY : src/State.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -211,12 +259,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cs202"
+	@echo "... src/Context.o"
+	@echo "... src/Context.i"
+	@echo "... src/Context.s"
 	@echo "... src/GlobalVars.o"
 	@echo "... src/GlobalVars.i"
 	@echo "... src/GlobalVars.s"
 	@echo "... src/Menu.o"
 	@echo "... src/Menu.i"
 	@echo "... src/Menu.s"
+	@echo "... src/State.o"
+	@echo "... src/State.i"
+	@echo "... src/State.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

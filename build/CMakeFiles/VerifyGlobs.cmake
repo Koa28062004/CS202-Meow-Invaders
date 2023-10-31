@@ -14,8 +14,10 @@ endif()
 # SOURCES at CMakeLists.txt:7 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/*.cpp")
 set(OLD_GLOB
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Context.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Menu.cpp"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/State.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/main.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

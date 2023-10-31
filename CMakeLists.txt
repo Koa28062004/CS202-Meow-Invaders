@@ -25,3 +25,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${SFML_INCLUDE_DIR})
 
 # Adding the include directory
 target_include_directories(${PROJECT_NAME} PUBLIC include)
+
+# Adding the external directory
+target_include_directories(${PROJECT_NAME} PUBLIC external)

@@ -1,5 +1,15 @@
+#include "Menu.h"
+#include <iostream>
 
 int main()
 {
-    return 0;
+    try
+    {
+        Menu menu;
+        menu.run();
+    }
+    catch (std::exception& e)
+    {
+        std::cout << "\nEXCEPTION: " << e.what() << std::endl;
+    }
 }
