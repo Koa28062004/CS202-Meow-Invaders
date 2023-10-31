@@ -21,16 +21,13 @@ public:
     Entity();
     virtual ~Entity();
 
-    // Functions
+    // Pure Functions
     virtual void move(const float &x, const float &y);
     virtual void update();
     virtual void draw(sf::RenderTarget* target);
 
-protected:
-    sf::RectangleShape shape;
-
 private:
-
+    sf::RectangleShape shape;
 };
 
 #endif

@@ -23,14 +23,24 @@ void Application::initWindow()
     mWindow->setVerticalSyncEnabled(vertical_sync_enabled);
 }
 
+// Init Keys
+void Application::initKeys() {
+    supportedKeys.emplace("Escape", sf::Keyboard::Key::Escape);
+    supportedKeys.emplace("A", sf::Keyboard::Key::A);
+    supportedKeys.emplace("W", sf::Keyboard::Key::W);
+    supportedKeys.emplace("S", sf::Keyboard::Key::S);
+    supportedKeys.emplace("D", sf::Keyboard::Key::D);
+}
+
 // Init States
 void Application::initStates() {
-    states.push(new GameState(mWindow));
+    states.push(new GameState(mWindow, &supportedKeys));
 }
 
 Application::Application()
 {
     initWindow();
+    initKeys(); 
     initStates();
 }
 

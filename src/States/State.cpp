@@ -1,7 +1,8 @@
 #include "States/State.h"
 
-State::State(sf::RenderWindow* window) : mWindow(window) {
+State::State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys) : mWindow(window) {
     quit = false;
+    this->supportedKeys = supportedKeys;
 }
 
 State::~State() {

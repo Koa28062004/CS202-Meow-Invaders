@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/cs202.dir/src/Application.cpp.o.d"
   "CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o"
   "CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o.d"
+  "CMakeFiles/cs202.dir/src/Entities/Player.cpp.o"
+  "CMakeFiles/cs202.dir/src/Entities/Player.cpp.o.d"
   "CMakeFiles/cs202.dir/src/GUI/Button.cpp.o"
   "CMakeFiles/cs202.dir/src/GUI/Button.cpp.o.d"
   "CMakeFiles/cs202.dir/src/GlobalVars.cpp.o"

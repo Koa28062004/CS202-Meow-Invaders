@@ -16,6 +16,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/macbookair/Desktop/CS2
 set(OLD_GLOB
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Application.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Entity.cpp"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Player.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp"

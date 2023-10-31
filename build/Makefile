@@ -178,6 +178,30 @@ src/Entities/Entity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Entity.cpp.s
 .PHONY : src/Entities/Entity.cpp.s
 
+src/Entities/Player.o: src/Entities/Player.cpp.o
+.PHONY : src/Entities/Player.o
+
+# target to build an object file
+src/Entities/Player.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Player.cpp.o
+.PHONY : src/Entities/Player.cpp.o
+
+src/Entities/Player.i: src/Entities/Player.cpp.i
+.PHONY : src/Entities/Player.i
+
+# target to preprocess a source file
+src/Entities/Player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Player.cpp.i
+.PHONY : src/Entities/Player.cpp.i
+
+src/Entities/Player.s: src/Entities/Player.cpp.s
+.PHONY : src/Entities/Player.s
+
+# target to generate assembly for a file
+src/Entities/Player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Player.cpp.s
+.PHONY : src/Entities/Player.cpp.s
+
 src/GUI/Button.o: src/GUI/Button.cpp.o
 .PHONY : src/GUI/Button.o
 
@@ -313,6 +337,9 @@ help:
 	@echo "... src/Entities/Entity.o"
 	@echo "... src/Entities/Entity.i"
 	@echo "... src/Entities/Entity.s"
+	@echo "... src/Entities/Player.o"
+	@echo "... src/Entities/Player.i"
+	@echo "... src/Entities/Player.s"
 	@echo "... src/GUI/Button.o"
 	@echo "... src/GUI/Button.i"
 	@echo "... src/GUI/Button.s"
