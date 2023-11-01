@@ -30,8 +30,6 @@ GameState::~GameState()
 
 void GameState::updateInput()
 {
-    checkForQuit();
-
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("MOVE_LEFT"))))
     {
         player.move(-5.f, 0.f);
@@ -48,11 +46,11 @@ void GameState::updateInput()
     {
         player.move(0.f, 5.f);
     }
-}
 
-void GameState::endState()
-{
-    std::cout << "End States\n";
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("CLOSE"))))
+    {
+        endState();
+    }
 }
 
 void GameState::update()

@@ -105,31 +105,7 @@ MenuState::~MenuState()
 
 void MenuState::updateInput()
 {
-    checkForQuit();
-
-    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("MOVE_LEFT"))))
-    // {
-    //     player.move(-5.f, 0.f);
-    // }
-    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("MOVE_RIGHT"))))
-    // {
-    //     player.move(5.f, 0.f);
-    // }
-    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("MOVE_UP"))))
-    // {
-    //     player.move(0.f, -5.f);
-    // }
-    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("MOVE_DOWN"))))
-    // {
-    //     player.move(0.f, 5.f);
-    // }
 }
-
-void MenuState::endState()
-{
-    std::cout << "End MenuStates\n";
-}
-
 void MenuState::update()
 {
     updateMousePosition();
@@ -154,7 +130,7 @@ void MenuState::updateButtons()
     // Exit game
     if (buttons["EXIT_STATE"]->isPressed())
     {
-        quit = true;
+        endState();
     }
 }
 

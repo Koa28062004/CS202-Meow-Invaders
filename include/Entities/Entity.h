@@ -21,12 +21,21 @@ public:
     Entity();
     virtual ~Entity();
 
+    // Initialization
+    void initSprites(sf::Texture* texture);
+
     // Pure Functions
     virtual void move(const float &x, const float &y);
     virtual void update();
     virtual void draw(sf::RenderTarget* target);
 
 private:
+    // Init Variables
+    void initVariables();
+
+    // Variables
+    sf::Texture* texture;
+    sf::Sprite* sprite;
     sf::RectangleShape shape;
 };
 

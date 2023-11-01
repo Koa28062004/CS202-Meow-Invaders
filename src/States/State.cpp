@@ -21,15 +21,13 @@ State::~State() {
 
 }
 
+void State::endState() {
+    quit = true;
+}
+
 const bool& State::getQuit() const {
     return quit;
 }
-
-void State::checkForQuit () {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("CLOSE")))) {
-        quit = true;
-    }
-} 
 
 void State::updateMousePosition() {
     mousePosScreen = sf::Mouse::getPosition();

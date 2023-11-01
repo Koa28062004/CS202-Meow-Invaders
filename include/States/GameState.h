@@ -10,7 +10,6 @@ public:
     virtual ~GameState();
 
     // Functions
-    void endState();
     void update();
     void draw(sf::RenderTarget* target = nullptr);
     void updateInput();
@@ -19,7 +18,6 @@ protected:
     void initKeybinds();
     Entity player; 
     sf::RenderWindow* mWindow;
-    // std::map<std::string, int> keybinds;
 };
 
 #endif

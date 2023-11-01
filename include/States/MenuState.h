@@ -11,7 +11,6 @@ public:
     virtual ~MenuState();
 
     // Functions
-    void endState();
     void update();
     void draw(sf::RenderTarget* target = nullptr);
     void drawButtons(sf::RenderTarget* target = nullptr);
@@ -25,8 +24,6 @@ public:
     void initButtons();
 
 protected:
-    // sf::RenderWindow* mWindow;
-    // std::map<std::string, int> keybinds;
 
 private:
     sf::RectangleShape background;

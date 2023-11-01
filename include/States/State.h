@@ -24,11 +24,10 @@ public:
 
     // Functions
     const bool &getQuit() const;
-    virtual void checkForQuit();
     virtual void updateMousePosition();
 
     // Pure Functions
-    virtual void endState() = 0;
+    virtual void endState();
     virtual void updateInput() = 0;
     virtual void update() = 0;
     virtual void draw(sf::RenderTarget* target = nullptr) = 0;
