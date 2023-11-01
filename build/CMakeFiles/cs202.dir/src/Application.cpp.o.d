@@ -852,6 +852,7 @@ CMakeFiles/cs202.dir/src/Application.cpp.o: \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileFactory.inl \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileReader.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileWriter.hpp \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Player.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Entity.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/MenuState.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/GUI/Button.h

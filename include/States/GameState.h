@@ -2,7 +2,6 @@
 #define GAME_STATE_H
 
 #include "State.h"
-#include "Entities/Entity.h"
 
 class GameState : public State {
 public:
@@ -14,9 +13,13 @@ public:
     void draw(sf::RenderTarget* target = nullptr);
     void updateInput();
 
-protected:
+private:
+    // Initialization
+    void initPlayer();
+    void initTextures();
     void initKeybinds();
-    Entity player; 
+
+    Player* player; 
     sf::RenderWindow* mWindow;
 };
 

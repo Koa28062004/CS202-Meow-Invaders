@@ -16,6 +16,8 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Audio.hpp"
 
+#include "Entities/Player.h"
+
 class State
 {
 public:
@@ -46,7 +48,7 @@ protected:
     sf::Font font;
 
     // Resources
-    std::vector<sf::Texture> textures;
+    std::map<std::string, sf::Texture> textures;
 
     // Mouse Positions
     sf::Vector2i mousePosScreen;

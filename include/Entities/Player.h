@@ -5,15 +5,17 @@
 
 class Player : public Entity {
 public:
-    Player();
+    Player(const float& x, const float& y, sf::Texture* texture);
     virtual ~Player();
 
-    // Pure Functions
-    virtual void move(const float &x, const float &y) = 0;
-    virtual void update() = 0;
-    virtual void draw(sf::RenderTarget* target) = 0;
+    // Functions
 
 private:
+    // Initialization
+    void initVariables();
+    void initComponents();
+
+    // Variables
     sf::RectangleShape shape;
 };
 

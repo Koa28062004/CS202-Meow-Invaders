@@ -853,6 +853,7 @@ CMakeFiles/cs202.dir/src/Application.cpp.o: /Users/macbookair/Desktop/CS202-Meow
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Window/WindowStyle.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Application.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Entity.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Player.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/GUI/Button.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/GameState.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/MenuState.h \
@@ -1709,6 +1710,7 @@ CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o: /Users/macbookair/Desktop/CS202-
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Window/WindowHandle.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Window/WindowStyle.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Entity.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Player.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/GameState.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/State.h
 
@@ -4250,6 +4252,7 @@ CMakeFiles/cs202.dir/src/States/GameState.cpp.o: /Users/macbookair/Desktop/CS202
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Window/WindowHandle.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Window/WindowStyle.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Entity.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Player.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/GameState.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/State.h
 
@@ -5104,6 +5107,7 @@ CMakeFiles/cs202.dir/src/States/MenuState.cpp.o: /Users/macbookair/Desktop/CS202
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Window/WindowHandle.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Window/WindowStyle.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Entity.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Player.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/GUI/Button.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/GameState.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/MenuState.h \
@@ -5959,6 +5963,8 @@ CMakeFiles/cs202.dir/src/States/State.cpp.o: /Users/macbookair/Desktop/CS202-Meo
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Window/WindowBase.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Window/WindowHandle.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Window/WindowStyle.hpp \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Entity.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Player.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/State.h
 
 CMakeFiles/cs202.dir/src/main.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/main.cpp \
@@ -6813,6 +6819,7 @@ CMakeFiles/cs202.dir/src/main.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invade
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Window/WindowStyle.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Application.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Entity.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Player.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/GUI/Button.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/GameState.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/MenuState.h \
@@ -6831,8 +6838,6 @@ CMakeFiles/cs202.dir/src/main.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invade
 
 /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp:
 
-/Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Player.h:
-
 /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Player.cpp:
 
 /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/State.h:
@@ -6840,6 +6845,8 @@ CMakeFiles/cs202.dir/src/main.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invade
 /Users/macbookair/Desktop/CS202-Meow-Invaders/include/States/MenuState.h:
 
 /Users/macbookair/Desktop/CS202-Meow-Invaders/include/GUI/Button.h:
+
+/Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Player.h:
 
 /Users/macbookair/Desktop/CS202-Meow-Invaders/include/Entities/Entity.h:
 

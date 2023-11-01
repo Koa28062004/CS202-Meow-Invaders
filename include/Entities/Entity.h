@@ -24,7 +24,9 @@ public:
     // Initialization
     void initSprites(sf::Texture* texture);
 
-    // Pure Functions
+    // Functions
+    void setEntityScale(const float &x, const float &y);
+    void setEntityPosition(const float &x, const float &y);
     virtual void move(const float &x, const float &y);
     virtual void update();
     virtual void draw(sf::RenderTarget* target);
@@ -36,7 +38,6 @@ private:
     // Variables
     sf::Texture* texture;
     sf::Sprite* sprite;
-    sf::RectangleShape shape;
 };
 
 #endif
