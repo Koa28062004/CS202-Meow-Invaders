@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/cs202.dir/src/Entities/Player.cpp.o.d"
   "CMakeFiles/cs202.dir/src/GUI/Button.cpp.o"
   "CMakeFiles/cs202.dir/src/GUI/Button.cpp.o.d"
+  "CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o"
+  "CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o.d"
   "CMakeFiles/cs202.dir/src/States/GameState.cpp.o"
   "CMakeFiles/cs202.dir/src/States/GameState.cpp.o.d"
   "CMakeFiles/cs202.dir/src/States/MenuState.cpp.o"

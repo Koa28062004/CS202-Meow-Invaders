@@ -226,6 +226,30 @@ src/GUI/Button.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GUI/Button.cpp.s
 .PHONY : src/GUI/Button.cpp.s
 
+src/GlobalVars/GlobalVars.o: src/GlobalVars/GlobalVars.cpp.o
+.PHONY : src/GlobalVars/GlobalVars.o
+
+# target to build an object file
+src/GlobalVars/GlobalVars.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o
+.PHONY : src/GlobalVars/GlobalVars.cpp.o
+
+src/GlobalVars/GlobalVars.i: src/GlobalVars/GlobalVars.cpp.i
+.PHONY : src/GlobalVars/GlobalVars.i
+
+# target to preprocess a source file
+src/GlobalVars/GlobalVars.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.i
+.PHONY : src/GlobalVars/GlobalVars.cpp.i
+
+src/GlobalVars/GlobalVars.s: src/GlobalVars/GlobalVars.cpp.s
+.PHONY : src/GlobalVars/GlobalVars.s
+
+# target to generate assembly for a file
+src/GlobalVars/GlobalVars.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.s
+.PHONY : src/GlobalVars/GlobalVars.cpp.s
+
 src/States/GameState.o: src/States/GameState.cpp.o
 .PHONY : src/States/GameState.o
 
@@ -343,6 +367,9 @@ help:
 	@echo "... src/GUI/Button.o"
 	@echo "... src/GUI/Button.i"
 	@echo "... src/GUI/Button.s"
+	@echo "... src/GlobalVars/GlobalVars.o"
+	@echo "... src/GlobalVars/GlobalVars.i"
+	@echo "... src/GlobalVars/GlobalVars.s"
 	@echo "... src/States/GameState.o"
 	@echo "... src/States/GameState.i"
 	@echo "... src/States/GameState.s"

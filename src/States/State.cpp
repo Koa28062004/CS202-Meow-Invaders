@@ -7,9 +7,13 @@ void State::initFonts() {
     }
 }
 
-State::State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys) : mWindow(window) {
+State::State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
+     : mWindow(window) {
     quit = false;
+
     this->supportedKeys = supportedKeys;
+    this->states = states;
+    
     initFonts();
 }
 
@@ -22,7 +26,7 @@ const bool& State::getQuit() const {
 }
 
 void State::checkForQuit () {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("CLOSE")))) {
         quit = true;
     }
 } 

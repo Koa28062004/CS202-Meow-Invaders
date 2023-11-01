@@ -6,7 +6,7 @@
 
 class GameState : public State {
 public:
-    GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
+    GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
     virtual ~GameState();
 
     // Functions
@@ -19,7 +19,7 @@ protected:
     void initKeybinds();
     Entity player; 
     sf::RenderWindow* mWindow;
-    std::map<std::string, int> keybinds;
+    // std::map<std::string, int> keybinds;
 };
 
 #endif

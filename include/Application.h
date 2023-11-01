@@ -25,6 +25,8 @@ private:
     // Variables
     sf::RenderWindow *mWindow;
     sf::Event event;
+    std::vector<sf::VideoMode> videoModes;
+    sf::ContextSettings window_settings;
 
     std::map<std::string, int> supportedKeys;
 

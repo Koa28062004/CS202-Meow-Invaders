@@ -18,6 +18,7 @@ set(OLD_GLOB
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Entity.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Player.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars/GlobalVars.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/MenuState.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/State.cpp"
