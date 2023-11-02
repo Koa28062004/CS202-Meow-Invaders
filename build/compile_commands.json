@@ -1,56 +1,62 @@
 [
 {
   "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
-  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/include -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/src/Application.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Application.cpp",
-  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Application.cpp",
-  "output": "CMakeFiles/cs202.dir/src/Application.cpp.o"
+  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Applications/Application.cpp",
+  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Applications/Application.cpp",
+  "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o"
 },
 {
   "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
-  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/include -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Entity.cpp",
-  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Entity.cpp",
-  "output": "CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o"
+  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Components/Movement.cpp",
+  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Components/Movement.cpp",
+  "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o"
 },
 {
   "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
-  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/include -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/src/Entities/Player.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Player.cpp",
-  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Player.cpp",
-  "output": "CMakeFiles/cs202.dir/src/Entities/Player.cpp.o"
+  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Entity.cpp",
+  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Entity.cpp",
+  "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o"
 },
 {
   "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
-  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/include -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/src/GUI/Button.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp",
-  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp",
-  "output": "CMakeFiles/cs202.dir/src/GUI/Button.cpp.o"
+  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Player.cpp",
+  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Player.cpp",
+  "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o"
 },
 {
   "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
-  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/include -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars/GlobalVars.cpp",
-  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars/GlobalVars.cpp",
-  "output": "CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o"
+  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GUI/Button.cpp",
+  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GUI/Button.cpp",
+  "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o"
 },
 {
   "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
-  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/include -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/src/States/GameState.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp",
-  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp",
-  "output": "CMakeFiles/cs202.dir/src/States/GameState.cpp.o"
+  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GlobalVars/GlobalVars.cpp",
+  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GlobalVars/GlobalVars.cpp",
+  "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o"
 },
 {
   "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
-  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/include -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/src/States/MenuState.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/MenuState.cpp",
-  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/MenuState.cpp",
-  "output": "CMakeFiles/cs202.dir/src/States/MenuState.cpp.o"
+  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/GameState.cpp",
+  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/GameState.cpp",
+  "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o"
 },
 {
   "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
-  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/include -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/src/States/State.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/State.cpp",
-  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/State.cpp",
-  "output": "CMakeFiles/cs202.dir/src/States/State.cpp.o"
+  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/MenuState.cpp",
+  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/MenuState.cpp",
+  "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o"
 },
 {
   "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
-  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/include -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/src/main.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/main.cpp",
-  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/main.cpp",
-  "output": "CMakeFiles/cs202.dir/src/main.cpp.o"
+  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/State.cpp",
+  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/State.cpp",
+  "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o"
+},
+{
+  "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders/build",
+  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders/external -isystem /opt/homebrew/include -g -std=gnu++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/main.cpp",
+  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/main.cpp",
+  "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o"
 }
 ]

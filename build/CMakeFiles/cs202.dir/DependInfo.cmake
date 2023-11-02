@@ -8,15 +8,16 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Application.cpp" "CMakeFiles/cs202.dir/src/Application.cpp.o" "gcc" "CMakeFiles/cs202.dir/src/Application.cpp.o.d"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Entity.cpp" "CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o" "gcc" "CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o.d"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Player.cpp" "CMakeFiles/cs202.dir/src/Entities/Player.cpp.o" "gcc" "CMakeFiles/cs202.dir/src/Entities/Player.cpp.o.d"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp" "CMakeFiles/cs202.dir/src/GUI/Button.cpp.o" "gcc" "CMakeFiles/cs202.dir/src/GUI/Button.cpp.o.d"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars/GlobalVars.cpp" "CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o" "gcc" "CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o.d"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp" "CMakeFiles/cs202.dir/src/States/GameState.cpp.o" "gcc" "CMakeFiles/cs202.dir/src/States/GameState.cpp.o.d"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/MenuState.cpp" "CMakeFiles/cs202.dir/src/States/MenuState.cpp.o" "gcc" "CMakeFiles/cs202.dir/src/States/MenuState.cpp.o.d"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/State.cpp" "CMakeFiles/cs202.dir/src/States/State.cpp.o" "gcc" "CMakeFiles/cs202.dir/src/States/State.cpp.o.d"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders/src/main.cpp" "CMakeFiles/cs202.dir/src/main.cpp.o" "gcc" "CMakeFiles/cs202.dir/src/main.cpp.o.d"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Applications/Application.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o.d"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Components/Movement.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o.d"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Entity.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o.d"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Player.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o.d"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GUI/Button.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o.d"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GlobalVars/GlobalVars.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o.d"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/GameState.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o.d"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/MenuState.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o.d"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/State.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o.d"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/main.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

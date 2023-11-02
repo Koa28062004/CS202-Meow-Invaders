@@ -130,221 +130,245 @@ cs202/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/build
 .PHONY : cs202/fast
 
-src/Application.o: src/Application.cpp.o
-.PHONY : src/Application.o
+MEOW_INVADERS/Applications/Application.o: MEOW_INVADERS/Applications/Application.cpp.o
+.PHONY : MEOW_INVADERS/Applications/Application.o
 
 # target to build an object file
-src/Application.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Application.cpp.o
-.PHONY : src/Application.cpp.o
+MEOW_INVADERS/Applications/Application.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o
+.PHONY : MEOW_INVADERS/Applications/Application.cpp.o
 
-src/Application.i: src/Application.cpp.i
-.PHONY : src/Application.i
+MEOW_INVADERS/Applications/Application.i: MEOW_INVADERS/Applications/Application.cpp.i
+.PHONY : MEOW_INVADERS/Applications/Application.i
 
 # target to preprocess a source file
-src/Application.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Application.cpp.i
-.PHONY : src/Application.cpp.i
+MEOW_INVADERS/Applications/Application.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.i
+.PHONY : MEOW_INVADERS/Applications/Application.cpp.i
 
-src/Application.s: src/Application.cpp.s
-.PHONY : src/Application.s
+MEOW_INVADERS/Applications/Application.s: MEOW_INVADERS/Applications/Application.cpp.s
+.PHONY : MEOW_INVADERS/Applications/Application.s
 
 # target to generate assembly for a file
-src/Application.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Application.cpp.s
-.PHONY : src/Application.cpp.s
+MEOW_INVADERS/Applications/Application.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.s
+.PHONY : MEOW_INVADERS/Applications/Application.cpp.s
 
-src/Entities/Entity.o: src/Entities/Entity.cpp.o
-.PHONY : src/Entities/Entity.o
+MEOW_INVADERS/Components/Movement.o: MEOW_INVADERS/Components/Movement.cpp.o
+.PHONY : MEOW_INVADERS/Components/Movement.o
 
 # target to build an object file
-src/Entities/Entity.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o
-.PHONY : src/Entities/Entity.cpp.o
+MEOW_INVADERS/Components/Movement.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o
+.PHONY : MEOW_INVADERS/Components/Movement.cpp.o
 
-src/Entities/Entity.i: src/Entities/Entity.cpp.i
-.PHONY : src/Entities/Entity.i
+MEOW_INVADERS/Components/Movement.i: MEOW_INVADERS/Components/Movement.cpp.i
+.PHONY : MEOW_INVADERS/Components/Movement.i
 
 # target to preprocess a source file
-src/Entities/Entity.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Entity.cpp.i
-.PHONY : src/Entities/Entity.cpp.i
+MEOW_INVADERS/Components/Movement.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.i
+.PHONY : MEOW_INVADERS/Components/Movement.cpp.i
 
-src/Entities/Entity.s: src/Entities/Entity.cpp.s
-.PHONY : src/Entities/Entity.s
+MEOW_INVADERS/Components/Movement.s: MEOW_INVADERS/Components/Movement.cpp.s
+.PHONY : MEOW_INVADERS/Components/Movement.s
 
 # target to generate assembly for a file
-src/Entities/Entity.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Entity.cpp.s
-.PHONY : src/Entities/Entity.cpp.s
+MEOW_INVADERS/Components/Movement.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.s
+.PHONY : MEOW_INVADERS/Components/Movement.cpp.s
 
-src/Entities/Player.o: src/Entities/Player.cpp.o
-.PHONY : src/Entities/Player.o
+MEOW_INVADERS/Entities/Entity.o: MEOW_INVADERS/Entities/Entity.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Entity.o
 
 # target to build an object file
-src/Entities/Player.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Player.cpp.o
-.PHONY : src/Entities/Player.cpp.o
+MEOW_INVADERS/Entities/Entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Entity.cpp.o
 
-src/Entities/Player.i: src/Entities/Player.cpp.i
-.PHONY : src/Entities/Player.i
+MEOW_INVADERS/Entities/Entity.i: MEOW_INVADERS/Entities/Entity.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Entity.i
 
 # target to preprocess a source file
-src/Entities/Player.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Player.cpp.i
-.PHONY : src/Entities/Player.cpp.i
+MEOW_INVADERS/Entities/Entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Entity.cpp.i
 
-src/Entities/Player.s: src/Entities/Player.cpp.s
-.PHONY : src/Entities/Player.s
+MEOW_INVADERS/Entities/Entity.s: MEOW_INVADERS/Entities/Entity.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Entity.s
 
 # target to generate assembly for a file
-src/Entities/Player.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/Entities/Player.cpp.s
-.PHONY : src/Entities/Player.cpp.s
+MEOW_INVADERS/Entities/Entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Entity.cpp.s
 
-src/GUI/Button.o: src/GUI/Button.cpp.o
-.PHONY : src/GUI/Button.o
+MEOW_INVADERS/Entities/Player.o: MEOW_INVADERS/Entities/Player.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Player.o
 
 # target to build an object file
-src/GUI/Button.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GUI/Button.cpp.o
-.PHONY : src/GUI/Button.cpp.o
+MEOW_INVADERS/Entities/Player.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Player.cpp.o
 
-src/GUI/Button.i: src/GUI/Button.cpp.i
-.PHONY : src/GUI/Button.i
+MEOW_INVADERS/Entities/Player.i: MEOW_INVADERS/Entities/Player.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Player.i
 
 # target to preprocess a source file
-src/GUI/Button.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GUI/Button.cpp.i
-.PHONY : src/GUI/Button.cpp.i
+MEOW_INVADERS/Entities/Player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Player.cpp.i
 
-src/GUI/Button.s: src/GUI/Button.cpp.s
-.PHONY : src/GUI/Button.s
+MEOW_INVADERS/Entities/Player.s: MEOW_INVADERS/Entities/Player.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Player.s
 
 # target to generate assembly for a file
-src/GUI/Button.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GUI/Button.cpp.s
-.PHONY : src/GUI/Button.cpp.s
+MEOW_INVADERS/Entities/Player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Player.cpp.s
 
-src/GlobalVars/GlobalVars.o: src/GlobalVars/GlobalVars.cpp.o
-.PHONY : src/GlobalVars/GlobalVars.o
+MEOW_INVADERS/GUI/Button.o: MEOW_INVADERS/GUI/Button.cpp.o
+.PHONY : MEOW_INVADERS/GUI/Button.o
 
 # target to build an object file
-src/GlobalVars/GlobalVars.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o
-.PHONY : src/GlobalVars/GlobalVars.cpp.o
+MEOW_INVADERS/GUI/Button.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o
+.PHONY : MEOW_INVADERS/GUI/Button.cpp.o
 
-src/GlobalVars/GlobalVars.i: src/GlobalVars/GlobalVars.cpp.i
-.PHONY : src/GlobalVars/GlobalVars.i
+MEOW_INVADERS/GUI/Button.i: MEOW_INVADERS/GUI/Button.cpp.i
+.PHONY : MEOW_INVADERS/GUI/Button.i
 
 # target to preprocess a source file
-src/GlobalVars/GlobalVars.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.i
-.PHONY : src/GlobalVars/GlobalVars.cpp.i
+MEOW_INVADERS/GUI/Button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.i
+.PHONY : MEOW_INVADERS/GUI/Button.cpp.i
 
-src/GlobalVars/GlobalVars.s: src/GlobalVars/GlobalVars.cpp.s
-.PHONY : src/GlobalVars/GlobalVars.s
+MEOW_INVADERS/GUI/Button.s: MEOW_INVADERS/GUI/Button.cpp.s
+.PHONY : MEOW_INVADERS/GUI/Button.s
 
 # target to generate assembly for a file
-src/GlobalVars/GlobalVars.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.s
-.PHONY : src/GlobalVars/GlobalVars.cpp.s
+MEOW_INVADERS/GUI/Button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.s
+.PHONY : MEOW_INVADERS/GUI/Button.cpp.s
 
-src/States/GameState.o: src/States/GameState.cpp.o
-.PHONY : src/States/GameState.o
+MEOW_INVADERS/GlobalVars/GlobalVars.o: MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o
+.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.o
 
 # target to build an object file
-src/States/GameState.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/GameState.cpp.o
-.PHONY : src/States/GameState.cpp.o
+MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o
+.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o
 
-src/States/GameState.i: src/States/GameState.cpp.i
-.PHONY : src/States/GameState.i
+MEOW_INVADERS/GlobalVars/GlobalVars.i: MEOW_INVADERS/GlobalVars/GlobalVars.cpp.i
+.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.i
 
 # target to preprocess a source file
-src/States/GameState.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/GameState.cpp.i
-.PHONY : src/States/GameState.cpp.i
+MEOW_INVADERS/GlobalVars/GlobalVars.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.i
+.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.cpp.i
 
-src/States/GameState.s: src/States/GameState.cpp.s
-.PHONY : src/States/GameState.s
+MEOW_INVADERS/GlobalVars/GlobalVars.s: MEOW_INVADERS/GlobalVars/GlobalVars.cpp.s
+.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.s
 
 # target to generate assembly for a file
-src/States/GameState.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/GameState.cpp.s
-.PHONY : src/States/GameState.cpp.s
+MEOW_INVADERS/GlobalVars/GlobalVars.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.s
+.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.cpp.s
 
-src/States/MenuState.o: src/States/MenuState.cpp.o
-.PHONY : src/States/MenuState.o
+MEOW_INVADERS/States/GameState.o: MEOW_INVADERS/States/GameState.cpp.o
+.PHONY : MEOW_INVADERS/States/GameState.o
 
 # target to build an object file
-src/States/MenuState.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/MenuState.cpp.o
-.PHONY : src/States/MenuState.cpp.o
+MEOW_INVADERS/States/GameState.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o
+.PHONY : MEOW_INVADERS/States/GameState.cpp.o
 
-src/States/MenuState.i: src/States/MenuState.cpp.i
-.PHONY : src/States/MenuState.i
+MEOW_INVADERS/States/GameState.i: MEOW_INVADERS/States/GameState.cpp.i
+.PHONY : MEOW_INVADERS/States/GameState.i
 
 # target to preprocess a source file
-src/States/MenuState.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/MenuState.cpp.i
-.PHONY : src/States/MenuState.cpp.i
+MEOW_INVADERS/States/GameState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.i
+.PHONY : MEOW_INVADERS/States/GameState.cpp.i
 
-src/States/MenuState.s: src/States/MenuState.cpp.s
-.PHONY : src/States/MenuState.s
+MEOW_INVADERS/States/GameState.s: MEOW_INVADERS/States/GameState.cpp.s
+.PHONY : MEOW_INVADERS/States/GameState.s
 
 # target to generate assembly for a file
-src/States/MenuState.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/MenuState.cpp.s
-.PHONY : src/States/MenuState.cpp.s
+MEOW_INVADERS/States/GameState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.s
+.PHONY : MEOW_INVADERS/States/GameState.cpp.s
 
-src/States/State.o: src/States/State.cpp.o
-.PHONY : src/States/State.o
+MEOW_INVADERS/States/MenuState.o: MEOW_INVADERS/States/MenuState.cpp.o
+.PHONY : MEOW_INVADERS/States/MenuState.o
 
 # target to build an object file
-src/States/State.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/State.cpp.o
-.PHONY : src/States/State.cpp.o
+MEOW_INVADERS/States/MenuState.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o
+.PHONY : MEOW_INVADERS/States/MenuState.cpp.o
 
-src/States/State.i: src/States/State.cpp.i
-.PHONY : src/States/State.i
+MEOW_INVADERS/States/MenuState.i: MEOW_INVADERS/States/MenuState.cpp.i
+.PHONY : MEOW_INVADERS/States/MenuState.i
 
 # target to preprocess a source file
-src/States/State.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/State.cpp.i
-.PHONY : src/States/State.cpp.i
+MEOW_INVADERS/States/MenuState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.i
+.PHONY : MEOW_INVADERS/States/MenuState.cpp.i
 
-src/States/State.s: src/States/State.cpp.s
-.PHONY : src/States/State.s
+MEOW_INVADERS/States/MenuState.s: MEOW_INVADERS/States/MenuState.cpp.s
+.PHONY : MEOW_INVADERS/States/MenuState.s
 
 # target to generate assembly for a file
-src/States/State.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/States/State.cpp.s
-.PHONY : src/States/State.cpp.s
+MEOW_INVADERS/States/MenuState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.s
+.PHONY : MEOW_INVADERS/States/MenuState.cpp.s
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+MEOW_INVADERS/States/State.o: MEOW_INVADERS/States/State.cpp.o
+.PHONY : MEOW_INVADERS/States/State.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+MEOW_INVADERS/States/State.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o
+.PHONY : MEOW_INVADERS/States/State.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+MEOW_INVADERS/States/State.i: MEOW_INVADERS/States/State.cpp.i
+.PHONY : MEOW_INVADERS/States/State.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+MEOW_INVADERS/States/State.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.i
+.PHONY : MEOW_INVADERS/States/State.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+MEOW_INVADERS/States/State.s: MEOW_INVADERS/States/State.cpp.s
+.PHONY : MEOW_INVADERS/States/State.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+MEOW_INVADERS/States/State.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.s
+.PHONY : MEOW_INVADERS/States/State.cpp.s
+
+MEOW_INVADERS/main.o: MEOW_INVADERS/main.cpp.o
+.PHONY : MEOW_INVADERS/main.o
+
+# target to build an object file
+MEOW_INVADERS/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o
+.PHONY : MEOW_INVADERS/main.cpp.o
+
+MEOW_INVADERS/main.i: MEOW_INVADERS/main.cpp.i
+.PHONY : MEOW_INVADERS/main.i
+
+# target to preprocess a source file
+MEOW_INVADERS/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.i
+.PHONY : MEOW_INVADERS/main.cpp.i
+
+MEOW_INVADERS/main.s: MEOW_INVADERS/main.cpp.s
+.PHONY : MEOW_INVADERS/main.s
+
+# target to generate assembly for a file
+MEOW_INVADERS/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.s
+.PHONY : MEOW_INVADERS/main.cpp.s
 
 # Help Target
 help:
@@ -355,33 +379,36 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cs202"
-	@echo "... src/Application.o"
-	@echo "... src/Application.i"
-	@echo "... src/Application.s"
-	@echo "... src/Entities/Entity.o"
-	@echo "... src/Entities/Entity.i"
-	@echo "... src/Entities/Entity.s"
-	@echo "... src/Entities/Player.o"
-	@echo "... src/Entities/Player.i"
-	@echo "... src/Entities/Player.s"
-	@echo "... src/GUI/Button.o"
-	@echo "... src/GUI/Button.i"
-	@echo "... src/GUI/Button.s"
-	@echo "... src/GlobalVars/GlobalVars.o"
-	@echo "... src/GlobalVars/GlobalVars.i"
-	@echo "... src/GlobalVars/GlobalVars.s"
-	@echo "... src/States/GameState.o"
-	@echo "... src/States/GameState.i"
-	@echo "... src/States/GameState.s"
-	@echo "... src/States/MenuState.o"
-	@echo "... src/States/MenuState.i"
-	@echo "... src/States/MenuState.s"
-	@echo "... src/States/State.o"
-	@echo "... src/States/State.i"
-	@echo "... src/States/State.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... MEOW_INVADERS/Applications/Application.o"
+	@echo "... MEOW_INVADERS/Applications/Application.i"
+	@echo "... MEOW_INVADERS/Applications/Application.s"
+	@echo "... MEOW_INVADERS/Components/Movement.o"
+	@echo "... MEOW_INVADERS/Components/Movement.i"
+	@echo "... MEOW_INVADERS/Components/Movement.s"
+	@echo "... MEOW_INVADERS/Entities/Entity.o"
+	@echo "... MEOW_INVADERS/Entities/Entity.i"
+	@echo "... MEOW_INVADERS/Entities/Entity.s"
+	@echo "... MEOW_INVADERS/Entities/Player.o"
+	@echo "... MEOW_INVADERS/Entities/Player.i"
+	@echo "... MEOW_INVADERS/Entities/Player.s"
+	@echo "... MEOW_INVADERS/GUI/Button.o"
+	@echo "... MEOW_INVADERS/GUI/Button.i"
+	@echo "... MEOW_INVADERS/GUI/Button.s"
+	@echo "... MEOW_INVADERS/GlobalVars/GlobalVars.o"
+	@echo "... MEOW_INVADERS/GlobalVars/GlobalVars.i"
+	@echo "... MEOW_INVADERS/GlobalVars/GlobalVars.s"
+	@echo "... MEOW_INVADERS/States/GameState.o"
+	@echo "... MEOW_INVADERS/States/GameState.i"
+	@echo "... MEOW_INVADERS/States/GameState.s"
+	@echo "... MEOW_INVADERS/States/MenuState.o"
+	@echo "... MEOW_INVADERS/States/MenuState.i"
+	@echo "... MEOW_INVADERS/States/MenuState.s"
+	@echo "... MEOW_INVADERS/States/State.o"
+	@echo "... MEOW_INVADERS/States/State.i"
+	@echo "... MEOW_INVADERS/States/State.s"
+	@echo "... MEOW_INVADERS/main.o"
+	@echo "... MEOW_INVADERS/main.i"
+	@echo "... MEOW_INVADERS/main.s"
 .PHONY : help
 
 

@@ -69,163 +69,179 @@ include CMakeFiles/cs202.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cs202.dir/flags.make
 
-CMakeFiles/cs202.dir/src/Application.cpp.o: CMakeFiles/cs202.dir/flags.make
-CMakeFiles/cs202.dir/src/Application.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Application.cpp
-CMakeFiles/cs202.dir/src/Application.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cs202.dir/src/Application.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/Application.cpp.o -MF CMakeFiles/cs202.dir/src/Application.cpp.o.d -o CMakeFiles/cs202.dir/src/Application.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Application.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Applications/Application.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o -MF CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o.d -o CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Applications/Application.cpp
 
-CMakeFiles/cs202.dir/src/Application.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/src/Application.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Application.cpp > CMakeFiles/cs202.dir/src/Application.cpp.i
+CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Applications/Application.cpp > CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.i
 
-CMakeFiles/cs202.dir/src/Application.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/Application.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Application.cpp -o CMakeFiles/cs202.dir/src/Application.cpp.s
+CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Applications/Application.cpp -o CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.s
 
-CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o: CMakeFiles/cs202.dir/flags.make
-CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Entity.cpp
-CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o -MF CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o.d -o CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Entity.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Components/Movement.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o -MF CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o.d -o CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Components/Movement.cpp
 
-CMakeFiles/cs202.dir/src/Entities/Entity.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/src/Entities/Entity.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Entity.cpp > CMakeFiles/cs202.dir/src/Entities/Entity.cpp.i
+CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Components/Movement.cpp > CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.i
 
-CMakeFiles/cs202.dir/src/Entities/Entity.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/Entities/Entity.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Entity.cpp -o CMakeFiles/cs202.dir/src/Entities/Entity.cpp.s
+CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Components/Movement.cpp -o CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.s
 
-CMakeFiles/cs202.dir/src/Entities/Player.cpp.o: CMakeFiles/cs202.dir/flags.make
-CMakeFiles/cs202.dir/src/Entities/Player.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Player.cpp
-CMakeFiles/cs202.dir/src/Entities/Player.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cs202.dir/src/Entities/Player.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/Entities/Player.cpp.o -MF CMakeFiles/cs202.dir/src/Entities/Player.cpp.o.d -o CMakeFiles/cs202.dir/src/Entities/Player.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Player.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Entity.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o -MF CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o.d -o CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Entity.cpp
 
-CMakeFiles/cs202.dir/src/Entities/Player.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/src/Entities/Player.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Player.cpp > CMakeFiles/cs202.dir/src/Entities/Player.cpp.i
+CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Entity.cpp > CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.i
 
-CMakeFiles/cs202.dir/src/Entities/Player.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/Entities/Player.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/Entities/Player.cpp -o CMakeFiles/cs202.dir/src/Entities/Player.cpp.s
+CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Entity.cpp -o CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.s
 
-CMakeFiles/cs202.dir/src/GUI/Button.cpp.o: CMakeFiles/cs202.dir/flags.make
-CMakeFiles/cs202.dir/src/GUI/Button.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp
-CMakeFiles/cs202.dir/src/GUI/Button.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cs202.dir/src/GUI/Button.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/GUI/Button.cpp.o -MF CMakeFiles/cs202.dir/src/GUI/Button.cpp.o.d -o CMakeFiles/cs202.dir/src/GUI/Button.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Player.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o -MF CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o.d -o CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Player.cpp
 
-CMakeFiles/cs202.dir/src/GUI/Button.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/src/GUI/Button.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp > CMakeFiles/cs202.dir/src/GUI/Button.cpp.i
+CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Player.cpp > CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.i
 
-CMakeFiles/cs202.dir/src/GUI/Button.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/GUI/Button.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GUI/Button.cpp -o CMakeFiles/cs202.dir/src/GUI/Button.cpp.s
+CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Player.cpp -o CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.s
 
-CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o: CMakeFiles/cs202.dir/flags.make
-CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars/GlobalVars.cpp
-CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o -MF CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o.d -o CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars/GlobalVars.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GUI/Button.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o -MF CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o.d -o CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GUI/Button.cpp
 
-CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars/GlobalVars.cpp > CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.i
+CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GUI/Button.cpp > CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.i
 
-CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/GlobalVars/GlobalVars.cpp -o CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.s
+CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GUI/Button.cpp -o CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.s
 
-CMakeFiles/cs202.dir/src/States/GameState.cpp.o: CMakeFiles/cs202.dir/flags.make
-CMakeFiles/cs202.dir/src/States/GameState.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp
-CMakeFiles/cs202.dir/src/States/GameState.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cs202.dir/src/States/GameState.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/States/GameState.cpp.o -MF CMakeFiles/cs202.dir/src/States/GameState.cpp.o.d -o CMakeFiles/cs202.dir/src/States/GameState.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GlobalVars/GlobalVars.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o -MF CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o.d -o CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GlobalVars/GlobalVars.cpp
 
-CMakeFiles/cs202.dir/src/States/GameState.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/src/States/GameState.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp > CMakeFiles/cs202.dir/src/States/GameState.cpp.i
+CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GlobalVars/GlobalVars.cpp > CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.i
 
-CMakeFiles/cs202.dir/src/States/GameState.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/States/GameState.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/GameState.cpp -o CMakeFiles/cs202.dir/src/States/GameState.cpp.s
+CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GlobalVars/GlobalVars.cpp -o CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.s
 
-CMakeFiles/cs202.dir/src/States/MenuState.cpp.o: CMakeFiles/cs202.dir/flags.make
-CMakeFiles/cs202.dir/src/States/MenuState.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/MenuState.cpp
-CMakeFiles/cs202.dir/src/States/MenuState.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cs202.dir/src/States/MenuState.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/States/MenuState.cpp.o -MF CMakeFiles/cs202.dir/src/States/MenuState.cpp.o.d -o CMakeFiles/cs202.dir/src/States/MenuState.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/MenuState.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/GameState.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o -MF CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o.d -o CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/GameState.cpp
 
-CMakeFiles/cs202.dir/src/States/MenuState.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/src/States/MenuState.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/MenuState.cpp > CMakeFiles/cs202.dir/src/States/MenuState.cpp.i
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/GameState.cpp > CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.i
 
-CMakeFiles/cs202.dir/src/States/MenuState.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/States/MenuState.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/MenuState.cpp -o CMakeFiles/cs202.dir/src/States/MenuState.cpp.s
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/GameState.cpp -o CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.s
 
-CMakeFiles/cs202.dir/src/States/State.cpp.o: CMakeFiles/cs202.dir/flags.make
-CMakeFiles/cs202.dir/src/States/State.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/State.cpp
-CMakeFiles/cs202.dir/src/States/State.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/cs202.dir/src/States/State.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/States/State.cpp.o -MF CMakeFiles/cs202.dir/src/States/State.cpp.o.d -o CMakeFiles/cs202.dir/src/States/State.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/State.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/MenuState.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o -MF CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o.d -o CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/MenuState.cpp
 
-CMakeFiles/cs202.dir/src/States/State.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/src/States/State.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/State.cpp > CMakeFiles/cs202.dir/src/States/State.cpp.i
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/MenuState.cpp > CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.i
 
-CMakeFiles/cs202.dir/src/States/State.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/States/State.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/States/State.cpp -o CMakeFiles/cs202.dir/src/States/State.cpp.s
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/MenuState.cpp -o CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.s
 
-CMakeFiles/cs202.dir/src/main.cpp.o: CMakeFiles/cs202.dir/flags.make
-CMakeFiles/cs202.dir/src/main.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/src/main.cpp
-CMakeFiles/cs202.dir/src/main.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/cs202.dir/src/main.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/src/main.cpp.o -MF CMakeFiles/cs202.dir/src/main.cpp.o.d -o CMakeFiles/cs202.dir/src/main.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/src/main.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/State.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o -MF CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o.d -o CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/State.cpp
 
-CMakeFiles/cs202.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/src/main.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/src/main.cpp > CMakeFiles/cs202.dir/src/main.cpp.i
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/State.cpp > CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.i
 
-CMakeFiles/cs202.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/src/main.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/src/main.cpp -o CMakeFiles/cs202.dir/src/main.cpp.s
+CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/State.cpp -o CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.s
+
+CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o: CMakeFiles/cs202.dir/flags.make
+CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/main.cpp
+CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o: CMakeFiles/cs202.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o -MF CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o.d -o CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/main.cpp
+
+CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/main.cpp > CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.i
+
+CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/main.cpp -o CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.s
 
 # Object files for target cs202
 cs202_OBJECTS = \
-"CMakeFiles/cs202.dir/src/Application.cpp.o" \
-"CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o" \
-"CMakeFiles/cs202.dir/src/Entities/Player.cpp.o" \
-"CMakeFiles/cs202.dir/src/GUI/Button.cpp.o" \
-"CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o" \
-"CMakeFiles/cs202.dir/src/States/GameState.cpp.o" \
-"CMakeFiles/cs202.dir/src/States/MenuState.cpp.o" \
-"CMakeFiles/cs202.dir/src/States/State.cpp.o" \
-"CMakeFiles/cs202.dir/src/main.cpp.o"
+"CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o" \
+"CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o" \
+"CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o" \
+"CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o" \
+"CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o" \
+"CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o" \
+"CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o" \
+"CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o" \
+"CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o" \
+"CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o"
 
 # External object files for target cs202
 cs202_EXTERNAL_OBJECTS =
 
-/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/Application.cpp.o
-/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/Entities/Entity.cpp.o
-/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/Entities/Player.cpp.o
-/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/GUI/Button.cpp.o
-/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/GlobalVars/GlobalVars.cpp.o
-/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/States/GameState.cpp.o
-/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/States/MenuState.cpp.o
-/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/States/State.cpp.o
-/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/src/main.cpp.o
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.o
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.o
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o
+/Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/build.make
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: /opt/homebrew/lib/libsfml-graphics.2.6.0.dylib
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: /opt/homebrew/lib/libsfml-window.2.6.0.dylib
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: /opt/homebrew/lib/libsfml-network.2.6.0.dylib
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: /opt/homebrew/lib/libsfml-system.2.6.0.dylib
 /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202: CMakeFiles/cs202.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/macbookair/Desktop/CS202-Meow-Invaders/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable /Users/macbookair/Desktop/CS202-Meow-Invaders/cs202"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cs202.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
