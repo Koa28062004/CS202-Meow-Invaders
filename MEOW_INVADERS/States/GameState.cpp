@@ -51,12 +51,28 @@ void GameState::initPlayer()
     //  this->players.push_back(player);
 }
 
+// Init Background
+void GameState::initBackground()
+{
+    background.setSize(sf::Vector2f(
+        static_cast<float>(mWindow->getSize().x),
+        static_cast<float>(mWindow->getSize().y)));
+
+    if (!backgroundTexture.loadFromFile("assets/images/InGameBG.png"))
+    {
+        throw std::runtime_error("Error::GameState::Failed to load InGameBG.png");
+    }
+
+    background.setTexture(&backgroundTexture);
+}
+
 GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
     : State(window, supportedKeys, states), mWindow(window), pauseState(window)
 {
     initKeybinds();
     initTextures();
     initPlayer();
+    initBackground();
 }
 
 GameState::~GameState()
@@ -95,8 +111,10 @@ void GameState::movingByKeyBoard()
     // Pause menu
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("PAUSE"))))
     {
-        if (!paused) pausedState();
-        else unPausedState();
+        if (!paused)
+            pausedState();
+        else
+            unPausedState();
     }
 }
 
@@ -110,22 +128,25 @@ void GameState::update()
         player->update();
     }
     // Pause update
-    else {
+    else
+    {
         pauseState.update();
     }
 }
 
-void GameState::draw(sf::RenderTarget *target)
+void GameState::draw(sf::RenderTarget* target)
 {
     if (!target)
     {
         target = mWindow;
     }
 
+    target->draw(background);
     player->draw(target);
 
     // Pause menu
-    if (paused) {
-       pauseState.draw(target);
+    if (paused)
+    {
+        pauseState.draw(target);
     }
 }
