@@ -48,11 +48,11 @@ void GameState::initPlayer()
 {
     this->player = new Player((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2, &this->textures["PLAYER_IDLE"]);
     this->player->setEntityScale(0.4, 0.4);
-  //  this->players.push_back(player);
+    //  this->players.push_back(player);
 }
 
 GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
-    : State(window, supportedKeys, states), mWindow(window)
+    : State(window, supportedKeys, states), mWindow(window), pauseState(window)
 {
     initKeybinds();
     initTextures();
@@ -87,17 +87,32 @@ void GameState::movingByKeyBoard()
         player->move(0.f, 7.f);
     }
 
+    // Escape the current state
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("CLOSE"))))
     {
         endState();
+    }
+    // Pause menu
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("PAUSE"))))
+    {
+        if (!paused) pausedState();
+        else unPausedState();
     }
 }
 
 void GameState::update()
 {
-    updateMousePosition();
-    movingByKeyBoard();
-    player->update();
+    // Unpaused update
+    if (!paused)
+    {
+        updateMousePosition();
+        movingByKeyBoard();
+        player->update();
+    }
+    // Pause update
+    else {
+        pauseState.update();
+    }
 }
 
 void GameState::draw(sf::RenderTarget *target)
@@ -108,4 +123,9 @@ void GameState::draw(sf::RenderTarget *target)
     }
 
     player->draw(target);
+
+    // Pause menu
+    if (paused) {
+       pauseState.draw(target);
+    }
 }

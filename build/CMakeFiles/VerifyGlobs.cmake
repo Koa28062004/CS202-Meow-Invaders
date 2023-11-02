@@ -13,6 +13,7 @@ set(OLD_GLOB
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GlobalVars/GlobalVars.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/GameState.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/MenuState.cpp"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/PauseState.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/State.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/main.cpp"
   )

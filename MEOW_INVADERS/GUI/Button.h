@@ -27,6 +27,9 @@ public:
            sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor);
     ~Button();
 
+    // Init Triangle
+    void initTriangle();
+
     // Accessors
     const bool isPressed() const; 
 
@@ -40,6 +43,7 @@ private:
     bool hover;
 
     sf::RectangleShape shape;
+    sf::ConvexShape triangle;
     sf::Font *font;
     sf::Text text;
 

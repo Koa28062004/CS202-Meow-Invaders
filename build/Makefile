@@ -322,6 +322,30 @@ MEOW_INVADERS/States/MenuState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.s
 .PHONY : MEOW_INVADERS/States/MenuState.cpp.s
 
+MEOW_INVADERS/States/PauseState.o: MEOW_INVADERS/States/PauseState.cpp.o
+.PHONY : MEOW_INVADERS/States/PauseState.o
+
+# target to build an object file
+MEOW_INVADERS/States/PauseState.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/PauseState.cpp.o
+.PHONY : MEOW_INVADERS/States/PauseState.cpp.o
+
+MEOW_INVADERS/States/PauseState.i: MEOW_INVADERS/States/PauseState.cpp.i
+.PHONY : MEOW_INVADERS/States/PauseState.i
+
+# target to preprocess a source file
+MEOW_INVADERS/States/PauseState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/PauseState.cpp.i
+.PHONY : MEOW_INVADERS/States/PauseState.cpp.i
+
+MEOW_INVADERS/States/PauseState.s: MEOW_INVADERS/States/PauseState.cpp.s
+.PHONY : MEOW_INVADERS/States/PauseState.s
+
+# target to generate assembly for a file
+MEOW_INVADERS/States/PauseState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/PauseState.cpp.s
+.PHONY : MEOW_INVADERS/States/PauseState.cpp.s
+
 MEOW_INVADERS/States/State.o: MEOW_INVADERS/States/State.cpp.o
 .PHONY : MEOW_INVADERS/States/State.o
 
@@ -403,6 +427,9 @@ help:
 	@echo "... MEOW_INVADERS/States/MenuState.o"
 	@echo "... MEOW_INVADERS/States/MenuState.i"
 	@echo "... MEOW_INVADERS/States/MenuState.s"
+	@echo "... MEOW_INVADERS/States/PauseState.o"
+	@echo "... MEOW_INVADERS/States/PauseState.i"
+	@echo "... MEOW_INVADERS/States/PauseState.s"
 	@echo "... MEOW_INVADERS/States/State.o"
 	@echo "... MEOW_INVADERS/States/State.i"
 	@echo "... MEOW_INVADERS/States/State.s"

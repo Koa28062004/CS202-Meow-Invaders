@@ -42,47 +42,52 @@ void MenuState::initKeybinds()
 // Init Buttons
 void MenuState::initButtons()
 {
+    sf::Text tmp;
+    tmp.setString("New Game");
+    tmp.setCharacterSize(40);
+
     // New Game
-    buttons["GAME_STATE"] = new Button(mWindow->getSize().x / 2, 150, 170, 80,
+    buttons["GAME_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 300, 0, 0,
                                        &font, "New Game",
-                                       sf::Color(70, 70, 70, 200),
-                                       sf::Color(150, 150, 150, 255),
-                                       sf::Color(20, 20, 20, 200));
+                                       sf::Color(0, 0, 0, 0),
+                                       sf::Color(0, 0, 0, 0),
+                                       sf::Color(0, 0, 0, 0));
 
+    tmp.setString("Continue");
+    tmp.setCharacterSize(40);
     // Pause Game
-    buttons["CONTINUE_STATE"] = new Button(300, 280, 150, 50,
+    buttons["CONTINUE_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 400,  0, 0,
                                            &font, "Continue",
-                                           sf::Color(70, 80, 70, 200),
-                                           sf::Color(150, 150, 150, 255),
-                                           sf::Color(20, 20, 20, 200));
+                                           sf::Color(0, 0, 0, 0),
+                                           sf::Color(0, 0, 0, 0),
+                                           sf::Color(0, 0, 0, 0));
 
-    // Store
-    buttons["STORE_STATE"] = new Button(300, 380, 150, 50,
-                                        &font, "Store",
-                                        sf::Color(70, 80, 70, 200),
-                                        sf::Color(150, 150, 150, 255),
-                                        sf::Color(20, 20, 20, 200));
+    tmp.setString("Options");
+    tmp.setCharacterSize(40);
+    // Options
+    buttons["OPTIONS_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 500,  0, 0,
+                                          &font, "Options",
+                                          sf::Color(0, 0, 0, 0),
+                                          sf::Color(0, 0, 0, 0),
+                                          sf::Color(0, 0, 0, 0));
 
-    // Instructions
-    buttons["INTRUCTIONS_STATE"] = new Button(300, 480, 150, 50,
-                                              &font, "Instructions",
-                                              sf::Color(70, 80, 70, 200),
-                                              sf::Color(150, 150, 150, 255),
-                                              sf::Color(20, 20, 20, 200));
-
+    tmp.setString("Settings");
+    tmp.setCharacterSize(40);
     // Settings
-    buttons["SETTINGS_STATE"] = new Button(300, 680, 150, 50,
-                                              &font, "Settings",
-                                              sf::Color(70, 80, 70, 200),
-                                              sf::Color(150, 150, 150, 255),
-                                              sf::Color(20, 20, 20, 200));
+    buttons["SETTINGS_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 600,  0, 0,
+                                           &font, "Settings",
+                                           sf::Color(0, 0, 0, 0),
+                                           sf::Color(0, 0, 0, 0),
+                                           sf::Color(0, 0, 0, 0));
 
+    tmp.setString("Quit");
+    tmp.setCharacterSize(40);
     // Quit
-    buttons["EXIT_STATE"] = new Button(300, 780, 150, 50,
+    buttons["EXIT_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 700,  0, 0,
                                        &font, "Quit",
-                                       sf::Color(100, 100, 100, 200),
-                                       sf::Color(150, 150, 150, 255),
-                                       sf::Color(20, 20, 20, 200));
+                                       sf::Color(0, 0, 0, 0),
+                                       sf::Color(0, 0, 0, 0),
+                                       sf::Color(0, 0, 0, 0));
 }
 
 MenuState::MenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
@@ -146,15 +151,15 @@ void MenuState::draw(sf::RenderTarget *target)
     this->drawButtons(target);
 
     // Watch the position of mouse position view
-    // sf::Text mouseText;
-    // mouseText.setPosition(mousePosView.x, mousePosView.y - 30);
-    // mouseText.setFont(font);
-    // mouseText.setCharacterSize(20);
-    // std::stringstream ss;
-    // ss << mousePosView.x << ' ' << mousePosView.y;
-    // mouseText.setString(ss.str());
+    sf::Text mouseText;
+    mouseText.setPosition(mousePosView.x, mousePosView.y - 30);
+    mouseText.setFont(font);
+    mouseText.setCharacterSize(20);
+    std::stringstream ss;
+    ss << mousePosView.x << ' ' << mousePosView.y;
+    mouseText.setString(ss.str());
 
-    // target->draw(mouseText);
+    target->draw(mouseText);
 }
 
 void MenuState::drawButtons(sf::RenderTarget *target)

@@ -1,7 +1,7 @@
 #include "Button.h"
 
 Button::Button(float x, float y, float width, float height,
-               sf::Font* font, std::string text,
+               sf::Font *font, std::string text,
                sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor)
 {
     this->buttonState = BTN_IDLE;
@@ -13,7 +13,9 @@ Button::Button(float x, float y, float width, float height,
     this->text.setFont(*this->font);
     this->text.setString(text);
     this->text.setFillColor(sf::Color::White);
-    this->text.setCharacterSize(20);
+    this->text.setOutlineColor(sf::Color(255, 153, 255, 200));
+    this->text.setOutlineThickness(1);
+    this->text.setCharacterSize(40);
     this->text.setPosition(
         this->shape.getPosition().x + (this->shape.getGlobalBounds().width / 2.f) - this->text.getGlobalBounds().width / 2.f,
         this->shape.getPosition().y + (this->shape.getGlobalBounds().height) / 2.f - this->text.getGlobalBounds().height / 2.f);
@@ -23,11 +25,22 @@ Button::Button(float x, float y, float width, float height,
     this->activeColor = activeColor;
 
     this->shape.setFillColor(this->idleColor);
+
+    initTriangle();
 }
 
 Button::~Button()
 {
+}
 
+// Init Triangle
+void Button::initTriangle()
+{
+    triangle.setPointCount(3);
+    triangle.setPoint(0, sf::Vector2f(text.getPosition().x - 30 + 5, text.getPosition().y + text.getGlobalBounds().height / 2 + 7));
+    triangle.setPoint(1, sf::Vector2f(text.getPosition().x - 50 + 5, text.getPosition().y + text.getGlobalBounds().height / 2 + 20 + 7));
+    triangle.setPoint(2, sf::Vector2f(text.getPosition().x - 50 + 5, text.getPosition().y + text.getGlobalBounds().height / 2 - 20 + 7));
+    triangle.setOutlineColor(sf::Color(255, 153, 255, 200)); // Set the outline color
 }
 
 void Button::update(const sf::Vector2f &mousePos)
@@ -38,7 +51,7 @@ void Button::update(const sf::Vector2f &mousePos)
 
     // Hover
 
-    if (this->shape.getGlobalBounds().contains(mousePos))
+    if (this->text.getGlobalBounds().contains(mousePos))
     {
         this->buttonState = BTN_HOVER;
 
@@ -53,14 +66,23 @@ void Button::update(const sf::Vector2f &mousePos)
     {
     case BTN_IDLE:
         this->shape.setFillColor(this->idleColor);
+        text.setStyle(sf::Text::Regular);
+        triangle.setFillColor(sf::Color(0, 0, 0, 0));
+        triangle.setOutlineThickness(0);
         break;
 
     case BTN_HOVER:
         this->shape.setFillColor(this->hoverColor);
+        text.setStyle(sf::Text::Bold);
+        triangle.setFillColor(sf::Color::White);
+        triangle.setOutlineThickness(2);
         break;
 
     case BTN_ACTIVE:
         this->shape.setFillColor(this->activeColor);
+        text.setStyle(sf::Text::Bold);
+        triangle.setFillColor(sf::Color::White);
+        triangle.setOutlineThickness(2);
         break;
     }
 }
@@ -69,12 +91,14 @@ void Button::draw(sf::RenderTarget *target)
 {
     target->draw(this->shape);
     target->draw(this->text);
+    target->draw(this->triangle);
 }
 
 // Accessors
-const bool Button::isPressed() const 
+const bool Button::isPressed() const
 {
-    if (this->buttonState == BTN_ACTIVE) {
+    if (this->buttonState == BTN_ACTIVE)
+    {
         return true;
     }
     return false;

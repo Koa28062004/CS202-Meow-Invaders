@@ -27,6 +27,8 @@ public:
     // Functions
     const bool &getQuit() const;
     virtual void updateMousePosition();
+    void pausedState();
+    void unPausedState();
 
     // Pure Functions
     virtual void endState();
@@ -45,6 +47,7 @@ protected:
     std::map<std::string, int> keybinds;
 
     bool quit;
+    bool paused;
     sf::Font font;
 
     // Resources

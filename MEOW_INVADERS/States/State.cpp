@@ -2,7 +2,7 @@
 
 // Init Fonts
 void State::initFonts() {
-    if (!font.loadFromFile("assets/fonts/Roboto-Bold.ttf")) {
+    if (!font.loadFromFile("assets/fonts/Megrim-Regular.ttf")) {
         throw std::runtime_error("Error::State::Could not load fonts");
     }
 }
@@ -10,6 +10,7 @@ void State::initFonts() {
 State::State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
      : mWindow(window) {
     quit = false;
+    paused = false;
 
     this->supportedKeys = supportedKeys;
     this->states = states;
@@ -19,6 +20,14 @@ State::State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys
 
 State::~State() {
 
+}
+
+void State::pausedState() {
+    paused = true;
+}
+
+void State::unPausedState() {
+    paused = false;
 }
 
 void State::endState() {

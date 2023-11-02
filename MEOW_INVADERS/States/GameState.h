@@ -2,6 +2,7 @@
 #define GAME_STATE_H
 
 #include "State.h"
+#include "PauseState.h"
 
 class GameState : public State {
 public:
@@ -20,6 +21,7 @@ private:
     void initKeybinds();
 
     Player* player; 
+   PauseState pauseState;
     sf::RenderWindow* mWindow;
 };
 
