@@ -850,4 +850,7 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/States/PauseState.cpp.o: \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileFactory.inl \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileReader.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileWriter.hpp \
-  /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GUI/Button.h
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GUI/Button.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/State.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Player.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Entity.h

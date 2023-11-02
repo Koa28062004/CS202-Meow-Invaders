@@ -21,7 +21,7 @@
 class State
 {
 public:
-    State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
+    State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states);
     virtual ~State();
 
     // Functions
@@ -34,18 +34,18 @@ public:
     virtual void endState();
     virtual void movingByKeyBoard() = 0;
     virtual void update() = 0;
-    virtual void draw(sf::RenderTarget* target = nullptr) = 0;
+    virtual void draw(sf::RenderTarget *target = nullptr) = 0;
+    virtual void initKeybinds() = 0;
 
     // Initialization
-    virtual void initKeybinds() = 0;
     virtual void initFonts();
 
     bool paused;
 
 protected:
-    sf::RenderWindow* mWindow;
-    std::stack<State*>* states;
-    std::map<std::string, int>* supportedKeys;
+    sf::RenderWindow *mWindow;
+    std::stack<State *> *states;
+    std::map<std::string, int> *supportedKeys;
     std::map<std::string, int> keybinds;
 
     bool quit;

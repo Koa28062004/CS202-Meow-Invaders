@@ -5887,8 +5887,11 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/States/PauseState.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stdint.h
+ /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Entity.h
+ /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Player.h
  /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GUI/Button.h
  /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/PauseState.h
+ /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/State.h
  /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio.hpp
  /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/AlResource.hpp
  /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/Export.hpp
