@@ -40,6 +40,8 @@ public:
     virtual void initKeybinds() = 0;
     virtual void initFonts();
 
+    bool paused;
+
 protected:
     sf::RenderWindow* mWindow;
     std::stack<State*>* states;
@@ -47,7 +49,6 @@ protected:
     std::map<std::string, int> keybinds;
 
     bool quit;
-    bool paused;
     sf::Font font;
 
     // Resources

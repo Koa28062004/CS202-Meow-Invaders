@@ -1,27 +1,44 @@
 #include "PauseState.h"
 
-PauseState::PauseState(sf::RenderWindow* window)
+void PauseState::initVariables()
 {
-    // Init background
-    background.setSize(sf::Vector2f((float)window->getSize().x,
-                                    (float)window->getSize().y));
-    background.setFillColor(sf::Color(20, 20, 20, 100));
+    titleTexture = new sf::Texture();
+    titleSprite = new sf::Sprite();
+    background = new sf::RectangleShape();
+}
 
-    // Init container
-    container.setSize(sf::Vector2f((float)window->getSize().x / 4.f,
-                                   (float)window->getSize().y));
+void PauseState::initTitle()
+{
+    // title
+    if (!titleTexture->loadFromFile("assets/images/gamePausedTitle.png"))
+    {
+        throw std::runtime_error("Error::Failed to load gamePausedTitle.png at PauseState");
+    }
 
-    container.setFillColor(sf::Color(20, 20, 20, 200));
-    container.setPosition((float)window->getSize().x / 2.f - container.getSize().x / 2.f, 0.f);
+    titleSprite->setTexture(*this->titleTexture);
+    titleSprite->setPosition(sf::Vector2f(mWindow->getSize().x / 2 - titleSprite->getGlobalBounds().width/2,
+                                          titleSprite->getGlobalBounds().height/8 - 5.f));
+}
+
+void PauseState::initBackground()
+{
+    background->setSize(sf::Vector2f((float)mWindow->getSize().x,
+                                     (float)mWindow->getSize().y));
+    background->setFillColor(sf::Color(20, 20, 20, 100));
+}
+
+PauseState::PauseState(sf::RenderWindow *window) : mWindow(window)
+{
+    initVariables();
+    initTitle();
+    initBackground();
 }
 
 PauseState::~PauseState()
 {
-    auto it = buttons.begin();
-    for (it = buttons.begin(); it != buttons.end(); ++it)
-    {
-        delete it->second;
-    }
+    delete titleSprite;
+    delete titleTexture;
+    delete background;
 }
 
 // Functions
@@ -29,13 +46,12 @@ void PauseState::update()
 {
 }
 
-void PauseState::draw(sf::RenderTarget* target)
+void PauseState::draw(sf::RenderTarget *target)
 {
-    target->draw(background);
-    target->draw(container);
-
-    for (auto &it : this->buttons)
-    {
-        it.second->draw(target);
-    }
+    if (!target)
+        target = mWindow;
+    if (background)
+        target->draw(*this->background);
+    if (titleSprite)
+        target->draw(*this->titleSprite);
 }

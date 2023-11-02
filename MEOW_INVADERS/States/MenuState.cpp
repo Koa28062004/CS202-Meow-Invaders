@@ -56,7 +56,7 @@ void MenuState::initButtons()
     tmp.setString("Continue");
     tmp.setCharacterSize(40);
     // Pause Game
-    buttons["CONTINUE_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 400,  0, 0,
+    buttons["CONTINUE_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 400, 0, 0,
                                            &font, "Continue",
                                            sf::Color(0, 0, 0, 0),
                                            sf::Color(0, 0, 0, 0),
@@ -65,7 +65,7 @@ void MenuState::initButtons()
     tmp.setString("Options");
     tmp.setCharacterSize(40);
     // Options
-    buttons["OPTIONS_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 500,  0, 0,
+    buttons["OPTIONS_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 500, 0, 0,
                                           &font, "Options",
                                           sf::Color(0, 0, 0, 0),
                                           sf::Color(0, 0, 0, 0),
@@ -74,7 +74,7 @@ void MenuState::initButtons()
     tmp.setString("Settings");
     tmp.setCharacterSize(40);
     // Settings
-    buttons["SETTINGS_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 600,  0, 0,
+    buttons["SETTINGS_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 600, 0, 0,
                                            &font, "Settings",
                                            sf::Color(0, 0, 0, 0),
                                            sf::Color(0, 0, 0, 0),
@@ -83,7 +83,7 @@ void MenuState::initButtons()
     tmp.setString("Quit");
     tmp.setCharacterSize(40);
     // Quit
-    buttons["EXIT_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 700,  0, 0,
+    buttons["EXIT_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 700, 0, 0,
                                        &font, "Quit",
                                        sf::Color(0, 0, 0, 0),
                                        sf::Color(0, 0, 0, 0),

@@ -29,9 +29,17 @@ public:
     void draw(sf::RenderTarget* target = nullptr);
 
 private:
-    sf::RectangleShape background;
-    sf::RectangleShape container;
-    std::map<std::string, Button*> buttons;
+    // Initialization
+    void initVariables();
+    void initTitle();
+    void initBackground();
+
+    sf::RenderWindow* mWindow;
+    sf::RectangleShape* background;
+    sf::Texture* titleTexture;
+    sf::Sprite* titleSprite;
+
+    std::map<std::string, sf::Texture*> textures;
 };
 
 #endif

@@ -14,7 +14,8 @@ void Application::initWindow()
     bool vertical_sync_enabled = false;
     unsigned antialiasing_level = 0;
 
-    if (ifs.is_open()) {
+    if (ifs.is_open())
+    {
         std::getline(ifs, title);
         ifs >> window_bounds.width >> window_bounds.height;
         ifs >> fullscreen;
@@ -24,10 +25,12 @@ void Application::initWindow()
     }
 
     window_settings.antialiasingLevel = antialiasing_level;
-    if (fullscreen) {
+    if (fullscreen)
+    {
         mWindow = new sf::RenderWindow(window_bounds, title, sf::Style::Default, window_settings);
     }
-    else {
+    else
+    {
         mWindow = new sf::RenderWindow(window_bounds, title, sf::Style::Titlebar | sf::Style::Close, window_settings);
     }
 
@@ -36,13 +39,16 @@ void Application::initWindow()
 }
 
 // Init Keys
-void Application::initKeys() {
+void Application::initKeys()
+{
     std::ifstream ifs("config/supportedKeys.ini");
 
-    if (ifs.is_open()) {
+    if (ifs.is_open())
+    {
         std::string key = "";
         int key_value = 0;
-        while (ifs >> key >> key_value) {
+        while (ifs >> key >> key_value)
+        {
             supportedKeys[key] = key_value;
         }
     }
@@ -51,14 +57,15 @@ void Application::initKeys() {
 }
 
 // Init States
-void Application::initStates() {
+void Application::initStates()
+{
     states.push(new MenuState(mWindow, &supportedKeys, &states));
 }
 
 Application::Application()
 {
     initWindow();
-    initKeys(); 
+    initKeys();
     initStates();
 }
 
@@ -71,7 +78,6 @@ Application::~Application()
         delete states.top();
         states.pop();
     }
-    
 }
 
 // Functions
@@ -94,38 +100,34 @@ void Application::handleEvents()
         case sf::Event::Closed:
             mWindow->close();
             break;
-        case sf::Event::GainedFocus:
-            // CurrentState::isPaused = false;
-            break;
-        case sf::Event::LostFocus:
-            // CurrentState::isPaused = true;
-            break;
-        // case sf::Event::KeyPressed:
-        //     if (event.key.code == sf::Keyboard::Escape)
-        //         mWindow->close();
-        //     break;
         }
     }
 }
 
-void Application::update() {
-    if (!states.empty()) {
+void Application::update()
+{
+    if (!states.empty())
+    {
         states.top()->update();
 
-        if (states.top()->getQuit()) {
+        if (states.top()->getQuit())
+        {
             states.top()->endState();
             delete states.top();
             states.pop();
-            if (states.empty()) mWindow->close();
+            if (states.empty())
+                mWindow->close();
         }
     }
 }
 
-void Application::draw() {
+void Application::draw()
+{
     mWindow->clear(sf::Color::White);
 
     // Draw items
-    if (!states.empty()) {
+    if (!states.empty())
+    {
         states.top()->draw();
     }
 

@@ -19,7 +19,7 @@ Entity::~Entity()
 }
 
 // Init Sprites
-void Entity::initSprites(sf::Texture *texture)
+void Entity::initSprites(sf::Texture* texture)
 {
     this->texture = texture;
     this->sprite = new sf::Sprite(*this->texture);

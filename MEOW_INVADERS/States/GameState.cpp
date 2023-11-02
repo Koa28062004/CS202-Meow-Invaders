@@ -66,18 +66,54 @@ void GameState::initBackground()
     background.setTexture(&backgroundTexture);
 }
 
-GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
-    : State(window, supportedKeys, states), mWindow(window), pauseState(window)
+void GameState::initPausedMenu()
 {
+    pauseState = new PauseState(mWindow);
+}
+
+void GameState::initVariables()
+{
+    pauseKeyPressed = false;
+    checkPausedButton = false;
+}
+
+void GameState::initPausedButton()
+{
+    pausedButtonIdle.setSize(sf::Vector2f(100.f, 80.f));
+    if (!pausedButtonIdleTexture.loadFromFile("assets/images/pausedButtonIdle.png"))
+    {
+        throw std::runtime_error("Error::GameState::Failed to load pausedButtonIdle.png");
+    }
+
+    pausedButtonIdle.setTexture(&pausedButtonIdleTexture);
+    pausedButtonIdle.setPosition(mWindow->getSize().x - 110.f, 30.f);
+
+    pausedButtonHover.setSize(sf::Vector2f(119.f, 80.f));
+    if (!pausedButtonHoverTexture.loadFromFile("assets/images/pausedButtonHover.png"))
+    {
+        throw std::runtime_error("Error::GameState::Failed to load pausedButtonHover.png");
+    }
+
+    pausedButtonHover.setTexture(&pausedButtonHoverTexture);
+    pausedButtonHover.setPosition(mWindow->getSize().x - 121.f, 37.f);
+}
+
+GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
+    : State(window, supportedKeys, states), mWindow(window)
+{
+    initVariables();
     initKeybinds();
     initTextures();
-    initPlayer();
     initBackground();
+    initPlayer();
+    initPausedMenu();
+    initPausedButton();
 }
 
 GameState::~GameState()
 {
     delete this->player;
+    delete pauseState;
     // for (int i = 0; i < players.size(); ++i)
     // {
     //     delete this->players[i];
@@ -108,33 +144,67 @@ void GameState::movingByKeyBoard()
     {
         endState();
     }
+}
+
+void GameState::updatePausedInput()
+{
     // Pause menu
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("PAUSE"))))
     {
-        if (!paused)
-            pausedState();
-        else
-            unPausedState();
+        if (!pauseKeyPressed)
+        {
+            pauseKeyPressed = true;
+            if (!paused)
+                pausedState();
+            else
+                unPausedState();
+        }
+    }
+    else
+    {
+        pauseKeyPressed = false;
+    }
+}
+
+void GameState::updatePausedButton()
+{
+    // Check if the mouse is within the bounds of the pausedButton
+    if (pausedButtonIdle.getGlobalBounds().contains(mousePosView))
+    {
+        // Active
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        {
+           pausedState();
+        }
+
+        checkPausedButton = true;
+    }
+    else
+    {
+        checkPausedButton = false;
     }
 }
 
 void GameState::update()
 {
+    updateMousePosition();
+    updatePausedInput();
+
     // Unpaused update
     if (!paused)
     {
-        updateMousePosition();
+        updatePausedButton();
         movingByKeyBoard();
         player->update();
     }
     // Pause update
     else
     {
-        pauseState.update();
+        pauseState->update();
     }
 }
 
-void GameState::draw(sf::RenderTarget* target)
+void GameState::draw(sf::RenderTarget *target)
 {
     if (!target)
     {
@@ -144,9 +214,19 @@ void GameState::draw(sf::RenderTarget* target)
     target->draw(background);
     player->draw(target);
 
+    // Draw hover animation of paused button
+    if (!checkPausedButton)
+    {
+        target->draw(pausedButtonIdle);
+    }
+    else
+    {
+        target->draw(pausedButtonHover);
+    }
+
     // Pause menu
     if (paused)
     {
-        pauseState.draw(target);
+        pauseState->draw(target);
     }
 }
