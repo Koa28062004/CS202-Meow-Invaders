@@ -19,16 +19,16 @@
 #include "GUI/Button.h"
 #include "State.h"
 
-class PauseState
+class PauseState 
 {
 public:
-    PauseState(sf::RenderWindow *window);
+    PauseState(sf::RenderWindow* window);
     virtual ~PauseState();
 
     // Functions
-    void update();
-    void draw(sf::RenderTarget *target = nullptr);
-    
+    void update(bool &paused, sf::Vector2f &mousePosView);
+    void draw(sf::RenderTarget* target = nullptr);
+
 private:
     // Initialization
     void initVariables();
@@ -37,12 +37,12 @@ private:
     void initPlayButton();
 
     // Functions
-    void updatePlayButton();
+    void updatePlayButton(bool &paused, sf::Vector2f &mousePosView);
 
-    sf::RenderWindow *mWindow;
-    sf::RectangleShape *background;
-    sf::Texture *titleTexture;
-    sf::Sprite *titleSprite;
+    sf::RenderWindow* mWindow;
+    sf::RectangleShape* background;
+    sf::Texture* titleTexture;
+    sf::Sprite* titleSprite;
 
     std::map<std::string, sf::Texture *> textures;
 

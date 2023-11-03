@@ -7,13 +7,13 @@
 class GameState : public State
 {
 public:
-    GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states);
+    GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State *>* states);
     virtual ~GameState();
 
     // Functions
     void updatePausedInput(); 
     void update();
-    void draw(sf::RenderTarget *target = nullptr);
+    void draw(sf::RenderTarget* target = nullptr);
     void movingByKeyBoard();
 
 private:

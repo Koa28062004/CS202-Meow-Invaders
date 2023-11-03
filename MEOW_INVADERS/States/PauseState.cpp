@@ -67,32 +67,33 @@ PauseState::~PauseState()
     delete background;
 }
 
-void PauseState::updatePlayButton()
+// Play button
+void PauseState::updatePlayButton(bool &paused, sf::Vector2f &mousePosView)
 {
-    // Check if the mouse is within the bounds of the pausedButton
-    // if (playButtonIdle.getGlobalBounds().contains(mousePosView))
-    // {
-    //     // Active
-    //     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-    //     {
-    //         unPausedState();
-    //     }
+    // Check if the mouse is within the bounds of the playButton
+    if (playButtonIdle.getGlobalBounds().contains(mousePosView))
+    {
+        // Active
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        {
+            paused = false;
+        }
 
-    //     checkPlayButton = true;
-    // }
-    // else
-    // {
-    //     checkPlayButton = false;
-    // }
+        checkPlayButton = true;
+    }
+    else
+    {
+        checkPlayButton = false;
+    }
 }
 
 // Functions
-void PauseState::update()
+void PauseState::update(bool &paused, sf::Vector2f &mousePosView)
 {
-    updatePlayButton();
+    updatePlayButton(paused, mousePosView);
 }
 
-void PauseState::draw(sf::RenderTarget *target)
+void PauseState::draw(sf::RenderTarget* target)
 {
     if (!target)
         target = mWindow;

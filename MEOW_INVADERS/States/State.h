@@ -26,7 +26,7 @@ public:
 
     // Functions
     const bool &getQuit() const;
-    virtual void updateMousePosition();
+    void updateMousePosition();
     void pausedState();
     void unPausedState();
 
@@ -41,23 +41,23 @@ public:
     virtual void initFonts();
 
     bool paused;
+    bool quit;
 
 protected:
-    sf::RenderWindow *mWindow;
-    std::stack<State *> *states;
+    sf::RenderWindow* mWindow;
+    std::stack<State *>* states;
     std::map<std::string, int> *supportedKeys;
     std::map<std::string, int> keybinds;
 
-    bool quit;
     sf::Font font;
-
-    // Resources
-    std::map<std::string, sf::Texture> textures;
 
     // Mouse Positions
     sf::Vector2i mousePosScreen;
     sf::Vector2i mousePosWindow;
     sf::Vector2f mousePosView;
+
+    // Resources
+    std::map<std::string, sf::Texture> textures;
 };
 
 #endif

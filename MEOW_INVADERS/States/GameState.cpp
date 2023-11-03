@@ -166,6 +166,7 @@ void GameState::updatePausedInput()
     }
 }
 
+// Paused button
 void GameState::updatePausedButton()
 {
     // Check if the mouse is within the bounds of the pausedButton
@@ -200,11 +201,11 @@ void GameState::update()
     // Pause update
     else
     {
-        pauseState->update();
+        pauseState->update(paused, mousePosView);
     }
 }
 
-void GameState::draw(sf::RenderTarget *target)
+void GameState::draw(sf::RenderTarget* target)
 {
     if (!target)
     {
