@@ -34,10 +34,14 @@ private:
     void initVariables();
     void initTitle();
     void initBackground();
-    void initPlayButton();
 
-    // Functions
+    // Play button
+    void initPlayButton();
     void updatePlayButton(bool &paused, sf::Vector2f &mousePosView);
+
+    // Setting button
+    void initSettingButton();
+    void updateSettingButton(sf::Vector2f &mousePosView);
 
     sf::RenderWindow* mWindow;
     sf::RectangleShape* background;
@@ -54,6 +58,15 @@ private:
     bool checkPlayButton;
     sf::RectangleShape playButtonHover;
     sf::Texture playButtonHoverTexture;
+
+    // Play button idle
+    sf::RectangleShape settingButtonIdle;
+    sf::Texture settingButtonIdleTexture;
+
+    // Play button hover
+    bool checkSettingButton;
+    sf::RectangleShape settingButtonHover;
+    sf::Texture settingButtonHoverTexture;
 };
 
 #endif
