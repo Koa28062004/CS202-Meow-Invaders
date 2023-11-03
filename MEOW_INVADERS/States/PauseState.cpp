@@ -40,7 +40,7 @@ void PauseState::initPlayButton()
     }
 
     playButtonIdle.setTexture(&playButtonIdleTexture);
-    playButtonIdle.setPosition(mWindow->getSize().x / 2 - playButtonIdle.getGlobalBounds().width / 2, 270.f);
+    playButtonIdle.setPosition(mWindow->getSize().x / 2 - playButtonIdle.getGlobalBounds().width / 2, 272.f);
 
     // Play button hover
     playButtonHover.setSize(sf::Vector2f(130.f, 110.f));
@@ -50,7 +50,7 @@ void PauseState::initPlayButton()
     }
 
     playButtonHover.setTexture(&playButtonHoverTexture);
-    playButtonHover.setPosition(mWindow->getSize().x / 2 - playButtonHover.getGlobalBounds().width / 2, 270.f);
+    playButtonHover.setPosition(mWindow->getSize().x / 2 - playButtonHover.getGlobalBounds().width / 2, 272.f);
 }
 
 // Init setting button
@@ -64,17 +64,41 @@ void PauseState::initSettingButton()
     }
 
     settingButtonIdle.setTexture(&settingButtonIdleTexture);
-    settingButtonIdle.setPosition(mWindow->getSize().x / 2 - settingButtonIdle.getGlobalBounds().width / 2, 450.f);
+    settingButtonIdle.setPosition(mWindow->getSize().x / 2 - settingButtonIdle.getGlobalBounds().width / 2, 446.f);
 
     // Setting button hover
-    settingButtonHover.setSize(sf::Vector2f(135.f, 120.f));
+    settingButtonHover.setSize(sf::Vector2f(139.f, 120.f));
     if (!settingButtonHoverTexture.loadFromFile("assets/images/settingButtonHover.png"))
     {
         throw std::runtime_error("Error::GameState::Failed to load settingButtonHover.png");
     }
 
     settingButtonHover.setTexture(&settingButtonHoverTexture);
-    settingButtonHover.setPosition(mWindow->getSize().x / 2 - playButtonHover.getGlobalBounds().width / 2, 446.f);
+    settingButtonHover.setPosition(mWindow->getSize().x / 2 - settingButtonHover.getGlobalBounds().width / 2 + 3.f, 444.f);
+}
+
+// Init Home button
+void PauseState::initHomeButton()
+{
+    // home button idle
+    homeButtonIdle.setSize(sf::Vector2f(130.f, 117.f));
+    if (!homeButtonIdleTexture.loadFromFile("assets/images/homeButtonIdle.png"))
+    {
+        throw std::runtime_error("Error::GameState::Failed to load homeButtonIdle.png");
+    }
+
+    homeButtonIdle.setTexture(&homeButtonIdleTexture);
+    homeButtonIdle.setPosition(mWindow->getSize().x / 2 - homeButtonIdle.getGlobalBounds().width / 2, 640.f);
+
+    // home button hover
+    homeButtonHover.setSize(sf::Vector2f(117.f, 114.f));
+    if (!homeButtonHoverTexture.loadFromFile("assets/images/homeButtonHover.png"))
+    {
+        throw std::runtime_error("Error::GameState::Failed to load homeButtonHover.png");
+    }
+
+    homeButtonHover.setTexture(&homeButtonHoverTexture);
+    homeButtonHover.setPosition(mWindow->getSize().x / 2 - homeButtonHover.getGlobalBounds().width / 2, 637.f);
 }
 
 PauseState::PauseState(sf::RenderWindow *window) : mWindow(window)
@@ -85,6 +109,7 @@ PauseState::PauseState(sf::RenderWindow *window) : mWindow(window)
 
     initPlayButton();
     initSettingButton();
+    initHomeButton();
 }
 
 PauseState::~PauseState()
@@ -132,11 +157,30 @@ void PauseState::updateSettingButton(sf::Vector2f &mousePosView) {
     }
 }
 
+void PauseState::updateHomeButton(sf::Vector2f &mousePosView) {
+    // Check if the mouse is within the bounds of the playButton
+    if (homeButtonIdle.getGlobalBounds().contains(mousePosView))
+    {
+        // Active
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        {
+           // paused = false;
+        }
+
+        checkHomeButton = true;
+    }
+    else
+    {
+        checkHomeButton = false;
+    }
+}
+
 // Functions
 void PauseState::update(bool &paused, sf::Vector2f &mousePosView)
 {
     updatePlayButton(paused, mousePosView);
     updateSettingButton(mousePosView);
+    updateHomeButton(mousePosView);
 }
 
 void PauseState::draw(sf::RenderTarget *target)
@@ -170,5 +214,13 @@ void PauseState::draw(sf::RenderTarget *target)
     else
     {
         target->draw(settingButtonHover);
+    }
+
+    // Draw home button
+    if (!checkHomeButton) {
+        target->draw(homeButtonIdle);
+    }
+    else {
+        target->draw(homeButtonHover);
     }
 }

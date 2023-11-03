@@ -19,15 +19,15 @@
 #include "GUI/Button.h"
 #include "State.h"
 
-class PauseState 
+class PauseState
 {
 public:
-    PauseState(sf::RenderWindow* window);
+    PauseState(sf::RenderWindow *window);
     virtual ~PauseState();
 
     // Functions
     void update(bool &paused, sf::Vector2f &mousePosView);
-    void draw(sf::RenderTarget* target = nullptr);
+    void draw(sf::RenderTarget *target = nullptr);
 
 private:
     // Initialization
@@ -43,10 +43,14 @@ private:
     void initSettingButton();
     void updateSettingButton(sf::Vector2f &mousePosView);
 
-    sf::RenderWindow* mWindow;
-    sf::RectangleShape* background;
-    sf::Texture* titleTexture;
-    sf::Sprite* titleSprite;
+    // Home button
+    void initHomeButton();
+    void updateHomeButton(sf::Vector2f &mousePosView);
+
+    sf::RenderWindow *mWindow;
+    sf::RectangleShape *background;
+    sf::Texture *titleTexture;
+    sf::Sprite *titleSprite;
 
     std::map<std::string, sf::Texture *> textures;
 
@@ -59,14 +63,23 @@ private:
     sf::RectangleShape playButtonHover;
     sf::Texture playButtonHoverTexture;
 
-    // Play button idle
+    // Setting button idle
     sf::RectangleShape settingButtonIdle;
     sf::Texture settingButtonIdleTexture;
 
-    // Play button hover
+    // Setting button hover
     bool checkSettingButton;
     sf::RectangleShape settingButtonHover;
     sf::Texture settingButtonHoverTexture;
+
+    // Home button idle
+    sf::RectangleShape homeButtonIdle;
+    sf::Texture homeButtonIdleTexture;
+
+    // Home button hover
+    bool checkHomeButton;
+    sf::RectangleShape homeButtonHover;
+    sf::Texture homeButtonHoverTexture;
 };
 
 #endif
