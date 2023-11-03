@@ -854,5 +854,7 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o: \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/external/SFML/Audio/SoundFileWriter.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Player.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Entity.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/Entities/Bullet.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GlobalVars/GlobalVars.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/States/PauseState.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders/MEOW_INVADERS/GUI/Button.h

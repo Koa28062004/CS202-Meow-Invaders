@@ -28,16 +28,16 @@ public:
     void setEntityScale(const float &x, const float &y);
     void setEntityPosition(const float &x, const float &y);
     virtual void move(const float &x, const float &y);
-    virtual void update();
-    virtual void draw(sf::RenderTarget* target);
+    virtual void update() = 0;
+    virtual void draw(sf::RenderTarget* target) = 0;
 
-private:
+protected:
     // Init Variables
     void initVariables();
 
     // Variables
-    sf::Texture* texture;
-    sf::Sprite* sprite;
+    sf::Texture* playerTexture;
+    sf::Sprite* playerSprite;
 };
 
 #endif

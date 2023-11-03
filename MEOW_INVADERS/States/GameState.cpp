@@ -201,7 +201,7 @@ void GameState::update()
     // Pause update
     else
     {
-        pauseState->update(paused, mousePosView);
+        pauseState->update(quit, paused, mousePosView);
     }
 }
 

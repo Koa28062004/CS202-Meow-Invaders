@@ -157,14 +157,15 @@ void PauseState::updateSettingButton(sf::Vector2f &mousePosView) {
     }
 }
 
-void PauseState::updateHomeButton(sf::Vector2f &mousePosView) {
+void PauseState::updateHomeButton(bool &quit, sf::Vector2f &mousePosView) {
     // Check if the mouse is within the bounds of the playButton
     if (homeButtonIdle.getGlobalBounds().contains(mousePosView))
     {
         // Active
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-           // paused = false;
+            // Need to fix
+        //    quit = true;
         }
 
         checkHomeButton = true;
@@ -176,11 +177,11 @@ void PauseState::updateHomeButton(sf::Vector2f &mousePosView) {
 }
 
 // Functions
-void PauseState::update(bool &paused, sf::Vector2f &mousePosView)
+void PauseState::update(bool &quit, bool &paused, sf::Vector2f &mousePosView)
 {
     updatePlayButton(paused, mousePosView);
     updateSettingButton(mousePosView);
-    updateHomeButton(mousePosView);
+    updateHomeButton(quit, mousePosView);
 }
 
 void PauseState::draw(sf::RenderTarget *target)

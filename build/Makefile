@@ -178,6 +178,78 @@ MEOW_INVADERS/Components/Movement.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Components/Movement.cpp.s
 .PHONY : MEOW_INVADERS/Components/Movement.cpp.s
 
+MEOW_INVADERS/Entities/Bullet.o: MEOW_INVADERS/Entities/Bullet.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Bullet.o
+
+# target to build an object file
+MEOW_INVADERS/Entities/Bullet.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Bullet.cpp.o
+
+MEOW_INVADERS/Entities/Bullet.i: MEOW_INVADERS/Entities/Bullet.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Bullet.i
+
+# target to preprocess a source file
+MEOW_INVADERS/Entities/Bullet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Bullet.cpp.i
+
+MEOW_INVADERS/Entities/Bullet.s: MEOW_INVADERS/Entities/Bullet.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Bullet.s
+
+# target to generate assembly for a file
+MEOW_INVADERS/Entities/Bullet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Bullet.cpp.s
+
+MEOW_INVADERS/Entities/Enemy.o: MEOW_INVADERS/Entities/Enemy.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Enemy.o
+
+# target to build an object file
+MEOW_INVADERS/Entities/Enemy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Enemy.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Enemy.cpp.o
+
+MEOW_INVADERS/Entities/Enemy.i: MEOW_INVADERS/Entities/Enemy.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Enemy.i
+
+# target to preprocess a source file
+MEOW_INVADERS/Entities/Enemy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Enemy.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Enemy.cpp.i
+
+MEOW_INVADERS/Entities/Enemy.s: MEOW_INVADERS/Entities/Enemy.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Enemy.s
+
+# target to generate assembly for a file
+MEOW_INVADERS/Entities/Enemy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Enemy.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Enemy.cpp.s
+
+MEOW_INVADERS/Entities/EnemyManager.o: MEOW_INVADERS/Entities/EnemyManager.cpp.o
+.PHONY : MEOW_INVADERS/Entities/EnemyManager.o
+
+# target to build an object file
+MEOW_INVADERS/Entities/EnemyManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/EnemyManager.cpp.o
+.PHONY : MEOW_INVADERS/Entities/EnemyManager.cpp.o
+
+MEOW_INVADERS/Entities/EnemyManager.i: MEOW_INVADERS/Entities/EnemyManager.cpp.i
+.PHONY : MEOW_INVADERS/Entities/EnemyManager.i
+
+# target to preprocess a source file
+MEOW_INVADERS/Entities/EnemyManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/EnemyManager.cpp.i
+.PHONY : MEOW_INVADERS/Entities/EnemyManager.cpp.i
+
+MEOW_INVADERS/Entities/EnemyManager.s: MEOW_INVADERS/Entities/EnemyManager.cpp.s
+.PHONY : MEOW_INVADERS/Entities/EnemyManager.s
+
+# target to generate assembly for a file
+MEOW_INVADERS/Entities/EnemyManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/EnemyManager.cpp.s
+.PHONY : MEOW_INVADERS/Entities/EnemyManager.cpp.s
+
 MEOW_INVADERS/Entities/Entity.o: MEOW_INVADERS/Entities/Entity.cpp.o
 .PHONY : MEOW_INVADERS/Entities/Entity.o
 
@@ -409,6 +481,15 @@ help:
 	@echo "... MEOW_INVADERS/Components/Movement.o"
 	@echo "... MEOW_INVADERS/Components/Movement.i"
 	@echo "... MEOW_INVADERS/Components/Movement.s"
+	@echo "... MEOW_INVADERS/Entities/Bullet.o"
+	@echo "... MEOW_INVADERS/Entities/Bullet.i"
+	@echo "... MEOW_INVADERS/Entities/Bullet.s"
+	@echo "... MEOW_INVADERS/Entities/Enemy.o"
+	@echo "... MEOW_INVADERS/Entities/Enemy.i"
+	@echo "... MEOW_INVADERS/Entities/Enemy.s"
+	@echo "... MEOW_INVADERS/Entities/EnemyManager.o"
+	@echo "... MEOW_INVADERS/Entities/EnemyManager.i"
+	@echo "... MEOW_INVADERS/Entities/EnemyManager.s"
 	@echo "... MEOW_INVADERS/Entities/Entity.o"
 	@echo "... MEOW_INVADERS/Entities/Entity.i"
 	@echo "... MEOW_INVADERS/Entities/Entity.s"

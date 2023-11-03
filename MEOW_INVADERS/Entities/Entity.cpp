@@ -4,8 +4,8 @@
 // Init Variables
 void Entity::initVariables()
 {
-    this->texture = nullptr;
-    this->sprite = nullptr;
+    this->playerTexture = nullptr;
+    this->playerSprite = nullptr;
 }
 
 Entity::Entity()
@@ -15,49 +15,40 @@ Entity::Entity()
 
 Entity::~Entity()
 {
-    delete sprite;
+    delete playerTexture;
 }
 
 // Init Sprites
 void Entity::initSprites(sf::Texture* texture)
 {
-    this->texture = texture;
-    this->sprite = new sf::Sprite(*this->texture);
+    this->playerTexture = texture;
+    this->playerSprite = new sf::Sprite(*this->playerTexture);
+  //  this->playerSprite->setTextureRect(sf::IntRect(32, 0, 32, 32));
 }
 
 // Set Position
 void Entity::setEntityPosition(const float &x, const float &y)
 {
-    if (this->sprite)
+    if (this->playerSprite)
     {
-        this->sprite->setOrigin(texture->getSize().x / 2, texture->getSize().y / 2);
-        this->sprite->setPosition(x, y);
+        this->playerSprite->setOrigin(playerTexture->getSize().x / 2, playerTexture->getSize().y / 2);
+        this->playerSprite->setPosition(x, y);
     }
 }
 
 // Set Scale
 void Entity::setEntityScale(const float &x, const float &y)
 {
-    if (this->sprite)
+    if (this->playerSprite)
     {
-        this->sprite->setScale(sf::Vector2f(x, y));
+        this->playerSprite->setScale(sf::Vector2f(x, y));
     }
 }
 
 void Entity::move(const float &x, const float &y)
 {
-    if (this->sprite)
+    if (this->playerSprite)
     {
-        sprite->move(x, y);
+        playerSprite->move(x, y);
     }
-}
-
-void Entity::update()
-{
-}
-
-void Entity::draw(sf::RenderTarget *target)
-{
-    if (this->sprite)
-        target->draw(*this->sprite);
 }

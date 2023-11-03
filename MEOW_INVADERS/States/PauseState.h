@@ -26,7 +26,7 @@ public:
     virtual ~PauseState();
 
     // Functions
-    void update(bool &paused, sf::Vector2f &mousePosView);
+    void update(bool &quit, bool &paused, sf::Vector2f &mousePosView);
     void draw(sf::RenderTarget *target = nullptr);
 
 private:
@@ -45,12 +45,12 @@ private:
 
     // Home button
     void initHomeButton();
-    void updateHomeButton(sf::Vector2f &mousePosView);
+    void updateHomeButton(bool &quit, sf::Vector2f &mousePosView);
 
-    sf::RenderWindow *mWindow;
-    sf::RectangleShape *background;
-    sf::Texture *titleTexture;
-    sf::Sprite *titleSprite;
+    sf::RenderWindow* mWindow;
+    sf::RectangleShape* background;
+    sf::Texture* titleTexture;
+    sf::Sprite* titleSprite;
 
     std::map<std::string, sf::Texture *> textures;
 
