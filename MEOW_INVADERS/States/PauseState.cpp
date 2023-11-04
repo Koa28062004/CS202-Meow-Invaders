@@ -165,7 +165,7 @@ void PauseState::updateHomeButton(bool &quit, sf::Vector2f &mousePosView) {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
             // Need to fix
-        //    quit = true;
+            quit = true;
         }
 
         checkHomeButton = true;

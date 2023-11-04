@@ -32,17 +32,16 @@ public:
 
     bool dead;
 
-private:
+    std::array<short, 3> previous_x;
+    std::array<short, 3> previous_y;
 
+private:
     float real_x;
     float real_y;
     float step_x;
     float step_y;
 
-    std::array<short, 3> previous_x;
-    std::array<short, 3> previous_y;
-
-    sf::RenderWindow* mWindow;
+    sf::RenderWindow *mWindow;
 };
 
 #endif

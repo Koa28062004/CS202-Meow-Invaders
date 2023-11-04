@@ -38,6 +38,10 @@ void Player::die()
     dead = true;
 }
 
+bool Player::get_dead() const {
+    return dead;
+}
+
 void Player::updateBullets()
 {
     if (reload_timer == 0)
@@ -66,7 +70,7 @@ void Player::updateBullets()
 
 void Player::checkBulletOutside(Bullet &bullet) {
     if (bullet.y <= 2.f) {
-        bullet.bulletDead();
+        bullet.bulletDead();    
     }
 }
 

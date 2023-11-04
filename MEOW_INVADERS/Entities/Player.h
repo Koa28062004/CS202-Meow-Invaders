@@ -17,6 +17,8 @@ public:
     void draw(sf::RenderTarget* target);
     void die();
 
+    bool get_dead() const;
+
     void updateBullets();
     void checkBulletOutside(Bullet &bullet);
 

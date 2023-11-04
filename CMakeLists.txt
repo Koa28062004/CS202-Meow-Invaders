@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 project(cs202)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 # Defining the source files and includes
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "MEOW_INVADERS/*.cpp")

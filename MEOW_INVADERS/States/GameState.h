@@ -1,8 +1,12 @@
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
+#include <chrono>
+#include <random>
+
 #include "State.h"
 #include "PauseState.h"
+#include "Entities/EnemyManager.h"
 
 class GameState : public State
 {
@@ -16,6 +20,10 @@ public:
     void draw(sf::RenderTarget* target = nullptr);
     void movingByKeyBoard();
 
+    // Playing game
+    void updatingPlayingGame();
+    void drawPlayingGame();
+
 private:
     // Initialization
     void initVariables();
@@ -25,11 +33,14 @@ private:
     void initPausedMenu();
     void initBackground();
     void initPausedButton();
+    void initEnemyManager();
 
     // Functions
     void updatePausedButton();
 
     Player* player;
+    EnemyManager* enemyManager;
+
     PauseState* pauseState;
     sf::RenderWindow* mWindow;
 
@@ -46,6 +57,11 @@ private:
     sf::Texture pausedButtonHoverTexture;
 
     bool pauseKeyPressed;
+    bool isReset;
+
+    bool gameOver;
+
+    std::mt19937_64 random_engine;
     
 };
 

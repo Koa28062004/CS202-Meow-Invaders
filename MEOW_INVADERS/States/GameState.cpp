@@ -51,6 +51,11 @@ void GameState::initPlayer()
     //  this->players.push_back(player);
 }
 
+void GameState::initEnemyManager()
+{
+    enemyManager = new EnemyManager();
+}
+
 // Init Background
 void GameState::initBackground()
 {
@@ -75,6 +80,8 @@ void GameState::initVariables()
 {
     pauseKeyPressed = false;
     checkPausedButton = false;
+    gameOver = false;
+    isReset = false;
 }
 
 void GameState::initPausedButton()
@@ -99,21 +106,22 @@ void GameState::initPausedButton()
 }
 
 GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
-    : State(window, supportedKeys, states), mWindow(window)
+    : State(window, supportedKeys, states), mWindow(window), random_engine(std::chrono::system_clock::now().time_since_epoch().count())
 {
     initVariables();
     initKeybinds();
     initTextures();
     initBackground();
     initPlayer();
+    initEnemyManager();
     initPausedMenu();
     initPausedButton();
 }
 
 GameState::~GameState()
 {
-    delete this->player;
     delete pauseState;
+    delete enemyManager;
     // for (int i = 0; i < players.size(); ++i)
     // {
     //     delete this->players[i];
@@ -175,7 +183,7 @@ void GameState::updatePausedButton()
         // Active
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-           pausedState();
+            pausedState();
         }
 
         checkPausedButton = true;
@@ -197,6 +205,8 @@ void GameState::update()
         updatePausedButton();
         movingByKeyBoard();
         player->update();
+
+        updatingPlayingGame();
     }
     // Pause update
     else
@@ -205,7 +215,39 @@ void GameState::update()
     }
 }
 
-void GameState::draw(sf::RenderTarget* target)
+void GameState::updatingPlayingGame()
+{
+    if (gameOver)
+    {
+        // lose
+    }
+    else
+    {
+        // Fix later
+        if (!isReset)
+        {
+            isReset = true;
+            std::cout << "CoN cac" << '\n';
+            player->reset();
+            enemyManager->reset(4);
+        }
+        else
+        {
+            player->update();
+            enemyManager->update(random_engine);
+        }
+    }
+}
+
+void GameState::drawPlayingGame()
+{
+    if (!player->get_dead())
+    {
+        enemyManager->draw(mWindow);
+    }
+}
+
+void GameState::draw(sf::RenderTarget *target)
 {
     if (!target)
     {
@@ -213,6 +255,9 @@ void GameState::draw(sf::RenderTarget* target)
     }
 
     target->draw(background);
+
+    drawPlayingGame();
+
     player->draw(target);
 
     // Draw hover animation of paused button
