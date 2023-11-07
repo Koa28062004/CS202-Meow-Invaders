@@ -1,4 +1,4 @@
-# Install script for directory: /Users/macbookair/Desktop/CS202-Meow-Invaders
+# Install script for directory: /Users/macbookair/Desktop/CS202-Meow-Invaders-1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/macbookair/Desktop/CS202-Meow-Invaders/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

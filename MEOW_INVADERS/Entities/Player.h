@@ -28,10 +28,10 @@ private:
     bool dead_animation_over;
     bool shield_animation_over;
 
-    unsigned char current_power;
-    unsigned char reload_timer;
+    int current_power;
+    int reload_timer;
 
-    unsigned short power_timer;
+    int power_timer;
 
     sf::Vector2f playerCenter;
 

@@ -19,7 +19,7 @@
 class Bullet
 {
 public:
-    Bullet(float i_step_x, float i_step_y, short i_x, short i_y);
+    Bullet(int i_step_x, int i_step_y, int i_x, int i_y);
     virtual ~Bullet();
 
     // Functions
@@ -27,19 +27,19 @@ public:
     void bulletDead();
     // sf::IntRect get_hitbox() const;
 
-    short x;
-    short y;
+    int x;
+    int y;
 
     bool dead;
 
-    std::array<short, 3> previous_x;
-    std::array<short, 3> previous_y;
+    std::array<int, 3> previous_x;
+    std::array<int, 3> previous_y;
 
 private:
-    float real_x;
-    float real_y;
-    float step_x;
-    float step_y;
+    int real_x;
+    int real_y;
+    int step_x;
+    int step_y;
 
     sf::RenderWindow *mWindow;
 };

@@ -69,7 +69,7 @@ void Player::updateBullets()
 }
 
 void Player::checkBulletOutside(Bullet &bullet) {
-    if (bullet.y <= 2.f) {
+    if (bullet.y <= 2) {
         bullet.bulletDead();    
     }
 }
@@ -97,6 +97,7 @@ void Player::update()
 
     bullets.erase(remove_if(bullets.begin(), bullets.end(), [](const Bullet& i_bullet)
     {
+        std::cout << "meow" << '\n';
     	return 1 == i_bullet.dead;
     }), bullets.end());
 }

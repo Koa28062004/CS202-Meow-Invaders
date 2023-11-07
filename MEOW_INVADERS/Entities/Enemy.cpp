@@ -1,11 +1,11 @@
 #include "Enemy.h"
 
-Enemy::Enemy(unsigned char i_type, unsigned short i_x, unsigned short i_y) : direction(0 == (i_y / BASE_SIZE) % 2 ? -1 : 1),
-                                                                             health(1 + i_type),
-                                                                             hit_timer(0),
-                                                                             type(i_type),
-                                                                             x(i_x),
-                                                                             y(i_y)
+Enemy::Enemy(int i_type, int i_x, int i_y) : direction(0 == (i_y / BASE_SIZE) % 2 ? -1 : 1),
+                                                                        health(1 + i_type),
+                                                                        hit_timer(0),
+                                                                        type(i_type),
+                                                                        x(i_x),
+                                                                        y(i_y)
 {
 }
 
@@ -13,27 +13,27 @@ Enemy::~Enemy()
 {
 }
 
-unsigned char Enemy::get_health() const
+int Enemy::get_health() const
 {
     return health;
 }
 
-unsigned char Enemy::get_hit_timer() const
+int Enemy::get_hit_timer() const
 {
     return hit_timer;
 }
 
-unsigned char Enemy::get_type() const
+int Enemy::get_type() const
 {
     return type;
 }
 
-unsigned short Enemy::get_x() const
+int Enemy::get_x() const
 {
     return x;
 }
 
-unsigned short Enemy::get_y() const
+int Enemy::get_y() const
 {
     return y;
 }
@@ -57,13 +57,13 @@ void Enemy::move()
         else
         {
             // Moving horizontally.
-            //x = std::clamp<short>(x + ENEMY_MOVE_SPEED * direction, BASE_SIZE, BOUNDARY_WIDTH - 2 * BASE_SIZE);
+            // x = std::clamp<short>(x + ENEMY_MOVE_SPEED * direction, BASE_SIZE, BOUNDARY_WIDTH - 2 * BASE_SIZE);
             x += ENEMY_MOVE_SPEED;
         }
     }
     else
     {
-        y = std::min<short>(y + ENEMY_MOVE_SPEED, BASE_SIZE * ceil(y / static_cast<float>(BASE_SIZE)));
+        y = std::min<int>(y + ENEMY_MOVE_SPEED, BASE_SIZE * ceil(y / static_cast<float>(BASE_SIZE)));
 
         if (y == BASE_SIZE * ceil(y / static_cast<float>(BASE_SIZE)))
         {
@@ -104,10 +104,18 @@ void Enemy::update()
     {
         if (1 == hit_timer)
         {
-            health = std::max(0, health - 1);
+            // Use a conditional statement to handle the comparison
+            if (health > 0)
+            {
+                --health;
+            }
+            else
+            {
+                health = 0; // Ensure health doesn't go negative
+            }
         }
 
-        hit_timer--;
+        --hit_timer;
     }
 }
 

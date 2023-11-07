@@ -53,7 +53,7 @@ std::vector<Enemy> &EnemyManager::get_enemies()
     return enemies;
 }
 
-bool EnemyManager::reached_player(unsigned short i_player_y) const
+bool EnemyManager::reached_player(int i_player_y) const
 {
     for (const Enemy &enemy : enemies)
     {
@@ -67,18 +67,18 @@ bool EnemyManager::reached_player(unsigned short i_player_y) const
     return 0;
 }
 
-void EnemyManager::reset(unsigned short i_level)
+void EnemyManager::reset(int i_level)
 {
-    unsigned char enemy_x = 0;
-    unsigned char enemy_y = 0;
-    unsigned char enemy_spacing = 4;
+    int enemy_x = 0;
+    int enemy_y = 0;
+    int enemy_spacing = 4;
 
     std::string level_sketch = "";
 
-    move_pause = std::max<short>(ENEMY_MOVE_PAUSE_START_MIN, ENEMY_MOVE_PAUSE_START - ENEMY_MOVE_PAUSE_DECREASE * i_level);
+    move_pause = std::max<int>(ENEMY_MOVE_PAUSE_START_MIN, ENEMY_MOVE_PAUSE_START - ENEMY_MOVE_PAUSE_DECREASE * i_level);
     move_timer = move_pause;
 
-    shoot_distribution = std::uniform_int_distribution<unsigned short>(0, std::max<short>(ENEMY_SHOOT_CHANCE_MIN, ENEMY_SHOOT_CHANCE - ENEMY_SHOOT_CHANCE_INCREASE * i_level));
+    shoot_distribution = std::uniform_int_distribution<int>(0, std::max<int>(ENEMY_SHOOT_CHANCE_MIN, ENEMY_SHOOT_CHANCE - ENEMY_SHOOT_CHANCE_INCREASE * i_level));
 
     // for (Animation& enemy_animation : enemy_animations)
     // {
@@ -91,7 +91,7 @@ void EnemyManager::reset(unsigned short i_level)
 
     // if (TOTAL_LEVELS <= i_level)
     // {
-    // 	i_level = 0.5f * TOTAL_LEVELS + i_level % static_cast<unsigned char>(0.5f * TOTAL_LEVELS);
+    // 	i_level = 0.5f * TOTAL_LEVELS + i_level % static_cast<char>(0.5f * TOTAL_LEVELS);
     // }
 
     switch (i_level)
@@ -226,14 +226,24 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine)
     for (Bullet &enemy_bullet : enemy_bullets)
     {
         enemy_bullet.update();
+        checkBulletOutside(enemy_bullet);
     }
 
     enemy_bullets.erase(remove_if(enemy_bullets.begin(), enemy_bullets.end(), [](const Bullet &i_bullet)
-                                  { return 1 == i_bullet.dead; }),
+                                  { std::cout << "CC" << '\n';
+                                    return 1 == i_bullet.dead; }),
                         enemy_bullets.end());
 }
 
-void EnemyManager::draw(sf::RenderWindow* window)
+void EnemyManager::checkBulletOutside(Bullet &bullet)
+{
+    if (bullet.x <= 1.f || bullet.x >= SCREEN_WIDTH || bullet.y <= 1.f || bullet.y >= SCREEN_HEIGHT)
+    {
+        bullet.bulletDead();
+    }
+}
+
+void EnemyManager::draw(sf::RenderWindow *window)
 {
     // Draw the bullet of the enemies
     for (const Bullet &bullet : enemy_bullets)

@@ -229,7 +229,7 @@ void GameState::updatingPlayingGame()
             isReset = true;
             std::cout << "CoN cac" << '\n';
             player->reset();
-            enemyManager->reset(4);
+            enemyManager->reset(0);
         }
         else
         {

@@ -22,7 +22,7 @@
 class Enemy
 {
 public:
-    Enemy(unsigned char i_type, unsigned short i_x, unsigned short i_y);
+    Enemy(int i_type, int i_x, int i_y);
     virtual ~Enemy();
 
     // Functions
@@ -33,12 +33,12 @@ public:
 
 	sf::IntRect get_hitbox() const;
 
-    unsigned char get_health() const;
-	unsigned char get_hit_timer() const;
-	unsigned char get_type() const;
+    int get_health() const;
+	int get_hit_timer() const;
+	int get_type() const;
 
-	unsigned short get_x() const;
-	unsigned short get_y() const;
+	int get_x() const;
+	int get_y() const;
     
 private:
     //-1 - Left
@@ -46,15 +46,15 @@ private:
     // 1 - Right
     char direction;
 
-    unsigned char health;
+    int health;
     
-    unsigned char hit_timer;
+    int hit_timer;
 
     // type of enemy
-    unsigned char type;
+    int type;
 
-    unsigned short x;
-    unsigned short y;
+    int x;
+    int y;
 };
 
 #endif
