@@ -36,15 +36,8 @@ private:
     std::vector<Enemy> enemies;
 
     sf::Texture enemyTex1;
-    sf::Sprite enemySprite1;
-
     sf::Texture enemyTex2;
-    sf::Sprite enemySprite2;
-
     sf::Texture enemyTex3;
-    sf::Sprite enemySprite3;
-
-    sf::Sprite enemyTmp;
 
     sf::Sprite enemy_bullet_sprite;
     sf::Texture enemy_bullet_texture;

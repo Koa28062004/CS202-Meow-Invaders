@@ -4,15 +4,14 @@
 constexpr int SCREEN_WIDTH = 1000;
 constexpr int SCREEN_HEIGHT = 800;
 
-constexpr int BOUNDARY_WIDTH = 1400;
 constexpr int BASE_SIZE = 16;
 constexpr int FAST_RELOAD_DURATION = 7;
 constexpr int RELOAD_DURATION = 31;
-constexpr int PLAYER_BULLET_SPEED = 5; // Problem
+constexpr int PLAYER_BULLET_SPEED = 5;
 
 // Enemy
 constexpr int ENEMY_HIT_TIMER_DURATION = 2;
-constexpr int ENEMY_MOVE_SPEED = 5;
+constexpr int ENEMY_MOVE_SPEED = 25;
 constexpr int ENEMY_TYPES = 3;
 constexpr int ENEMY_SHOOT_CHANCE = 4096;
 constexpr int ENEMY_SHOOT_CHANCE_INCREASE = 64;

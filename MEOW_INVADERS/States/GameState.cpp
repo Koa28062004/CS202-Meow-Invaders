@@ -226,10 +226,10 @@ void GameState::updatingPlayingGame()
         // Fix later
         if (!isReset)
         {
+            std::cout << "reset" << '\n';
             isReset = true;
-            std::cout << "CoN cac" << '\n';
             player->reset();
-            enemyManager->reset(0);
+            enemyManager->reset(4);
         }
         else
         {

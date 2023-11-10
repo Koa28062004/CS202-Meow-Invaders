@@ -60,6 +60,7 @@ private:
     bool isReset;
 
     bool gameOver;
+    int level = 0;
 
     std::mt19937_64 random_engine;
     

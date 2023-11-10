@@ -1,16 +1,23 @@
 #include "Enemy.h"
 
-Enemy::Enemy(int i_type, int i_x, int i_y) : direction(0 == (i_y / BASE_SIZE) % 2 ? -1 : 1),
-                                                                        health(1 + i_type),
-                                                                        hit_timer(0),
-                                                                        type(i_type),
-                                                                        x(i_x),
-                                                                        y(i_y)
+int Enemy::collectiveDirection;
+
+Enemy::Enemy(int i_type, int i_x, int i_y, sf::Texture* enemyTex) : direction(0 == (i_y / BASE_SIZE) % 2 ? -1 : 1),
+                                                                  health(1 + i_type),
+                                                                  hit_timer(0),
+                                                                  type(i_type),
+                                                                  x(i_x),
+                                                                  y(i_y)
 {
+    enemySprite.setTexture(*enemyTex);
+    enemySprite.setScale(sf::Vector2f(0.2, 0.2));
+    enemySprite.setPosition(x, y);
 }
 
 Enemy::~Enemy()
 {
+    // delete enemySprite;
+    // delete enemyTex;
 }
 
 int Enemy::get_health() const
@@ -43,34 +50,25 @@ void Enemy::hit()
     hit_timer = ENEMY_HIT_TIMER_DURATION;
 }
 
-void Enemy::move()
+void Enemy::movement(int level, std::vector<Enemy> &enemies)
 {
-    if (0 != direction)
+    switch (level)
     {
-        if ((1 == direction && x == BOUNDARY_WIDTH - 2 * BASE_SIZE) || (-1 == direction && x == BASE_SIZE))
-        {
-            // Once we reach the edge, we start moving down until we reach the next row.
-            direction = 0;
-
-            y += ENEMY_MOVE_SPEED;
-        }
-        else
-        {
-            // Moving horizontally.
-            // x = std::clamp<short>(x + ENEMY_MOVE_SPEED * direction, BASE_SIZE, BOUNDARY_WIDTH - 2 * BASE_SIZE);
-            x += ENEMY_MOVE_SPEED;
-        }
+    case 0:
+        move0(enemies);
+        break;
+        // case 1:
+        //     move1();
+        //     break;
+        // case 2:
+        //     move2();
+        //     break;
     }
-    else
-    {
-        y = std::min<int>(y + ENEMY_MOVE_SPEED, BASE_SIZE * ceil(y / static_cast<float>(BASE_SIZE)));
+}
 
-        if (y == BASE_SIZE * ceil(y / static_cast<float>(BASE_SIZE)))
-        {
-            // Moving in a snake pattern. We use the modulo operator to decide whether to move left or right.
-            direction = 0 == (y / BASE_SIZE) % 2 ? -1 : 1;
-        }
-    }
+void Enemy::move0(std::vector<Enemy> &enemies)
+{
+    enemySprite.move(2.f, 0);
 }
 
 void Enemy::shoot(std::vector<Bullet> &i_enemy_bullets)
@@ -117,6 +115,15 @@ void Enemy::update()
 
         --hit_timer;
     }
+}
+
+void Enemy::draw(sf::RenderTarget *target)
+{
+    target->draw(enemySprite);
+    // if (target && enemySprite)
+    //     target->draw(*enemySprite);
+    // else
+    //     std::cout << "Error: Invalid target or enemySprite is null!" << '\n';
 }
 
 sf::IntRect Enemy::get_hitbox() const

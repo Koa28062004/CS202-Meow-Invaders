@@ -22,29 +22,36 @@
 class Enemy
 {
 public:
-    Enemy(int i_type, int i_x, int i_y);
+    Enemy(int i_type, int i_x, int i_y, sf::Texture* enemyTex);
     virtual ~Enemy();
+
+    // Movements
+	void movement(int level, std::vector<Enemy> &enemies);
+    void move0(std::vector<Enemy> &enemies);
+    // void move1();
+    // void move2();
 
     // Functions
     void hit();
-	void move();
 	void shoot(std::vector<Bullet>& i_enemy_bullets);
 	void update();
+    void draw(sf::RenderTarget* target);
 
+    // Access
 	sf::IntRect get_hitbox() const;
-
     int get_health() const;
 	int get_hit_timer() const;
 	int get_type() const;
-
 	int get_x() const;
 	int get_y() const;
+
+    static int collectiveDirection;
     
 private:
     //-1 - Left
     // 0 - Down
     // 1 - Right
-    char direction;
+    int direction;
 
     int health;
     
@@ -55,6 +62,9 @@ private:
 
     int x;
     int y;
+
+    sf::Texture enemyTex;
+    sf::Sprite enemySprite;
 };
 
 #endif

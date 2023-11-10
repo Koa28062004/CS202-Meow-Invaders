@@ -2,9 +2,6 @@
 
 EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE)
 {
-    // We have a function that sets everything to the initial state, so why not use it?
-    reset(0);
-
     if (!enemy_bullet_texture.loadFromFile("assets/images/enemyBullet1.png"))
     {
         throw std::runtime_error("Error::EnemyManager::Can not load enemyBullet1.png");
@@ -12,31 +9,22 @@ EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE)
     enemy_bullet_sprite.setTexture(enemy_bullet_texture);
     enemy_bullet_sprite.setScale(sf::Vector2f(0.2, 0.2));
 
-    if (!enemyTex1.loadFromFile("assets/images/enemy1.png"))
-    {
-        throw std::runtime_error("Error::EnemyManager::Can not load enemy1.png");
-    }
-    enemySprite1.setTexture(enemyTex1);
-    enemySprite1.setScale(sf::Vector2f(0.2, 0.2));
-
-    if (!enemyTex2.loadFromFile("assets/images/enemy2.png"))
-    {
-        throw std::runtime_error("Error::EnemyManager::Can not load enemy2.png");
-    }
-    enemySprite2.setTexture(enemyTex2);
-    enemySprite2.setScale(sf::Vector2f(0.2, 0.2));
-
-    if (!enemyTex3.loadFromFile("assets/images/enemy3.png"))
-    {
-        throw std::runtime_error("Error::EnemyManager::Can not load enemy3.png");
-    }
-    enemySprite3.setTexture(enemyTex3);
-    enemySprite3.setScale(sf::Vector2f(0.25, 0.25));
-
     // for (unsigned char a = 0; a < ENEMY_TYPES; a++)
     // {
     //     enemy_animations.push_back(Animation(1 + move_pause, BASE_SIZE, "Resources/Images/Enemy" + std::to_string(static_cast<unsigned short>(a)) + ".png"));
     // }
+
+    if (!enemyTex1.loadFromFile("assets/images/enemy1.png")) {
+        throw std::runtime_error("Error::EnemyManager::Can not load enemy texture");
+    }
+
+    if (!enemyTex2.loadFromFile("assets/images/enemy2.png")) {
+        throw std::runtime_error("Error::EnemyManager::Can not load enemy texture");
+    }
+
+    if (!enemyTex3.loadFromFile("assets/images/enemy3.png")) {
+        throw std::runtime_error("Error::EnemyManager::Can not load enemy texture");
+    }
 }
 
 EnemyManager::~EnemyManager()
@@ -69,6 +57,7 @@ bool EnemyManager::reached_player(int i_player_y) const
 
 void EnemyManager::reset(int i_level)
 {
+    Enemy::collectiveDirection = 1;
     int enemy_x = 0;
     int enemy_y = 0;
     int enemy_spacing = 4;
@@ -99,7 +88,6 @@ void EnemyManager::reset(int i_level)
     case 0:
     {
         level_sketch = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
-
         break;
     }
     case 1:
@@ -110,7 +98,6 @@ void EnemyManager::reset(int i_level)
     }
     case 2:
     {
-        // OH MY GOD, IS THAT A CHECKBOARD PATTERN?!
         level_sketch = "1010101010101010\n0101010101010101\n1010101010101010\n0101010101010101";
 
         break;
@@ -164,19 +151,19 @@ void EnemyManager::reset(int i_level)
         }
         case '0':
         {
-            enemies.push_back(Enemy(0, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y)));
+            enemies.push_back(Enemy(0, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex1));
 
             break;
         }
         case '1':
         {
-            enemies.push_back(Enemy(1, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y)));
+            enemies.push_back(Enemy(1, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex2));
 
             break;
         }
         case '2':
         {
-            enemies.push_back(Enemy(2, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y)));
+            enemies.push_back(Enemy(2, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex3));
         }
         }
     }
@@ -185,25 +172,17 @@ void EnemyManager::reset(int i_level)
 void EnemyManager::update(std::mt19937_64 &i_random_engine)
 {
     std::vector<Enemy>::iterator dead_enemies_start;
-    if (0 == move_timer)
-    {
-        move_timer = move_pause;
 
-        for (Enemy &enemy : enemies)
-        {
-            enemy.move();
-        }
-
-        // for (Animation &enemy_animation : enemy_animations)
-        // {
-        //     // The enemies change their frame after each move.
-        //     enemy_animation.change_current_frame();
-        // }
-    }
-    else
+    for (Enemy &enemy : enemies)
     {
-        move_timer--;
+        enemy.movement(0, enemies);
     }
+
+    // for (Animation &enemy_animation : enemy_animations)
+    // {
+    //     // The enemies change their frame after each move.
+    //     enemy_animation.change_current_frame();
+    // }
 
     for (Enemy &enemy : enemies)
     {
@@ -230,8 +209,7 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine)
     }
 
     enemy_bullets.erase(remove_if(enemy_bullets.begin(), enemy_bullets.end(), [](const Bullet &i_bullet)
-                                  { std::cout << "CC" << '\n';
-                                    return 1 == i_bullet.dead; }),
+                                  { return 1 == i_bullet.dead; }),
                         enemy_bullets.end());
 }
 
@@ -256,29 +234,6 @@ void EnemyManager::draw(sf::RenderWindow *window)
     // Draw the enemies
     for (Enemy &enemy : enemies)
     {
-        if (0 == enemy.get_hit_timer())
-        {
-
-            switch (enemy.get_type())
-            {
-            case 0:
-            {
-                enemyTmp = enemySprite1;
-                break;
-            }
-            case 1:
-            {
-                enemyTmp = enemySprite2;
-                break;
-            }
-            case 2:
-            {
-                enemyTmp = enemySprite3;
-                break;
-            }
-            }
-        }
-        enemyTmp.setPosition(enemy.get_x(), enemy.get_y());
-        window->draw(enemyTmp);
+        enemy.draw(window);
     }
 }
