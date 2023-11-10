@@ -1,6 +1,7 @@
 #include "EnemyManager.h"
 
 EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE)
+                                                    
 {
     if (!enemy_bullet_texture.loadFromFile("assets/images/enemyBullet1.png"))
     {
@@ -14,15 +15,18 @@ EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE)
     //     enemy_animations.push_back(Animation(1 + move_pause, BASE_SIZE, "Resources/Images/Enemy" + std::to_string(static_cast<unsigned short>(a)) + ".png"));
     // }
 
-    if (!enemyTex1.loadFromFile("assets/images/enemy1.png")) {
+    if (!enemyTex1.loadFromFile("assets/images/enemy1.png"))
+    {
         throw std::runtime_error("Error::EnemyManager::Can not load enemy texture");
     }
 
-    if (!enemyTex2.loadFromFile("assets/images/enemy2.png")) {
+    if (!enemyTex2.loadFromFile("assets/images/enemy2.png"))
+    {
         throw std::runtime_error("Error::EnemyManager::Can not load enemy texture");
     }
 
-    if (!enemyTex3.loadFromFile("assets/images/enemy3.png")) {
+    if (!enemyTex3.loadFromFile("assets/images/enemy3.png"))
+    {
         throw std::runtime_error("Error::EnemyManager::Can not load enemy texture");
     }
 }
@@ -88,6 +92,7 @@ void EnemyManager::reset(int i_level)
     case 0:
     {
         level_sketch = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
+        // level_sketch = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
         break;
     }
     case 1:
@@ -151,19 +156,19 @@ void EnemyManager::reset(int i_level)
         }
         case '0':
         {
-            enemies.push_back(Enemy(0, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex1));
+            enemies.push_back(Enemy(0, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex1, enemy_bullet_sprite));
 
             break;
         }
         case '1':
         {
-            enemies.push_back(Enemy(1, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex2));
+            enemies.push_back(Enemy(1, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex2, enemy_bullet_sprite));
 
             break;
         }
         case '2':
         {
-            enemies.push_back(Enemy(2, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex3));
+            enemies.push_back(Enemy(2, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex3, enemy_bullet_sprite));
         }
         }
     }
@@ -197,9 +202,6 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine)
     dead_enemies_start = remove_if(enemies.begin(), enemies.end(), [](const Enemy &i_enemy)
                                    { return 0 == i_enemy.get_health(); });
 
-    // The more enemies we kill, the faster they become.
-    move_pause = std::max<int>(ENEMY_MOVE_PAUSE_MIN, move_pause - ENEMY_MOVE_PAUSE_DECREASE * (enemies.end() - dead_enemies_start));
-
     enemies.erase(dead_enemies_start, enemies.end());
 
     for (Bullet &enemy_bullet : enemy_bullets)
@@ -224,11 +226,13 @@ void EnemyManager::checkBulletOutside(Bullet &bullet)
 void EnemyManager::draw(sf::RenderWindow *window)
 {
     // Draw the bullet of the enemies
-    for (const Bullet &bullet : enemy_bullets)
+    for (Bullet &bullet : enemy_bullets)
     {
         enemy_bullet_sprite.setPosition(bullet.x, bullet.y);
 
         window->draw(enemy_bullet_sprite);
+        if (debug)
+            bullet.drawHitBoxBullet(window);
     }
 
     // Draw the enemies

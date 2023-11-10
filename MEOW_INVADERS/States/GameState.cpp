@@ -122,10 +122,7 @@ GameState::~GameState()
 {
     delete pauseState;
     delete enemyManager;
-    // for (int i = 0; i < players.size(); ++i)
-    // {
-    //     delete this->players[i];
-    // }
+    
 }
 
 void GameState::movingByKeyBoard()
@@ -204,8 +201,6 @@ void GameState::update()
     {
         updatePausedButton();
         movingByKeyBoard();
-        player->update();
-
         updatingPlayingGame();
     }
     // Pause update
@@ -229,12 +224,14 @@ void GameState::updatingPlayingGame()
             std::cout << "reset" << '\n';
             isReset = true;
             player->reset();
-            enemyManager->reset(4);
+            enemyManager->reset(0);
         }
         else
         {
-            player->update();
             enemyManager->update(random_engine);
+            enemy_bullets = enemyManager->get_enemy_bullets();
+            enemies = enemyManager->get_enemies();
+            player->update(enemy_bullets, enemies);
         }
     }
 }

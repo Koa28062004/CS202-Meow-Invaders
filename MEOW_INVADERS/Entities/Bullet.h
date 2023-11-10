@@ -19,13 +19,14 @@
 class Bullet
 {
 public:
-    Bullet(int i_step_x, int i_step_y, int i_x, int i_y);
+    Bullet(int i_step_x, int i_step_y, int i_x, int i_y, sf::Sprite bulletSprite);
     virtual ~Bullet();
 
     // Functions
     void update();
     void bulletDead();
-    // sf::IntRect get_hitbox() const;
+    sf::IntRect get_hitbox() const;
+    void drawHitBoxBullet(sf::RenderTarget* target);
 
     int x;
     int y;
@@ -42,6 +43,7 @@ private:
     int step_y;
 
     sf::RenderWindow *mWindow;
+    sf::Sprite bullet;
 };
 
 #endif

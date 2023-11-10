@@ -11,13 +11,13 @@
 class GameState : public State
 {
 public:
-    GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State *>* states);
+    GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states);
     virtual ~GameState();
 
     // Functions
-    void updatePausedInput(); 
+    void updatePausedInput();
     void update();
-    void draw(sf::RenderTarget* target = nullptr);
+    void draw(sf::RenderTarget *target = nullptr);
     void movingByKeyBoard();
 
     // Playing game
@@ -38,11 +38,11 @@ private:
     // Functions
     void updatePausedButton();
 
-    Player* player;
-    EnemyManager* enemyManager;
+    Player *player;
+    EnemyManager *enemyManager;
 
-    PauseState* pauseState;
-    sf::RenderWindow* mWindow;
+    PauseState *pauseState;
+    sf::RenderWindow *mWindow;
 
     sf::RectangleShape background;
     sf::Texture backgroundTexture;
@@ -63,7 +63,9 @@ private:
     int level = 0;
 
     std::mt19937_64 random_engine;
-    
+
+    std::vector<Bullet> enemy_bullets;
+    std::vector<Enemy> enemies;
 };
 
 #endif

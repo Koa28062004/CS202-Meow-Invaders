@@ -2,12 +2,14 @@
 
 int Enemy::collectiveDirection = 1;
 
-Enemy::Enemy(int i_type, int i_x, int i_y, sf::Texture* enemyTex) : direction(0 == (i_y / BASE_SIZE) % 2 ? -1 : 1),
-                                                                  health(1 + i_type),
-                                                                  hit_timer(0),
-                                                                  type(i_type),
-                                                                  x(i_x),
-                                                                  y(i_y)
+Enemy::Enemy(int i_type, int i_x, int i_y, sf::Texture *enemyTex, sf::Sprite enemyBulletSprite) : direction(0 == (i_y / BASE_SIZE) % 2 ? -1 : 1),
+                                                                    health(1 + i_type),
+                                                                    hit_timer(0),
+                                                                    type(i_type),
+                                                                    x(i_x),
+                                                                    y(i_y),
+                                                                    dead(0),
+                                                                    enemyBullet(enemyBulletSprite)
 {
     enemySprite.setTexture(*enemyTex);
     enemySprite.setScale(sf::Vector2f(0.2, 0.2));
@@ -70,12 +72,14 @@ void Enemy::move0()
 {
     if (enemySprite.getPosition().x <= 10.f)
         collectiveDirection = 1;
-    if (enemySprite.getPosition().x >= SCREEN_WIDTH) {
+    if (enemySprite.getPosition().x >= SCREEN_WIDTH)
+    {
         collectiveDirection = -1;
     }
-    if (collectiveDirection == 1) 
+    if (collectiveDirection == 1)
         enemySprite.move(2.f, 0);
-    else enemySprite.move(-2.f, 0);
+    else
+        enemySprite.move(-2.f, 0);
 }
 
 void Enemy::shoot(std::vector<Bullet> &i_enemy_bullets)
@@ -84,20 +88,20 @@ void Enemy::shoot(std::vector<Bullet> &i_enemy_bullets)
     {
     case 0:
     {
-        i_enemy_bullets.push_back(Bullet(0, ENEMY_BULLET_SPEED, x, y));
+        i_enemy_bullets.push_back(Bullet(0, ENEMY_BULLET_SPEED, x, y, enemyBullet));
         break;
     }
     case 1:
     {
-        i_enemy_bullets.push_back(Bullet(0.125f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, x, y));
-        i_enemy_bullets.push_back(Bullet(-0.125f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, x, y));
+        i_enemy_bullets.push_back(Bullet(0.125f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, x, y, enemyBullet));
+        i_enemy_bullets.push_back(Bullet(-0.125f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, x, y, enemyBullet));
         break;
     }
     case 2:
     {
-        i_enemy_bullets.push_back(Bullet(0, ENEMY_BULLET_SPEED, x, y));
-        i_enemy_bullets.push_back(Bullet(0.25f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, x, y));
-        i_enemy_bullets.push_back(Bullet(-0.25f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, x, y));
+        i_enemy_bullets.push_back(Bullet(0, ENEMY_BULLET_SPEED, x, y, enemyBullet));
+        i_enemy_bullets.push_back(Bullet(0.25f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, x, y, enemyBullet));
+        i_enemy_bullets.push_back(Bullet(-0.25f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, x, y, enemyBullet));
         break;
     }
     }
@@ -127,13 +131,27 @@ void Enemy::update()
 void Enemy::draw(sf::RenderTarget *target)
 {
     target->draw(enemySprite);
-    // if (target && enemySprite)
-    //     target->draw(*enemySprite);
-    // else
-    //     std::cout << "Error: Invalid target or enemySprite is null!" << '\n';
+
+    if (debug)
+        drawHitBoxEnemy(target);
+}
+
+void Enemy::drawHitBoxEnemy(sf::RenderTarget* target)
+{
+    // Draw the outline of the hitbox
+    sf::IntRect hitbox = get_hitbox();
+    sf::RectangleShape hitboxOutline(sf::Vector2f(hitbox.width, hitbox.height));
+    hitboxOutline.setPosition(sf::Vector2f(hitbox.left, hitbox.top));
+    hitboxOutline.setFillColor(sf::Color::Transparent);
+    hitboxOutline.setOutlineColor(sf::Color::Red); // Set the outline color
+    hitboxOutline.setOutlineThickness(2.0f);          // Set the outline thickness
+    target->draw(hitboxOutline);
 }
 
 sf::IntRect Enemy::get_hitbox() const
 {
-    return sf::IntRect(x + 0.25f * BASE_SIZE, y + 0.25f * BASE_SIZE, 0.5f * BASE_SIZE, 0.5f * BASE_SIZE);
+    return sf::IntRect(enemySprite.getGlobalBounds().left,
+                       enemySprite.getGlobalBounds().top,
+                       enemySprite.getGlobalBounds().width,
+                       enemySprite.getGlobalBounds().height);
 }

@@ -298,6 +298,30 @@ MEOW_INVADERS/Entities/Player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.s
 .PHONY : MEOW_INVADERS/Entities/Player.cpp.s
 
+MEOW_INVADERS/Entities/Power.o: MEOW_INVADERS/Entities/Power.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Power.o
+
+# target to build an object file
+MEOW_INVADERS/Entities/Power.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Power.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Power.cpp.o
+
+MEOW_INVADERS/Entities/Power.i: MEOW_INVADERS/Entities/Power.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Power.i
+
+# target to preprocess a source file
+MEOW_INVADERS/Entities/Power.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Power.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Power.cpp.i
+
+MEOW_INVADERS/Entities/Power.s: MEOW_INVADERS/Entities/Power.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Power.s
+
+# target to generate assembly for a file
+MEOW_INVADERS/Entities/Power.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Power.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Power.cpp.s
+
 MEOW_INVADERS/GUI/Button.o: MEOW_INVADERS/GUI/Button.cpp.o
 .PHONY : MEOW_INVADERS/GUI/Button.o
 
@@ -321,30 +345,6 @@ MEOW_INVADERS/GUI/Button.s: MEOW_INVADERS/GUI/Button.cpp.s
 MEOW_INVADERS/GUI/Button.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.s
 .PHONY : MEOW_INVADERS/GUI/Button.cpp.s
-
-MEOW_INVADERS/GlobalVars/GlobalVars.o: MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o
-.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.o
-
-# target to build an object file
-MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o
-.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.cpp.o
-
-MEOW_INVADERS/GlobalVars/GlobalVars.i: MEOW_INVADERS/GlobalVars/GlobalVars.cpp.i
-.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.i
-
-# target to preprocess a source file
-MEOW_INVADERS/GlobalVars/GlobalVars.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.i
-.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.cpp.i
-
-MEOW_INVADERS/GlobalVars/GlobalVars.s: MEOW_INVADERS/GlobalVars/GlobalVars.cpp.s
-.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.s
-
-# target to generate assembly for a file
-MEOW_INVADERS/GlobalVars/GlobalVars.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GlobalVars/GlobalVars.cpp.s
-.PHONY : MEOW_INVADERS/GlobalVars/GlobalVars.cpp.s
 
 MEOW_INVADERS/States/GameState.o: MEOW_INVADERS/States/GameState.cpp.o
 .PHONY : MEOW_INVADERS/States/GameState.o
@@ -496,12 +496,12 @@ help:
 	@echo "... MEOW_INVADERS/Entities/Player.o"
 	@echo "... MEOW_INVADERS/Entities/Player.i"
 	@echo "... MEOW_INVADERS/Entities/Player.s"
+	@echo "... MEOW_INVADERS/Entities/Power.o"
+	@echo "... MEOW_INVADERS/Entities/Power.i"
+	@echo "... MEOW_INVADERS/Entities/Power.s"
 	@echo "... MEOW_INVADERS/GUI/Button.o"
 	@echo "... MEOW_INVADERS/GUI/Button.i"
 	@echo "... MEOW_INVADERS/GUI/Button.s"
-	@echo "... MEOW_INVADERS/GlobalVars/GlobalVars.o"
-	@echo "... MEOW_INVADERS/GlobalVars/GlobalVars.i"
-	@echo "... MEOW_INVADERS/GlobalVars/GlobalVars.s"
 	@echo "... MEOW_INVADERS/States/GameState.o"
 	@echo "... MEOW_INVADERS/States/GameState.i"
 	@echo "... MEOW_INVADERS/States/GameState.s"

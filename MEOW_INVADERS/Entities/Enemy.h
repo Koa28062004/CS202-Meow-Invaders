@@ -22,7 +22,7 @@
 class Enemy
 {
 public:
-    Enemy(int i_type, int i_x, int i_y, sf::Texture* enemyTex);
+    Enemy(int i_type, int i_x, int i_y, sf::Texture* enemyTex, sf::Sprite enemyBulletSprite);
     virtual ~Enemy();
 
     // Movements
@@ -44,8 +44,10 @@ public:
 	int get_type() const;
 	int get_x() const;
 	int get_y() const;
+    void drawHitBoxEnemy(sf::RenderTarget* target);
 
     static int collectiveDirection;
+    bool dead;
     
 private:
     //-1 - Left
@@ -65,6 +67,7 @@ private:
 
     sf::Texture enemyTex;
     sf::Sprite enemySprite;
+    sf::Sprite enemyBullet;
 };
 
 #endif

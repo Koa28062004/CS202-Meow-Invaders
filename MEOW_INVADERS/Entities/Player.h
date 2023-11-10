@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "Bullet.h"
 #include "GlobalVars/GlobalVars.h"
+#include "EnemyManager.h"
 
 class Player : public Entity
 {
@@ -13,14 +14,18 @@ public:
 
     // Functions
     void reset();
-    void update();
-    void draw(sf::RenderTarget* target);
+    void update(std::vector<Bullet> &enemy_bullets,
+                std::vector<Enemy> &enemies);
+    void draw(sf::RenderTarget *target);
     void die();
 
     bool get_dead() const;
 
     void updateBullets();
     void checkBulletOutside(Bullet &bullet);
+    void drawHitBoxPlayer(sf::RenderTarget* target);
+
+    sf::IntRect get_hitbox() const;
 
 private:
     // Variables
@@ -37,7 +42,7 @@ private:
 
     sf::Texture bullet_texture;
     sf::Sprite bullet_sprite;
-    std::vector<Bullet> bullets;
+    std::vector<Bullet> player_bullets;
 };
 
 #endif

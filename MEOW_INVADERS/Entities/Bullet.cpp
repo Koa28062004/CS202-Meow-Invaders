@@ -1,12 +1,13 @@
 #include "Bullet.h"
 
-Bullet::Bullet(int i_step_x, int i_step_y, int i_x, int i_y) : dead(0),
-                                                                   real_x(i_x),
-                                                                   real_y(i_y),
-                                                                   step_x(i_step_x),
-                                                                   step_y(i_step_y),
-                                                                   x(i_x),
-                                                                   y(i_y)
+Bullet::Bullet(int i_step_x, int i_step_y, int i_x, int i_y, sf::Sprite bulletSprite) : dead(0),
+                                                               real_x(i_x),
+                                                               real_y(i_y),
+                                                               step_x(i_step_x),
+                                                               step_y(i_step_y),
+                                                               x(i_x),
+                                                               y(i_y),
+                                                               bullet(bulletSprite)
 {
     previous_x.fill(x);
     previous_y.fill(y);
@@ -42,8 +43,21 @@ void Bullet::update()
     }
 }
 
-// sf::IntRect get_hitbox() const
-// {
-//     // Smaller hitboxes make the game so much better!
-//     return sf::IntRect(x + 0.375f * 16, y + 0.375f * 16, 0.25f * 16, 0.25f * 16);
-// }
+sf::IntRect Bullet::get_hitbox() const
+{
+    return sf::IntRect(x, y,
+    bullet.getGlobalBounds().width,
+    bullet.getGlobalBounds().height);
+}
+
+void Bullet::drawHitBoxBullet(sf::RenderTarget* target)
+{
+    // Draw the outline of the hitbox
+    sf::IntRect hitbox = get_hitbox();
+    sf::RectangleShape hitboxOutline(sf::Vector2f(hitbox.width, hitbox.height));
+    hitboxOutline.setPosition(sf::Vector2f(hitbox.left, hitbox.top));
+    hitboxOutline.setFillColor(sf::Color::Transparent);
+    hitboxOutline.setOutlineColor(sf::Color::Magenta); // Set the outline color
+    hitboxOutline.setOutlineThickness(2.0f);          // Set the outline thickness
+    target->draw(hitboxOutline);
+}
