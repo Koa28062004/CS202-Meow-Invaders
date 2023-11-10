@@ -26,8 +26,8 @@ public:
     virtual ~Enemy();
 
     // Movements
-	void movement(int level, std::vector<Enemy> &enemies);
-    void move0(std::vector<Enemy> &enemies);
+	void movement(int level);
+    void move0();
     // void move1();
     // void move2();
 

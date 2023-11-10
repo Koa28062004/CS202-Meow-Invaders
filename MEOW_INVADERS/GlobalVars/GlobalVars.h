@@ -1,7 +1,7 @@
 #ifndef GLOBAL_VARS_H
 #define GLOBAL_VARS_H
 
-constexpr int SCREEN_WIDTH = 1000;
+constexpr int SCREEN_WIDTH = 1300;
 constexpr int SCREEN_HEIGHT = 800;
 
 constexpr int BASE_SIZE = 16;

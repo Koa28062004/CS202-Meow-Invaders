@@ -1,6 +1,6 @@
 #include "Enemy.h"
 
-int Enemy::collectiveDirection;
+int Enemy::collectiveDirection = 1;
 
 Enemy::Enemy(int i_type, int i_x, int i_y, sf::Texture* enemyTex) : direction(0 == (i_y / BASE_SIZE) % 2 ? -1 : 1),
                                                                   health(1 + i_type),
@@ -50,12 +50,12 @@ void Enemy::hit()
     hit_timer = ENEMY_HIT_TIMER_DURATION;
 }
 
-void Enemy::movement(int level, std::vector<Enemy> &enemies)
+void Enemy::movement(int level)
 {
     switch (level)
     {
     case 0:
-        move0(enemies);
+        move0();
         break;
         // case 1:
         //     move1();
@@ -66,9 +66,16 @@ void Enemy::movement(int level, std::vector<Enemy> &enemies)
     }
 }
 
-void Enemy::move0(std::vector<Enemy> &enemies)
+void Enemy::move0()
 {
-    enemySprite.move(2.f, 0);
+    if (enemySprite.getPosition().x <= 10.f)
+        collectiveDirection = 1;
+    if (enemySprite.getPosition().x >= SCREEN_WIDTH) {
+        collectiveDirection = -1;
+    }
+    if (collectiveDirection == 1) 
+        enemySprite.move(2.f, 0);
+    else enemySprite.move(-2.f, 0);
 }
 
 void Enemy::shoot(std::vector<Bullet> &i_enemy_bullets)

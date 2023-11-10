@@ -175,7 +175,7 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine)
 
     for (Enemy &enemy : enemies)
     {
-        enemy.movement(0, enemies);
+        enemy.movement(0);
     }
 
     // for (Animation &enemy_animation : enemy_animations)
