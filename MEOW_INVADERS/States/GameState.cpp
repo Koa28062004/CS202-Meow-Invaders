@@ -249,12 +249,13 @@ void GameState::updateGameOver()
 
     if (buttons["YES_GAME_OVER"]->isPressed())
     {
-        // Handle 'YES' button press
-        std::cout << "Restarting the game!" << std::endl;
+        --level;
+        enemies->clear();
+        player->reset();
+        player->setEntityPosition((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2);
     }
     else if (buttons["NO_GAME_OVER"]->isPressed())
     {
-        // Handle 'NO' button press
         endState();
     }
 }
