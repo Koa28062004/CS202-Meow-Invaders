@@ -47,7 +47,6 @@ public:
     void drawHitBoxEnemy(sf::RenderTarget* target);
 
     static int collectiveDirection;
-    bool dead;
     
 private:
     //-1 - Left

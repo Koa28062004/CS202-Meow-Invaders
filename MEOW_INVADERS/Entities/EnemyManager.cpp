@@ -1,7 +1,7 @@
 #include "EnemyManager.h"
 
 EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE)
-                                                    
+
 {
     if (!enemy_bullet_texture.loadFromFile("assets/images/enemyBullet1.png"))
     {
@@ -183,12 +183,6 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine)
         enemy.movement(0);
     }
 
-    // for (Animation &enemy_animation : enemy_animations)
-    // {
-    //     // The enemies change their frame after each move.
-    //     enemy_animation.change_current_frame();
-    // }
-
     for (Enemy &enemy : enemies)
     {
         enemy.update();
@@ -197,12 +191,13 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine)
         {
             enemy.shoot(enemy_bullets);
         }
+
+        std::cout << enemy.get_health() << '\n';
     }
 
-    dead_enemies_start = remove_if(enemies.begin(), enemies.end(), [](const Enemy &i_enemy)
-                                   { return 0 == i_enemy.get_health(); });
-
-    enemies.erase(dead_enemies_start, enemies.end());
+    enemies.erase(remove_if(enemies.begin(), enemies.end(), [](const Enemy &enemy)
+                            { return 0 == enemy.get_health(); }),
+                  enemies.end());
 
     for (Bullet &enemy_bullet : enemy_bullets)
     {
@@ -210,8 +205,8 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine)
         checkBulletOutside(enemy_bullet);
     }
 
-    enemy_bullets.erase(remove_if(enemy_bullets.begin(), enemy_bullets.end(), [](const Bullet &i_bullet)
-                                  { return 1 == i_bullet.dead; }),
+    enemy_bullets.erase(remove_if(enemy_bullets.begin(), enemy_bullets.end(), [](const Bullet &bullet)
+                                  { return 1 == bullet.dead; }),
                         enemy_bullets.end());
 }
 

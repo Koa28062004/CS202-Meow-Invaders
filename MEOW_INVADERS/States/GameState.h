@@ -64,8 +64,8 @@ private:
 
     std::mt19937_64 random_engine;
 
-    std::vector<Bullet> enemy_bullets;
-    std::vector<Enemy> enemies;
+    std::vector<Bullet>* enemy_bullets;
+    std::vector<Enemy>* enemies;
 };
 
 #endif

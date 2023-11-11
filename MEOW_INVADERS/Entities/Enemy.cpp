@@ -3,13 +3,13 @@
 int Enemy::collectiveDirection = 1;
 
 Enemy::Enemy(int i_type, int i_x, int i_y, sf::Texture *enemyTex, sf::Sprite enemyBulletSprite) : direction(0 == (i_y / BASE_SIZE) % 2 ? -1 : 1),
-                                                                    health(1 + i_type),
-                                                                    hit_timer(0),
-                                                                    type(i_type),
-                                                                    x(i_x),
-                                                                    y(i_y),
-                                                                    dead(0),
-                                                                    enemyBullet(enemyBulletSprite)
+                                                                                                  health(1 + i_type),
+                                                                                                  hit_timer(0),
+                                                                                                  type(i_type),
+                                                                                                  x(i_x),
+                                                                                                  y(i_y),
+
+                                                                                                  enemyBullet(enemyBulletSprite)
 {
     enemySprite.setTexture(*enemyTex);
     enemySprite.setScale(sf::Vector2f(0.2, 0.2));
@@ -49,7 +49,14 @@ int Enemy::get_y() const
 
 void Enemy::hit()
 {
-    hit_timer = ENEMY_HIT_TIMER_DURATION;
+    if (health > 0)
+    {
+        --health;
+    }
+    else
+    {
+        health = 0; // Ensure health doesn't go negative
+    }
 }
 
 void Enemy::movement(int level)
@@ -109,23 +116,6 @@ void Enemy::shoot(std::vector<Bullet> &i_enemy_bullets)
 
 void Enemy::update()
 {
-    if (0 < hit_timer)
-    {
-        if (1 == hit_timer)
-        {
-            // Use a conditional statement to handle the comparison
-            if (health > 0)
-            {
-                --health;
-            }
-            else
-            {
-                health = 0; // Ensure health doesn't go negative
-            }
-        }
-
-        --hit_timer;
-    }
 }
 
 void Enemy::draw(sf::RenderTarget *target)
@@ -136,7 +126,7 @@ void Enemy::draw(sf::RenderTarget *target)
         drawHitBoxEnemy(target);
 }
 
-void Enemy::drawHitBoxEnemy(sf::RenderTarget* target)
+void Enemy::drawHitBoxEnemy(sf::RenderTarget *target)
 {
     // Draw the outline of the hitbox
     sf::IntRect hitbox = get_hitbox();
@@ -144,7 +134,7 @@ void Enemy::drawHitBoxEnemy(sf::RenderTarget* target)
     hitboxOutline.setPosition(sf::Vector2f(hitbox.left, hitbox.top));
     hitboxOutline.setFillColor(sf::Color::Transparent);
     hitboxOutline.setOutlineColor(sf::Color::Red); // Set the outline color
-    hitboxOutline.setOutlineThickness(2.0f);          // Set the outline thickness
+    hitboxOutline.setOutlineThickness(2.0f);       // Set the outline thickness
     target->draw(hitboxOutline);
 }
 

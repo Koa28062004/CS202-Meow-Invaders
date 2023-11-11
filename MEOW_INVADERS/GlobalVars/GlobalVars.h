@@ -10,7 +10,7 @@ constexpr int RELOAD_DURATION = 31;
 constexpr int PLAYER_BULLET_SPEED = 5;
 
 // Enemy
-constexpr int ENEMY_HIT_TIMER_DURATION = 2;
+constexpr int ENEMY_HIT_TIMER_DURATION = 20;
 constexpr int ENEMY_MOVE_SPEED = 25;
 constexpr int ENEMY_TYPES = 3;
 constexpr int ENEMY_SHOOT_CHANCE = 4000;

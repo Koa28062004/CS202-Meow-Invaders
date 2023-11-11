@@ -106,7 +106,11 @@ void GameState::initPausedButton()
 }
 
 GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
-    : State(window, supportedKeys, states), mWindow(window), random_engine(std::chrono::system_clock::now().time_since_epoch().count())
+    : State(window, supportedKeys, states),
+      mWindow(window),
+      random_engine(std::chrono::system_clock::now().time_since_epoch().count()),
+      enemy_bullets(nullptr),
+      enemies(nullptr)
 {
     initVariables();
     initKeybinds();
@@ -122,7 +126,6 @@ GameState::~GameState()
 {
     delete pauseState;
     delete enemyManager;
-    
 }
 
 void GameState::movingByKeyBoard()
@@ -229,9 +232,9 @@ void GameState::updatingPlayingGame()
         else
         {
             enemyManager->update(random_engine);
-            enemy_bullets = enemyManager->get_enemy_bullets();
-            enemies = enemyManager->get_enemies();
-            player->update(enemy_bullets, enemies);
+            enemy_bullets = &enemyManager->get_enemy_bullets();
+            enemies = &enemyManager->get_enemies();
+            player->update(*enemy_bullets, *enemies);
         }
     }
 }

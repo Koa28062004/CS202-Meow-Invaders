@@ -87,9 +87,8 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(enemyBullet.get_hitbox()))
             {
-                // dead = 1;
+                die();
                 enemyBullet.dead = 1;
-                std::cout << "Dead" << '\n';
             }
         }
 
@@ -97,9 +96,8 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(enemy.get_hitbox()))
             {
-                // dead = 1;
-                enemy.dead = 1;
-                std::cout << "Dead" << '\n';
+                die();
+                enemy.hit();
             }
         }
     }
@@ -111,10 +109,15 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
 
         if (0 == bullet.dead)
         {
-            // if (1 == i_ufo.check_bullet_collision(i_random_engine, bullet.get_hitbox()))
-            // {
-            // 	bullet.dead = 1;
-            // }
+            // Optionally, you can add logic for handling collisions with enemies here
+            for (Enemy &enemy : enemies)
+            {
+                if (bullet.get_hitbox().intersects(enemy.get_hitbox()))
+                {
+                    bullet.dead = 1;
+                    enemy.hit();
+                }
+            }
         }
     }
 
@@ -125,10 +128,6 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
     enemy_bullets.erase(remove_if(enemy_bullets.begin(), enemy_bullets.end(), [](const Bullet &enemyBullet)
                                   { return 1 == enemyBullet.dead; }),
                         enemy_bullets.end());
-
-    enemies.erase(remove_if(enemies.begin(), enemies.end(), [](const Enemy &enemy)
-                            { return 1 == enemy.dead; }),
-                  enemies.end());
 }
 
 void Player::drawHitBoxPlayer(sf::RenderTarget *target)
@@ -155,7 +154,7 @@ void Player::draw(sf::RenderTarget *target)
         {
             bullet_sprite.setPosition(bullet.x, bullet.y);
             target->draw(bullet_sprite);
-            
+
             if (debug)
                 bullet.drawHitBoxBullet(target);
         }
