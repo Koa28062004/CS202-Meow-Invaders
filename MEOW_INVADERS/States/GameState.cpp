@@ -47,7 +47,7 @@ void GameState::initTextures()
 void GameState::initPlayer()
 {
     this->player = new Player((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2, &this->textures["PLAYER_IDLE"]);
-    this->player->setEntityScale(0.4, 0.4);
+    this->player->setEntityScale(0.3, 0.3);
     //  this->players.push_back(player);
 }
 
@@ -80,8 +80,7 @@ void GameState::initVariables()
 {
     pauseKeyPressed = false;
     checkPausedButton = false;
-    gameOver = false;
-    isReset = false;
+    level = 0;
 }
 
 void GameState::initPausedButton()
@@ -215,19 +214,19 @@ void GameState::update()
 
 void GameState::updatingPlayingGame()
 {
-    if (gameOver)
+    if (player->get_dead())
     {
         // lose
     }
     else
     {
         // Fix later
-        if (!isReset)
+        if (enemyManager->get_enemies().size() == 0)
         {
             std::cout << "reset" << '\n';
-            isReset = true;
             player->reset();
-            enemyManager->reset(0);
+            if (level <= 5)
+                enemyManager->reset(level++);
         }
         else
         {

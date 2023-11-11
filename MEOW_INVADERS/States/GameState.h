@@ -57,10 +57,8 @@ private:
     sf::Texture pausedButtonHoverTexture;
 
     bool pauseKeyPressed;
-    bool isReset;
 
-    bool gameOver;
-    int level = 0;
+    int level;
 
     std::mt19937_64 random_engine;
 

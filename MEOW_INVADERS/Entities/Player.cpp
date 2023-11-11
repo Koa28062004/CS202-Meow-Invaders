@@ -26,7 +26,7 @@ Player::Player(const float &x, const float &y, sf::Texture *texture)
         throw std::runtime_error("Error::Player::Can not load playerBullet.png");
     }
     bullet_sprite.setTexture(bullet_texture);
-    bullet_sprite.setScale(sf::Vector2f(0.3, 0.3));
+    bullet_sprite.setScale(sf::Vector2f(0.25, 0.25));
 }
 
 Player::~Player()
