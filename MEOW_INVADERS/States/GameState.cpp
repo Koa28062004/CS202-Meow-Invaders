@@ -69,6 +69,10 @@ void GameState::initBackground()
     }
 
     background.setTexture(&backgroundTexture);
+
+    backgroundGameOver.setSize(sf::Vector2f((float)mWindow->getSize().x,
+                                            (float)mWindow->getSize().y));
+    backgroundGameOver.setFillColor(sf::Color(20, 20, 20, 100));
 }
 
 void GameState::initPausedMenu()
@@ -104,6 +108,14 @@ void GameState::initPausedButton()
     pausedButtonHover.setPosition(mWindow->getSize().x - 121.f, 37.f);
 }
 
+void GameState::initFont()
+{
+    if (!gameOverFont.loadFromFile("assets/fonts/RubikGlitch-Regular.ttf"))
+    {
+        throw std::runtime_error("Error::GameState can't not load font RubikGlitch");
+    }
+}
+
 GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
     : State(window, supportedKeys, states),
       mWindow(window),
@@ -119,6 +131,7 @@ GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *suppo
     initEnemyManager();
     initPausedMenu();
     initPausedButton();
+    initFont();
 }
 
 GameState::~GameState()
@@ -214,13 +227,8 @@ void GameState::update()
 
 void GameState::updatingPlayingGame()
 {
-    if (player->get_dead())
+    if (!player->get_dead())
     {
-        // lose
-    }
-    else
-    {
-        // Fix later
         if (enemyManager->get_enemies().size() == 0)
         {
             std::cout << "reset" << '\n';
@@ -238,11 +246,32 @@ void GameState::updatingPlayingGame()
     }
 }
 
-void GameState::drawPlayingGame()
+void GameState::drawPlayingGame(sf::RenderTarget *target)
 {
     if (!player->get_dead())
     {
         enemyManager->draw(mWindow);
+    }
+    else
+    {
+        // Set text
+        sf::Text textTitle;
+        textTitle.setFont(gameOverFont);
+        textTitle.setString("YOU ARE DEAD !!!");
+        textTitle.setCharacterSize(100);
+        textTitle.setFillColor(sf::Color(255, 163, 60, 255));
+        textTitle.setPosition(mWindow->getSize().x / 2.0f - textTitle.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textTitle.getGlobalBounds().height / 2.0f - 360.f);
+
+        sf::Text textBelow;
+        textBelow.setFont(gameOverFont);
+        textBelow.setString("[IDIOT]");
+        textBelow.setCharacterSize(50);
+        textBelow.setFillColor(sf::Color(255, 251, 115, 255));
+        textBelow.setPosition(mWindow->getSize().x / 2.0f - textBelow.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textBelow.getGlobalBounds().height / 2.0f - 260.f);
+
+        target->draw(backgroundGameOver);
+        target->draw(textTitle);
+        target->draw(textBelow);
     }
 }
 
@@ -255,23 +284,26 @@ void GameState::draw(sf::RenderTarget *target)
 
     target->draw(background);
 
-    drawPlayingGame();
+    drawPlayingGame(target);
 
     player->draw(target);
 
-    // Draw hover animation of paused button
-    if (!checkPausedButton)
+    if (!player->get_dead())
     {
-        target->draw(pausedButtonIdle);
-    }
-    else
-    {
-        target->draw(pausedButtonHover);
-    }
+        // Draw hover animation of paused button
+        if (!checkPausedButton)
+        {
+            target->draw(pausedButtonIdle);
+        }
+        else
+        {
+            target->draw(pausedButtonHover);
+        }
 
-    // Pause menu
-    if (paused)
-    {
-        pauseState->draw(target);
+        // Pause menu
+        if (paused)
+        {
+            pauseState->draw(target);
+        }
     }
 }

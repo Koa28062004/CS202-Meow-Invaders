@@ -22,7 +22,7 @@ public:
 
     // Playing game
     void updatingPlayingGame();
-    void drawPlayingGame();
+    void drawPlayingGame(sf::RenderTarget *target);
 
 private:
     // Initialization
@@ -34,6 +34,7 @@ private:
     void initBackground();
     void initPausedButton();
     void initEnemyManager();
+    void initFont();
 
     // Functions
     void updatePausedButton();
@@ -47,6 +48,9 @@ private:
     sf::RectangleShape background;
     sf::Texture backgroundTexture;
 
+    // Game over background
+    sf::RectangleShape backgroundGameOver;
+
     // Paused button idle
     sf::RectangleShape pausedButtonIdle;
     sf::Texture pausedButtonIdleTexture;
@@ -59,6 +63,7 @@ private:
     bool pauseKeyPressed;
 
     int level;
+    sf::Font gameOverFont;
 
     std::mt19937_64 random_engine;
 

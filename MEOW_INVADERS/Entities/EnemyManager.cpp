@@ -59,7 +59,7 @@ bool EnemyManager::reached_player(int i_player_y) const
     return 0;
 }
 
-void EnemyManager::reset(int i_level)
+void EnemyManager::reset(int level)
 {
     Enemy::collectiveDirection = 1;
     int enemy_x = 0;
@@ -68,10 +68,10 @@ void EnemyManager::reset(int i_level)
 
     std::string level_sketch = "";
 
-    move_pause = std::max<int>(ENEMY_MOVE_PAUSE_START_MIN, ENEMY_MOVE_PAUSE_START - ENEMY_MOVE_PAUSE_DECREASE * i_level);
+    move_pause = std::max<int>(ENEMY_MOVE_PAUSE_START_MIN, ENEMY_MOVE_PAUSE_START - ENEMY_MOVE_PAUSE_DECREASE * level);
     move_timer = move_pause;
 
-    shoot_distribution = std::uniform_int_distribution<int>(0, std::max<int>(ENEMY_SHOOT_CHANCE_MIN, ENEMY_SHOOT_CHANCE - ENEMY_SHOOT_CHANCE_INCREASE * i_level));
+    shoot_distribution = std::uniform_int_distribution<int>(0, std::max<int>(ENEMY_SHOOT_CHANCE_MIN, ENEMY_SHOOT_CHANCE - ENEMY_SHOOT_CHANCE_INCREASE * level));
 
     // for (Animation& enemy_animation : enemy_animations)
     // {
@@ -87,29 +87,28 @@ void EnemyManager::reset(int i_level)
     // 	i_level = 0.5f * TOTAL_LEVELS + i_level % static_cast<char>(0.5f * TOTAL_LEVELS);
     // }
 
-    switch (i_level)
+    switch (level)
     {
     case 0:
     {
-        level_sketch = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
-        // level_sketch = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
+        level_sketch = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
         break;
     }
     case 1:
     {
-        level_sketch = "0000000000000000\n0000000000000000\n0000000000000000\n0000000000000000";
+        level_sketch = "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n0000000000000000";
 
         break;
     }
     case 2:
     {
-        level_sketch = "1010101010101010\n0101010101010101\n1010101010101010\n0101010101010101";
+        level_sketch = "1010101010101010\n0101010101010101";
 
         break;
     }
     case 3:
     {
-        level_sketch = "1111111111111111\n1111111111111111\n1111111111111111\n1111111111111111";
+        level_sketch = "1111111111111111\n1111111111111111";
 
         break;
     }
@@ -124,19 +123,7 @@ void EnemyManager::reset(int i_level)
     {
         // EASY ENEMIES AT THE TOP AND HARD ENEMIES AT THE BOTTOM! IT'S A REVOLUTION IN LEVEL DESIGN!
         level_sketch = "0000000000000000\n2222222222222222\n1111111111111111\n1111111111111111";
-
         break;
-    }
-    case 6:
-    {
-        // CHECKBOARD PATTERN AGAIN?!
-        level_sketch = "2121212121212121\n1212121212121212\n2121212121212121\n1212121212121212";
-
-        break;
-    }
-    case 7:
-    {
-        level_sketch = "2222222222222222\n2222222222222222\n2222222222222222\n2222222222222222";
     }
     }
 
@@ -191,8 +178,6 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine)
         {
             enemy.shoot(enemy_bullets);
         }
-
-        std::cout << enemy.get_health() << '\n';
     }
 
     enemies.erase(remove_if(enemies.begin(), enemies.end(), [](const Enemy &enemy)

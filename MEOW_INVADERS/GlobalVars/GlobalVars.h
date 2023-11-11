@@ -4,7 +4,7 @@
 constexpr int SCREEN_WIDTH = 1300;
 constexpr int SCREEN_HEIGHT = 800;
 
-constexpr int BASE_SIZE = 16;
+constexpr int BASE_SIZE = 8;
 constexpr int FAST_RELOAD_DURATION = 7;
 constexpr int RELOAD_DURATION = 31;
 constexpr int PLAYER_BULLET_SPEED = 5;
