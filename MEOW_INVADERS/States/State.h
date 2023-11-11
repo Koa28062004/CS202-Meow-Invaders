@@ -25,7 +25,7 @@ public:
     virtual ~State();
 
     // Functions
-    const bool &getQuit() const;
+    const bool getQuit() const;
     void updateMousePosition();
     void pausedState();
     void unPausedState();
@@ -41,7 +41,6 @@ public:
     virtual void initFonts();
 
     bool paused;
-    bool quit;
 
 protected:
     sf::RenderWindow* mWindow;
@@ -50,6 +49,8 @@ protected:
     std::map<std::string, int> keybinds;
 
     sf::Font font;
+
+    bool quit;
 
     // Mouse Positions
     sf::Vector2i mousePosScreen;

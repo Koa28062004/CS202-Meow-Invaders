@@ -7,6 +7,7 @@ void PauseState::initVariables()
     background = new sf::RectangleShape();
 
     checkPlayButton = false;
+    isClickedHomeButton = false;
 }
 
 void PauseState::initTitle()
@@ -139,14 +140,15 @@ void PauseState::updatePlayButton(bool &paused, sf::Vector2f &mousePosView)
     }
 }
 
-void PauseState::updateSettingButton(sf::Vector2f &mousePosView) {
+void PauseState::updateSettingButton(sf::Vector2f &mousePosView)
+{
     // Check if the mouse is within the bounds of the playButton
     if (settingButtonIdle.getGlobalBounds().contains(mousePosView))
     {
         // Active
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-           // paused = false;
+            // paused = false;
         }
 
         checkSettingButton = true;
@@ -157,15 +159,15 @@ void PauseState::updateSettingButton(sf::Vector2f &mousePosView) {
     }
 }
 
-void PauseState::updateHomeButton(bool &quit, sf::Vector2f &mousePosView) {
+void PauseState::updateHomeButton(sf::Vector2f &mousePosView)
+{
     // Check if the mouse is within the bounds of the playButton
     if (homeButtonIdle.getGlobalBounds().contains(mousePosView))
     {
         // Active
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-            // Need to fix
-            quit = true;
+            isClickedHomeButton = true;
         }
 
         checkHomeButton = true;
@@ -177,11 +179,11 @@ void PauseState::updateHomeButton(bool &quit, sf::Vector2f &mousePosView) {
 }
 
 // Functions
-void PauseState::update(bool &quit, bool &paused, sf::Vector2f &mousePosView)
+void PauseState::update(bool &paused, sf::Vector2f &mousePosView)
 {
     updatePlayButton(paused, mousePosView);
     updateSettingButton(mousePosView);
-    updateHomeButton(quit, mousePosView);
+    updateHomeButton(mousePosView);
 }
 
 void PauseState::draw(sf::RenderTarget *target)
@@ -192,7 +194,7 @@ void PauseState::draw(sf::RenderTarget *target)
     // Draw background layer
     if (background)
         target->draw(*this->background);
-    
+
     // Draw pause state title
     if (titleSprite)
         target->draw(*this->titleSprite);
@@ -218,10 +220,12 @@ void PauseState::draw(sf::RenderTarget *target)
     }
 
     // Draw home button
-    if (!checkHomeButton) {
+    if (!checkHomeButton)
+    {
         target->draw(homeButtonIdle);
     }
-    else {
+    else
+    {
         target->draw(homeButtonHover);
     }
 }

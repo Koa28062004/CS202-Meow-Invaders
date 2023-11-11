@@ -85,6 +85,10 @@ void GameState::initVariables()
     pauseKeyPressed = false;
     checkPausedButton = false;
     level = 0;
+    isNextLevel = true;
+    isReset = false;
+    isEnterClicked = false;
+    checkClock = false;
 }
 
 void GameState::initPausedButton()
@@ -117,9 +121,9 @@ void GameState::initFont()
     }
 
     // Text below game over font
-    if (!textBelowFont.loadFromFile("assets/fonts/RubikGlitch-Regular.ttf"))
+    if (!textBelowFont.loadFromFile("assets/fonts/SigmarOne-Regular.ttf"))
     {
-        throw std::runtime_error("Error::GameState can't not load font Montserrat-Medium");
+        throw std::runtime_error("Error::GameState can't not load font SigmarOne-Regular.ttf");
     }
 }
 
@@ -129,7 +133,7 @@ void GameState::initGameOverButtons()
     tmp.setString("YES");
     tmp.setCharacterSize(40);
     buttons["YES_GAME_OVER"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 550, 0, 0,
-                                          &font, "YES",
+                                          &textBelowFont, "YES",
                                           sf::Color(0, 0, 0, 0),
                                           sf::Color(0, 0, 0, 0),
                                           sf::Color(0, 0, 0, 0));
@@ -137,7 +141,7 @@ void GameState::initGameOverButtons()
     tmp.setString("NO");
     tmp.setCharacterSize(40);
     buttons["NO_GAME_OVER"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 680, 0, 0,
-                                         &font, "NO",
+                                         &textBelowFont, "NO",
                                          sf::Color(0, 0, 0, 0),
                                          sf::Color(0, 0, 0, 0),
                                          sf::Color(0, 0, 0, 0));
@@ -196,7 +200,7 @@ void GameState::movingByKeyBoard()
     // Escape the current state
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("CLOSE"))))
     {
-        endState();
+        this->endState();
     }
 }
 
@@ -209,9 +213,9 @@ void GameState::updatePausedInput()
         {
             pauseKeyPressed = true;
             if (!paused)
-                pausedState();
+                this->pausedState();
             else
-                unPausedState();
+                this->unPausedState();
         }
     }
     else
@@ -229,7 +233,7 @@ void GameState::updatePausedButton()
         // Active
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-            pausedState();
+            this->pausedState();
         }
 
         checkPausedButton = true;
@@ -256,7 +260,16 @@ void GameState::updateGameOver()
     }
     else if (buttons["NO_GAME_OVER"]->isPressed())
     {
-        endState();
+        this->endState();
+    }
+}
+
+void GameState::updateLevelUp()
+{
+    if (level != 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+    {
+        isNextLevel = true;
+        isEnterClicked = true;
     }
 }
 
@@ -265,29 +278,44 @@ void GameState::update()
     updateMousePosition();
     updatePausedInput();
 
+    if (pauseState->isClickedHomeButton)
+    {
+        this->endState();
+        pauseState->isClickedHomeButton = false;
+    }
+
     // Unpaused update
     if (!paused)
     {
         if (!player->get_dead())
         {
-            updatePausedButton();
-            movingByKeyBoard();
-            updatingPlayingGame();
+            if (!isNextLevel)
+                updateLevelUp();
+            else
+            {
+                updatePausedButton();
+                movingByKeyBoard();
+                updatingPlayingGame();
+            }
         }
-        else updateGameOver();
+        else
+            updateGameOver();
     }
     // Pause update
     else
     {
-        pauseState->update(quit, paused, mousePosView);
+        pauseState->update(paused, mousePosView);
     }
 }
 
 void GameState::updatingPlayingGame()
 {
-    if (enemyManager->get_enemies().size() == 0)
+    if (isReset && enemyManager->get_enemies().size() == 0)
     {
         std::cout << "reset" << '\n';
+        isReset = false;
+        isEnterClicked = false;
+        checkClock = false;
         player->reset();
         if (level <= 5)
             enemyManager->reset(level++);
@@ -341,6 +369,69 @@ void GameState::drawPlayingGame(sf::RenderTarget *target)
     }
 }
 
+void GameState::drawLevelUp(sf::RenderTarget *target)
+{
+    sf::Text textTitle;
+    textTitle.setFont(gameOverFont);
+    textTitle.setString("VICTORY");
+    textTitle.setCharacterSize(140);
+    textTitle.setFillColor(sf::Color(240, 184, 110, 255));
+    textTitle.setPosition(mWindow->getSize().x / 2.0f - textTitle.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textTitle.getGlobalBounds().height / 2.0f - 250.f);
+
+    sf::Text textBelow;
+    textBelow.setFont(gameOverFont);
+    textBelow.setString("[ORZ]");
+    textBelow.setCharacterSize(50);
+    textBelow.setFillColor(sf::Color(255, 251, 115, 255));
+    textBelow.setPosition(mWindow->getSize().x / 2.0f - textBelow.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textBelow.getGlobalBounds().height / 2.0f - 110.f);
+
+    sf::Text textTryAgain;
+    textTryAgain.setFont(gameOverFont);
+    textTryAgain.setString("Press ENTER to continue...");
+    textTryAgain.setCharacterSize(50);
+    textTryAgain.setFillColor(sf::Color::White);
+    textTryAgain.setPosition(mWindow->getSize().x / 2.0f - textTryAgain.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textTryAgain.getGlobalBounds().height / 2.0f + 50.f);
+
+    target->draw(backgroundGameOver);
+    target->draw(textTitle);
+    target->draw(textBelow);
+    target->draw(textTryAgain);
+}
+
+void GameState::drawLevelScreen(sf::RenderTarget *target)
+{
+    std::string tmp = "Level " + std::to_string(level + 1);
+    sf::Text text;
+    text.setFont(gameOverFont);
+    text.setCharacterSize(80);
+    text.setFillColor(sf::Color::White);
+    text.setString(tmp);
+    text.setPosition(mWindow->getSize().x / 2.0f - text.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - text.getGlobalBounds().height / 2.0f - 230.f);
+
+    static sf::Clock clock;
+    float totalTimeToShowText = 2.0f;
+    float totalTimeToSetFlag = 4.0f;
+
+    if (isEnterClicked && !checkClock)
+    {
+        clock.restart();
+        checkClock = true;
+    }
+
+    float progressToShowText = clock.getElapsedTime().asSeconds() / totalTimeToShowText;
+    float progressToSetFlag = clock.getElapsedTime().asSeconds() / totalTimeToSetFlag;
+
+    unsigned int charactersToDisplay = static_cast<unsigned int>(progressToShowText * text.getString().getSize());
+    charactersToDisplay = static_cast<unsigned int>(std::min(static_cast<std::size_t>(charactersToDisplay), text.getString().getSize()));
+    text.setString(text.getString().substring(0, charactersToDisplay));
+    target->draw(text);
+
+    if (!isReset && progressToSetFlag >= 1.0f)
+    {
+        isReset = true;
+    }
+}
+
 void GameState::draw(sf::RenderTarget *target)
 {
     if (!target)
@@ -349,26 +440,45 @@ void GameState::draw(sf::RenderTarget *target)
     }
 
     target->draw(background);
+
     player->draw(target);
 
-    drawPlayingGame(target);
-
-    if (!player->get_dead())
+    if (!isEnterClicked && level != 0 && enemyManager->get_enemies().size() == 0)
     {
-        // Draw hover animation of paused button
-        if (!checkPausedButton)
+        isNextLevel = false;
+    }
+
+    // Draw the level up background
+    if (!isNextLevel)
+    {
+        drawLevelUp(target);
+    }
+    else
+    {
+        if (enemyManager->get_enemies().size() == 0)
         {
-            target->draw(pausedButtonIdle);
-        }
-        else
-        {
-            target->draw(pausedButtonHover);
+            drawLevelScreen(target);
         }
 
-        // Pause menu
-        if (paused)
+        drawPlayingGame(target);
+
+        if (!player->get_dead())
         {
-            pauseState->draw(target);
+            // Draw hover animation of paused button
+            if (!checkPausedButton)
+            {
+                target->draw(pausedButtonIdle);
+            }
+            else
+            {
+                target->draw(pausedButtonHover);
+            }
+
+            // Pause menu
+            if (paused)
+            {
+                pauseState->draw(target);
+            }
         }
     }
 }

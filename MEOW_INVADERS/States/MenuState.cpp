@@ -136,7 +136,7 @@ void MenuState::updateButtons()
     // Exit game
     if (buttons["EXIT_STATE"]->isPressed())
     {
-        endState();
+        this->endState();
     }
 }
 

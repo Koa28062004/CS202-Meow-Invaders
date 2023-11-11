@@ -24,6 +24,8 @@ public:
     // Playing game
     void updatingPlayingGame();
     void drawPlayingGame(sf::RenderTarget *target);
+    void drawLevelUp(sf::RenderTarget* target);
+    void drawLevelScreen(sf::RenderTarget* target);
 
 private:
     // Initialization
@@ -41,6 +43,7 @@ private:
     // Functions
     void updatePausedButton();
     void updateGameOver();
+    void updateLevelUp();
 
     Player *player;
     EnemyManager *enemyManager;
@@ -75,6 +78,11 @@ private:
     std::vector<Enemy>* enemies;
 
     std::map<std::string, Button*> buttons;
+
+    bool isNextLevel;
+    bool isReset;
+    bool isEnterClicked;
+    bool checkClock;
 };
 
 #endif

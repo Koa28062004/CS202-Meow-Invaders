@@ -26,8 +26,10 @@ public:
     virtual ~PauseState();
 
     // Functions
-    void update(bool &quit, bool &paused, sf::Vector2f &mousePosView);
+    void update(bool &paused, sf::Vector2f &mousePosView);
     void draw(sf::RenderTarget *target = nullptr);
+
+    bool isClickedHomeButton;
 
 private:
     // Initialization
@@ -45,7 +47,7 @@ private:
 
     // Home button
     void initHomeButton();
-    void updateHomeButton(bool &quit, sf::Vector2f &mousePosView);
+    void updateHomeButton(sf::Vector2f &mousePosView);
 
     sf::RenderWindow* mWindow;
     sf::RectangleShape* background;
