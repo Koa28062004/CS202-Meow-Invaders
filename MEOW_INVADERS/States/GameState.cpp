@@ -110,10 +110,37 @@ void GameState::initPausedButton()
 
 void GameState::initFont()
 {
+    // Title Game Over font
     if (!gameOverFont.loadFromFile("assets/fonts/RubikGlitch-Regular.ttf"))
     {
         throw std::runtime_error("Error::GameState can't not load font RubikGlitch");
     }
+
+    // Text below game over font
+    if (!textBelowFont.loadFromFile("assets/fonts/RubikGlitch-Regular.ttf"))
+    {
+        throw std::runtime_error("Error::GameState can't not load font Montserrat-Medium");
+    }
+}
+
+void GameState::initGameOverButtons()
+{
+    sf::Text tmp;
+    tmp.setString("YES");
+    tmp.setCharacterSize(40);
+    buttons["YES_GAME_OVER"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 550, 0, 0,
+                                          &font, "YES",
+                                          sf::Color(0, 0, 0, 0),
+                                          sf::Color(0, 0, 0, 0),
+                                          sf::Color(0, 0, 0, 0));
+
+    tmp.setString("NO");
+    tmp.setCharacterSize(40);
+    buttons["NO_GAME_OVER"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 680, 0, 0,
+                                         &font, "NO",
+                                         sf::Color(0, 0, 0, 0),
+                                         sf::Color(0, 0, 0, 0),
+                                         sf::Color(0, 0, 0, 0));
 }
 
 GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
@@ -132,12 +159,19 @@ GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *suppo
     initPausedMenu();
     initPausedButton();
     initFont();
+    initGameOverButtons();
 }
 
 GameState::~GameState()
 {
     delete pauseState;
     delete enemyManager;
+
+    auto it = buttons.begin();
+    for (it = buttons.begin(); it != buttons.end(); ++it)
+    {
+        delete it->second;
+    }
 }
 
 void GameState::movingByKeyBoard()
@@ -206,6 +240,25 @@ void GameState::updatePausedButton()
     }
 }
 
+void GameState::updateGameOver()
+{
+    for (auto &it : buttons)
+    {
+        it.second->update(mousePosView);
+    }
+
+    if (buttons["YES_GAME_OVER"]->isPressed())
+    {
+        // Handle 'YES' button press
+        std::cout << "Restarting the game!" << std::endl;
+    }
+    else if (buttons["NO_GAME_OVER"]->isPressed())
+    {
+        // Handle 'NO' button press
+        endState();
+    }
+}
+
 void GameState::update()
 {
     updateMousePosition();
@@ -214,9 +267,13 @@ void GameState::update()
     // Unpaused update
     if (!paused)
     {
-        updatePausedButton();
-        movingByKeyBoard();
-        updatingPlayingGame();
+        if (!player->get_dead())
+        {
+            updatePausedButton();
+            movingByKeyBoard();
+            updatingPlayingGame();
+        }
+        else updateGameOver();
     }
     // Pause update
     else
@@ -227,51 +284,59 @@ void GameState::update()
 
 void GameState::updatingPlayingGame()
 {
-    if (!player->get_dead())
+    if (enemyManager->get_enemies().size() == 0)
     {
-        if (enemyManager->get_enemies().size() == 0)
-        {
-            std::cout << "reset" << '\n';
-            player->reset();
-            if (level <= 5)
-                enemyManager->reset(level++);
-        }
-        else
-        {
-            enemyManager->update(random_engine);
-            enemy_bullets = &enemyManager->get_enemy_bullets();
-            enemies = &enemyManager->get_enemies();
-            player->update(*enemy_bullets, *enemies);
-        }
+        std::cout << "reset" << '\n';
+        player->reset();
+        if (level <= 5)
+            enemyManager->reset(level++);
+    }
+    else
+    {
+        enemyManager->update(random_engine);
+        enemy_bullets = &enemyManager->get_enemy_bullets();
+        enemies = &enemyManager->get_enemies();
+        player->update(*enemy_bullets, *enemies);
     }
 }
 
 void GameState::drawPlayingGame(sf::RenderTarget *target)
 {
-    if (!player->get_dead())
-    {
-        enemyManager->draw(mWindow);
-    }
-    else
+    enemyManager->draw(mWindow);
+
+    // Lose
+    if (player->get_dead())
     {
         // Set text
         sf::Text textTitle;
         textTitle.setFont(gameOverFont);
         textTitle.setString("YOU ARE DEAD !!!");
-        textTitle.setCharacterSize(100);
-        textTitle.setFillColor(sf::Color(255, 163, 60, 255));
-        textTitle.setPosition(mWindow->getSize().x / 2.0f - textTitle.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textTitle.getGlobalBounds().height / 2.0f - 360.f);
+        textTitle.setCharacterSize(120);
+        textTitle.setFillColor(sf::Color(241, 26, 123, 255));
+        textTitle.setPosition(mWindow->getSize().x / 2.0f - textTitle.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textTitle.getGlobalBounds().height / 2.0f - 310.f);
 
         sf::Text textBelow;
         textBelow.setFont(gameOverFont);
         textBelow.setString("[IDIOT]");
         textBelow.setCharacterSize(50);
-        textBelow.setFillColor(sf::Color(255, 251, 115, 255));
-        textBelow.setPosition(mWindow->getSize().x / 2.0f - textBelow.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textBelow.getGlobalBounds().height / 2.0f - 260.f);
+        textBelow.setFillColor(sf::Color(248, 141, 189, 255));
+        textBelow.setPosition(mWindow->getSize().x / 2.0f - textBelow.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textBelow.getGlobalBounds().height / 2.0f - 200.f);
+
+        sf::Text textTryAgain;
+        textTryAgain.setFont(gameOverFont);
+        textTryAgain.setString("TRY AGAIN ?");
+        textTryAgain.setCharacterSize(50);
+        textTryAgain.setFillColor(sf::Color::White);
+        textTryAgain.setPosition(mWindow->getSize().x / 2.0f - textTryAgain.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textTryAgain.getGlobalBounds().height / 2.0f - 50.f);
 
         target->draw(backgroundGameOver);
         target->draw(textTitle);
         target->draw(textBelow);
+        target->draw(textTryAgain);
+        for (auto &it : buttons)
+        {
+            it.second->draw(target);
+        }
     }
 }
 
@@ -283,10 +348,9 @@ void GameState::draw(sf::RenderTarget *target)
     }
 
     target->draw(background);
+    player->draw(target);
 
     drawPlayingGame(target);
-
-    player->draw(target);
 
     if (!player->get_dead())
     {

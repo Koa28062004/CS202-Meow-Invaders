@@ -7,6 +7,7 @@
 #include "State.h"
 #include "PauseState.h"
 #include "Entities/EnemyManager.h"
+#include "GUI/Button.h"
 
 class GameState : public State
 {
@@ -35,9 +36,11 @@ private:
     void initPausedButton();
     void initEnemyManager();
     void initFont();
+    void initGameOverButtons();
 
     // Functions
     void updatePausedButton();
+    void updateGameOver();
 
     Player *player;
     EnemyManager *enemyManager;
@@ -64,11 +67,14 @@ private:
 
     int level;
     sf::Font gameOverFont;
+    sf::Font textBelowFont;
 
     std::mt19937_64 random_engine;
 
     std::vector<Bullet>* enemy_bullets;
     std::vector<Enemy>* enemies;
+
+    std::map<std::string, Button*> buttons;
 };
 
 #endif

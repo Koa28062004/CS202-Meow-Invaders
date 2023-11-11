@@ -100,22 +100,22 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
                 enemy.hit();
             }
         }
-    }
 
-    for (Bullet &bullet : player_bullets)
-    {
-        bullet.update();
-        checkBulletOutside(bullet);
-
-        if (0 == bullet.dead)
+        for (Bullet &bullet : player_bullets)
         {
-            // Optionally, you can add logic for handling collisions with enemies here
-            for (Enemy &enemy : enemies)
+            bullet.update();
+            checkBulletOutside(bullet);
+
+            if (0 == bullet.dead)
             {
-                if (bullet.get_hitbox().intersects(enemy.get_hitbox()))
+                // Optionally, you can add logic for handling collisions with enemies here
+                for (Enemy &enemy : enemies)
                 {
-                    bullet.dead = 1;
-                    enemy.hit();
+                    if (bullet.get_hitbox().intersects(enemy.get_hitbox()))
+                    {
+                        bullet.dead = 1;
+                        enemy.hit();
+                    }
                 }
             }
         }
@@ -144,28 +144,22 @@ void Player::drawHitBoxPlayer(sf::RenderTarget *target)
 
 void Player::draw(sf::RenderTarget *target)
 {
-    if (!dead)
+    if (debug)
+        drawHitBoxPlayer(target);
+
+    // Draw the bullet
+    for (Bullet &bullet : player_bullets)
     {
+        bullet_sprite.setPosition(bullet.x, bullet.y);
+        target->draw(bullet_sprite);
+
         if (debug)
-            drawHitBoxPlayer(target);
-
-        // Draw the bullet
-        for (Bullet &bullet : player_bullets)
-        {
-            bullet_sprite.setPosition(bullet.x, bullet.y);
-            target->draw(bullet_sprite);
-
-            if (debug)
-                bullet.drawHitBoxBullet(target);
-        }
-
-        // Draw the player
-        if (this->playerSprite)
-            target->draw(*this->playerSprite);
+            bullet.drawHitBoxBullet(target);
     }
-    else
-    {
-    }
+
+    // Draw the player
+    if (this->playerSprite)
+        target->draw(*this->playerSprite);
 }
 
 sf::IntRect Player::get_hitbox() const
