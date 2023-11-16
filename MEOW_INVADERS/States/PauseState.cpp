@@ -120,6 +120,27 @@ PauseState::~PauseState()
     delete background;
 }
 
+void PauseState::handleEvents(const sf::Event &event)
+{
+    switch (event.type)
+    {
+    case sf::Event::MouseButtonReleased:
+        if (event.mouseButton.button == sf::Mouse::Left)
+        {
+            // handlePlayButton();
+        }
+        break;
+    }
+}
+
+void PauseState::handlePlayButton()
+{
+    // if (checkPlayButton)
+    // {
+    //     isClickedPlayButton = true;
+    // }
+}
+
 // Play button
 void PauseState::updatePlayButton(bool &paused, sf::Vector2f &mousePosView)
 {
@@ -127,11 +148,11 @@ void PauseState::updatePlayButton(bool &paused, sf::Vector2f &mousePosView)
     if (playButtonIdle.getGlobalBounds().contains(mousePosView))
     {
         // Active
+        isClickedHomeButton = false;
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
             paused = false;
         }
-
         checkPlayButton = true;
     }
     else
@@ -167,15 +188,24 @@ void PauseState::updateHomeButton(sf::Vector2f &mousePosView)
         // Active
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
+            // if (!isClickedHomeButton)
             isClickedHomeButton = true;
         }
-
+        else
+        {
+            isClickedHomeButton = false;
+        }
         checkHomeButton = true;
     }
     else
     {
         checkHomeButton = false;
     }
+}
+
+const bool PauseState::getHome()
+{
+    return isClickedHomeButton;
 }
 
 // Functions

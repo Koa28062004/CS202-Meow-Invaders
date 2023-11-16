@@ -102,6 +102,10 @@ void Application::handleEvents()
             break;
         }
     }
+    if (!states.empty())
+    {
+        states.top()->handleEvents(event);
+    }
 }
 
 void Application::update()
@@ -112,7 +116,6 @@ void Application::update()
 
         if (states.top()->getQuit())
         {
-         //  states.top()->endState();
             delete states.top();
             states.pop();
             if (states.empty())

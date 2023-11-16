@@ -19,13 +19,17 @@ public:
     void updatePausedInput();
     void update();
     void draw(sf::RenderTarget *target = nullptr);
+    void handleEvents(const sf::Event &event);
     void movingByKeyBoard();
 
     // Playing game
     void updatingPlayingGame();
     void drawPlayingGame(sf::RenderTarget *target);
-    void drawLevelUp(sf::RenderTarget* target);
-    void drawLevelScreen(sf::RenderTarget* target);
+    void drawLevelUp(sf::RenderTarget *target);
+    void drawLevelScreen(sf::RenderTarget *target);
+
+    void handlePlayButton();
+    void handleHomeButton();
 
 private:
     // Initialization
@@ -42,7 +46,7 @@ private:
 
     // Functions
     void updatePausedButton();
-    void updateGameOver();
+    void handleGameOver();
     void updateLevelUp();
 
     Player *player;
@@ -74,15 +78,18 @@ private:
 
     std::mt19937_64 random_engine;
 
-    std::vector<Bullet>* enemy_bullets;
-    std::vector<Enemy>* enemies;
+    std::vector<Bullet> *enemy_bullets;
+    std::vector<Enemy> *enemies;
 
-    std::map<std::string, Button*> buttons;
+    std::map<std::string, Button *> buttons;
 
     bool isNextLevel;
     bool isReset;
     bool isEnterClicked;
     bool checkClock;
+
+    std::chrono::steady_clock::time_point lastButtonClickTime;
+    const std::chrono::milliseconds clickCooldown{500};
 };
 
 #endif

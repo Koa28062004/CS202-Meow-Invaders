@@ -7,15 +7,16 @@
 class MenuState : public State
 {
 public:
-    MenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
+    MenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states);
     virtual ~MenuState();
 
     // Functions
     void update();
-    void draw(sf::RenderTarget* target = nullptr);
-    void drawButtons(sf::RenderTarget* target = nullptr);
+    void draw(sf::RenderTarget *target = nullptr);
+    void handleEvents(const sf::Event &event);
+    void drawButtons(sf::RenderTarget *target = nullptr);
     void movingByKeyBoard();
-    void updateButtons();
+    void handleButtonPressed();
 
     // Initialization
     void initVariables();
@@ -24,11 +25,13 @@ public:
     void initButtons();
 
 protected:
-
 private:
     sf::RectangleShape background;
     sf::Texture backgroundTexture;
-    std::map<std::string, Button*> buttons;
+    std::map<std::string, Button *> buttons;
+
+    std::chrono::steady_clock::time_point lastButtonClickTime;
+    const std::chrono::milliseconds clickCooldown{500};
 };
 
 #endif

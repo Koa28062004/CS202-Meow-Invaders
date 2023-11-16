@@ -22,9 +22,9 @@ set(CMAKE_C_SIMULATE_VERSION "")
 
 
 set(CMAKE_AR "/usr/bin/ar")
-set(CMAKE_C_COMPILER_AR "")
+set(CMAKE_C_COMPILER_AR "/opt/homebrew/bin/aarch64-apple-darwin22-gcc-ar-12")
 set(CMAKE_RANLIB "/usr/bin/ranlib")
-set(CMAKE_C_COMPILER_RANLIB "")
+set(CMAKE_C_COMPILER_RANLIB "/opt/homebrew/bin/aarch64-apple-darwin22-gcc-ranlib-12")
 set(CMAKE_LINKER "/usr/bin/ld")
 set(CMAKE_MT "")
 set(CMAKE_TAPI "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/tapi")

@@ -35,6 +35,7 @@ public:
     virtual void movingByKeyBoard() = 0;
     virtual void update() = 0;
     virtual void draw(sf::RenderTarget *target = nullptr) = 0;
+    virtual void handleEvents(const sf::Event& event) = 0;
     virtual void initKeybinds() = 0;
 
     // Initialization

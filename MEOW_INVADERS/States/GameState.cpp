@@ -204,6 +204,65 @@ void GameState::movingByKeyBoard()
     }
 }
 
+void GameState::handleEvents(const sf::Event &event)
+{
+    switch (event.type)
+    {
+    case sf::Event::MouseButtonReleased:
+        if (event.mouseButton.button == sf::Mouse::Left)
+        {
+            handleHomeButton();
+            handleGameOver();
+        }
+        break;
+    }
+    if (paused) pauseState->handleEvents(event);
+}
+
+void GameState::handleHomeButton()
+{
+    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+    std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
+
+    if (pauseState->getHome())
+    {
+        lastButtonClickTime = now;
+
+        if (elapsedTime > clickCooldown)
+        {
+            this->endState();
+        }
+    }
+}
+
+void GameState::handleGameOver()
+{
+    if (player->get_dead())
+    {
+        std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+        std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
+        if (elapsedTime > clickCooldown)
+        {
+            lastButtonClickTime = now;
+
+            if (buttons["YES_GAME_OVER"]->isPressed())
+            {
+                isEnterClicked = true;
+                checkClock = false;
+                --level;
+                enemy_bullets->clear();
+                enemies->clear();
+                player->reset();
+                player->setEntityPosition((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2);
+            }
+            else if (buttons["NO_GAME_OVER"]->isPressed())
+            {
+                this->endState();
+            }
+        }
+    }
+}
+
 void GameState::updatePausedInput()
 {
     // Pause menu
@@ -244,26 +303,6 @@ void GameState::updatePausedButton()
     }
 }
 
-void GameState::updateGameOver()
-{
-    for (auto &it : buttons)
-    {
-        it.second->update(mousePosView);
-    }
-
-    if (buttons["YES_GAME_OVER"]->isPressed())
-    {
-        --level;
-        enemies->clear();
-        player->reset();
-        player->setEntityPosition((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2);
-    }
-    else if (buttons["NO_GAME_OVER"]->isPressed())
-    {
-        this->endState();
-    }
-}
-
 void GameState::updateLevelUp()
 {
     if (level != 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
@@ -278,10 +317,9 @@ void GameState::update()
     updateMousePosition();
     updatePausedInput();
 
-    if (pauseState->isClickedHomeButton)
+    for (auto &it : buttons)
     {
-        this->endState();
-        pauseState->isClickedHomeButton = false;
+        it.second->update(mousePosView);
     }
 
     // Unpaused update
@@ -298,8 +336,6 @@ void GameState::update()
                 updatingPlayingGame();
             }
         }
-        else
-            updateGameOver();
     }
     // Pause update
     else
@@ -312,12 +348,11 @@ void GameState::updatingPlayingGame()
 {
     if (isReset && enemyManager->get_enemies().size() == 0)
     {
-        std::cout << "reset" << '\n';
         isReset = false;
         isEnterClicked = false;
         checkClock = false;
         player->reset();
-        if (level <= 5)
+        if (level < 5)
             enemyManager->reset(level++);
     }
     else
@@ -375,14 +410,14 @@ void GameState::drawLevelUp(sf::RenderTarget *target)
     textTitle.setFont(gameOverFont);
     textTitle.setString("VICTORY");
     textTitle.setCharacterSize(140);
-    textTitle.setFillColor(sf::Color(240, 184, 110, 255));
+    textTitle.setFillColor(sf::Color(255, 251, 115, 255));
     textTitle.setPosition(mWindow->getSize().x / 2.0f - textTitle.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textTitle.getGlobalBounds().height / 2.0f - 250.f);
 
     sf::Text textBelow;
     textBelow.setFont(gameOverFont);
     textBelow.setString("[ORZ]");
     textBelow.setCharacterSize(50);
-    textBelow.setFillColor(sf::Color(255, 251, 115, 255));
+    textBelow.setFillColor(sf::Color(240, 184, 110, 255));
     textBelow.setPosition(mWindow->getSize().x / 2.0f - textBelow.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textBelow.getGlobalBounds().height / 2.0f - 110.f);
 
     sf::Text textTryAgain;
@@ -418,12 +453,19 @@ void GameState::drawLevelScreen(sf::RenderTarget *target)
         checkClock = true;
     }
 
+    if (level == 0 && !checkClock)
+    {
+        clock.restart();
+        checkClock = true;
+    }
+
     float progressToShowText = clock.getElapsedTime().asSeconds() / totalTimeToShowText;
     float progressToSetFlag = clock.getElapsedTime().asSeconds() / totalTimeToSetFlag;
 
     unsigned int charactersToDisplay = static_cast<unsigned int>(progressToShowText * text.getString().getSize());
     charactersToDisplay = static_cast<unsigned int>(std::min(static_cast<std::size_t>(charactersToDisplay), text.getString().getSize()));
     text.setString(text.getString().substring(0, charactersToDisplay));
+
     target->draw(text);
 
     if (!isReset && progressToSetFlag >= 1.0f)
@@ -442,42 +484,45 @@ void GameState::draw(sf::RenderTarget *target)
     target->draw(background);
 
     player->draw(target);
+    drawPlayingGame(target);
 
     if (!isEnterClicked && level != 0 && enemyManager->get_enemies().size() == 0)
     {
         isNextLevel = false;
     }
 
-    // Draw the level up background
-    if (!isNextLevel)
+    if (!player->get_dead())
     {
-        drawLevelUp(target);
-    }
-    else
-    {
-        if (enemyManager->get_enemies().size() == 0)
+        // Draw the level up background
+        if (!isNextLevel)
         {
-            drawLevelScreen(target);
+            if (level < 5)
+                drawLevelUp(target);
         }
-
-        drawPlayingGame(target);
-
-        if (!player->get_dead())
+        else
         {
-            // Draw hover animation of paused button
-            if (!checkPausedButton)
+            if (enemyManager->get_enemies().size() == 0)
             {
-                target->draw(pausedButtonIdle);
-            }
-            else
-            {
-                target->draw(pausedButtonHover);
+                drawLevelScreen(target);
             }
 
-            // Pause menu
-            if (paused)
+            if (!player->get_dead())
             {
-                pauseState->draw(target);
+                // Draw hover animation of paused button
+                if (!checkPausedButton)
+                {
+                    target->draw(pausedButtonIdle);
+                }
+                else
+                {
+                    target->draw(pausedButtonHover);
+                }
+
+                // Pause menu
+                if (paused)
+                {
+                    pauseState->draw(target);
+                }
             }
         }
     }

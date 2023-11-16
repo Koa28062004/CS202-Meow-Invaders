@@ -10,6 +10,7 @@
 #include <map>
 #include <vector>
 #include <string>
+#include <array>
 
 #include "SFML/System.hpp"
 #include "SFML/Window.hpp"

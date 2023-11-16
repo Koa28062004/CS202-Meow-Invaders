@@ -28,8 +28,9 @@ public:
     // Functions
     void update(bool &paused, sf::Vector2f &mousePosView);
     void draw(sf::RenderTarget *target = nullptr);
-
-    bool isClickedHomeButton;
+    void handleEvents(const sf::Event &event);
+    const bool getHome();
+    void handlePlayButton();
 
 private:
     // Initialization
@@ -49,10 +50,10 @@ private:
     void initHomeButton();
     void updateHomeButton(sf::Vector2f &mousePosView);
 
-    sf::RenderWindow* mWindow;
-    sf::RectangleShape* background;
-    sf::Texture* titleTexture;
-    sf::Sprite* titleSprite;
+    sf::RenderWindow *mWindow;
+    sf::RectangleShape *background;
+    sf::Texture *titleTexture;
+    sf::Sprite *titleSprite;
 
     std::map<std::string, sf::Texture *> textures;
 
@@ -82,6 +83,11 @@ private:
     bool checkHomeButton;
     sf::RectangleShape homeButtonHover;
     sf::Texture homeButtonHoverTexture;
+
+    bool isClickedHomeButton;
+
+    std::chrono::steady_clock::time_point lastButtonClickTime;
+    const std::chrono::milliseconds clickCooldown{500};
 };
 
 #endif

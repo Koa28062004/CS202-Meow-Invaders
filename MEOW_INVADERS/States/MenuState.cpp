@@ -1,4 +1,5 @@
 #include "MenuState.h"
+#include <chrono>
 
 // Init Variables
 void MenuState::initVariables()
@@ -116,17 +117,29 @@ void MenuState::update()
 {
     updateMousePosition();
     movingByKeyBoard();
-    updateButtons();
-}
 
-void MenuState::updateButtons()
-{
     // Update all the buttons and handle their functions
     for (auto &it : buttons)
     {
         it.second->update(mousePosView);
     }
+}
 
+void MenuState::handleEvents(const sf::Event &event)
+{
+    switch (event.type)
+    {
+    case sf::Event::MouseButtonPressed:
+        if (event.mouseButton.button == sf::Mouse::Left)
+        {
+            handleButtonPressed();
+        }
+        break;
+    }
+}
+
+void MenuState::handleButtonPressed()
+{
     // New game
     if (buttons["GAME_STATE"]->isPressed())
     {
@@ -138,6 +151,7 @@ void MenuState::updateButtons()
     {
         this->endState();
     }
+    // Add other button press handling logic as needed
 }
 
 void MenuState::draw(sf::RenderTarget *target)
