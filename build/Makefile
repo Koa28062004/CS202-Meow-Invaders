@@ -130,30 +130,6 @@ cs202/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/build
 .PHONY : cs202/fast
 
-MEOW_INVADERS/Animations/Animation.o: MEOW_INVADERS/Animations/Animation.cpp.o
-.PHONY : MEOW_INVADERS/Animations/Animation.o
-
-# target to build an object file
-MEOW_INVADERS/Animations/Animation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Animations/Animation.cpp.o
-.PHONY : MEOW_INVADERS/Animations/Animation.cpp.o
-
-MEOW_INVADERS/Animations/Animation.i: MEOW_INVADERS/Animations/Animation.cpp.i
-.PHONY : MEOW_INVADERS/Animations/Animation.i
-
-# target to preprocess a source file
-MEOW_INVADERS/Animations/Animation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Animations/Animation.cpp.i
-.PHONY : MEOW_INVADERS/Animations/Animation.cpp.i
-
-MEOW_INVADERS/Animations/Animation.s: MEOW_INVADERS/Animations/Animation.cpp.s
-.PHONY : MEOW_INVADERS/Animations/Animation.s
-
-# target to generate assembly for a file
-MEOW_INVADERS/Animations/Animation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Animations/Animation.cpp.s
-.PHONY : MEOW_INVADERS/Animations/Animation.cpp.s
-
 MEOW_INVADERS/Applications/Application.o: MEOW_INVADERS/Applications/Application.cpp.o
 .PHONY : MEOW_INVADERS/Applications/Application.o
 
@@ -418,6 +394,30 @@ MEOW_INVADERS/States/PauseState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/PauseState.cpp.s
 .PHONY : MEOW_INVADERS/States/PauseState.cpp.s
 
+MEOW_INVADERS/States/PreparedState.o: MEOW_INVADERS/States/PreparedState.cpp.o
+.PHONY : MEOW_INVADERS/States/PreparedState.o
+
+# target to build an object file
+MEOW_INVADERS/States/PreparedState.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/PreparedState.cpp.o
+.PHONY : MEOW_INVADERS/States/PreparedState.cpp.o
+
+MEOW_INVADERS/States/PreparedState.i: MEOW_INVADERS/States/PreparedState.cpp.i
+.PHONY : MEOW_INVADERS/States/PreparedState.i
+
+# target to preprocess a source file
+MEOW_INVADERS/States/PreparedState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/PreparedState.cpp.i
+.PHONY : MEOW_INVADERS/States/PreparedState.cpp.i
+
+MEOW_INVADERS/States/PreparedState.s: MEOW_INVADERS/States/PreparedState.cpp.s
+.PHONY : MEOW_INVADERS/States/PreparedState.s
+
+# target to generate assembly for a file
+MEOW_INVADERS/States/PreparedState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/PreparedState.cpp.s
+.PHONY : MEOW_INVADERS/States/PreparedState.cpp.s
+
 MEOW_INVADERS/States/State.o: MEOW_INVADERS/States/State.cpp.o
 .PHONY : MEOW_INVADERS/States/State.o
 
@@ -475,9 +475,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cs202"
-	@echo "... MEOW_INVADERS/Animations/Animation.o"
-	@echo "... MEOW_INVADERS/Animations/Animation.i"
-	@echo "... MEOW_INVADERS/Animations/Animation.s"
 	@echo "... MEOW_INVADERS/Applications/Application.o"
 	@echo "... MEOW_INVADERS/Applications/Application.i"
 	@echo "... MEOW_INVADERS/Applications/Application.s"
@@ -511,6 +508,9 @@ help:
 	@echo "... MEOW_INVADERS/States/PauseState.o"
 	@echo "... MEOW_INVADERS/States/PauseState.i"
 	@echo "... MEOW_INVADERS/States/PauseState.s"
+	@echo "... MEOW_INVADERS/States/PreparedState.o"
+	@echo "... MEOW_INVADERS/States/PreparedState.i"
+	@echo "... MEOW_INVADERS/States/PreparedState.s"
 	@echo "... MEOW_INVADERS/States/State.o"
 	@echo "... MEOW_INVADERS/States/State.i"
 	@echo "... MEOW_INVADERS/States/State.s"

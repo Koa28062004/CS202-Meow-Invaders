@@ -2,12 +2,13 @@
 #define MENU_STATE_H
 
 #include "GameState.h"
+#include "PreparedState.h"
 #include "GUI/Button.h"
 
 class MenuState : public State
 {
 public:
-    MenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states);
+    MenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states, int &choice);
     virtual ~MenuState();
 
     // Functions
@@ -29,9 +30,6 @@ private:
     sf::RectangleShape background;
     sf::Texture backgroundTexture;
     std::map<std::string, Button *> buttons;
-
-    std::chrono::steady_clock::time_point lastButtonClickTime;
-    const std::chrono::milliseconds clickCooldown{500};
 };
 
 #endif

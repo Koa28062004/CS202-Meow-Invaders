@@ -85,9 +85,6 @@ private:
     sf::Texture homeButtonHoverTexture;
 
     bool isClickedHomeButton;
-
-    std::chrono::steady_clock::time_point lastButtonClickTime;
-    const std::chrono::milliseconds clickCooldown{500};
 };
 
 #endif

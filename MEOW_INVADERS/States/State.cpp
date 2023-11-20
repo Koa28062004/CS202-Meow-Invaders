@@ -7,19 +7,72 @@ void State::initFonts()
     {
         throw std::runtime_error("Error::State::Could not load fonts");
     }
+
+    // Title Game Over font
+    if (!titleFont.loadFromFile("assets/fonts/RubikGlitch-Regular.ttf"))
+    {
+        throw std::runtime_error("Error::GameState can't not load font RubikGlitch");
+    }
+
+    // Text below game over font
+    if (!textBelowFont.loadFromFile("assets/fonts/SigmarOne-Regular.ttf"))
+    {
+        throw std::runtime_error("Error::GameState can't not load font SigmarOne-Regular.ttf");
+    }
 }
 
-State::State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
-    : mWindow(window), quit(false), paused(false)
+State::State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states, int &choice)
+    : mWindow(window), quit(false), paused(false), chosen(choice)
 {
     this->supportedKeys = supportedKeys;
     this->states = states;
 
     initFonts();
+    initPlayerTextures();
 }
 
 State::~State()
 {
+}
+
+void State::initPlayerTextures()
+{
+    sf::Texture tmp;
+
+    if (!tmp.loadFromFile("assets/images/spaceship1.png"))
+    {
+        throw std::runtime_error("Error::Failed to load spaceship1.png");
+    }
+    this->playerTextures.push_back(tmp);
+    this->isUnlocked.push_back(true);
+
+    if (!tmp.loadFromFile("assets/images/spaceship2.png"))
+    {
+        throw std::runtime_error("Error::Failed to load spaceship2.png");
+    }
+    this->playerTextures.push_back(tmp);
+    this->isUnlocked.push_back(true);
+
+    if (!tmp.loadFromFile("assets/images/spaceship3.png"))
+    {
+        throw std::runtime_error("Error::Failed to load spaceship3.png");
+    }
+    this->playerTextures.push_back(tmp);
+    this->isUnlocked.push_back(true);
+
+    if (!tmp.loadFromFile("assets/images/spaceship4.png"))
+    {
+        throw std::runtime_error("Error::Failed to load spaceship4.png");
+    }
+    this->playerTextures.push_back(tmp);
+    this->isUnlocked.push_back(false);
+
+    if (!tmp.loadFromFile("assets/images/spaceship5.png"))
+    {
+        throw std::runtime_error("Error::Failed to load spaceship5.png");
+    }
+    this->playerTextures.push_back(tmp);
+    this->isUnlocked.push_back(false);
 }
 
 void State::pausedState()

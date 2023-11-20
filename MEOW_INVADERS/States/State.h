@@ -21,7 +21,7 @@
 class State
 {
 public:
-    State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states);
+    State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states, int &choice);
     virtual ~State();
 
     // Functions
@@ -29,27 +29,30 @@ public:
     void updateMousePosition();
     void pausedState();
     void unPausedState();
+    void endState();
 
     // Pure Functions
-    virtual void endState();
     virtual void movingByKeyBoard() = 0;
     virtual void update() = 0;
     virtual void draw(sf::RenderTarget *target = nullptr) = 0;
-    virtual void handleEvents(const sf::Event& event) = 0;
+    virtual void handleEvents(const sf::Event &event) = 0;
     virtual void initKeybinds() = 0;
 
     // Initialization
-    virtual void initFonts();
+    void initFonts();
+    void initPlayerTextures();
 
     bool paused;
 
 protected:
-    sf::RenderWindow* mWindow;
-    std::stack<State *>* states;
+    sf::RenderWindow *mWindow;
+    std::stack<State *> *states;
     std::map<std::string, int> *supportedKeys;
     std::map<std::string, int> keybinds;
 
     sf::Font font;
+    sf::Font titleFont;
+    sf::Font textBelowFont;
 
     bool quit;
 
@@ -59,7 +62,16 @@ protected:
     sf::Vector2f mousePosView;
 
     // Resources
-    std::map<std::string, sf::Texture> textures;
+    std::vector<sf::Sprite> playerSprites;
+    std::vector<sf::Texture> playerTextures;
+    std::vector<bool> isUnlocked;
+
+    Player *player;
+    EnemyManager *enemyManager;
+    int chosen;
+
+    std::chrono::steady_clock::time_point lastButtonClickTime;
+    const std::chrono::milliseconds clickCooldown{500};
 };
 
 #endif

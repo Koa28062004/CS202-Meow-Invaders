@@ -91,8 +91,8 @@ void MenuState::initButtons()
                                        sf::Color(0, 0, 0, 0));
 }
 
-MenuState::MenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
-    : State(window, supportedKeys, states)
+MenuState::MenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states, int &choice)
+    : State(window, supportedKeys, states, choice)
 {
     initVariables();
     initBackground();
@@ -117,6 +117,7 @@ void MenuState::update()
 {
     updateMousePosition();
     movingByKeyBoard();
+    handleButtonPressed();
 
     // Update all the buttons and handle their functions
     for (auto &it : buttons)
@@ -129,10 +130,9 @@ void MenuState::handleEvents(const sf::Event &event)
 {
     switch (event.type)
     {
-    case sf::Event::MouseButtonPressed:
+    case sf::Event::MouseButtonReleased:
         if (event.mouseButton.button == sf::Mouse::Left)
         {
-            handleButtonPressed();
         }
         break;
     }
@@ -143,7 +143,8 @@ void MenuState::handleButtonPressed()
     // New game
     if (buttons["GAME_STATE"]->isPressed())
     {
-        states->push(new GameState(mWindow, supportedKeys, states));
+        int choice = 0;
+        states->push(new PreparedState(mWindow, supportedKeys, states, choice));
     }
 
     // Exit game

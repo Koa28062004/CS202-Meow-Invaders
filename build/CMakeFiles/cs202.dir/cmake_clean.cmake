@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/cs202"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/cs202.pdb"
-  "CMakeFiles/cs202.dir/MEOW_INVADERS/Animations/Animation.cpp.o"
-  "CMakeFiles/cs202.dir/MEOW_INVADERS/Animations/Animation.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.o"
@@ -25,6 +23,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/States/PauseState.cpp.o"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/States/PauseState.cpp.o.d"
+  "CMakeFiles/cs202.dir/MEOW_INVADERS/States/PreparedState.cpp.o"
+  "CMakeFiles/cs202.dir/MEOW_INVADERS/States/PreparedState.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/States/State.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o"

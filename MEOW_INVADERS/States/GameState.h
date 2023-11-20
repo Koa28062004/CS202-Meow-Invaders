@@ -12,7 +12,7 @@
 class GameState : public State
 {
 public:
-    GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states);
+    GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states, int &choice);
     virtual ~GameState();
 
     // Functions
@@ -49,9 +49,6 @@ private:
     void handleGameOver();
     void updateLevelUp();
 
-    Player *player;
-    EnemyManager *enemyManager;
-
     PauseState *pauseState;
     sf::RenderWindow *mWindow;
 
@@ -73,8 +70,6 @@ private:
     bool pauseKeyPressed;
 
     int level;
-    sf::Font gameOverFont;
-    sf::Font textBelowFont;
 
     std::mt19937_64 random_engine;
 
@@ -87,9 +82,6 @@ private:
     bool isReset;
     bool isEnterClicked;
     bool checkClock;
-
-    std::chrono::steady_clock::time_point lastButtonClickTime;
-    const std::chrono::milliseconds clickCooldown{500};
 };
 
 #endif

@@ -19,36 +19,11 @@ void GameState::initKeybinds()
     ifs.close();
 }
 
-// Init Textures
-void GameState::initTextures()
-{
-    // Need to fix
-    sf::Texture tmp;
-    if (!tmp.loadFromFile("assets/images/spaceship1.png"))
-    {
-        throw std::runtime_error("Error::Failed to load spaceship1.png");
-    }
-    this->textures["PLAYER_IDLE"] = tmp;
-
-    // if (!tmp.loadFromFile("assets/images/spaceship2.png"))
-    // {
-    //     throw std::runtime_error("Error::Failed to load spaceship2.png");
-    // }
-    // this->textures.push_back(tmp);
-
-    // if (!tmp.loadFromFile("assets/images/spaceship3.png"))
-    // {
-    //     throw std::runtime_error("Error::Failed to load spaceship3.png");
-    // }
-    // this->textures.push_back(tmp);
-}
-
 // Init Player
 void GameState::initPlayer()
 {
-    this->player = new Player((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2, &this->textures["PLAYER_IDLE"]);
+    this->player = new Player((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2, &this->playerTextures[chosen]);
     this->player->setEntityScale(0.3, 0.3);
-    //  this->players.push_back(player);
 }
 
 void GameState::initEnemyManager()
@@ -114,17 +89,6 @@ void GameState::initPausedButton()
 
 void GameState::initFont()
 {
-    // Title Game Over font
-    if (!gameOverFont.loadFromFile("assets/fonts/RubikGlitch-Regular.ttf"))
-    {
-        throw std::runtime_error("Error::GameState can't not load font RubikGlitch");
-    }
-
-    // Text below game over font
-    if (!textBelowFont.loadFromFile("assets/fonts/SigmarOne-Regular.ttf"))
-    {
-        throw std::runtime_error("Error::GameState can't not load font SigmarOne-Regular.ttf");
-    }
 }
 
 void GameState::initGameOverButtons()
@@ -147,8 +111,8 @@ void GameState::initGameOverButtons()
                                          sf::Color(0, 0, 0, 0));
 }
 
-GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
-    : State(window, supportedKeys, states),
+GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states, int &choice)
+    : State(window, supportedKeys, states, choice),
       mWindow(window),
       random_engine(std::chrono::system_clock::now().time_since_epoch().count()),
       enemy_bullets(nullptr),
@@ -156,7 +120,6 @@ GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *suppo
 {
     initVariables();
     initKeybinds();
-    initTextures();
     initBackground();
     initPlayer();
     initEnemyManager();
@@ -216,7 +179,8 @@ void GameState::handleEvents(const sf::Event &event)
         }
         break;
     }
-    if (paused) pauseState->handleEvents(event);
+    if (paused)
+        pauseState->handleEvents(event);
 }
 
 void GameState::handleHomeButton()
@@ -226,10 +190,9 @@ void GameState::handleHomeButton()
 
     if (pauseState->getHome())
     {
-        lastButtonClickTime = now;
-
         if (elapsedTime > clickCooldown)
         {
+            lastButtonClickTime = now;
             this->endState();
         }
     }
@@ -373,21 +336,21 @@ void GameState::drawPlayingGame(sf::RenderTarget *target)
     {
         // Set text
         sf::Text textTitle;
-        textTitle.setFont(gameOverFont);
+        textTitle.setFont(titleFont);
         textTitle.setString("YOU ARE DEAD !!!");
         textTitle.setCharacterSize(120);
         textTitle.setFillColor(sf::Color(241, 26, 123, 255));
         textTitle.setPosition(mWindow->getSize().x / 2.0f - textTitle.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textTitle.getGlobalBounds().height / 2.0f - 310.f);
 
         sf::Text textBelow;
-        textBelow.setFont(gameOverFont);
+        textBelow.setFont(titleFont);
         textBelow.setString("[IDIOT]");
         textBelow.setCharacterSize(50);
         textBelow.setFillColor(sf::Color(248, 141, 189, 255));
         textBelow.setPosition(mWindow->getSize().x / 2.0f - textBelow.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textBelow.getGlobalBounds().height / 2.0f - 200.f);
 
         sf::Text textTryAgain;
-        textTryAgain.setFont(gameOverFont);
+        textTryAgain.setFont(titleFont);
         textTryAgain.setString("TRY AGAIN ?");
         textTryAgain.setCharacterSize(50);
         textTryAgain.setFillColor(sf::Color::White);
@@ -407,21 +370,21 @@ void GameState::drawPlayingGame(sf::RenderTarget *target)
 void GameState::drawLevelUp(sf::RenderTarget *target)
 {
     sf::Text textTitle;
-    textTitle.setFont(gameOverFont);
+    textTitle.setFont(titleFont);
     textTitle.setString("VICTORY");
     textTitle.setCharacterSize(140);
     textTitle.setFillColor(sf::Color(255, 251, 115, 255));
     textTitle.setPosition(mWindow->getSize().x / 2.0f - textTitle.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textTitle.getGlobalBounds().height / 2.0f - 250.f);
 
     sf::Text textBelow;
-    textBelow.setFont(gameOverFont);
+    textBelow.setFont(titleFont);
     textBelow.setString("[ORZ]");
     textBelow.setCharacterSize(50);
     textBelow.setFillColor(sf::Color(240, 184, 110, 255));
     textBelow.setPosition(mWindow->getSize().x / 2.0f - textBelow.getGlobalBounds().width / 2.0f, mWindow->getSize().y / 2.0f - textBelow.getGlobalBounds().height / 2.0f - 110.f);
 
     sf::Text textTryAgain;
-    textTryAgain.setFont(gameOverFont);
+    textTryAgain.setFont(titleFont);
     textTryAgain.setString("Press ENTER to continue...");
     textTryAgain.setCharacterSize(50);
     textTryAgain.setFillColor(sf::Color::White);
@@ -437,7 +400,7 @@ void GameState::drawLevelScreen(sf::RenderTarget *target)
 {
     std::string tmp = "Level " + std::to_string(level + 1);
     sf::Text text;
-    text.setFont(gameOverFont);
+    text.setFont(titleFont);
     text.setCharacterSize(80);
     text.setFillColor(sf::Color::White);
     text.setString(tmp);

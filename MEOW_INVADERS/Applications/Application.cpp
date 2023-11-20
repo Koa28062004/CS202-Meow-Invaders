@@ -59,7 +59,8 @@ void Application::initKeys()
 // Init States
 void Application::initStates()
 {
-    states.push(new MenuState(mWindow, &supportedKeys, &states));
+    int choice = 0;
+    states.push(new MenuState(mWindow, &supportedKeys, &states, choice));
 }
 
 Application::Application()

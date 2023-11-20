@@ -5,7 +5,6 @@ cmake_policy(SET CMP0009 NEW)
 # SOURCES at CMakeLists.txt:7 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/*.cpp")
 set(OLD_GLOB
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Animations/Animation.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Applications/Application.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Bullet.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Enemy.cpp"
@@ -17,6 +16,7 @@ set(OLD_GLOB
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/GameState.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/MenuState.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PauseState.cpp"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PreparedState.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/State.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/main.cpp"
   )
