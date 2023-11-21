@@ -18,6 +18,7 @@
 
 #include "GUI/Button.h"
 #include "State.h"
+#include "SettingState.h"
 
 class PauseState
 {
@@ -31,6 +32,8 @@ public:
     void handleEvents(const sf::Event &event);
     const bool getHome();
     void handlePlayButton();
+
+    bool isClickedSettingButton;
 
 private:
     // Initialization

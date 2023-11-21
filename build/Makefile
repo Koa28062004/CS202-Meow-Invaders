@@ -322,6 +322,30 @@ MEOW_INVADERS/GUI/Button.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/Button.cpp.s
 .PHONY : MEOW_INVADERS/GUI/Button.cpp.s
 
+MEOW_INVADERS/GUI/TextBox.o: MEOW_INVADERS/GUI/TextBox.cpp.o
+.PHONY : MEOW_INVADERS/GUI/TextBox.o
+
+# target to build an object file
+MEOW_INVADERS/GUI/TextBox.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/TextBox.cpp.o
+.PHONY : MEOW_INVADERS/GUI/TextBox.cpp.o
+
+MEOW_INVADERS/GUI/TextBox.i: MEOW_INVADERS/GUI/TextBox.cpp.i
+.PHONY : MEOW_INVADERS/GUI/TextBox.i
+
+# target to preprocess a source file
+MEOW_INVADERS/GUI/TextBox.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/TextBox.cpp.i
+.PHONY : MEOW_INVADERS/GUI/TextBox.cpp.i
+
+MEOW_INVADERS/GUI/TextBox.s: MEOW_INVADERS/GUI/TextBox.cpp.s
+.PHONY : MEOW_INVADERS/GUI/TextBox.s
+
+# target to generate assembly for a file
+MEOW_INVADERS/GUI/TextBox.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/TextBox.cpp.s
+.PHONY : MEOW_INVADERS/GUI/TextBox.cpp.s
+
 MEOW_INVADERS/States/GameState.o: MEOW_INVADERS/States/GameState.cpp.o
 .PHONY : MEOW_INVADERS/States/GameState.o
 
@@ -418,6 +442,30 @@ MEOW_INVADERS/States/PreparedState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/PreparedState.cpp.s
 .PHONY : MEOW_INVADERS/States/PreparedState.cpp.s
 
+MEOW_INVADERS/States/SettingState.o: MEOW_INVADERS/States/SettingState.cpp.o
+.PHONY : MEOW_INVADERS/States/SettingState.o
+
+# target to build an object file
+MEOW_INVADERS/States/SettingState.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/SettingState.cpp.o
+.PHONY : MEOW_INVADERS/States/SettingState.cpp.o
+
+MEOW_INVADERS/States/SettingState.i: MEOW_INVADERS/States/SettingState.cpp.i
+.PHONY : MEOW_INVADERS/States/SettingState.i
+
+# target to preprocess a source file
+MEOW_INVADERS/States/SettingState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/SettingState.cpp.i
+.PHONY : MEOW_INVADERS/States/SettingState.cpp.i
+
+MEOW_INVADERS/States/SettingState.s: MEOW_INVADERS/States/SettingState.cpp.s
+.PHONY : MEOW_INVADERS/States/SettingState.s
+
+# target to generate assembly for a file
+MEOW_INVADERS/States/SettingState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/States/SettingState.cpp.s
+.PHONY : MEOW_INVADERS/States/SettingState.cpp.s
+
 MEOW_INVADERS/States/State.o: MEOW_INVADERS/States/State.cpp.o
 .PHONY : MEOW_INVADERS/States/State.o
 
@@ -499,6 +547,9 @@ help:
 	@echo "... MEOW_INVADERS/GUI/Button.o"
 	@echo "... MEOW_INVADERS/GUI/Button.i"
 	@echo "... MEOW_INVADERS/GUI/Button.s"
+	@echo "... MEOW_INVADERS/GUI/TextBox.o"
+	@echo "... MEOW_INVADERS/GUI/TextBox.i"
+	@echo "... MEOW_INVADERS/GUI/TextBox.s"
 	@echo "... MEOW_INVADERS/States/GameState.o"
 	@echo "... MEOW_INVADERS/States/GameState.i"
 	@echo "... MEOW_INVADERS/States/GameState.s"
@@ -511,6 +562,9 @@ help:
 	@echo "... MEOW_INVADERS/States/PreparedState.o"
 	@echo "... MEOW_INVADERS/States/PreparedState.i"
 	@echo "... MEOW_INVADERS/States/PreparedState.s"
+	@echo "... MEOW_INVADERS/States/SettingState.o"
+	@echo "... MEOW_INVADERS/States/SettingState.i"
+	@echo "... MEOW_INVADERS/States/SettingState.s"
 	@echo "... MEOW_INVADERS/States/State.o"
 	@echo "... MEOW_INVADERS/States/State.i"
 	@echo "... MEOW_INVADERS/States/State.s"

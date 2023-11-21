@@ -906,4 +906,6 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o: \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/EnemyManager.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Enemy.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PauseState.h \
-  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GUI/Button.h
+  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GUI/Button.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/SettingState.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GUI/TextBox.h

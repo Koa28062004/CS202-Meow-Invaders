@@ -70,7 +70,7 @@ protected:
     EnemyManager *enemyManager;
     int chosen;
 
-    std::chrono::steady_clock::time_point lastButtonClickTime;
+    std::chrono::steady_clock::time_point lastButtonClickTime = std::chrono::steady_clock::now();
     const std::chrono::milliseconds clickCooldown{500};
 };
 

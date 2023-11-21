@@ -115,7 +115,7 @@ void Application::update()
     {
         states.top()->update();
 
-        if (states.top()->getQuit())
+        while (states.top()->getQuit())
         {
             delete states.top();
             states.pop();

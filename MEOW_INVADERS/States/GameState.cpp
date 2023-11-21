@@ -127,6 +127,7 @@ GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *suppo
     initPausedButton();
     initFont();
     initGameOverButtons();
+    this->choice = choice;
 }
 
 GameState::~GameState()
@@ -174,8 +175,8 @@ void GameState::handleEvents(const sf::Event &event)
     case sf::Event::MouseButtonReleased:
         if (event.mouseButton.button == sf::Mouse::Left)
         {
-            handleHomeButton();
-            handleGameOver();
+            // handleHomeButton();
+            // handleGameOver();
         }
         break;
     }
@@ -198,12 +199,29 @@ void GameState::handleHomeButton()
     }
 }
 
+void GameState::handleSettingButton()
+{
+    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+    std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
+
+    if (elapsedTime > clickCooldown)
+    {
+        if (pauseState->isClickedSettingButton)
+        {
+            pauseState->isClickedSettingButton = false;
+            lastButtonClickTime = now;
+            states->push(new SettingState(mWindow, supportedKeys, states, choice));
+        }
+    }
+}
+
 void GameState::handleGameOver()
 {
+    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+    std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
+
     if (player->get_dead())
     {
-        std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-        std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
         if (elapsedTime > clickCooldown)
         {
             lastButtonClickTime = now;
@@ -279,6 +297,9 @@ void GameState::update()
 {
     updateMousePosition();
     updatePausedInput();
+    handleHomeButton();
+    handleGameOver();
+    handleSettingButton();
 
     for (auto &it : buttons)
     {

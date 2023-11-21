@@ -8,6 +8,7 @@ void PauseState::initVariables()
 
     checkPlayButton = false;
     isClickedHomeButton = false;
+    isClickedSettingButton = false;
 }
 
 void PauseState::initTitle()
@@ -169,8 +170,10 @@ void PauseState::updateSettingButton(sf::Vector2f &mousePosView)
         // Active
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-            // paused = false;
+            isClickedSettingButton = true;
         }
+        else
+            isClickedSettingButton = false;
 
         checkSettingButton = true;
     }

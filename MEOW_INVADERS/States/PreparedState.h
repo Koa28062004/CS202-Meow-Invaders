@@ -40,6 +40,7 @@ private:
 
     sf::RenderWindow *mWindow;
 
+    // Background
     sf::RectangleShape background;
     sf::Texture backgroundTexture;
 

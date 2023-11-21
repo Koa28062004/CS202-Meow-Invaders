@@ -140,19 +140,31 @@ void MenuState::handleEvents(const sf::Event &event)
 
 void MenuState::handleButtonPressed()
 {
+    int choice = 0;
+    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+    std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
+
     // New game
     if (buttons["GAME_STATE"]->isPressed())
     {
-        int choice = 0;
         states->push(new PreparedState(mWindow, supportedKeys, states, choice));
     }
 
-    // Exit game
-    if (buttons["EXIT_STATE"]->isPressed())
+    // Setting
+    if (buttons["SETTINGS_STATE"]->isPressed())
     {
-        this->endState();
+        states->push(new SettingState(mWindow, supportedKeys, states, choice));
     }
-    // Add other button press handling logic as needed
+
+    // Exit game
+    if (elapsedTime > clickCooldown)
+    {
+        lastButtonClickTime = now;
+        if (buttons["EXIT_STATE"]->isPressed())
+        {
+            this->endState();
+        }
+    }
 }
 
 void MenuState::draw(sf::RenderTarget *target)

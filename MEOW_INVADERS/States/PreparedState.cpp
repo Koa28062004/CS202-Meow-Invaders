@@ -6,9 +6,9 @@ void PreparedState::initBackground()
         static_cast<float>(mWindow->getSize().x),
         static_cast<float>(mWindow->getSize().y)));
 
-    if (!backgroundTexture.loadFromFile("assets/images/InGameBG.png"))
+    if (!backgroundTexture.loadFromFile("assets/images/PreparedStateBG.png"))
     {
-        throw std::runtime_error("Error::PreparedState::Failed to load InGameBG.png");
+        throw std::runtime_error("Error::PreparedState::Failed to load PreparedStateBG.png");
     }
 
     background.setTexture(&backgroundTexture);
@@ -41,15 +41,15 @@ void PreparedState::initButtons()
     tmp.setString("Play");
     tmp.setCharacterSize(40);
     buttons["PLAY_GAME"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 650, 0, 0,
-                                      &font, "Play",
+                                      &titleFont, "Play",
                                       sf::Color(0, 0, 0, 0),
                                       sf::Color(0, 0, 0, 0),
                                       sf::Color(0, 0, 0, 0));
 
-    tmp.setString("Back");
+    tmp.setString("Quit");
     tmp.setCharacterSize(40);
     buttons["BACK_GAME"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 750, 0, 0,
-                                      &font, "Back",
+                                      &titleFont, "Quit",
                                       sf::Color(0, 0, 0, 0),
                                       sf::Color(0, 0, 0, 0),
                                       sf::Color(0, 0, 0, 0));

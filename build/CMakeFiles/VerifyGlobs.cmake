@@ -13,10 +13,12 @@ set(OLD_GLOB
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Player.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Power.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GUI/Button.cpp"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GUI/TextBox.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/GameState.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/MenuState.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PauseState.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PreparedState.cpp"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/SettingState.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/State.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/main.cpp"
   )

@@ -30,6 +30,7 @@ public:
 
     void handlePlayButton();
     void handleHomeButton();
+    void handleSettingButton();
 
 private:
     // Initialization
@@ -82,6 +83,7 @@ private:
     bool isReset;
     bool isEnterClicked;
     bool checkClock;
+    int choice;
 };
 
 #endif
