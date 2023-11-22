@@ -57,7 +57,7 @@ void PreparedState::initButtons()
 
 PreparedState::PreparedState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states, int &choice)
     : State(window, supportedKeys, states, choice),
-      mWindow(window), nextButtonClicked(false)
+      mWindow(window)
 {
     initBackground();
     initNextButtons();
@@ -77,64 +77,66 @@ PreparedState::~PreparedState()
 
 void PreparedState::handleEvents(const sf::Event &event)
 {
+    switch (event.type)
+    {
+    case sf::Event::MouseButtonReleased:
+        if (event.mouseButton.button == sf::Mouse::Left)
+        {
+            // updateNextButtons();
+        }
+        break;
+
+    default:
+        break;
+    }
 }
 
 void PreparedState::updateNextButtons()
 {
-    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-    std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
-    if (elapsedTime > clickCooldown)
-    {
-        lastButtonClickTime = now;
-        nextButtonClicked = false;
-    }
-
     if (nextButtonLeftSprite.getGlobalBounds().contains(mousePosView))
     {
         // Active
-        if (!nextButtonClicked && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->getKeytime())
         {
             if (chosen > 0)
                 --chosen;
             else
                 chosen = 4;
-            nextButtonClicked = true;
         }
     }
 
     if (nextButtonRightSprite.getGlobalBounds().contains(mousePosView))
     {
         // Active
-        if (!nextButtonClicked && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->getKeytime())
         {
             if (chosen < 4)
                 ++chosen;
             else
                 chosen = 0;
-            nextButtonClicked = true;
         }
     }
 }
 
 void PreparedState::handleButtons()
 {
-    if (buttons["PLAY_GAME"]->isPressed())
+    if (buttons["PLAY_GAME"]->isPressed() && this->getKeytime())
     {
         this->endState();
         states->push(new GameState(mWindow, supportedKeys, states, chosen));
     }
 
-    if (buttons["BACK_GAME"]->isPressed())
+    if (buttons["BACK_GAME"]->isPressed() && this->getKeytime())
     {
         this->endState();
     }
 }
 
-void PreparedState::update()
+void PreparedState::update(const float &dt)
 {
     updateMousePosition();
     updateNextButtons();
-
+    updateKeytime(dt);
     handleButtons();
 
     // Update all the buttons and handle their functions

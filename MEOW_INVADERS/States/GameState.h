@@ -17,7 +17,7 @@ public:
 
     // Functions
     void updatePausedInput();
-    void update();
+    void update(const float &dt);
     void draw(sf::RenderTarget *target = nullptr);
     void handleEvents(const sf::Event &event);
     void movingByKeyBoard();

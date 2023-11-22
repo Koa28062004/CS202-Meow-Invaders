@@ -16,7 +16,7 @@ public:
     void initKeybinds() {}
 
     void handleEvents(const sf::Event &event);
-    void update();
+    void update(const float &dt);
     void draw(sf::RenderTarget *target);
 
 private:
@@ -54,8 +54,6 @@ private:
 
     sf::RectangleShape backgroundOver;
     std::map<std::string, Button*> buttons;
-
-    bool nextButtonClicked;
 };
 
 #endif

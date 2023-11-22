@@ -18,8 +18,11 @@ public:
     // Functions
     void run();
     void handleEvents();
-    void update();
     void draw();
+
+    //Update
+	void updateDt();
+    void update();
 
 private:
     // Variables
@@ -31,6 +34,9 @@ private:
     std::map<std::string, int> supportedKeys;
 
     std::stack<State *> states;
+
+    sf::Clock dtClock;
+	float dt;
 };
 
 #endif

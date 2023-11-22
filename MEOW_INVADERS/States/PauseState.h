@@ -35,6 +35,9 @@ public:
 
     bool isClickedSettingButton;
 
+    const bool getKeytime();
+    void updateKeytime(const float &dt);
+
 private:
     // Initialization
     void initVariables();
@@ -88,6 +91,8 @@ private:
     sf::Texture homeButtonHoverTexture;
 
     bool isClickedHomeButton;
+    float keytime;
+    float keytimeMax;
 };
 
 #endif

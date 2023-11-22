@@ -87,6 +87,7 @@ void Application::run()
     while (mWindow->isOpen())
     {
         handleEvents();
+        updateDt();
         update();
         draw();
     }
@@ -113,16 +114,22 @@ void Application::update()
 {
     if (!states.empty())
     {
-        states.top()->update();
+        states.top()->update(this->dt);
 
-        while (states.top()->getQuit())
+        while (!states.empty() && states.top()->getQuit())
         {
             delete states.top();
             states.pop();
-            if (states.empty())
-                mWindow->close();
         }
+        if (states.empty())
+            mWindow->close();
     }
+}
+
+void Application::updateDt()
+{
+    /*Updates the dt variable with the time it takes to update and render one frame.*/
+    this->dt = this->dtClock.restart().asSeconds();
 }
 
 void Application::draw()

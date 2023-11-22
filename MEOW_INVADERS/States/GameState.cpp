@@ -186,60 +186,38 @@ void GameState::handleEvents(const sf::Event &event)
 
 void GameState::handleHomeButton()
 {
-    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-    std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
-
-    if (pauseState->getHome())
+    if (pauseState->getHome() && this->getKeytime())
     {
-        if (elapsedTime > clickCooldown)
-        {
-            lastButtonClickTime = now;
-            this->endState();
-        }
+        this->endState();
     }
 }
 
 void GameState::handleSettingButton()
 {
-    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-    std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
-
-    if (elapsedTime > clickCooldown)
+    if (pauseState->isClickedSettingButton && this->getKeytime())
     {
-        if (pauseState->isClickedSettingButton)
-        {
-            pauseState->isClickedSettingButton = false;
-            lastButtonClickTime = now;
-            states->push(new SettingState(mWindow, supportedKeys, states, choice));
-        }
+        pauseState->isClickedSettingButton = false;
+        states->push(new SettingState(mWindow, supportedKeys, states, choice));
     }
 }
 
 void GameState::handleGameOver()
 {
-    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-    std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
-
     if (player->get_dead())
     {
-        if (elapsedTime > clickCooldown)
+        if (buttons["YES_GAME_OVER"]->isPressed() && this->getKeytime())
         {
-            lastButtonClickTime = now;
-
-            if (buttons["YES_GAME_OVER"]->isPressed())
-            {
-                isEnterClicked = true;
-                checkClock = false;
-                --level;
-                enemy_bullets->clear();
-                enemies->clear();
-                player->reset();
-                player->setEntityPosition((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2);
-            }
-            else if (buttons["NO_GAME_OVER"]->isPressed())
-            {
-                this->endState();
-            }
+            isEnterClicked = true;
+            checkClock = false;
+            --level;
+            enemy_bullets->clear();
+            enemies->clear();
+            player->reset();
+            player->setEntityPosition((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2);
+        }
+        else if (buttons["NO_GAME_OVER"]->isPressed() && this->getKeytime())
+        {
+            this->endState();
         }
     }
 }
@@ -293,13 +271,14 @@ void GameState::updateLevelUp()
     }
 }
 
-void GameState::update()
+void GameState::update(const float &dt)
 {
     updateMousePosition();
     updatePausedInput();
     handleHomeButton();
     handleGameOver();
     handleSettingButton();
+    updateKeytime(dt);
 
     for (auto &it : buttons)
     {
@@ -325,6 +304,7 @@ void GameState::update()
     else
     {
         pauseState->update(paused, mousePosView);
+        pauseState->updateKeytime(dt);
     }
 }
 

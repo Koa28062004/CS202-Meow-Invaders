@@ -9,6 +9,9 @@ void PauseState::initVariables()
     checkPlayButton = false;
     isClickedHomeButton = false;
     isClickedSettingButton = false;
+
+    this->keytime = 0.f;
+    this->keytimeMax = 15.f;
 }
 
 void PauseState::initTitle()
@@ -150,7 +153,7 @@ void PauseState::updatePlayButton(bool &paused, sf::Vector2f &mousePosView)
     {
         // Active
         isClickedHomeButton = false;
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->getKeytime())
         {
             paused = false;
         }
@@ -168,7 +171,7 @@ void PauseState::updateSettingButton(sf::Vector2f &mousePosView)
     if (settingButtonIdle.getGlobalBounds().contains(mousePosView))
     {
         // Active
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->getKeytime())
         {
             isClickedSettingButton = true;
         }
@@ -186,7 +189,7 @@ void PauseState::updateSettingButton(sf::Vector2f &mousePosView)
 void PauseState::updateHomeButton(sf::Vector2f &mousePosView)
 {
     // Check if the mouse is within the bounds of the playButton
-    if (homeButtonIdle.getGlobalBounds().contains(mousePosView))
+    if (homeButtonIdle.getGlobalBounds().contains(mousePosView) && this->getKeytime())
     {
         // Active
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
@@ -209,6 +212,23 @@ void PauseState::updateHomeButton(sf::Vector2f &mousePosView)
 const bool PauseState::getHome()
 {
     return isClickedHomeButton;
+}
+
+const bool PauseState::getKeytime()
+{
+    if (this->keytime >= this->keytimeMax)
+    {
+        this->keytime = 0.f;
+        return true;
+    }
+
+    return false;
+}
+
+void PauseState::updateKeytime(const float &dt)
+{
+    if (this->keytime < this->keytimeMax)
+        this->keytime += 100.f * dt;
 }
 
 // Functions

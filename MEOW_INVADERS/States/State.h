@@ -33,7 +33,7 @@ public:
 
     // Pure Functions
     virtual void movingByKeyBoard() = 0;
-    virtual void update() = 0;
+    virtual void update(const float &dt) = 0;
     virtual void draw(sf::RenderTarget *target = nullptr) = 0;
     virtual void handleEvents(const sf::Event &event) = 0;
     virtual void initKeybinds() = 0;
@@ -41,6 +41,9 @@ public:
     // Initialization
     void initFonts();
     void initPlayerTextures();
+
+    const bool getKeytime();
+    void updateKeytime(const float& dt);
 
     bool paused;
 
@@ -70,8 +73,8 @@ protected:
     EnemyManager *enemyManager;
     int chosen;
 
-    std::chrono::steady_clock::time_point lastButtonClickTime = std::chrono::steady_clock::now();
-    const std::chrono::milliseconds clickCooldown{500};
+    float keytime;
+	float keytimeMax;
 };
 
 #endif

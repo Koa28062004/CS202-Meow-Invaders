@@ -89,23 +89,17 @@ void SettingState::handleEvents(const sf::Event &event)
 
 void SettingState::handleButtons()
 {
-    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-    std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
-
-    if (buttons["BACK_GAME"]->isPressed())
+    if (buttons["BACK_GAME"]->isPressed() && this->getKeytime())
     {
-        if (elapsedTime > clickCooldown)
-        {
-            lastButtonClickTime = now;
-            this->endState();
-        }
+        this->endState();
     }
 }
 
-void SettingState::update()
+void SettingState::update(const float &dt)
 {
     updateMousePosition();
     handleButtons();
+    updateKeytime(dt);
 
     // Update all the buttons and handle their functions
     for (auto &it : buttons)

@@ -12,7 +12,7 @@ public:
     ~SettingState();
 
     void movingByKeyBoard() {}
-    void update();
+    void update(const float &dt);
     void draw(sf::RenderTarget *target);
     void handleEvents(const sf::Event &event);
     void initKeybinds() {}

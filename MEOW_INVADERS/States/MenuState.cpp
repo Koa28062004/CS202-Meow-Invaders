@@ -113,11 +113,12 @@ void MenuState::movingByKeyBoard()
 {
 }
 
-void MenuState::update()
+void MenuState::update(const float &dt)
 {
     updateMousePosition();
     movingByKeyBoard();
     handleButtonPressed();
+    updateKeytime(dt);
 
     // Update all the buttons and handle their functions
     for (auto &it : buttons)
@@ -141,29 +142,24 @@ void MenuState::handleEvents(const sf::Event &event)
 void MenuState::handleButtonPressed()
 {
     int choice = 0;
-    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-    std::chrono::milliseconds elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastButtonClickTime);
 
     // New game
-    if (buttons["GAME_STATE"]->isPressed())
+    if (buttons["GAME_STATE"]->isPressed() && this->getKeytime())
     {
         states->push(new PreparedState(mWindow, supportedKeys, states, choice));
     }
 
     // Setting
-    if (buttons["SETTINGS_STATE"]->isPressed())
+    if (buttons["SETTINGS_STATE"]->isPressed() && this->getKeytime())
     {
         states->push(new SettingState(mWindow, supportedKeys, states, choice));
     }
 
     // Exit game
-    if (elapsedTime > clickCooldown)
+
+    if (buttons["EXIT_STATE"]->isPressed() && this->getKeytime())
     {
-        lastButtonClickTime = now;
-        if (buttons["EXIT_STATE"]->isPressed())
-        {
-            this->endState();
-        }
+        this->endState();
     }
 }
 

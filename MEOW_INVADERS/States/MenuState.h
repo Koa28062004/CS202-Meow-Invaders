@@ -13,7 +13,7 @@ public:
     virtual ~MenuState();
 
     // Functions
-    void update();
+    void update(const float &dt);
     void draw(sf::RenderTarget *target = nullptr);
     void handleEvents(const sf::Event &event);
     void drawButtons(sf::RenderTarget *target = nullptr);

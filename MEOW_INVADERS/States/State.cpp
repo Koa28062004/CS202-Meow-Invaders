@@ -26,6 +26,8 @@ State::State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys
 {
     this->supportedKeys = supportedKeys;
     this->states = states;
+    this->keytime = 0.f;
+    this->keytimeMax = 15.f;
 
     initFonts();
     initPlayerTextures();
@@ -93,6 +95,23 @@ void State::endState()
 const bool State::getQuit() const
 {
     return quit;
+}
+
+const bool State::getKeytime()
+{
+    if (this->keytime >= this->keytimeMax)
+    {
+        this->keytime = 0.f;
+        return true;
+    }
+
+    return false;
+}
+
+void State::updateKeytime(const float &dt)
+{
+    if (this->keytime < this->keytimeMax)
+        this->keytime += 100.f * dt;
 }
 
 void State::updateMousePosition()
