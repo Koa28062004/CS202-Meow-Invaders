@@ -18,6 +18,13 @@ void SettingState::initBackground()
     backgroundOver.setFillColor(sf::Color(20, 20, 20, 100));
 }
 
+void SettingState::setUpTextBox(std::string name)
+{
+    textboxs[name]->setFont(roboto);
+    textboxs[name]->setLimit(true, 10);
+    textboxs[name]->setText(keys[name]);
+}
+
 void SettingState::initTextBox()
 {
     if (!roboto.loadFromFile("assets/fonts/Roboto-Bold.ttf"))
@@ -25,11 +32,38 @@ void SettingState::initTextBox()
         throw std::runtime_error("Error::SettingState::Failed to load Roboto");
     }
 
-    // textboxs["MOVING_LEFT"] = new TextBox(40, sf::Color::White, false);
+    textboxs["FIRE"] = new TextBox(30, sf::Color::White, false);
+    textboxs["MOVE_UP"] = new TextBox(30, sf::Color::White, false);
+    textboxs["MOVE_DOWN"] = new TextBox(30, sf::Color::White, false);
+    textboxs["MOVE_LEFT"] = new TextBox(30, sf::Color::White, false);
+    textboxs["MOVE_RIGHT"] = new TextBox(30, sf::Color::White, false);
+    textboxs["MOVE_BY"] = new TextBox(30, sf::Color::White, false);
 
-    // textBox1->setFont(roboto);
-    // textBox1->setPosition({100, 100});
-    // textBox1->setLimit(true, 10);
+    setUpTextBox("FIRE");
+    setUpTextBox("MOVE_UP");
+    setUpTextBox("MOVE_DOWN");
+    setUpTextBox("MOVE_LEFT");
+    setUpTextBox("MOVE_RIGHT");
+    setUpTextBox("MOVE_BY");
+}
+
+void SettingState::initRectangle(std::string name)
+{
+    rectangles[name] = new sf::RectangleShape();
+    rectangles[name]->setOutlineColor(sf::Color::White);
+    rectangles[name]->setOutlineThickness(2.f);
+    rectangles[name]->setFillColor(sf::Color(255, 0, 0, 0));
+    rectangles[name]->setSize(sf::Vector2f(200.f, 40.f));
+}
+
+void SettingState::initRecs()
+{
+    initRectangle("FIRE");
+    initRectangle("MOVE_UP");
+    initRectangle("MOVE_DOWN");
+    initRectangle("MOVE_LEFT");
+    initRectangle("MOVE_RIGHT");
+    initRectangle("MOVE_BY");
 }
 
 void SettingState::initButtons()
@@ -48,9 +82,12 @@ SettingState::SettingState(sf::RenderWindow *window, std::map<std::string, int> 
     : State(window, supportedKeys, states, choice),
       mWindow(window)
 {
+    updateKeys();
+
     initBackground();
     initTextBox();
     initButtons();
+    initRecs();
 }
 
 SettingState::~SettingState()
@@ -63,40 +100,113 @@ SettingState::~SettingState()
         delete it->second;
     }
 
-    // it = textboxs.begin();
-    // for (it = textbox.begin(); it != textboxs.end(); ++i)
-    // {
-    //     delete it->second;
-    // }
+    auto ti = textboxs.begin();
+    for (ti = textboxs.begin(); ti != textboxs.end(); ++ti)
+    {
+        delete ti->second;
+    }
+
+    auto mi = rectangles.begin();
+    for (mi = rectangles.begin(); mi != rectangles.end(); ++mi)
+    {
+        delete mi->second;
+    }
 }
 
 void SettingState::handleEvents(const sf::Event &event)
 {
-    // if (event.type == sf::Event::TextEntered)
-    // {
-    //     textBox1->typeOn(event);
-    // }
+    if (event.type == sf::Event::TextEntered)
+    {
+        for (auto &it : textboxs)
+        {
+            it.second->typeOn(event);
+        }
+    }
+}
 
-    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-    // {
-    //     textBox1->setSelected(true);
-    // }
-    // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-    // {
-    //     textBox1->setSelected(false);
-    // }
+void SettingState::checkButtons(std::string name)
+{
+    if (rectangles[name]->getGlobalBounds().contains(mousePosView))
+    {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            textboxs[name]->setSelected(true);
+    }
+    else
+    {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            textboxs[name]->setSelected(false);
+    }
+}
+
+// Init Keybinds
+void SettingState::initKeybinds()
+{
+    std::ifstream ifs("config/gameState_keybinds.ini");
+
+    keybinds.clear();
+
+    if (ifs.is_open())
+    {
+        std::string key = "";
+        std::string key2 = "";
+
+        while (ifs >> key >> key2)
+        {
+            keybinds[key] = supportedKeys->at(key2);
+        }
+    }
+
+    ifs.close();
 }
 
 void SettingState::handleButtons()
 {
+    checkButtons("FIRE");
+    checkButtons("MOVE_LEFT");
+    checkButtons("MOVE_RIGHT");
+    checkButtons("MOVE_UP");
+    checkButtons("MOVE_DOWN");
+
+    // Quit
     if (buttons["BACK_GAME"]->isPressed() && this->getKeytime())
     {
         this->endState();
+        // Check whether the keys change or not and update it
+        checkKeys();
+        updateKeys();
+        initKeybinds();
+    }
+}
+
+void SettingState::checkKey(std::string name)
+{
+    keys[name] = textboxs[name]->getText();
+}
+
+void SettingState::checkKeys()
+{
+    std::ofstream ofs("config/gameState_keybinds.ini");
+
+    checkKey("FIRE");
+    checkKey("MOVE_LEFT");
+    checkKey("MOVE_RIGHT");
+    checkKey("MOVE_UP");
+    checkKey("MOVE_DOWN");
+
+    if (ofs.is_open())
+    {
+        for (auto &it : keys)
+        {
+            ofs << it.first << ' ' << it.second << std::endl;
+        }
     }
 }
 
 void SettingState::update(const float &dt)
 {
+    // Change the buttons
+    updateKeys();
+
     updateMousePosition();
     handleButtons();
     updateKeytime(dt);
@@ -105,6 +215,11 @@ void SettingState::update(const float &dt)
     for (auto &it : buttons)
     {
         it.second->update(mousePosView);
+    }
+
+    for (auto &it : textboxs)
+    {
+        it.second->updateKeytime(dt);
     }
 }
 
@@ -117,6 +232,8 @@ void SettingState::draw(sf::RenderTarget *target)
     drawTitle(target);
     drawProperties(target);
     drawButtons(target);
+    drawRecs(target);
+    drawTextBox(target);
 }
 
 void SettingState::drawTitle(sf::RenderTarget *target)
@@ -133,41 +250,68 @@ void SettingState::drawTitle(sf::RenderTarget *target)
 
 void SettingState::drawProperties(sf::RenderTarget *target)
 {
-    sf::Text moveLeft;
     moveLeft.setFont(titleFont);
     moveLeft.setString("MOVING LEFT : ");
     moveLeft.setCharacterSize(50);
     moveLeft.setFillColor(sf::Color::White);
-    moveLeft.setPosition(mWindow->getSize().x / 2.0f - moveLeft.getGlobalBounds().width / 2.0f - 270.f, mWindow->getSize().y / 2.0f - moveLeft.getGlobalBounds().height / 2.0f - 100.f);
 
-    sf::Text moveBy;
+    left = sf::Vector2f{mWindow->getSize().x / 2.0f - moveLeft.getGlobalBounds().width / 2.0f - 270.f,
+                        mWindow->getSize().y / 2.0f - moveLeft.getGlobalBounds().height / 2.0f - 70.f};
+
+    moveLeft.setPosition(left.x, left.y);
+
+    fire.setFont(titleFont);
+    fire.setString("FIRE : ");
+    fire.setCharacterSize(50);
+    fire.setFillColor(sf::Color::White);
+
+    vFire = sf::Vector2f{
+        mWindow->getSize().x / 2.0f - moveLeft.getGlobalBounds().width / 2.0f - 270.f,
+        mWindow->getSize().y / 2.0f - fire.getGlobalBounds().height / 2.0f - 230.f};
+
+    fire.setPosition(vFire.x, vFire.y);
+
     moveBy.setFont(titleFont);
     moveBy.setString("MOVING BY : ");
     moveBy.setCharacterSize(50);
     moveBy.setFillColor(sf::Color::White);
-    moveBy.setPosition(mWindow->getSize().x / 2.0f - moveLeft.getGlobalBounds().width / 2.0f - 270.f, mWindow->getSize().y / 2.0f - moveBy.getGlobalBounds().height / 2.0f - 180.f);
 
-    sf::Text moveRight;
+    vBy = sf::Vector2f{mWindow->getSize().x / 2.0f - moveLeft.getGlobalBounds().width / 2.0f - 270.f,
+                       mWindow->getSize().y / 2.0f - moveBy.getGlobalBounds().height / 2.0f - 150.f};
+
+    moveBy.setPosition(vBy.x, vBy.y);
+
     moveRight.setFont(titleFont);
     moveRight.setString("MOVING RIGHT : ");
     moveRight.setCharacterSize(50);
     moveRight.setFillColor(sf::Color::White);
-    moveRight.setPosition(mWindow->getSize().x / 2.0f - moveLeft.getGlobalBounds().width / 2.0f - 270.f, mWindow->getSize().y / 2.0f - moveRight.getGlobalBounds().height / 2.0f - 20.f);
 
-    sf::Text moveUp;
+    right = sf::Vector2f{mWindow->getSize().x / 2.0f - moveLeft.getGlobalBounds().width / 2.0f - 270.f,
+                         mWindow->getSize().y / 2.0f - moveRight.getGlobalBounds().height / 2.0f + 10.f};
+
+    moveRight.setPosition(right.x, right.y);
+
     moveUp.setFont(titleFont);
     moveUp.setString("MOVING UP : ");
     moveUp.setCharacterSize(50);
     moveUp.setFillColor(sf::Color::White);
-    moveUp.setPosition(mWindow->getSize().x / 2.0f - moveLeft.getGlobalBounds().width / 2.0f - 270.f, mWindow->getSize().y / 2.0f - moveUp.getGlobalBounds().height / 2.0f + 60.f);
 
-    sf::Text moveDown;
+    up = sf::Vector2f{mWindow->getSize().x / 2.0f - moveLeft.getGlobalBounds().width / 2.0f - 270.f,
+                      mWindow->getSize().y / 2.0f - moveUp.getGlobalBounds().height / 2.0f + 90.f};
+
+    moveUp.setPosition(up.x, up.y);
+
     moveDown.setFont(titleFont);
     moveDown.setString("MOVING DOWN : ");
     moveDown.setCharacterSize(50);
     moveDown.setFillColor(sf::Color::White);
-    moveDown.setPosition(mWindow->getSize().x / 2.0f - moveLeft.getGlobalBounds().width / 2.0f - 270.f, mWindow->getSize().y / 2.0f - moveDown.getGlobalBounds().height / 2.0f + 140.f);
 
+    down = sf::Vector2f{mWindow->getSize().x / 2.0f - moveLeft.getGlobalBounds().width / 2.0f - 270.f,
+                        mWindow->getSize().y / 2.0f - moveDown.getGlobalBounds().height / 2.0f + 170.f};
+
+    moveDown.setPosition(down.x, down.y);
+
+    target->draw(fire);
     target->draw(moveBy);
     target->draw(moveLeft);
     target->draw(moveRight);
@@ -180,5 +324,35 @@ void SettingState::drawButtons(sf::RenderTarget *target)
     for (auto &it : buttons)
     {
         it.second->draw(target);
+    }
+}
+
+void SettingState::drawRecs(sf::RenderTarget *target)
+{
+    rectangles["FIRE"]->setPosition(vFire.x + 550.f, vFire.y + 10.f);
+    rectangles["MOVE_UP"]->setPosition(vFire.x + 550.f, up.y + 10.f);
+    rectangles["MOVE_DOWN"]->setPosition(vFire.x + 550.f, down.y + 10.f);
+    rectangles["MOVE_LEFT"]->setPosition(vFire.x + 550.f, left.y + 10.f);
+    rectangles["MOVE_RIGHT"]->setPosition(vFire.x + 550.f, right.y + 10.f);
+    rectangles["MOVE_BY"]->setPosition(vFire.x + 550.f, vBy.y + 10.f);
+
+    for (auto &it : rectangles)
+    {
+        target->draw(*it.second);
+    }
+}
+
+void SettingState::drawTextBox(sf::RenderTarget *target)
+{
+    textboxs["FIRE"]->setPosition({vFire.x + 560.f, vFire.y + 8.f});
+    textboxs["MOVE_UP"]->setPosition({vFire.x + 560.f, up.y + 8.f});
+    textboxs["MOVE_DOWN"]->setPosition({vFire.x + 560.f, down.y + 8.f});
+    textboxs["MOVE_LEFT"]->setPosition({vFire.x + 560.f, left.y + 8.f});
+    textboxs["MOVE_RIGHT"]->setPosition({vFire.x + 560.f, right.y + 8.f});
+    textboxs["MOVE_BY"]->setPosition({vFire.x + 560.f, vBy.y + 8.f});
+
+    for (auto &it : textboxs)
+    {
+        it.second->drawText(target);
     }
 }

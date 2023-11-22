@@ -115,6 +115,7 @@ void MenuState::movingByKeyBoard()
 
 void MenuState::update(const float &dt)
 {
+    updateKeys();
     updateMousePosition();
     movingByKeyBoard();
     handleButtonPressed();

@@ -189,10 +189,10 @@ void PauseState::updateSettingButton(sf::Vector2f &mousePosView)
 void PauseState::updateHomeButton(sf::Vector2f &mousePosView)
 {
     // Check if the mouse is within the bounds of the playButton
-    if (homeButtonIdle.getGlobalBounds().contains(mousePosView) && this->getKeytime())
+    if (homeButtonIdle.getGlobalBounds().contains(mousePosView))
     {
         // Active
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->getKeytime())
         {
             // if (!isClickedHomeButton)
             isClickedHomeButton = true;

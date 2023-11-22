@@ -1,5 +1,42 @@
 #include "Player.h"
 
+// Init Keys
+void Player::initKeys()
+{
+    std::ifstream ifs("config/supportedKeys.ini");
+
+    if (ifs.is_open())
+    {
+        std::string key = "";
+        int key_value = 0;
+        while (ifs >> key >> key_value)
+        {
+            supportedKeys[key] = key_value;
+        }
+    }
+
+    ifs.close();
+}
+
+// Init Keybinds
+void Player::initKeybinds()
+{
+    std::ifstream ifs("config/gameState_keybinds.ini");
+
+    if (ifs.is_open())
+    {
+        std::string key = "";
+        std::string key2 = "";
+
+        while (ifs >> key >> key2)
+        {
+            keybinds[key] = supportedKeys.at(key2);
+        }
+    }
+
+    ifs.close();
+}
+
 void Player::reset()
 {
     dead = 0;
@@ -19,6 +56,9 @@ Player::Player(const float &x, const float &y, sf::Texture *texture)
     initSprites(texture);
     reset();
     setEntityPosition(x, y);
+
+    initKeys();
+    initKeybinds();
 
     // Set bullet sprites
     if (!bullet_texture.loadFromFile("assets/images/playerBullet.png"))
@@ -47,7 +87,7 @@ void Player::updateBullets()
 {
     if (reload_timer == 0)
     {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("FIRE"))))
         {
             if (2 == current_power)
             {

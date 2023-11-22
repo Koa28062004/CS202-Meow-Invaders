@@ -77,6 +77,26 @@ void State::initPlayerTextures()
     this->isUnlocked.push_back(false);
 }
 
+void State::updateKeys()
+{
+    keys.clear();
+    
+    std::ifstream ifs("config/gameState_keybinds.ini");
+
+    if (ifs.is_open())
+    {
+        std::string key1 = "";
+        std::string key2 = "";
+
+        while (ifs >> key1 >> key2)
+        {
+            keys[key1] = key2;
+        }
+    }
+
+    ifs.close();
+}
+
 void State::pausedState()
 {
     paused = true;

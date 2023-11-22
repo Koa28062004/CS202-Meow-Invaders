@@ -23,6 +23,7 @@ public:
     ~TextBox();
 
     // Functions
+    void setText(std::string text);
     void setFont(sf::Font &font);
     void setPosition(sf::Vector2f pos);
     void setLimit(bool ToF);
@@ -31,6 +32,10 @@ public:
     std::string getText();
     void drawText(sf::RenderTarget *target);
     void typeOn(const sf::Event &input);
+
+    const bool getKeytime();
+    void updateKeytime(const float &dt);
+
 private:
     void inputLogic(int charTyped);
     void deleteLastChar();
@@ -40,6 +45,9 @@ private:
     bool isSelected = false;
     bool hasLimit = false;
     int limit;
+
+    float keytime;
+	float keytimeMax;
 };
 
 #endif

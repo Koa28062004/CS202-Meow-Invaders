@@ -45,6 +45,9 @@ public:
     const bool getKeytime();
     void updateKeytime(const float& dt);
 
+    // Update keybinds
+    void updateKeys();
+
     bool paused;
 
 protected:
@@ -52,6 +55,7 @@ protected:
     std::stack<State *> *states;
     std::map<std::string, int> *supportedKeys;
     std::map<std::string, int> keybinds;
+    std::map<std::string, std::string> keys;
 
     sf::Font font;
     sf::Font titleFont;

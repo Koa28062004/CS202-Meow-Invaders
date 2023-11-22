@@ -14,7 +14,7 @@ public:
 
     // Functions
     void reset();
-    void update(std::vector<Bullet>&enemy_bullets,
+    void update(std::vector<Bullet> &enemy_bullets,
                 std::vector<Enemy> &enemies);
     void draw(sf::RenderTarget *target);
     void die();
@@ -23,7 +23,10 @@ public:
 
     void updateBullets();
     void checkBulletOutside(Bullet &bullet);
-    void drawHitBoxPlayer(sf::RenderTarget* target);
+    void drawHitBoxPlayer(sf::RenderTarget *target);
+
+    void initKeys();
+    void initKeybinds();
 
     sf::IntRect get_hitbox() const;
 
@@ -43,6 +46,9 @@ private:
     sf::Texture bullet_texture;
     sf::Sprite bullet_sprite;
     std::vector<Bullet> player_bullets;
+
+    std::map<std::string, int> supportedKeys;
+    std::map<std::string, int> keybinds;
 };
 
 #endif

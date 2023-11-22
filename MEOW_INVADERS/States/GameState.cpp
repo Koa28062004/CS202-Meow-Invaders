@@ -5,6 +5,8 @@ void GameState::initKeybinds()
 {
     std::ifstream ifs("config/gameState_keybinds.ini");
 
+    keybinds.clear();
+
     if (ifs.is_open())
     {
         std::string key = "";
@@ -14,6 +16,11 @@ void GameState::initKeybinds()
         {
             keybinds[key] = supportedKeys->at(key2);
         }
+    }
+
+    for (auto &it : keybinds)
+    {
+        std::cout << it.first << ' ' << it.second << '\n';
     }
 
     ifs.close();
@@ -162,7 +169,7 @@ void GameState::movingByKeyBoard()
     }
 
     // Escape the current state
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("CLOSE"))))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
         this->endState();
     }
@@ -224,22 +231,22 @@ void GameState::handleGameOver()
 
 void GameState::updatePausedInput()
 {
-    // Pause menu
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("PAUSE"))))
-    {
-        if (!pauseKeyPressed)
-        {
-            pauseKeyPressed = true;
-            if (!paused)
-                this->pausedState();
-            else
-                this->unPausedState();
-        }
-    }
-    else
-    {
-        pauseKeyPressed = false;
-    }
+    // // Pause menu
+    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("PAUSE"))))
+    // {
+    //     if (!pauseKeyPressed)
+    //     {
+    //         pauseKeyPressed = true;
+    //         if (!paused)
+    //             this->pausedState();
+    //         else
+    //             this->unPausedState();
+    //     }
+    // }
+    // else
+    // {
+    //     pauseKeyPressed = false;
+    // }
 }
 
 // Paused button
@@ -273,6 +280,9 @@ void GameState::updateLevelUp()
 
 void GameState::update(const float &dt)
 {
+    updateKeys();
+    initKeybinds();
+
     updateMousePosition();
     updatePausedInput();
     handleHomeButton();
