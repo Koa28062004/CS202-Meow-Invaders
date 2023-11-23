@@ -120,6 +120,8 @@ void Player::checkBulletOutside(Bullet &bullet)
 void Player::update(std::vector<Bullet> &enemy_bullets,
                     std::vector<Enemy> &enemies)
 {
+    initKeybinds();
+    
     if (!dead)
     {
         updateBullets();
