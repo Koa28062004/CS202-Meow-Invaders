@@ -20,7 +20,9 @@ public:
     void update(const float &dt);
     void draw(sf::RenderTarget *target = nullptr);
     void handleEvents(const sf::Event &event);
+
     void movingByKeyBoard();
+    void movingByMouse();
 
     // Playing game
     void updatingPlayingGame();

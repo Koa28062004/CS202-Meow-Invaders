@@ -39,6 +39,7 @@ void TextBox::inputLogic(int charTyped)
 }
 
 void TextBox::setText(std::string text) {
+    this->text.str("");
     this->text << text;
     textBox.setString(text);
 }

@@ -117,9 +117,12 @@ void SettingState::handleEvents(const sf::Event &event)
 {
     if (event.type == sf::Event::TextEntered)
     {
-        for (auto &it : textboxs)
-        {
-            it.second->typeOn(event);
+        if (event.text.unicode != 10 && event.text.unicode != 32)
+        { // Check for Enter (10) and Space (32)
+            for (auto &it : textboxs)
+            {
+                it.second->typeOn(event);
+            }
         }
     }
 }
@@ -167,6 +170,17 @@ void SettingState::handleButtons()
     checkButtons("MOVE_UP");
     checkButtons("MOVE_DOWN");
 
+    if (rectangles["MOVE_BY"]->getGlobalBounds().contains(mousePosView))
+    {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->getKeytime())
+        {
+            if (textboxs["MOVE_BY"]->getText() == "Keyboard") {
+                textboxs["MOVE_BY"]->setText("Mouse");
+            }
+            else textboxs["MOVE_BY"]->setText("Keyboard");
+        }
+    }
+
     // Quit
     if (buttons["BACK_GAME"]->isPressed() && this->getKeytime())
     {
@@ -192,6 +206,7 @@ void SettingState::checkKeys()
     checkKey("MOVE_RIGHT");
     checkKey("MOVE_UP");
     checkKey("MOVE_DOWN");
+    checkKey("MOVE_BY");
 
     if (ofs.is_open())
     {

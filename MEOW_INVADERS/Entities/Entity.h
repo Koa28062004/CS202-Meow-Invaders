@@ -29,6 +29,7 @@ public:
     void setEntityScale(const float &x, const float &y);
     void setEntityPosition(const float &x, const float &y);
     virtual void move(const float &x, const float &y);
+    virtual void moveByMouse(sf::Vector2f mousePosView);
     virtual void draw(sf::RenderTarget *target) = 0;
 
 protected:

@@ -36,6 +36,7 @@ private:
     void checkButtons(std::string name);
     void checkKeys();
     void checkKey(std::string name);
+    // bool invalidKeys();
 
     void setUpTextBox(std::string name);
 

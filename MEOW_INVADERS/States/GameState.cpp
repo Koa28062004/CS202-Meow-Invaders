@@ -167,12 +167,10 @@ void GameState::movingByKeyBoard()
     {
         player->move(0.f, 7.f);
     }
+}
 
-    // Escape the current state
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-    {
-        this->endState();
-    }
+void GameState::movingByMouse() {
+    player->moveByMouse(mousePosView);
 }
 
 void GameState::handleEvents(const sf::Event &event)
@@ -231,22 +229,22 @@ void GameState::handleGameOver()
 
 void GameState::updatePausedInput()
 {
-    // // Pause menu
-    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("PAUSE"))))
-    // {
-    //     if (!pauseKeyPressed)
-    //     {
-    //         pauseKeyPressed = true;
-    //         if (!paused)
-    //             this->pausedState();
-    //         else
-    //             this->unPausedState();
-    //     }
-    // }
-    // else
-    // {
-    //     pauseKeyPressed = false;
-    // }
+    // Pause menu
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("PAUSE"))))
+    {
+        if (!pauseKeyPressed)
+        {
+            pauseKeyPressed = true;
+            if (!paused)
+                this->pausedState();
+            else
+                this->unPausedState();
+        }
+    }
+    else
+    {
+        pauseKeyPressed = false;
+    }
 }
 
 // Paused button
@@ -305,7 +303,13 @@ void GameState::update(const float &dt)
             else
             {
                 updatePausedButton();
-                movingByKeyBoard();
+
+                // Change the way of moving
+                if (keybinds.at("MOVE_BY") == 1)
+                    movingByMouse();
+                else 
+                    movingByKeyBoard();
+
                 updatingPlayingGame();
             }
         }

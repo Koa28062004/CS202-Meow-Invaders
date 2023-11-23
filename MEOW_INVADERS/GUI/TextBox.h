@@ -13,7 +13,7 @@
 #include "SFML/Audio.hpp"
 
 #define DELETE_KEY 8
-#define ENTER_KEY 13
+#define ENTER_KEY 10
 #define ESCAPE_KEY 27
 
 class TextBox

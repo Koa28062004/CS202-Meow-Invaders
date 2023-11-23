@@ -19,11 +19,11 @@ Entity::~Entity()
 }
 
 // Init Sprites
-void Entity::initSprites(sf::Texture* texture)
+void Entity::initSprites(sf::Texture *texture)
 {
     this->playerTexture = texture;
     this->playerSprite = new sf::Sprite(*this->playerTexture);
-  //  this->playerSprite->setTextureRect(sf::IntRect(32, 0, 32, 32));
+    //  this->playerSprite->setTextureRect(sf::IntRect(32, 0, 32, 32));
 }
 
 // Set Position
@@ -50,5 +50,12 @@ void Entity::move(const float &x, const float &y)
     if (this->playerSprite)
     {
         playerSprite->move(x, y);
+    }
+}
+
+void Entity::moveByMouse(sf::Vector2f mousePosView)
+{
+    if (this->playerSprite) {
+        playerSprite->setPosition(mousePosView);
     }
 }
