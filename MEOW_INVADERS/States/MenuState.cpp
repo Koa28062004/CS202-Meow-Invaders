@@ -175,15 +175,15 @@ void MenuState::draw(sf::RenderTarget *target)
     this->drawButtons(target);
 
     // Watch the position of mouse position view
-    sf::Text mouseText;
-    mouseText.setPosition(mousePosView.x, mousePosView.y - 30);
-    mouseText.setFont(font);
-    mouseText.setCharacterSize(20);
-    std::stringstream ss;
-    ss << mousePosView.x << ' ' << mousePosView.y;
-    mouseText.setString(ss.str());
+    // sf::Text mouseText;
+    // mouseText.setPosition(mousePosView.x, mousePosView.y - 30);
+    // mouseText.setFont(font);
+    // mouseText.setCharacterSize(20);
+    // std::stringstream ss;
+    // ss << mousePosView.x << ' ' << mousePosView.y;
+    // mouseText.setString(ss.str());
 
-    target->draw(mouseText);
+    // target->draw(mouseText);
 }
 
 void MenuState::drawButtons(sf::RenderTarget *target)

@@ -28,8 +28,8 @@ public:
     // Movements
 	void movement(int level);
     void move0();
-    // void move1();
-    // void move2();
+    void move1();
+    void move2();
 
     // Functions
     void hit();
@@ -67,6 +67,10 @@ private:
     sf::Texture enemyTex;
     sf::Sprite enemySprite;
     sf::Sprite enemyBullet;
+
+    bool isSetPos = false;
+    float randomValueX = 1.0f;
+    float randomValueY = 2.0f;
 };
 
 #endif

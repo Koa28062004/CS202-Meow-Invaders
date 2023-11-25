@@ -18,11 +18,6 @@ void GameState::initKeybinds()
         }
     }
 
-    for (auto &it : keybinds)
-    {
-        std::cout << it.first << ' ' << it.second << '\n';
-    }
-
     ifs.close();
 }
 
@@ -169,7 +164,8 @@ void GameState::movingByKeyBoard()
     }
 }
 
-void GameState::movingByMouse() {
+void GameState::movingByMouse()
+{
     player->moveByMouse(mousePosView);
 }
 
@@ -307,7 +303,7 @@ void GameState::update(const float &dt)
                 // Change the way of moving
                 if (keybinds.at("MOVE_BY") == 1)
                     movingByMouse();
-                else 
+                else
                     movingByKeyBoard();
 
                 updatingPlayingGame();
@@ -338,7 +334,7 @@ void GameState::updatingPlayingGame()
         enemyManager->update(random_engine);
         enemy_bullets = &enemyManager->get_enemy_bullets();
         enemies = &enemyManager->get_enemies();
-        player->update(*enemy_bullets, *enemies);
+        player->update(*enemy_bullets, *enemies, mWindow);
     }
 }
 

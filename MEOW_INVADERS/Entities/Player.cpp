@@ -117,11 +117,32 @@ void Player::checkBulletOutside(Bullet &bullet)
     }
 }
 
+void Player::updatePlayerPosition(sf::RenderWindow *mWindow)
+{
+    if (!playerSprite)
+        return;
+
+    sf::Vector2f playerPos = playerSprite->getPosition();
+
+    if (playerPos.x <= playerSprite->getGlobalBounds().width / 2.f)
+        playerPos.x = playerSprite->getGlobalBounds().width / 2.f;
+    if (playerPos.x >= mWindow->getSize().x - playerSprite->getGlobalBounds().width / 2.f)
+        playerPos.x = mWindow->getSize().x - playerSprite->getGlobalBounds().width / 2.f;
+    if (playerPos.y <= playerSprite->getGlobalBounds().height / 2.f)
+        playerPos.y = playerSprite->getGlobalBounds().height / 2.f;
+    if (playerPos.y >= mWindow->getSize().y - playerSprite->getGlobalBounds().height / 2.f)
+        playerPos.y = mWindow->getSize().y - playerSprite->getGlobalBounds().height / 2.f;
+
+    playerSprite->setPosition(playerPos);
+}
+
 void Player::update(std::vector<Bullet> &enemy_bullets,
-                    std::vector<Enemy> &enemies)
+                    std::vector<Enemy> &enemies,
+                    sf::RenderWindow *mWindow)
 {
     initKeybinds();
-    
+    updatePlayerPosition(mWindow);
+
     if (!dead)
     {
         updateBullets();

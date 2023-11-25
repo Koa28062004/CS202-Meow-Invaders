@@ -15,13 +15,15 @@ public:
     // Functions
     void reset();
     void update(std::vector<Bullet> &enemy_bullets,
-                std::vector<Enemy> &enemies);
+                std::vector<Enemy> &enemies, sf::RenderWindow* mWindow);
     void draw(sf::RenderTarget *target);
     void die();
 
     bool get_dead() const;
 
     void updateBullets();
+    void updatePlayerPosition(sf::RenderWindow* mWindow);
+    
     void checkBulletOutside(Bullet &bullet);
     void drawHitBoxPlayer(sf::RenderTarget *target);
 

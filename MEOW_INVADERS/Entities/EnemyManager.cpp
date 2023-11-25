@@ -64,7 +64,7 @@ void EnemyManager::reset(int level)
     Enemy::collectiveDirection = 1;
     int enemy_x = 0;
     int enemy_y = 0;
-    int enemy_spacing = 4;
+    int enemy_spacing = 10;
 
     std::string level_sketch = "";
 

@@ -64,7 +64,7 @@ void Enemy::movement(int level)
     switch (level)
     {
     case 0:
-        move0();
+        move2();
         break;
         // case 1:
         //     move1();
@@ -73,6 +73,45 @@ void Enemy::movement(int level)
         //     move2();
         //     break;
     }
+}
+
+void Enemy::move2()
+{
+    if (!isSetPos)
+    {
+        isSetPos = true;
+        srand(static_cast<unsigned int>(time(0)));
+        float x = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * ((float)SCREEN_WIDTH - 20.f);
+        enemySprite.setPosition(x, enemySprite.getPosition().y);
+    }
+
+    enemySprite.move(0, 2.f);
+}
+
+void Enemy::move1()
+{
+    float values1[] = {1.f, 2.f};
+    float values2[] = {-1.f, -2.f};
+
+    if (enemySprite.getPosition().y <= 30.f)
+    {
+        randomValueY = values1[rand() % 3];
+    }
+    else if (enemySprite.getPosition().y >= SCREEN_HEIGHT - 10.f)
+    {
+        randomValueY = values2[rand() % 3]; // Assigning Y value only if going downwards
+    }
+
+    if (enemySprite.getPosition().x <= 30.f)
+    {
+        randomValueX = values1[rand() % 3]; // Assigning X value only if going rightwards
+    }
+    else if (enemySprite.getPosition().x >= SCREEN_WIDTH - 10.f)
+    {
+        randomValueX = values2[rand() % 3]; // Assigning X value only if going leftwards
+    }
+
+    enemySprite.move(randomValueX, randomValueY);
 }
 
 void Enemy::move0()

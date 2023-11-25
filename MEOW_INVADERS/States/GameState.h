@@ -51,6 +51,7 @@ private:
     void updatePausedButton();
     void handleGameOver();
     void updateLevelUp();
+    void updatePlayerPosition();
 
     PauseState *pauseState;
     sf::RenderWindow *mWindow;
