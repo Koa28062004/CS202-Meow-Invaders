@@ -6,6 +6,7 @@ cmake_policy(SET CMP0009 NEW)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/*.cpp")
 set(OLD_GLOB
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Applications/Application.cpp"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Boss.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Bullet.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Disaster.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Enemy.cpp"

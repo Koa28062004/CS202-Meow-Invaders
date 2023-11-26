@@ -335,7 +335,8 @@ void GameState::updatingPlayingGame()
         enemy_bullets = &enemyManager->get_enemy_bullets();
         enemies = &enemyManager->get_enemies();
         disasters = &enemyManager->get_disasters();
-        player->update(*enemy_bullets, *enemies, *disasters, mWindow);
+        randomDisasters = &enemyManager->get_randomDisasters();
+        player->update(*enemy_bullets, *enemies, *disasters, *randomDisasters,mWindow);
     }
 }
 

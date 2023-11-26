@@ -139,6 +139,7 @@ void Player::updatePlayerPosition(sf::RenderWindow *mWindow)
 void Player::update(std::vector<Bullet> &enemy_bullets,
                     std::vector<Enemy> &enemies,
                     std::vector<Disaster> &disasters,
+                    std::vector<Disaster> &randomDisasters,
                     sf::RenderWindow *mWindow)
 {
     initKeybinds();
@@ -173,6 +174,14 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
             }
         }
 
+        for (Disaster &randomDisaster : randomDisasters)
+        {
+            if (get_hitbox().intersects(randomDisaster.get_hitbox())) {
+                die();
+                randomDisaster.hit();
+            }
+        }
+
         for (Bullet &bullet : player_bullets)
         {
             bullet.update();
@@ -191,6 +200,15 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
                 }
 
                 for (Disaster &disaster : disasters)
+                {
+                    if (bullet.get_hitbox().intersects(disaster.get_hitbox()))
+                    {
+                        bullet.bulletDead();
+                        disaster.hit();
+                    }
+                }
+
+                for (Disaster &disaster : randomDisasters)
                 {
                     if (bullet.get_hitbox().intersects(disaster.get_hitbox()))
                     {

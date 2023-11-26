@@ -18,6 +18,7 @@ public:
     void update(std::vector<Bullet> &enemy_bullets,
                 std::vector<Enemy> &enemies, 
                 std::vector<Disaster> &disasters,
+                std::vector<Disaster> &randomDisasters,
                 sf::RenderWindow* mWindow);
     void draw(sf::RenderTarget *target);
     void die();

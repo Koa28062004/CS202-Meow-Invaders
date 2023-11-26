@@ -154,6 +154,30 @@ MEOW_INVADERS/Applications/Application.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.s
 .PHONY : MEOW_INVADERS/Applications/Application.cpp.s
 
+MEOW_INVADERS/Entities/Boss.o: MEOW_INVADERS/Entities/Boss.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Boss.o
+
+# target to build an object file
+MEOW_INVADERS/Entities/Boss.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Boss.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Boss.cpp.o
+
+MEOW_INVADERS/Entities/Boss.i: MEOW_INVADERS/Entities/Boss.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Boss.i
+
+# target to preprocess a source file
+MEOW_INVADERS/Entities/Boss.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Boss.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Boss.cpp.i
+
+MEOW_INVADERS/Entities/Boss.s: MEOW_INVADERS/Entities/Boss.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Boss.s
+
+# target to generate assembly for a file
+MEOW_INVADERS/Entities/Boss.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Boss.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Boss.cpp.s
+
 MEOW_INVADERS/Entities/Bullet.o: MEOW_INVADERS/Entities/Bullet.cpp.o
 .PHONY : MEOW_INVADERS/Entities/Bullet.o
 
@@ -550,6 +574,9 @@ help:
 	@echo "... MEOW_INVADERS/Applications/Application.o"
 	@echo "... MEOW_INVADERS/Applications/Application.i"
 	@echo "... MEOW_INVADERS/Applications/Application.s"
+	@echo "... MEOW_INVADERS/Entities/Boss.o"
+	@echo "... MEOW_INVADERS/Entities/Boss.i"
+	@echo "... MEOW_INVADERS/Entities/Boss.s"
 	@echo "... MEOW_INVADERS/Entities/Bullet.o"
 	@echo "... MEOW_INVADERS/Entities/Bullet.i"
 	@echo "... MEOW_INVADERS/Entities/Bullet.s"

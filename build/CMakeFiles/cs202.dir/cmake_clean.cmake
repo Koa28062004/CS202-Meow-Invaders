@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/cs202.pdb"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o.d"
+  "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Boss.cpp.o"
+  "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Boss.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.o"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Disaster.cpp.o"

@@ -74,6 +74,11 @@ std::vector<Disaster> &EnemyManager::get_disasters()
     return disasters;
 }
 
+std::vector<Disaster> &EnemyManager::get_randomDisasters()
+{
+    return randomDisasters;
+}
+
 bool EnemyManager::reached_player(int i_player_y) const
 {
     for (const Enemy &enemy : enemies)
@@ -240,19 +245,6 @@ void EnemyManager::updateEnemy(std::mt19937_64 &i_random_engine, int level)
         }
     }
 
-    // if (1 == shoot_distribution(i_random_engine))
-    // {
-    //     disasters.push_back(Disaster(1, &disasterTex1));
-    // }
-    // if (2 == shoot_distribution(i_random_engine))
-    // {
-    //     disasters.push_back(Disaster(2, &disasterTex2));
-    // }
-    // if (3 == shoot_distribution(i_random_engine))
-    // {
-    //     disasters.push_back(Disaster(3, &disasterTex3));
-    // }
-
     // delete enemy whenever it hit.
     enemies.erase(remove_if(enemies.begin(), enemies.end(), [](Enemy &enemy)
                             { return 0 == enemy.get_health(); }),
@@ -271,6 +263,34 @@ void EnemyManager::updateEnemyBullets()
     enemy_bullets.erase(remove_if(enemy_bullets.begin(), enemy_bullets.end(), [](Bullet &bullet)
                                   { return 1 == bullet.getDead(); }),
                         enemy_bullets.end());
+}
+
+void EnemyManager::updateRandomDisaster(std::mt19937_64 &i_random_engine, int level)
+{
+    if (1 == shoot_distribution(i_random_engine))
+    {
+        randomDisasters.push_back(Disaster(1, &disasterTex1));
+    }
+    if (2 == shoot_distribution(i_random_engine))
+    {
+        randomDisasters.push_back(Disaster(2, &disasterTex2));
+    }
+    if (3 == shoot_distribution(i_random_engine))
+    {
+        randomDisasters.push_back(Disaster(3, &disasterTex3));
+    }
+
+    for (Disaster &disaster : randomDisasters)
+    {
+        disaster.movement(level);
+        disaster.update();
+        disaster.checkOutside();
+    }
+
+    // delete disaster
+    randomDisasters.erase(remove_if(randomDisasters.begin(), randomDisasters.end(), [](Disaster &disaster)
+                              { return 0 == disaster.getDead(); }),
+                    randomDisasters.end());
 }
 
 void EnemyManager::updateDisaster(int level)
@@ -292,6 +312,7 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine, int level)
 {
     updateEnemy(i_random_engine, level);
     updateEnemyBullets();
+    updateRandomDisaster(i_random_engine, level);
     if (!enemies.size())
         updateDisaster(level);
 }
@@ -326,5 +347,11 @@ void EnemyManager::draw(sf::RenderWindow *window)
     for (Disaster &disaster : disasters)
     {
         disaster.draw(window);
+    }
+
+    // Draw the random Disasters
+    for (Disaster &randomDisaster : randomDisasters)
+    {
+        randomDisaster.draw(window);
     }
 }

@@ -80,6 +80,7 @@ private:
     std::vector<Bullet> *enemy_bullets;
     std::vector<Enemy> *enemies;
     std::vector<Disaster> *disasters;
+    std::vector<Disaster> *randomDisasters;
 
     std::map<std::string, Button *> buttons;
 

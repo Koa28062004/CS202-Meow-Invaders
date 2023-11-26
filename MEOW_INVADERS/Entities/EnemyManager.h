@@ -22,6 +22,7 @@ public:
   std::vector<Bullet> &get_enemy_bullets();
   std::vector<Enemy> &get_enemies();
   std::vector<Disaster> &get_disasters();
+  std::vector<Disaster> &get_randomDisasters();
   void checkBulletOutside(Bullet &bullet);
 
   void convertEnemy(std::string level_enemy);
@@ -35,6 +36,7 @@ private:
   void updateEnemy(std::mt19937_64 &i_random_engine, int level);
   void updateEnemyBullets();
   void updateDisaster(int level);
+  void updateRandomDisaster(std::mt19937_64 &i_random_engine, int level);
 
   int move_pause;
   int move_timer;
@@ -47,6 +49,7 @@ private:
   std::vector<Bullet> enemy_bullets;
   std::vector<Enemy> enemies;
   std::vector<Disaster> disasters;
+  std::vector<Disaster> randomDisasters;
 
   sf::Texture enemyTex1;
   sf::Texture enemyTex2;

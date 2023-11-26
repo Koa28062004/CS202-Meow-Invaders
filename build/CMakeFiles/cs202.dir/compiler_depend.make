@@ -916,6 +916,8 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o: /Users/macboo
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/external/SFML/Window/WindowHandle.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/external/SFML/Window/WindowStyle.hpp
 
+CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Boss.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Boss.cpp
+
 CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.o: /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Bullet.cpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/Availability.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityInternal.h \
@@ -14567,6 +14569,8 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o: /Users/macbookair/Desktop/CS202-M
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/vector:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/typeinfo:
+
+/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Boss.cpp:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/type_traits:
 
