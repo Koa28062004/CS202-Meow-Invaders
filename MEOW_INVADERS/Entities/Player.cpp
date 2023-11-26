@@ -138,6 +138,7 @@ void Player::updatePlayerPosition(sf::RenderWindow *mWindow)
 
 void Player::update(std::vector<Bullet> &enemy_bullets,
                     std::vector<Enemy> &enemies,
+                    std::vector<Disaster> &disasters,
                     sf::RenderWindow *mWindow)
 {
     initKeybinds();
@@ -151,7 +152,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
             if (get_hitbox().intersects(enemyBullet.get_hitbox()))
             {
                 die();
-                enemyBullet.dead = 1;
+                enemyBullet.bulletDead();
             }
         }
 
@@ -164,33 +165,46 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
             }
         }
 
+        for (Disaster &disaster : disasters)
+        {
+            if (get_hitbox().intersects(disaster.get_hitbox())) {
+                die();
+                disaster.hit();
+            }
+        }
+
         for (Bullet &bullet : player_bullets)
         {
             bullet.update();
             checkBulletOutside(bullet);
 
-            if (0 == bullet.dead)
+            if (0 == bullet.getDead())
             {
                 // Optionally, you can add logic for handling collisions with enemies here
                 for (Enemy &enemy : enemies)
                 {
                     if (bullet.get_hitbox().intersects(enemy.get_hitbox()))
                     {
-                        bullet.dead = 1;
+                        bullet.bulletDead();
                         enemy.hit();
+                    }
+                }
+
+                for (Disaster &disaster : disasters)
+                {
+                    if (bullet.get_hitbox().intersects(disaster.get_hitbox()))
+                    {
+                        bullet.bulletDead();
+                        disaster.hit();
                     }
                 }
             }
         }
     }
 
-    player_bullets.erase(remove_if(player_bullets.begin(), player_bullets.end(), [](const Bullet &bullet)
-                                   { return 1 == bullet.dead; }),
+    player_bullets.erase(remove_if(player_bullets.begin(), player_bullets.end(), [](Bullet &bullet)
+                                   { return 1 == bullet.getDead(); }),
                          player_bullets.end());
-
-    enemy_bullets.erase(remove_if(enemy_bullets.begin(), enemy_bullets.end(), [](const Bullet &enemyBullet)
-                                  { return 1 == enemyBullet.dead; }),
-                        enemy_bullets.end());
 }
 
 void Player::drawHitBoxPlayer(sf::RenderTarget *target)

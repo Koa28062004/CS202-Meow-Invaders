@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include "Bullet.h"
+#include "Disaster.h"
 #include "GlobalVars/GlobalVars.h"
 #include "EnemyManager.h"
 
@@ -15,7 +16,9 @@ public:
     // Functions
     void reset();
     void update(std::vector<Bullet> &enemy_bullets,
-                std::vector<Enemy> &enemies, sf::RenderWindow* mWindow);
+                std::vector<Enemy> &enemies, 
+                std::vector<Disaster> &disasters,
+                sf::RenderWindow* mWindow);
     void draw(sf::RenderTarget *target);
     void die();
 

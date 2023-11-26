@@ -178,6 +178,30 @@ MEOW_INVADERS/Entities/Bullet.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.s
 .PHONY : MEOW_INVADERS/Entities/Bullet.cpp.s
 
+MEOW_INVADERS/Entities/Disaster.o: MEOW_INVADERS/Entities/Disaster.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Disaster.o
+
+# target to build an object file
+MEOW_INVADERS/Entities/Disaster.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Disaster.cpp.o
+.PHONY : MEOW_INVADERS/Entities/Disaster.cpp.o
+
+MEOW_INVADERS/Entities/Disaster.i: MEOW_INVADERS/Entities/Disaster.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Disaster.i
+
+# target to preprocess a source file
+MEOW_INVADERS/Entities/Disaster.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Disaster.cpp.i
+.PHONY : MEOW_INVADERS/Entities/Disaster.cpp.i
+
+MEOW_INVADERS/Entities/Disaster.s: MEOW_INVADERS/Entities/Disaster.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Disaster.s
+
+# target to generate assembly for a file
+MEOW_INVADERS/Entities/Disaster.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cs202.dir/build.make CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Disaster.cpp.s
+.PHONY : MEOW_INVADERS/Entities/Disaster.cpp.s
+
 MEOW_INVADERS/Entities/Enemy.o: MEOW_INVADERS/Entities/Enemy.cpp.o
 .PHONY : MEOW_INVADERS/Entities/Enemy.o
 
@@ -529,6 +553,9 @@ help:
 	@echo "... MEOW_INVADERS/Entities/Bullet.o"
 	@echo "... MEOW_INVADERS/Entities/Bullet.i"
 	@echo "... MEOW_INVADERS/Entities/Bullet.s"
+	@echo "... MEOW_INVADERS/Entities/Disaster.o"
+	@echo "... MEOW_INVADERS/Entities/Disaster.i"
+	@echo "... MEOW_INVADERS/Entities/Disaster.s"
 	@echo "... MEOW_INVADERS/Entities/Enemy.o"
 	@echo "... MEOW_INVADERS/Entities/Enemy.i"
 	@echo "... MEOW_INVADERS/Entities/Enemy.s"

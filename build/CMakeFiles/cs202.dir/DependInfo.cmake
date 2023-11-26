@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Applications/Application.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o.d"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Bullet.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.o.d"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Disaster.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Disaster.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Disaster.cpp.o.d"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Enemy.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Enemy.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Enemy.cpp.o.d"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/EnemyManager.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/EnemyManager.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/EnemyManager.cpp.o.d"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Entity.cpp" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o" "gcc" "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Entity.cpp.o.d"

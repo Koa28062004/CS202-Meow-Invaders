@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.o"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Bullet.cpp.o.d"
+  "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Disaster.cpp.o"
+  "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Disaster.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Enemy.cpp.o"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Enemy.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/EnemyManager.cpp.o"

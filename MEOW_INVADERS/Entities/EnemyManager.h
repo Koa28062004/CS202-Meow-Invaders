@@ -4,6 +4,7 @@
 #include "GlobalVars/GlobalVars.h"
 #include "Enemy.h"
 #include "Bullet.h"
+#include "Disaster.h"
 #include <random>
 
 class EnemyManager
@@ -16,13 +17,25 @@ public:
 
   void draw(sf::RenderWindow *window);
   void reset(int i_level);
-  void update(std::mt19937_64 &i_random_engine);
+  void update(std::mt19937_64 &i_random_engine, int level);
 
   std::vector<Bullet> &get_enemy_bullets();
   std::vector<Enemy> &get_enemies();
+  std::vector<Disaster> &get_disasters();
   void checkBulletOutside(Bullet &bullet);
 
+  void convertEnemy(std::string level_enemy);
+  void convertDisaster(std::string level_disaster);
+
 private:
+  // Init
+  void initEnemy();
+  void initDisaster();
+
+  void updateEnemy(std::mt19937_64 &i_random_engine, int level);
+  void updateEnemyBullets();
+  void updateDisaster(int level);
+
   int move_pause;
   int move_timer;
 
@@ -33,10 +46,15 @@ private:
 
   std::vector<Bullet> enemy_bullets;
   std::vector<Enemy> enemies;
+  std::vector<Disaster> disasters;
 
   sf::Texture enemyTex1;
   sf::Texture enemyTex2;
   sf::Texture enemyTex3;
+
+  sf::Texture disasterTex1;
+  sf::Texture disasterTex2;
+  sf::Texture disasterTex3;
 
   sf::Sprite enemy_bullet_sprite;
   sf::Texture enemy_bullet_texture;

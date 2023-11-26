@@ -27,12 +27,11 @@ public:
     void update();
     void bulletDead();
     sf::IntRect get_hitbox() const;
-    void drawHitBoxBullet(sf::RenderTarget* target);
+    void drawHitBoxBullet(sf::RenderTarget *target);
+    bool getDead();
 
     int x;
     int y;
-
-    bool dead;
 
     std::array<int, 3> previous_x;
     std::array<int, 3> previous_y;
@@ -42,6 +41,8 @@ private:
     int real_y;
     int step_x;
     int step_y;
+
+    bool dead;
 
     sf::RenderWindow *mWindow;
     sf::Sprite bullet;

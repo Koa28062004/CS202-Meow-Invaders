@@ -49,11 +49,7 @@ public:
     static int collectiveDirection;
     
 private:
-    //-1 - Left
-    // 0 - Down
-    // 1 - Right
     int direction;
-
     int health;
     
     int hit_timer;

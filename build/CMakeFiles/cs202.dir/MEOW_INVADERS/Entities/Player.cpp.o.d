@@ -852,6 +852,7 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o: \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/external/SFML/Audio/SoundFileReader.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/external/SFML/Audio/SoundFileWriter.hpp \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Bullet.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Disaster.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GlobalVars/GlobalVars.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/EnemyManager.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Enemy.h \

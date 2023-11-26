@@ -25,7 +25,7 @@ void GameState::initKeybinds()
 void GameState::initPlayer()
 {
     this->player = new Player((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2, &this->playerTextures[chosen]);
-    this->player->setEntityScale(0.3, 0.3);
+    this->player->setEntityScale(0.35, 0.35);
 }
 
 void GameState::initEnemyManager()
@@ -320,7 +320,7 @@ void GameState::update(const float &dt)
 
 void GameState::updatingPlayingGame()
 {
-    if (isReset && enemyManager->get_enemies().size() == 0)
+    if (isReset && enemyManager->get_enemies().size() == 0 && enemyManager->get_disasters().size() == 0)
     {
         isReset = false;
         isEnterClicked = false;
@@ -331,10 +331,11 @@ void GameState::updatingPlayingGame()
     }
     else
     {
-        enemyManager->update(random_engine);
+        enemyManager->update(random_engine, level);
         enemy_bullets = &enemyManager->get_enemy_bullets();
         enemies = &enemyManager->get_enemies();
-        player->update(*enemy_bullets, *enemies, mWindow);
+        disasters = &enemyManager->get_disasters();
+        player->update(*enemy_bullets, *enemies, *disasters, mWindow);
     }
 }
 
@@ -460,7 +461,7 @@ void GameState::draw(sf::RenderTarget *target)
     player->draw(target);
     drawPlayingGame(target);
 
-    if (!isEnterClicked && level != 0 && enemyManager->get_enemies().size() == 0)
+    if (!isEnterClicked && level != 0 && enemyManager->get_enemies().size() == 0 && enemyManager->get_disasters().size() == 0)
     {
         isNextLevel = false;
     }
@@ -475,7 +476,7 @@ void GameState::draw(sf::RenderTarget *target)
         }
         else
         {
-            if (enemyManager->get_enemies().size() == 0)
+            if (enemyManager->get_enemies().size() == 0 && enemyManager->get_disasters().size() == 0)
             {
                 drawLevelScreen(target);
             }

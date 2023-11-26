@@ -7,6 +7,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/macbookair/Desktop/CS2
 set(OLD_GLOB
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Applications/Application.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Bullet.cpp"
+  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Disaster.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Enemy.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/EnemyManager.cpp"
   "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Entity.cpp"

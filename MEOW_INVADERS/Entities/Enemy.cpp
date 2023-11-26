@@ -2,18 +2,17 @@
 
 int Enemy::collectiveDirection = 1;
 
-Enemy::Enemy(int i_type, int i_x, int i_y, sf::Texture *enemyTex, sf::Sprite enemyBulletSprite) : direction(0 == (i_y / BASE_SIZE) % 2 ? -1 : 1),
-                                                                                                  health(1 + i_type),
+Enemy::Enemy(int i_type, int i_x, int i_y, sf::Texture *enemyTex, sf::Sprite enemyBulletSprite) : health(1 + i_type),
                                                                                                   hit_timer(0),
                                                                                                   type(i_type),
                                                                                                   x(i_x),
                                                                                                   y(i_y),
-
                                                                                                   enemyBullet(enemyBulletSprite)
 {
+    direction = 1;
     enemySprite.setTexture(*enemyTex);
     enemySprite.setScale(sf::Vector2f(0.2, 0.2));
-    enemySprite.setPosition(x, y);
+    enemySprite.setPosition(-200.f, -200.f);
 }
 
 Enemy::~Enemy()
@@ -63,15 +62,26 @@ void Enemy::movement(int level)
 {
     switch (level)
     {
-    case 0:
+    case 1:
+        move0();
+        break;
+    case 2:
         move2();
         break;
-        // case 1:
-        //     move1();
-        //     break;
-        // case 2:
-        //     move2();
-        //     break;
+    case 3:
+        move1();
+        break;
+    case 4:
+        move0();
+        break;
+    case 5:
+        move1();
+        break;
+    case 6:
+        move2();
+        break;
+    default:
+        break;
     }
 }
 
@@ -79,36 +89,51 @@ void Enemy::move2()
 {
     if (!isSetPos)
     {
+        x = (rand() % SCREEN_WIDTH - 20) + 30;
+        y = (rand() % 1700) + 100;
+        enemySprite.setPosition(x, -y);
         isSetPos = true;
-        srand(static_cast<unsigned int>(time(0)));
-        float x = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * ((float)SCREEN_WIDTH - 20.f);
-        enemySprite.setPosition(x, enemySprite.getPosition().y);
     }
 
-    enemySprite.move(0, 2.f);
+    if (enemySprite.getPosition().y <= 5.f)
+        direction = 1;
+    if (enemySprite.getPosition().y >= SCREEN_HEIGHT - 50.f)
+    {
+        direction = -1;
+    }
+    if (direction == 1)
+        enemySprite.move(0, 1.f);
+    else
+        enemySprite.move(0, -1.f);
 }
 
 void Enemy::move1()
 {
-    float values1[] = {1.f, 2.f};
-    float values2[] = {-1.f, -2.f};
-
-    if (enemySprite.getPosition().y <= 30.f)
+    if (!isSetPos)
     {
-        randomValueY = values1[rand() % 3];
-    }
-    else if (enemySprite.getPosition().y >= SCREEN_HEIGHT - 10.f)
-    {
-        randomValueY = values2[rand() % 3]; // Assigning Y value only if going downwards
+        enemySprite.setPosition(x, y - 200);
+        isSetPos = true;
     }
 
-    if (enemySprite.getPosition().x <= 30.f)
+    int values1[] = {1, 2};
+    int values2[] = {-1, -2};
+
+    if (enemySprite.getPosition().y <= 0.f)
     {
-        randomValueX = values1[rand() % 3]; // Assigning X value only if going rightwards
+        randomValueY = values1[rand() % 2];
     }
-    else if (enemySprite.getPosition().x >= SCREEN_WIDTH - 10.f)
+    else if (enemySprite.getPosition().y >= SCREEN_HEIGHT - 0.f)
     {
-        randomValueX = values2[rand() % 3]; // Assigning X value only if going leftwards
+        randomValueY = values2[rand() % 2];
+    }
+
+    if (enemySprite.getPosition().x <= 0.f)
+    {
+        randomValueX = values1[rand() % 2];
+    }
+    else if (enemySprite.getPosition().x >= SCREEN_WIDTH - 0.f)
+    {
+        randomValueX = values2[rand() % 2];
     }
 
     enemySprite.move(randomValueX, randomValueY);
@@ -116,6 +141,12 @@ void Enemy::move1()
 
 void Enemy::move0()
 {
+    if (!isSetPos)
+    {
+        enemySprite.setPosition(-x - 50, y);
+        isSetPos = true;
+    }
+
     if (enemySprite.getPosition().x <= 10.f)
         collectiveDirection = 1;
     if (enemySprite.getPosition().x >= SCREEN_WIDTH)
@@ -159,7 +190,8 @@ void Enemy::update()
 
 void Enemy::draw(sf::RenderTarget *target)
 {
-    target->draw(enemySprite);
+    if (isSetPos)
+        target->draw(enemySprite);
 
     if (debug)
         drawHitBoxEnemy(target);
