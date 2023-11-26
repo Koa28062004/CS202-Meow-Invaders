@@ -8,9 +8,33 @@ void Entity::initVariables()
     this->playerSprite = nullptr;
 }
 
+void Entity::initPower()
+{
+    if (!powerTex0.loadFromFile("assets/images/power0.png"))
+    {
+        throw std::runtime_error("Error::Entity::Can not load power texture");
+    }
+
+    if (!powerTex1.loadFromFile("assets/images/power1.png"))
+    {
+        throw std::runtime_error("Error::Entity::Can not load power texture");
+    }
+
+    if (!powerTex2.loadFromFile("assets/images/power2.png"))
+    {
+        throw std::runtime_error("Error::Entity::Can not load power texture");
+    }
+
+    if (!powerTex3.loadFromFile("assets/images/power3.png"))
+    {
+        throw std::runtime_error("Error::Entity::Can not load power texture");
+    }
+}
+
 Entity::Entity()
 {
     initVariables();
+    initPower();
 }
 
 Entity::~Entity()
@@ -55,7 +79,8 @@ void Entity::move(const float &x, const float &y)
 
 void Entity::moveByMouse(sf::Vector2f mousePosView)
 {
-    if (this->playerSprite) {
+    if (this->playerSprite)
+    {
         playerSprite->setPosition(mousePosView);
     }
 }

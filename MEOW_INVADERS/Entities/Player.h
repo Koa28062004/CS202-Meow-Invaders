@@ -6,6 +6,7 @@
 #include "Disaster.h"
 #include "GlobalVars/GlobalVars.h"
 #include "EnemyManager.h"
+#include "Power.h"
 
 class Player : public Entity
 {
@@ -39,13 +40,13 @@ public:
 private:
     // Variables
     bool dead;
-    bool dead_animation_over;
-    bool shield_animation_over;
 
     int current_power;
     int reload_timer;
 
     int power_timer;
+
+    Power power;
 
     sf::Vector2f playerCenter;
 

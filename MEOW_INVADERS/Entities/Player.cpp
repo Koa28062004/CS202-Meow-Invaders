@@ -111,10 +111,10 @@ void Player::updateBullets()
 
 void Player::checkBulletOutside(Bullet &bullet)
 {
-    if (bullet.y <= 2)
-    {
-        bullet.bulletDead();
-    }
+    // if (bullet.y <= 2)
+    // {
+    //     bullet.bulletDead();
+    // }
 }
 
 void Player::updatePlayerPosition(sf::RenderWindow *mWindow)
