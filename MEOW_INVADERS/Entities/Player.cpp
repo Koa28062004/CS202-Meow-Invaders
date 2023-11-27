@@ -42,7 +42,6 @@ void Player::reset()
     dead = 0;
     reload_timer = 0;
     power_timer = 0;
-    health = 3;
     current_power = 0;
 
     player_bullets.clear();
@@ -73,7 +72,12 @@ Player::~Player()
 
 void Player::die()
 {
-    dead = true;
+    if (current_power == 3)
+    {
+        current_power = 0;
+    }
+    else
+        dead = 1;
 }
 
 bool Player::get_dead() const
@@ -142,7 +146,7 @@ void Player::updateBullets()
 
 void Player::updatePower()
 {
-    std::uniform_int_distribution<int> distribution(0, 1000);
+    std::uniform_int_distribution<int> distribution(0, 2500);
     int randomPower = distribution(generator);
     switch (randomPower)
     {
@@ -168,7 +172,7 @@ void Player::updatePower()
             current_power = power.getType();
             if (power.getType() == 3)
             {
-                ++health;
+                // ++health;
             }
             power.hit();
         }
@@ -182,14 +186,25 @@ void Player::updatePower()
 
 void Player::restartPower()
 {
-    if (current_power != 0) {
-        power_timer = POWER_DURATION;
+    if (current_power > 0)
+    {
+        if (power_timer <= 0)
+        {
+            power_timer = POWER_DURATION;
+        }
+        else
+        {
+            --power_timer;
+        }
     }
-    if (power_timer == 0) {
-        current_power = 0;
+    else
+    {
+        power_timer = 0;
     }
-    else {
-        --power_timer;
+
+    if (power_timer == 0)
+    {
+        current_power = -1;
     }
 }
 
@@ -203,19 +218,15 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
     updatePlayerPosition(mWindow);
     restartPower();
 
-    if (health == 0)
-        die();
-
     if (!dead)
     {
-
         updatePower();
         updateBullets();
         for (Bullet &enemyBullet : enemy_bullets)
         {
             if (get_hitbox().intersects(enemyBullet.get_hitbox()))
             {
-                --health;
+                die();
                 enemyBullet.bulletDead();
             }
         }
@@ -224,7 +235,12 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(enemy.get_hitbox()))
             {
-                --health;
+                if (current_power == 3)
+                {
+                    current_power = 0;
+                }
+                else
+                    die();
                 enemy.hit();
             }
         }
@@ -233,7 +249,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(disaster.get_hitbox()))
             {
-                --health;
+                die();
                 disaster.hit();
             }
         }
@@ -242,7 +258,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(randomDisaster.get_hitbox()))
             {
-                --health;
+                die();
                 randomDisaster.hit();
             }
         }
@@ -305,6 +321,28 @@ void Player::drawHitBoxPlayer(sf::RenderTarget *target)
     target->draw(hitboxOutline);
 }
 
+void Player::drawBounds(sf::RenderTarget *target)
+{
+    sf::Vector2f playerPos = playerSprite->getPosition();
+    float playerRadius = std::max(playerSprite->getGlobalBounds().width, playerSprite->getGlobalBounds().height) / 2.0f;
+
+    sf::CircleShape boundsCircle(playerRadius);
+    boundsCircle.setOrigin(playerRadius, playerRadius);
+    boundsCircle.setPosition(playerPos);
+    boundsCircle.setFillColor(sf::Color::Transparent);
+    boundsCircle.setOutlineThickness(5.0f);
+    boundsCircle.setOutlineColor(sf::Color::White);
+
+    if (current_power == 1)
+        boundsCircle.setOutlineColor(sf::Color(0x4A, 0xBA, 0x59, 0xFF));
+    if (current_power == 2)
+        boundsCircle.setOutlineColor(sf::Color(0xF0, 0x33, 0x4C, 0xFF));
+    if (current_power == 3)
+        boundsCircle.setOutlineColor(sf::Color(0x20, 0xAF, 0xB1, 0xFF));
+
+    target->draw(boundsCircle);
+}
+
 void Player::draw(sf::RenderTarget *target)
 {
     if (debug)
@@ -324,6 +362,9 @@ void Player::draw(sf::RenderTarget *target)
     {
         power.draw(target);
     }
+
+    if (current_power > 0)
+        drawBounds(target);
 
     // Draw the player
     if (this->playerSprite)

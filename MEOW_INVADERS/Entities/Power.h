@@ -40,7 +40,7 @@ private:
     // Power Up
     // 1 - Fast fire
     // 2 - 3 bullets
-    // 3 - +1 blood
+    // 3 - shield
     int type;
     bool dead;
     sf::Sprite powerSprite;

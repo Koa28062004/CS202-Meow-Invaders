@@ -26,7 +26,7 @@ constexpr int ENEMY_BULLET_SPEED = 2;
 constexpr int POWER_DURATION = 500;
 
 // Draw the outline hit box to debug
-constexpr bool debug = 1;
+constexpr bool debug = 0;
 
 
 #endif

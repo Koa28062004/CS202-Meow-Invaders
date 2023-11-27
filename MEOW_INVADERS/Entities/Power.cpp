@@ -5,8 +5,10 @@ Power::Power(int nType, sf::Texture *powerTex) : type(nType),
                                                  isSetPos(0)
 {
     powerSprite.setTexture(*powerTex);
-    powerSprite.setScale(sf::Vector2f(0.25, 0.25));
+    powerSprite.setScale(sf::Vector2f(0.3, 0.3));
     powerSprite.setPosition(-200.f, -200.f);
+    if (type == 3)
+        powerSprite.setScale(sf::Vector2f(0.5, 0.5));
 }
 
 Power::~Power()

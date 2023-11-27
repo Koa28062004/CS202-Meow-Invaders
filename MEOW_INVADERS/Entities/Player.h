@@ -43,9 +43,10 @@ private:
 
     void updatePower();
 
+    void drawBounds(sf::RenderTarget* target);
+
     // Variables
     bool dead;
-    int health;
 
     int reload_timer;
 
