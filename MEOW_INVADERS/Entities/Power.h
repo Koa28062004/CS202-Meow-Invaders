@@ -21,27 +21,29 @@
 class Power
 {
 public:
-    Power(int nType, sf::RenderTexture *powerTex);
+    Power(int nType, sf::Texture *powerTex);
     ~Power();
 
     void update();
     void draw(sf::RenderTarget *target);
     void move();
+    void hit();
 
     bool getDead();
+    int getType();
+
     void checkPowerOutside();
+    void drawHitBoxPower(sf::RenderTarget *target);
+    sf::IntRect get_hitbox() const;
 
 private:
     // Power Up
-    // 0 - shield
     // 1 - Fast fire
     // 2 - 3 bullets
     // 3 - +1 blood
-    // Power Down
-    // 3 - mirror move
     int type;
     bool dead;
-    sf::RenderSprite *powerSprite;
+    sf::Sprite powerSprite;
     bool isSetPos;
 };
 

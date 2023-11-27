@@ -40,18 +40,16 @@ void Player::initKeybinds()
 void Player::reset()
 {
     dead = 0;
-    dead_animation_over = 0;
-    shield_animation_over = 1;
-
-    current_power = 0;
     reload_timer = 0;
-
     power_timer = 0;
+    health = 3;
+    current_power = 0;
 
     player_bullets.clear();
+    powers.clear();
 }
 
-Player::Player(const float &x, const float &y, sf::Texture *texture)
+Player::Player(const float &x, const float &y, sf::Texture *texture) : generator(std::chrono::system_clock::now().time_since_epoch().count())
 {
     initSprites(texture);
     reset();
@@ -83,32 +81,6 @@ bool Player::get_dead() const
     return dead;
 }
 
-void Player::updateBullets()
-{
-    if (reload_timer == 0)
-    {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("FIRE"))))
-        {
-            if (2 == current_power)
-            {
-                reload_timer = FAST_RELOAD_DURATION;
-            }
-            else
-            {
-                reload_timer = RELOAD_DURATION;
-            }
-            playerCenter = sf::Vector2f(playerSprite->getPosition().x - playerSprite->getGlobalBounds().width / 2,
-                                        playerSprite->getPosition().y - playerSprite->getGlobalBounds().height / 2);
-
-            player_bullets.push_back(Bullet(0, -PLAYER_BULLET_SPEED, playerCenter.x, playerCenter.y, bullet_sprite));
-        }
-    }
-    else
-    {
-        --reload_timer;
-    }
-}
-
 void Player::checkBulletOutside(Bullet &bullet)
 {
     // if (bullet.y <= 2)
@@ -136,6 +108,91 @@ void Player::updatePlayerPosition(sf::RenderWindow *mWindow)
     playerSprite->setPosition(playerPos);
 }
 
+void Player::updateBullets()
+{
+    if (reload_timer == 0)
+    {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("FIRE"))))
+        {
+            if (1 == current_power)
+            {
+                reload_timer = FAST_RELOAD_DURATION;
+            }
+            else
+            {
+                reload_timer = RELOAD_DURATION;
+            }
+            playerCenter = sf::Vector2f(playerSprite->getPosition().x - playerSprite->getGlobalBounds().width / 2,
+                                        playerSprite->getPosition().y - playerSprite->getGlobalBounds().height / 2);
+
+            player_bullets.push_back(Bullet(0, -PLAYER_BULLET_SPEED, playerCenter.x, playerCenter.y, bullet_sprite));
+
+            if (2 == current_power)
+            {
+                player_bullets.push_back(Bullet(2, -PLAYER_BULLET_SPEED, playerCenter.x - 0.375f * BASE_SIZE, playerCenter.y, bullet_sprite));
+                player_bullets.push_back(Bullet(-2, -PLAYER_BULLET_SPEED, playerCenter.x + 0.375f * BASE_SIZE, playerCenter.y, bullet_sprite));
+            }
+        }
+    }
+    else
+    {
+        --reload_timer;
+    }
+}
+
+void Player::updatePower()
+{
+    std::uniform_int_distribution<int> distribution(0, 1000);
+    int randomPower = distribution(generator);
+    switch (randomPower)
+    {
+    case 1:
+        powers.push_back(Power(1, &powerTex1));
+        break;
+    case 2:
+        powers.push_back(Power(2, &powerTex2));
+        break;
+    case 3:
+        powers.push_back(Power(3, &powerTex3));
+        break;
+    default:
+        break;
+    }
+
+    for (Power &power : powers)
+    {
+        power.move();
+        power.checkPowerOutside();
+        if (get_hitbox().intersects(power.get_hitbox()))
+        {
+            current_power = power.getType();
+            if (power.getType() == 3)
+            {
+                ++health;
+            }
+            power.hit();
+        }
+    }
+
+    // delete power whenever it hit.
+    powers.erase(remove_if(powers.begin(), powers.end(), [](Power &power)
+                           { return 1 == power.getDead(); }),
+                 powers.end());
+}
+
+void Player::restartPower()
+{
+    if (current_power != 0) {
+        power_timer = POWER_DURATION;
+    }
+    if (power_timer == 0) {
+        current_power = 0;
+    }
+    else {
+        --power_timer;
+    }
+}
+
 void Player::update(std::vector<Bullet> &enemy_bullets,
                     std::vector<Enemy> &enemies,
                     std::vector<Disaster> &disasters,
@@ -144,15 +201,21 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
 {
     initKeybinds();
     updatePlayerPosition(mWindow);
+    restartPower();
+
+    if (health == 0)
+        die();
 
     if (!dead)
     {
+
+        updatePower();
         updateBullets();
         for (Bullet &enemyBullet : enemy_bullets)
         {
             if (get_hitbox().intersects(enemyBullet.get_hitbox()))
             {
-                die();
+                --health;
                 enemyBullet.bulletDead();
             }
         }
@@ -161,23 +224,25 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(enemy.get_hitbox()))
             {
-                die();
+                --health;
                 enemy.hit();
             }
         }
 
         for (Disaster &disaster : disasters)
         {
-            if (get_hitbox().intersects(disaster.get_hitbox())) {
-                die();
+            if (get_hitbox().intersects(disaster.get_hitbox()))
+            {
+                --health;
                 disaster.hit();
             }
         }
 
         for (Disaster &randomDisaster : randomDisasters)
         {
-            if (get_hitbox().intersects(randomDisaster.get_hitbox())) {
-                die();
+            if (get_hitbox().intersects(randomDisaster.get_hitbox()))
+            {
+                --health;
                 randomDisaster.hit();
             }
         }
@@ -219,6 +284,9 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
             }
         }
     }
+    // else if ()
+    // {
+    // }
 
     player_bullets.erase(remove_if(player_bullets.begin(), player_bullets.end(), [](Bullet &bullet)
                                    { return 1 == bullet.getDead(); }),
@@ -250,6 +318,11 @@ void Player::draw(sf::RenderTarget *target)
 
         if (debug)
             bullet.drawHitBoxBullet(target);
+    }
+
+    for (Power &power : powers)
+    {
+        power.draw(target);
     }
 
     // Draw the player

@@ -28,6 +28,7 @@ public:
 
     void updateBullets();
     void updatePlayerPosition(sf::RenderWindow* mWindow);
+    void restartPower();
     
     void checkBulletOutside(Bullet &bullet);
     void drawHitBoxPlayer(sf::RenderTarget *target);
@@ -38,15 +39,20 @@ public:
     sf::IntRect get_hitbox() const;
 
 private:
+    void initPower();
+
+    void updatePower();
+
     // Variables
     bool dead;
+    int health;
 
-    int current_power;
     int reload_timer;
 
     int power_timer;
+    int current_power;
 
-    Power power;
+    std::vector<Power> powers;
 
     sf::Vector2f playerCenter;
 
@@ -56,6 +62,8 @@ private:
 
     std::map<std::string, int> supportedKeys;
     std::map<std::string, int> keybinds;
+
+    std::default_random_engine generator;
 };
 
 #endif

@@ -41,14 +41,12 @@ protected:
     sf::Texture *playerTexture;
     sf::Sprite *playerSprite;
 
-    // Shield
-    sf::Texture *powerTex0;
     // Fast fire
-    sf::Texture *powerTex1;
+    sf::Texture powerTex1;
     // 3 bullets
-    sf::Texture *powerTex2;
+    sf::Texture powerTex2;
     // +1 blood
-    sf::Texture *powerTex3;
+    sf::Texture powerTex3;
     // Mirror move
 };
 

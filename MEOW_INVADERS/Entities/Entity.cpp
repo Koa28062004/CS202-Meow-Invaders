@@ -10,11 +10,6 @@ void Entity::initVariables()
 
 void Entity::initPower()
 {
-    if (!powerTex0.loadFromFile("assets/images/power0.png"))
-    {
-        throw std::runtime_error("Error::Entity::Can not load power texture");
-    }
-
     if (!powerTex1.loadFromFile("assets/images/power1.png"))
     {
         throw std::runtime_error("Error::Entity::Can not load power texture");
