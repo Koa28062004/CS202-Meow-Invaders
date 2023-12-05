@@ -43,12 +43,15 @@ void Player::reset()
     reload_timer = 0;
     power_timer = 0;
     current_power = 0;
+    dead_animation_over = 0;
+    shield_animation_over = 0;
 
     player_bullets.clear();
     powers.clear();
 }
 
-Player::Player(const float &x, const float &y, sf::Texture *texture) : generator(std::chrono::system_clock::now().time_since_epoch().count())
+Player::Player(const float &x, const float &y, sf::Texture *texture) : generator(std::chrono::system_clock::now().time_since_epoch().count()),
+                                                                       explosion(EXPLOSION_ANIMATION_SPEED, 140, "assets/images/explosion.png")
 {
     initSprites(texture);
     reset();
@@ -83,6 +86,11 @@ void Player::die()
 bool Player::get_dead() const
 {
     return dead;
+}
+
+bool Player::get_dead_animation_over() const
+{
+    return dead_animation_over;
 }
 
 void Player::checkBulletOutside(Bullet &bullet)
@@ -206,6 +214,10 @@ void Player::restartPower()
     {
         current_power = -1;
     }
+    if (0 == shield_animation_over)
+    {
+        shield_animation_over = explosion.update();
+    }
 }
 
 void Player::update(std::vector<Bullet> &enemy_bullets,
@@ -226,7 +238,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(enemyBullet.get_hitbox()))
             {
-                die();
+                 die();
                 enemyBullet.bulletDead();
             }
         }
@@ -241,7 +253,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
                 }
                 else
                     die();
-                enemy.hit();
+                    enemy.hit();
             }
         }
 
@@ -300,9 +312,10 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
             }
         }
     }
-    // else if ()
-    // {
-    // }
+    else if (0 == dead_animation_over)
+    {
+        dead_animation_over = explosion.update();
+    }
 
     player_bullets.erase(remove_if(player_bullets.begin(), player_bullets.end(), [](Bullet &bullet)
                                    { return 1 == bullet.getDead(); }),
@@ -368,7 +381,14 @@ void Player::draw(sf::RenderTarget *target)
 
     // Draw the player
     if (this->playerSprite)
-        target->draw(*this->playerSprite);
+    {
+        if (!dead)
+            target->draw(*this->playerSprite);
+        else if (0 == dead_animation_over)
+        {
+            explosion.draw(playerSprite->getPosition().x - playerSprite->getGlobalBounds().width / 2, playerSprite->getPosition().y - playerSprite->getGlobalBounds().height / 2, target);
+        }
+    }
 }
 
 sf::IntRect Player::get_hitbox() const

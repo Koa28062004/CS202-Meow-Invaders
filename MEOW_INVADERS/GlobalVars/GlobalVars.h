@@ -28,5 +28,5 @@ constexpr int POWER_DURATION = 500;
 // Draw the outline hit box to debug
 constexpr bool debug = 0;
 
-
+constexpr unsigned char EXPLOSION_ANIMATION_SPEED = 22;
 #endif

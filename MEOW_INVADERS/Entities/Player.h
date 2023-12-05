@@ -7,6 +7,7 @@
 #include "GlobalVars/GlobalVars.h"
 #include "EnemyManager.h"
 #include "Power.h"
+#include "Animations/Animation.h"
 
 class Player : public Entity
 {
@@ -37,6 +38,7 @@ public:
     void initKeybinds();
 
     sf::IntRect get_hitbox() const;
+    bool get_dead_animation_over() const;
 
 private:
     void initPower();
@@ -52,6 +54,8 @@ private:
 
     int power_timer;
     int current_power;
+    bool dead_animation_over;
+	bool shield_animation_over;
 
     std::vector<Power> powers;
 
@@ -65,6 +69,8 @@ private:
     std::map<std::string, int> keybinds;
 
     std::default_random_engine generator;
+
+    Animation explosion;
 };
 
 #endif

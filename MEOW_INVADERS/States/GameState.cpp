@@ -66,6 +66,7 @@ void GameState::initVariables()
     isReset = false;
     isEnterClicked = false;
     checkClock = false;
+    gameOver = 0;
 }
 
 void GameState::initPausedButton()
@@ -204,12 +205,13 @@ void GameState::handleSettingButton()
 
 void GameState::handleGameOver()
 {
-    if (player->get_dead())
+    if (gameOver)
     {
         if (buttons["YES_GAME_OVER"]->isPressed() && this->getKeytime())
         {
             isEnterClicked = true;
             checkClock = false;
+            gameOver = 0;
             --level;
             enemy_bullets->clear();
             enemies->clear();
@@ -284,6 +286,11 @@ void GameState::update(const float &dt)
     handleSettingButton();
     updateKeytime(dt);
 
+    if (1 == player->get_dead_animation_over())
+    {
+        gameOver = 1;
+    }
+
     for (auto &it : buttons)
     {
         it.second->update(mousePosView);
@@ -292,7 +299,7 @@ void GameState::update(const float &dt)
     // Unpaused update
     if (!paused)
     {
-        if (!player->get_dead())
+        if (!gameOver)
         {
             if (!isNextLevel)
                 updateLevelUp();
@@ -336,7 +343,7 @@ void GameState::updatingPlayingGame()
         enemies = &enemyManager->get_enemies();
         disasters = &enemyManager->get_disasters();
         randomDisasters = &enemyManager->get_randomDisasters();
-        player->update(*enemy_bullets, *enemies, *disasters, *randomDisasters,mWindow);
+        player->update(*enemy_bullets, *enemies, *disasters, *randomDisasters, mWindow);
     }
 }
 
@@ -345,7 +352,7 @@ void GameState::drawPlayingGame(sf::RenderTarget *target)
     enemyManager->draw(mWindow);
 
     // Lose
-    if (player->get_dead())
+    if (gameOver)
     {
         // Set text
         sf::Text textTitle;
@@ -467,7 +474,7 @@ void GameState::draw(sf::RenderTarget *target)
         isNextLevel = false;
     }
 
-    if (!player->get_dead())
+    if (!gameOver)
     {
         // Draw the level up background
         if (!isNextLevel)
@@ -482,23 +489,20 @@ void GameState::draw(sf::RenderTarget *target)
                 drawLevelScreen(target);
             }
 
-            if (!player->get_dead())
+            // Draw hover animation of paused button
+            if (!checkPausedButton)
             {
-                // Draw hover animation of paused button
-                if (!checkPausedButton)
-                {
-                    target->draw(pausedButtonIdle);
-                }
-                else
-                {
-                    target->draw(pausedButtonHover);
-                }
+                target->draw(pausedButtonIdle);
+            }
+            else
+            {
+                target->draw(pausedButtonHover);
+            }
 
-                // Pause menu
-                if (paused)
-                {
-                    pauseState->draw(target);
-                }
+            // Pause menu
+            if (paused)
+            {
+                pauseState->draw(target);
             }
         }
     }

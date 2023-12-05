@@ -74,6 +74,7 @@ private:
     bool pauseKeyPressed;
 
     int level;
+    bool gameOver;
 
     std::mt19937_64 random_engine;
 

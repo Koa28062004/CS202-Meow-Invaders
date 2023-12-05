@@ -10,10 +10,13 @@ public:
 
     bool update();
 
-    void draw(int i_x, int i_y, sf::RenderWindow &i_window, const sf::Color &i_color = sf::Color(255, 255, 255));
+    void draw(int i_x, int i_y, sf::RenderTarget *target);
     void reset();
 
 private:
+    // init
+    void initExplosion();
+
     int animation_iterator;
     int animation_speed;
     int current_frame;
@@ -23,6 +26,8 @@ private:
     sf::Sprite sprite;
 
     sf::Texture texture;
+
+    std::vector<sf::Texture> explosions;
 };
 
 #endif
