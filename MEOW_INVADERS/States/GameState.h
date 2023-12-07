@@ -82,6 +82,7 @@ private:
     std::vector<Enemy> *enemies;
     std::vector<Disaster> *disasters;
     std::vector<Disaster> *randomDisasters;
+    std::vector<Boss> *bosses;
 
     std::map<std::string, Button *> buttons;
 

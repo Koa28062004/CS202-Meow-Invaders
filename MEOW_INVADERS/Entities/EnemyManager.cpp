@@ -18,7 +18,8 @@ void EnemyManager::initDisaster()
     }
 }
 
-EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE)
+EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE),
+                               shoot_boss(0, 60)
 
 {
     if (!enemy_bullet_texture.loadFromFile("assets/images/enemyBullet1.png"))
@@ -27,6 +28,13 @@ EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE)
     }
     enemy_bullet_sprite.setTexture(enemy_bullet_texture);
     enemy_bullet_sprite.setScale(sf::Vector2f(0.2, 0.2));
+
+    if (!boss_bullet_texture.loadFromFile("assets/images/bossBullet.png"))
+    {
+        throw std::runtime_error("Error::EnemyManager::Can not load bossBullet.png");
+    }
+    boss_bullet_sprite.setTexture(boss_bullet_texture);
+    boss_bullet_sprite.setScale(sf::Vector2f(0.2, 0.2));
 
     initDisaster();
 }
@@ -55,6 +63,11 @@ std::vector<Disaster> &EnemyManager::get_randomDisasters()
     return randomDisasters;
 }
 
+std::vector<Boss> &EnemyManager::get_bosses()
+{
+    return bosses;
+}
+
 bool EnemyManager::reached_player(int i_player_y) const
 {
     for (const Enemy &enemy : enemies)
@@ -75,9 +88,10 @@ void EnemyManager::reset(int level)
 
     std::string level_enemy = "";
     std::string level_disaster = "";
+    std::string level_boss = "";
 
-    move_pause = std::max<int>(ENEMY_MOVE_PAUSE_START_MIN, ENEMY_MOVE_PAUSE_START - ENEMY_MOVE_PAUSE_DECREASE * level);
-    move_timer = move_pause;
+    // move_pause = std::max<int>(ENEMY_MOVE_PAUSE_START_MIN, ENEMY_MOVE_PAUSE_START - ENEMY_MOVE_PAUSE_DECREASE * level);
+    // move_timer = move_pause;
 
     shoot_distribution = std::uniform_int_distribution<int>(0, std::max<int>(ENEMY_SHOOT_CHANCE_MIN, ENEMY_SHOOT_CHANCE - ENEMY_SHOOT_CHANCE_INCREASE * level));
 
@@ -89,7 +103,8 @@ void EnemyManager::reset(int level)
     {
     case 0:
     {
-        level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
+        // level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
+        level_boss = "A";
         break;
     }
     case 1:
@@ -128,6 +143,19 @@ void EnemyManager::reset(int level)
 
     convertEnemy(level_enemy);
     convertDisaster(level_disaster);
+    convertBoss(level_boss);
+}
+
+void EnemyManager::convertBoss(std::string level_boss)
+{
+    for (char boss_char : level_boss)
+    {
+        switch (boss_char)
+        {
+        case 'A':
+            bosses.push_back(Boss(1, boss_bullet_sprite));
+        }
+    }
 }
 
 void EnemyManager::convertDisaster(std::string level_disaster)
@@ -273,6 +301,39 @@ void EnemyManager::updateDisaster(int level)
                     disasters.end());
 }
 
+void EnemyManager::updateBoss(std::mt19937_64 &i_random_engine)
+{
+    for (Boss &boss : bosses)
+    {
+        boss.movement();
+        boss.update();
+
+        if (0 == shoot_boss(i_random_engine))
+        {
+            boss.shoot(boss_bullets);
+        }
+    }
+
+    // Delete Boss
+    bosses.erase(remove_if(bosses.begin(), bosses.end(), [](Boss &boss)
+                           { return 0 == boss.getDead(); }),
+                 bosses.end());
+}
+
+void EnemyManager::updateBossBullets()
+{
+    for (Bullet &boss_bullet : boss_bullets)
+    {
+        boss_bullet.update();
+        checkBulletOutside(boss_bullet);
+    }
+
+    // delete boss bullets
+    boss_bullets.erase(remove_if(boss_bullets.begin(), boss_bullets.end(), [](Bullet &bullet)
+                                 { return 1 == bullet.getDead(); }),
+                       boss_bullets.end());
+}
+
 void EnemyManager::update(std::mt19937_64 &i_random_engine, int level)
 {
     updateEnemy(i_random_engine, level);
@@ -280,6 +341,11 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine, int level)
     updateRandomDisaster(i_random_engine, level);
     if (!enemies.size())
         updateDisaster(level);
+    if (!enemies.size() && !disasters.size())
+    {
+        updateBoss(i_random_engine);
+        updateBossBullets();
+    }
 }
 
 void EnemyManager::checkBulletOutside(Bullet &bullet)
@@ -318,5 +384,20 @@ void EnemyManager::draw(sf::RenderWindow *window)
     for (Disaster &randomDisaster : randomDisasters)
     {
         randomDisaster.draw(window);
+    }
+
+    for (Bullet &bullet : boss_bullets)
+    {
+        boss_bullet_sprite.setPosition(bullet.x, bullet.y);
+
+        window->draw(boss_bullet_sprite);
+        if (debug)
+            bullet.drawHitBoxBullet(window);
+    }
+
+    // Draw the boss
+    for (Boss &boss : bosses)
+    {
+        boss.draw(window);
     }
 }

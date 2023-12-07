@@ -24,6 +24,8 @@ constexpr int ENEMY_MOVE_PAUSE_START = 63;
 constexpr int ENEMY_BULLET_SPEED = 2;
 constexpr int ENEMY_ANIMATION_SPEED = 22;
 
+constexpr int BOSS_HEALTH = 10;
+
 // Power
 constexpr int POWER_DURATION = 500;
 

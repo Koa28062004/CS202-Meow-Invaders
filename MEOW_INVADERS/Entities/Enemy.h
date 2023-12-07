@@ -45,9 +45,8 @@ public:
 	int get_x() const;
 	int get_y() const;
     void drawHitBoxEnemy(sf::RenderTarget* target);
-
-    static int collectiveDirection;
     
+    static int collectiveDirection;
 private:
     // Init
     void initEnemy1();

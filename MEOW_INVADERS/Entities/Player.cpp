@@ -123,11 +123,12 @@ void Player::updatePlayerPosition(sf::RenderWindow *mWindow)
 
 void Player::updateBullets()
 {
-    if (fire_timer <= 0) 
+    if (fire_timer <= 0)
     {
         playerSprite->setPosition(playerSprite->getPosition().x, playerSprite->getPosition().y - 7.f);
     }
-    else {
+    else
+    {
         --fire_timer;
     }
 
@@ -236,6 +237,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
                     std::vector<Enemy> &enemies,
                     std::vector<Disaster> &disasters,
                     std::vector<Disaster> &randomDisasters,
+                    std::vector<Boss> &bosses,
                     sf::RenderWindow *mWindow)
 {
     initKeybinds();
@@ -250,8 +252,16 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(enemyBullet.get_hitbox()))
             {
-                 die();
-                enemyBullet.bulletDead();
+                if (current_power == 3)
+                {
+                    current_power = 0;
+                    shield_animation_over = 0;
+                }
+                else
+                {
+                    die();
+                    enemyBullet.bulletDead();
+                }
             }
         }
 
@@ -262,10 +272,11 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
                 if (current_power == 3)
                 {
                     current_power = 0;
+                    shield_animation_over = 0;
                 }
                 else
                     die();
-                    enemy.hit();
+                enemy.hit();
             }
         }
 
@@ -273,8 +284,16 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(disaster.get_hitbox()))
             {
-                die();
-                disaster.hit();
+                if (current_power == 3)
+                {
+                    current_power = 0;
+                    shield_animation_over = 0;
+                }
+                else
+                {
+                    die();
+                    disaster.hit();
+                }
             }
         }
 
@@ -282,8 +301,33 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(randomDisaster.get_hitbox()))
             {
-                die();
-                randomDisaster.hit();
+                if (current_power == 3)
+                {
+                    current_power = 0;
+                    shield_animation_over = 0;
+                }
+                else
+                {
+                    die();
+                    randomDisaster.hit();
+                }
+            }
+        }
+
+        for (Boss &boss : bosses)
+        {
+            if (get_hitbox().intersects(boss.get_hitbox()))
+            {
+                if (current_power == 3)
+                {
+                    current_power = 0;
+                    shield_animation_over = 0;
+                }
+                else
+                {
+                    die();
+                    boss.hit();
+                }
             }
         }
 
@@ -319,6 +363,15 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
                     {
                         bullet.bulletDead();
                         disaster.hit();
+                    }
+                }
+
+                for (Boss &boss : bosses)
+                {
+                    if (bullet.get_hitbox().intersects(boss.get_hitbox()))
+                    {
+                        bullet.bulletDead();
+                        boss.hit();
                     }
                 }
             }
