@@ -30,7 +30,6 @@ public:
 
 private:
   // Init
-  void initEnemy();
   void initDisaster();
 
   void updateEnemy(std::mt19937_64 &i_random_engine, int level);
@@ -44,16 +43,10 @@ private:
   // To use the randomness from the <random> library, we need to define the distribution.
   std::uniform_int_distribution<int> shoot_distribution;
 
-  //  std::vector<Animation> enemy_animations;
-
   std::vector<Bullet> enemy_bullets;
   std::vector<Enemy> enemies;
   std::vector<Disaster> disasters;
   std::vector<Disaster> randomDisasters;
-
-  sf::Texture enemyTex1;
-  sf::Texture enemyTex2;
-  sf::Texture enemyTex3;
 
   sf::Texture disasterTex1;
   sf::Texture disasterTex2;

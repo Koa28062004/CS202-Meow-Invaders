@@ -21,12 +21,13 @@ constexpr int ENEMY_MOVE_PAUSE_DECREASE = 1;
 constexpr int ENEMY_MOVE_PAUSE_START_MIN = 47;
 constexpr int ENEMY_MOVE_PAUSE_START = 63;
 constexpr int ENEMY_BULLET_SPEED = 2;
+constexpr unsigned char ENEMY_ANIMATION_SPEED = 22;
 
 // Power
 constexpr int POWER_DURATION = 500;
 
 // Draw the outline hit box to debug
-constexpr bool debug = 0;
+constexpr bool debug = 1;
 
 constexpr unsigned char EXPLOSION_ANIMATION_SPEED = 22;
 #endif

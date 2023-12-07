@@ -22,7 +22,7 @@
 class Enemy
 {
 public:
-    Enemy(int i_type, int i_x, int i_y, sf::Texture* enemyTex, sf::Sprite enemyBulletSprite);
+    Enemy(int i_type, int i_x, int i_y, sf::Sprite enemyBulletSprite);
     virtual ~Enemy();
 
     // Movements
@@ -49,10 +49,19 @@ public:
     static int collectiveDirection;
     
 private:
+    // Init
+    void initEnemy1();
+    void initEnemy2();
+    void initEnemy3();
+
+    // change Frame
+    void update_current_frame();
+
     int direction;
     int health;
     
     int hit_timer;
+    int timeMovement;
 
     // type of enemy
     int type;
@@ -67,6 +76,10 @@ private:
     bool isSetPos = false;
     float randomValueX = 1.0f;
     float randomValueY = 2.0f;
+
+    std::vector<std::vector<sf::Texture> > enemies;
+    std::vector<sf::Texture> animations; 
+    int current_frame;
 };
 
 #endif

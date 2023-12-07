@@ -1,23 +1,5 @@
 #include "EnemyManager.h"
 
-void EnemyManager::initEnemy()
-{
-    if (!enemyTex1.loadFromFile("assets/images/enemy1.png"))
-    {
-        throw std::runtime_error("Error::EnemyManager::Can not load enemy texture");
-    }
-
-    if (!enemyTex2.loadFromFile("assets/images/enemy2.png"))
-    {
-        throw std::runtime_error("Error::EnemyManager::Can not load enemy texture");
-    }
-
-    if (!enemyTex3.loadFromFile("assets/images/enemy3.png"))
-    {
-        throw std::runtime_error("Error::EnemyManager::Can not load enemy texture");
-    }
-}
-
 void EnemyManager::initDisaster()
 {
     if (!disasterTex1.loadFromFile("assets/images/disaster1.png"))
@@ -46,12 +28,6 @@ EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE)
     enemy_bullet_sprite.setTexture(enemy_bullet_texture);
     enemy_bullet_sprite.setScale(sf::Vector2f(0.2, 0.2));
 
-    // for (unsigned char a = 0; a < ENEMY_TYPES; a++)
-    // {
-    //     enemy_animations.push_back(Animation(1 + move_pause, BASE_SIZE, "Resources/Images/Enemy" + std::to_string(static_cast<unsigned short>(a)) + ".png"));
-    // }
-
-    initEnemy();
     initDisaster();
 }
 
@@ -105,43 +81,33 @@ void EnemyManager::reset(int level)
 
     shoot_distribution = std::uniform_int_distribution<int>(0, std::max<int>(ENEMY_SHOOT_CHANCE_MIN, ENEMY_SHOOT_CHANCE - ENEMY_SHOOT_CHANCE_INCREASE * level));
 
-    // for (Animation& enemy_animation : enemy_animations)
-    // {
-    // 	enemy_animation.reset();
-    // }
-
     enemy_bullets.clear();
 
     enemies.clear();
-
-    // if (TOTAL_LEVELS <= i_level)
-    // {
-    // 	i_level = 0.5f * TOTAL_LEVELS + i_level % static_cast<char>(0.5f * TOTAL_LEVELS);
-    // }
 
     switch (level)
     {
     case 0:
     {
-        level_enemy = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
-        level_disaster = "a c b a c a a b a b a b a b a b a c b a";
+        level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
+        level_disaster = "a c b a c a a b a b ";
         break;
     }
     case 1:
     {
         level_enemy = "1 0 1 0 1 0 1 0 1 0 \n 1 0 0 1 0 1 0 1";
-        level_disaster = "a c b a c a a b a b a b a b a b a c b a c b c b c";
+        level_disaster = "a c b a c a a b a b a b a b a b a";
         break;
     }
     case 2:
     {
-        level_enemy = "1010101010101010\n0101010101010101";
+        level_enemy = "1 0 1 0 1 0 1 0 1 2 1\n 0 1 2 1 2 1 0 1 0 1";
         level_disaster = "a c b a c a a b a b a b a b a b a c b a a c c c c c c c c";
         break;
     }
     case 3:
     {
-        level_enemy = "1111111111111111\n1111111111111111";
+        level_enemy = "2 1 1 1 1 1 1 1 0 0 \n 0 1 2 1 2 1 0 1 0 1 \n 0 1 2 1 2 1 0 1 0 1";
         level_disaster = "a c b a c a a b a b a b a b a b a c b a c c c c c c c b b b b b b";
         break;
     }
@@ -190,7 +156,7 @@ void EnemyManager::convertEnemy(std::string level_enemy)
 {
     int enemy_x = 0;
     int enemy_y = 0;
-    int enemy_spacing = 5;
+    int enemy_spacing = 7;
 
     // Here we're converting each character into an enemy.
     for (char sketch_character : level_enemy)
@@ -208,19 +174,19 @@ void EnemyManager::convertEnemy(std::string level_enemy)
         }
         case '0':
         {
-            enemies.push_back(Enemy(0, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex1, enemy_bullet_sprite));
+            enemies.push_back(Enemy(0, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), enemy_bullet_sprite));
 
             break;
         }
         case '1':
         {
-            enemies.push_back(Enemy(1, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex2, enemy_bullet_sprite));
+            enemies.push_back(Enemy(1, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), enemy_bullet_sprite));
 
             break;
         }
         case '2':
         {
-            enemies.push_back(Enemy(2, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), &enemyTex3, enemy_bullet_sprite));
+            enemies.push_back(Enemy(2, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), enemy_bullet_sprite));
         }
         }
     }
@@ -289,8 +255,8 @@ void EnemyManager::updateRandomDisaster(std::mt19937_64 &i_random_engine, int le
 
     // delete disaster
     randomDisasters.erase(remove_if(randomDisasters.begin(), randomDisasters.end(), [](Disaster &disaster)
-                              { return 0 == disaster.getDead(); }),
-                    randomDisasters.end());
+                                    { return 0 == disaster.getDead(); }),
+                          randomDisasters.end());
 }
 
 void EnemyManager::updateDisaster(int level)

@@ -10,7 +10,7 @@ public:
 
     bool update();
 
-    void draw(int i_x, int i_y, sf::RenderTarget *target);
+    void drawExplosion(int i_x, int i_y, sf::RenderTarget *target);
     void reset();
 
 private:
@@ -22,10 +22,6 @@ private:
     int current_frame;
     int frame_width;
     int total_frames;
-
-    sf::Sprite sprite;
-
-    sf::Texture texture;
 
     std::vector<sf::Texture> explosions;
 };

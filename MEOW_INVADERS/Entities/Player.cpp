@@ -386,7 +386,7 @@ void Player::draw(sf::RenderTarget *target)
             target->draw(*this->playerSprite);
         else if (0 == dead_animation_over)
         {
-            explosion.draw(playerSprite->getPosition().x - playerSprite->getGlobalBounds().width / 2, playerSprite->getPosition().y - playerSprite->getGlobalBounds().height / 2, target);
+            explosion.drawExplosion(playerSprite->getPosition().x - playerSprite->getGlobalBounds().width / 2, playerSprite->getPosition().y - playerSprite->getGlobalBounds().height / 2, target);
         }
     }
 }

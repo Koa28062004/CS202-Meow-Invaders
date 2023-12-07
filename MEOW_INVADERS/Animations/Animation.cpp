@@ -4,36 +4,36 @@ void Animation::initExplosion()
 {
     sf::Texture tmpTex;
     sf::Sprite tmpSprite;
-    if (!tmpTex.loadFromFile("assets/images/explosion1.png")) {
-
+    if (!tmpTex.loadFromFile("assets/images/explosion1.png"))
+    {
     }
     // tmpSprite.setTexture(tmpTex);
     // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
     explosions.push_back(tmpTex);
 
-    if (!tmpTex.loadFromFile("assets/images/explosion2.png")) {
-
+    if (!tmpTex.loadFromFile("assets/images/explosion2.png"))
+    {
     }
     // tmpSprite.setTexture(tmpTex);
     // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
     explosions.push_back(tmpTex);
 
-    if (!tmpTex.loadFromFile("assets/images/explosion3.png")) {
-
+    if (!tmpTex.loadFromFile("assets/images/explosion3.png"))
+    {
     }
     // tmpSprite.setTexture(tmpTex);
     // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
     explosions.push_back(tmpTex);
 
-    if (!tmpTex.loadFromFile("assets/images/explosion4.png")) {
-
+    if (!tmpTex.loadFromFile("assets/images/explosion4.png"))
+    {
     }
     // tmpSprite.setTexture(tmpTex);
     // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
     explosions.push_back(tmpTex);
 
-    if (!tmpTex.loadFromFile("assets/images/explosion5.png")) {
-
+    if (!tmpTex.loadFromFile("assets/images/explosion5.png"))
+    {
     }
     // tmpSprite.setTexture(tmpTex);
     // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
@@ -73,8 +73,9 @@ bool Animation::update()
     return output;
 }
 
-void Animation::draw(int i_x, int i_y, sf::RenderTarget *target)
+void Animation::drawExplosion(int i_x, int i_y, sf::RenderTarget *target)
 {
+    sf::Sprite sprite;
     sprite.setTexture(explosions[current_frame]);
     sprite.setScale(sf::Vector2f(0.2, 0.2));
     sprite.setPosition(i_x, i_y);

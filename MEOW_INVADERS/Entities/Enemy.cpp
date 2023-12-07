@@ -2,16 +2,70 @@
 
 int Enemy::collectiveDirection = 1;
 
-Enemy::Enemy(int i_type, int i_x, int i_y, sf::Texture *enemyTex, sf::Sprite enemyBulletSprite) : health(1 + i_type),
-                                                                                                  hit_timer(0),
-                                                                                                  type(i_type),
-                                                                                                  x(i_x),
-                                                                                                  y(i_y),
-                                                                                                  enemyBullet(enemyBulletSprite)
+void Enemy::initEnemy1()
 {
+    sf::Texture tmp;
+    if (!tmp.loadFromFile("assets/images/enemy11.png"))
+    {
+    }
+    animations.push_back(tmp);
+
+    if (!tmp.loadFromFile("assets/images/enemy12.png"))
+    {
+    }
+    animations.push_back(tmp);
+    enemies.push_back(animations);
+    animations.clear();
+}
+
+void Enemy::initEnemy2()
+{
+    sf::Texture tmp;
+    if (!tmp.loadFromFile("assets/images/enemy21.png"))
+    {
+    }
+    animations.push_back(tmp);
+
+    if (!tmp.loadFromFile("assets/images/enemy22.png"))
+    {
+    }
+    animations.push_back(tmp);
+    enemies.push_back(animations);
+    animations.clear();
+}
+
+void Enemy::initEnemy3()
+{
+    sf::Texture tmp;
+    if (!tmp.loadFromFile("assets/images/enemy31.png"))
+    {
+    }
+    animations.push_back(tmp);
+
+    if (!tmp.loadFromFile("assets/images/enemy32.png"))
+    {
+    }
+    animations.push_back(tmp);
+    enemies.push_back(animations);
+    animations.clear();
+}
+
+Enemy::Enemy(int i_type, int i_x, int i_y, sf::Sprite enemyBulletSprite) : health(1 + i_type),
+                                                                           hit_timer(0),
+                                                                           type(i_type),
+                                                                           x(i_x),
+                                                                           y(i_y),
+                                                                           enemyBullet(enemyBulletSprite),
+                                                                           current_frame(0),
+                                                                           timeMovement(0)
+{
+    initEnemy1();
+    initEnemy2();
+    initEnemy3();
+
     direction = 1;
-    enemySprite.setTexture(*enemyTex);
-    enemySprite.setScale(sf::Vector2f(0.2, 0.2));
+    // enemySprite.setTexture(*enemyTex);
+    // enemySprite.setScale(sf::Vector2f(0.45, 0.45));
     enemySprite.setPosition(-200.f, -200.f);
 }
 
@@ -184,14 +238,37 @@ void Enemy::shoot(std::vector<Bullet> &i_enemy_bullets)
     }
 }
 
+void Enemy::update_current_frame()
+{
+    ++timeMovement;
+    while (timeMovement >= ENEMY_ANIMATION_SPEED)
+    {
+        current_frame++;
+        timeMovement = 0;
+
+        if (current_frame == 2)
+        {
+            current_frame = 0;
+        }
+    }
+}
+
 void Enemy::update()
 {
+    update_current_frame();
 }
 
 void Enemy::draw(sf::RenderTarget *target)
 {
     if (isSetPos)
+    {
+        enemySprite.setTexture(enemies[type][current_frame]);
+        if (type == 0)
+            enemySprite.setScale(sf::Vector2f(0.45, 0.45));
+        else 
+            enemySprite.setScale(sf::Vector2f(0.65, 0.65));
         target->draw(enemySprite);
+    }
 
     if (debug)
         drawHitBoxEnemy(target);
