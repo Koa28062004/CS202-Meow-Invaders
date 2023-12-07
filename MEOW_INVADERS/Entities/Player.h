@@ -51,6 +51,7 @@ private:
     bool dead;
 
     int reload_timer;
+    int fire_timer;
 
     int power_timer;
     int current_power;

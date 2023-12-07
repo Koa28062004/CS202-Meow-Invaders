@@ -51,7 +51,8 @@ void Player::reset()
 }
 
 Player::Player(const float &x, const float &y, sf::Texture *texture) : generator(std::chrono::system_clock::now().time_since_epoch().count()),
-                                                                       explosion(EXPLOSION_ANIMATION_SPEED, 140, "assets/images/explosion.png")
+                                                                       explosion(EXPLOSION_ANIMATION_SPEED, 140, "assets/images/explosion.png"),
+                                                                       fire_timer(-1)
 {
     initSprites(texture);
     reset();
@@ -122,10 +123,21 @@ void Player::updatePlayerPosition(sf::RenderWindow *mWindow)
 
 void Player::updateBullets()
 {
+    if (fire_timer <= 0) 
+    {
+        playerSprite->setPosition(playerSprite->getPosition().x, playerSprite->getPosition().y - 7.f);
+    }
+    else {
+        --fire_timer;
+    }
+
     if (reload_timer == 0)
     {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("FIRE"))))
         {
+            fire_timer = FIRE_TIMER;
+            playerSprite->setPosition(playerSprite->getPosition().x, playerSprite->getPosition().y - 7.f);
+
             if (1 == current_power)
             {
                 reload_timer = FAST_RELOAD_DURATION;
