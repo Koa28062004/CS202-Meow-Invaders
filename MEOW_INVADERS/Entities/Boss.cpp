@@ -18,6 +18,7 @@ Boss::Boss(int i_type, sf::Sprite boss_bullet_sprite) : type(i_type),
                                                         bulletSprite(boss_bullet_sprite)
 {
     initBoss();
+    bossSprite.setPosition(100, -300);
 }
 
 Boss::~Boss()
@@ -87,6 +88,7 @@ void Boss::shoot(std::vector<Bullet> &i_boss_bullets)
     i_boss_bullets.push_back(Bullet(2, ENEMY_BULLET_SPEED, bossCenter.x, bossCenter.y, bulletSprite));
     i_boss_bullets.push_back(Bullet(-2, -ENEMY_BULLET_SPEED, bossCenter.x, bossCenter.y, bulletSprite));
     i_boss_bullets.push_back(Bullet(-2, ENEMY_BULLET_SPEED, bossCenter.x, bossCenter.y, bulletSprite));
+    i_boss_bullets.push_back(Bullet(0, -ENEMY_BULLET_SPEED, bossCenter.x, bossCenter.y, bulletSprite));
 }
 
 void Boss::draw(sf::RenderTarget *target)

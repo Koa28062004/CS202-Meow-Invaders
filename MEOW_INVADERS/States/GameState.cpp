@@ -214,7 +214,11 @@ void GameState::handleGameOver()
             gameOver = 0;
             --level;
             enemy_bullets->clear();
+            boss_bullets->clear();
             enemies->clear();
+            disasters->clear();
+            randomDisasters->clear();
+            bosses->clear();
             player->reset();
             player->setEntityPosition((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2);
         }
@@ -332,7 +336,6 @@ void GameState::updatingPlayingGame()
         isReset = false;
         isEnterClicked = false;
         checkClock = false;
-        player->reset();
         if (level < 5)
             enemyManager->reset(level++);
     }
@@ -340,11 +343,12 @@ void GameState::updatingPlayingGame()
     {
         enemyManager->update(random_engine, level);
         enemy_bullets = &enemyManager->get_enemy_bullets();
+        boss_bullets = &enemyManager->get_boss_bullets();
         enemies = &enemyManager->get_enemies();
         disasters = &enemyManager->get_disasters();
         randomDisasters = &enemyManager->get_randomDisasters();
         bosses = &enemyManager->get_bosses();
-        player->update(*enemy_bullets, *enemies, *disasters, *randomDisasters, *bosses, mWindow);
+        player->update(*enemy_bullets, *enemies, *disasters, *randomDisasters, *bosses, *boss_bullets, mWindow);
     }
 }
 

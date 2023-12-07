@@ -79,6 +79,7 @@ private:
     std::mt19937_64 random_engine;
 
     std::vector<Bullet> *enemy_bullets;
+    std::vector<Bullet> *boss_bullets;
     std::vector<Enemy> *enemies;
     std::vector<Disaster> *disasters;
     std::vector<Disaster> *randomDisasters;

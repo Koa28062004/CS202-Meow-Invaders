@@ -46,8 +46,8 @@ void Player::reset()
     dead_animation_over = 0;
     shield_animation_over = 0;
 
-    // player_bullets.clear();
-    // powers.clear();
+    player_bullets.clear();
+    powers.clear();
 }
 
 Player::Player(const float &x, const float &y, sf::Texture *texture) : generator(std::chrono::system_clock::now().time_since_epoch().count()),
@@ -238,16 +238,17 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
                     std::vector<Disaster> &disasters,
                     std::vector<Disaster> &randomDisasters,
                     std::vector<Boss> &bosses,
+                    std::vector<Bullet> &boss_bullets,
                     sf::RenderWindow *mWindow)
 {
     initKeybinds();
     updatePlayerPosition(mWindow);
     restartPower();
+    updatePower();
+    updateBullets();
 
     if (!dead)
     {
-        updatePower();
-        updateBullets();
         for (Bullet &enemyBullet : enemy_bullets)
         {
             if (get_hitbox().intersects(enemyBullet.get_hitbox()))
@@ -261,6 +262,23 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
                 {
                     die();
                     enemyBullet.bulletDead();
+                }
+            }
+        }
+
+        for (Bullet &bossBullet : boss_bullets)
+        {
+            if (get_hitbox().intersects(bossBullet.get_hitbox()))
+            {
+                if (current_power == 3)
+                {
+                    current_power = 0;
+                    shield_animation_over = 0;
+                }
+                else
+                {
+                    die();
+                    bossBullet.bulletDead();
                 }
             }
         }

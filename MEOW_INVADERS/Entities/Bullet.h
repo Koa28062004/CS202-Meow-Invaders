@@ -33,6 +33,8 @@ public:
     int x;
     int y;
 
+    int type;
+
     std::array<int, 3> previous_x;
     std::array<int, 3> previous_y;
 

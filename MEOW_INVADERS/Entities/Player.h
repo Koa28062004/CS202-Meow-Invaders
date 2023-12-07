@@ -22,6 +22,7 @@ public:
                 std::vector<Disaster> &disasters,
                 std::vector<Disaster> &randomDisasters,
                 std::vector<Boss> &bosses,
+                std::vector<Bullet> &boss_bullets,
                 sf::RenderWindow* mWindow);
     void draw(sf::RenderTarget *target);
     void die();

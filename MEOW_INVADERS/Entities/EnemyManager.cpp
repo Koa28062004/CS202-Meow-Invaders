@@ -22,12 +22,26 @@ EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE),
                                shoot_boss(0, 60)
 
 {
-    if (!enemy_bullet_texture.loadFromFile("assets/images/enemyBullet1.png"))
+    if (!enemy_bullet_texture1.loadFromFile("assets/images/enemyBullet1.png"))
     {
         throw std::runtime_error("Error::EnemyManager::Can not load enemyBullet1.png");
     }
-    enemy_bullet_sprite.setTexture(enemy_bullet_texture);
-    enemy_bullet_sprite.setScale(sf::Vector2f(0.2, 0.2));
+    enemy_bullet_sprite1.setTexture(enemy_bullet_texture1);
+    enemy_bullet_sprite1.setScale(sf::Vector2f(0.2, 0.2));
+
+    if (!enemy_bullet_texture2.loadFromFile("assets/images/enemyBullet2.png"))
+    {
+        throw std::runtime_error("Error::EnemyManager::Can not load enemyBullet2.png");
+    }
+    enemy_bullet_sprite2.setTexture(enemy_bullet_texture2);
+    enemy_bullet_sprite2.setScale(sf::Vector2f(0.3, 0.3));
+
+    if (!enemy_bullet_texture3.loadFromFile("assets/images/enemyBullet3.png"))
+    {
+        throw std::runtime_error("Error::EnemyManager::Can not load enemyBullet3.png");
+    }
+    enemy_bullet_sprite3.setTexture(enemy_bullet_texture3);
+    enemy_bullet_sprite3.setScale(sf::Vector2f(0.3, 0.3));
 
     if (!boss_bullet_texture.loadFromFile("assets/images/bossBullet.png"))
     {
@@ -46,6 +60,11 @@ EnemyManager::~EnemyManager()
 std::vector<Bullet> &EnemyManager::get_enemy_bullets()
 {
     return enemy_bullets;
+}
+
+std::vector<Bullet> &EnemyManager::get_boss_bullets()
+{
+    return boss_bullets;
 }
 
 std::vector<Enemy> &EnemyManager::get_enemies()
@@ -96,14 +115,17 @@ void EnemyManager::reset(int level)
     shoot_distribution = std::uniform_int_distribution<int>(0, std::max<int>(ENEMY_SHOOT_CHANCE_MIN, ENEMY_SHOOT_CHANCE - ENEMY_SHOOT_CHANCE_INCREASE * level));
 
     enemy_bullets.clear();
-
+    boss_bullets.clear();
     enemies.clear();
+    disasters.clear();
+    randomDisasters.clear();
+    bosses.clear();
 
-    switch (level)
+        switch (level)
     {
     case 0:
     {
-        // level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
+        level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
         level_boss = "A";
         break;
     }
@@ -201,19 +223,18 @@ void EnemyManager::convertEnemy(std::string level_enemy)
         }
         case '0':
         {
-            enemies.push_back(Enemy(0, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), enemy_bullet_sprite));
-
+            enemies.push_back(Enemy(0, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), enemy_bullet_sprite1));
             break;
         }
         case '1':
         {
-            enemies.push_back(Enemy(1, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), enemy_bullet_sprite));
+            enemies.push_back(Enemy(1, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), enemy_bullet_sprite2));
 
             break;
         }
         case '2':
         {
-            enemies.push_back(Enemy(2, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), enemy_bullet_sprite));
+            enemies.push_back(Enemy(2, BASE_SIZE * (1 + enemy_x), BASE_SIZE * (2 + enemy_y), enemy_bullet_sprite3));
         }
         }
     }
@@ -361,9 +382,22 @@ void EnemyManager::draw(sf::RenderWindow *window)
     // Draw the bullet of the enemies
     for (Bullet &bullet : enemy_bullets)
     {
-        enemy_bullet_sprite.setPosition(bullet.x, bullet.y);
-
-        window->draw(enemy_bullet_sprite);
+        
+        if (bullet.type == 0) {
+            enemy_bullet_sprite1.setPosition(bullet.x, bullet.y);
+            window->draw(enemy_bullet_sprite1);
+        }
+            
+        if (bullet.type == 1) {
+            enemy_bullet_sprite2.setPosition(bullet.x, bullet.y);
+            window->draw(enemy_bullet_sprite2);
+        }
+            
+        if (bullet.type == 2) {
+            enemy_bullet_sprite3.setPosition(bullet.x, bullet.y);
+            window->draw(enemy_bullet_sprite3);
+        }
+    
         if (debug)
             bullet.drawHitBoxBullet(window);
     }

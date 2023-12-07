@@ -21,6 +21,7 @@ public:
   void update(std::mt19937_64 &i_random_engine, int level);
 
   std::vector<Bullet> &get_enemy_bullets();
+  std::vector<Bullet> &get_boss_bullets();
   std::vector<Enemy> &get_enemies();
   std::vector<Disaster> &get_disasters();
   std::vector<Disaster> &get_randomDisasters();
@@ -61,8 +62,13 @@ private:
   sf::Texture disasterTex2;
   sf::Texture disasterTex3;
 
-  sf::Sprite enemy_bullet_sprite;
-  sf::Texture enemy_bullet_texture;
+  sf::Sprite enemy_bullet_sprite1;
+  sf::Sprite enemy_bullet_sprite2;
+  sf::Sprite enemy_bullet_sprite3;
+
+  sf::Texture enemy_bullet_texture1;
+  sf::Texture enemy_bullet_texture2;
+  sf::Texture enemy_bullet_texture3;
 
   sf::Sprite boss_bullet_sprite;
   sf::Texture boss_bullet_texture;

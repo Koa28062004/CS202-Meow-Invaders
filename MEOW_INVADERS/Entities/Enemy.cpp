@@ -220,19 +220,28 @@ void Enemy::shoot(std::vector<Bullet> &i_enemy_bullets)
     case 0:
     {
         i_enemy_bullets.push_back(Bullet(0, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
+        i_enemy_bullets[i_enemy_bullets.size() - 1].type = type;
         break;
     }
     case 1:
     {
-        i_enemy_bullets.push_back(Bullet(0.125f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
-        i_enemy_bullets.push_back(Bullet(-0.125f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
+        i_enemy_bullets.push_back(Bullet(1, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
+        i_enemy_bullets[i_enemy_bullets.size() - 1].type = type;
+
+        i_enemy_bullets.push_back(Bullet(-1, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
+        i_enemy_bullets[i_enemy_bullets.size() - 1].type = type;
         break;
     } 
     case 2:
     {
         i_enemy_bullets.push_back(Bullet(0, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
-        i_enemy_bullets.push_back(Bullet(0.25f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
-        i_enemy_bullets.push_back(Bullet(-0.25f * ENEMY_BULLET_SPEED, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
+        i_enemy_bullets[i_enemy_bullets.size() - 1].type = type;
+
+        i_enemy_bullets.push_back(Bullet(2, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
+        i_enemy_bullets[i_enemy_bullets.size() - 1].type = type;
+
+        i_enemy_bullets.push_back(Bullet(-2, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
+        i_enemy_bullets[i_enemy_bullets.size() - 1].type = type;
         break;
     }
     }

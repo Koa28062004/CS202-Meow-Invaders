@@ -7,7 +7,8 @@ Bullet::Bullet(int i_step_x, int i_step_y, int i_x, int i_y, sf::Sprite bulletSp
                                                                                         step_y(i_step_y),
                                                                                         x(i_x),
                                                                                         y(i_y),
-                                                                                        bullet(bulletSprite)
+                                                                                        bullet(bulletSprite),
+                                                                                        type(0)
 {
     previous_x.fill(x);
     previous_y.fill(y);
@@ -49,9 +50,9 @@ void Bullet::update()
 
 sf::IntRect Bullet::get_hitbox() const
 {
-    return sf::IntRect(x, y,
-                       bullet.getGlobalBounds().width,
-                       bullet.getGlobalBounds().height);
+    return sf::IntRect(x + 8, y + 5,
+                       bullet.getGlobalBounds().width - 15,
+                       bullet.getGlobalBounds().height - 7);
 }
 
 void Bullet::drawHitBoxBullet(sf::RenderTarget *target)
