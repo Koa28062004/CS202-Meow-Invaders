@@ -10,6 +10,7 @@
 #include <map>
 #include <vector>
 #include <string>
+#include <random>
 
 #include "SFML/System.hpp"
 #include "SFML/Window.hpp"
@@ -26,7 +27,7 @@ public:
     virtual ~Enemy();
 
     // Movements
-	void movement(int level);
+	void movement(int level, int randomMove);
     void move0();
     void move1();
     void move2();
@@ -55,6 +56,7 @@ private:
 
     // change Frame
     void update_current_frame();
+    int getRandomNumber(int min, int max);
 
     int direction;
     int health;

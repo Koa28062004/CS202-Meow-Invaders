@@ -2,7 +2,11 @@
 
 void Boss::initBoss()
 {
-    if (!bossTex.loadFromFile("assets/images/boss" + std::to_string(type) + ".png"))
+    if (!bossTex1.loadFromFile("assets/images/boss" + std::to_string(type) + ".png"))
+    {
+    }
+
+    if (!bossTex2.loadFromFile("assets/images/boss" + std::to_string(type) + ".png"))
     {
     }
 
@@ -95,8 +99,18 @@ void Boss::draw(sf::RenderTarget *target)
 {
     if (isSetPos)
     {
-        bossSprite.setTexture(bossTex);
-        bossSprite.setScale(sf::Vector2f(0.9, 0.9));
+        if (type == 1)
+        {
+            bossSprite.setTexture(bossTex1);
+            bossSprite.setScale(sf::Vector2f(0.9, 0.9));
+        }
+
+        if (type == 2)
+        {
+            bossSprite.setTexture(bossTex2);
+            bossSprite.setScale(sf::Vector2f(0.7, 0.7));
+        }
+
         target->draw(bossSprite);
     }
 
@@ -119,7 +133,7 @@ void Boss::drawHitBoxBoss(sf::RenderTarget *target)
 sf::IntRect Boss::get_hitbox() const
 {
     return sf::IntRect(bossSprite.getGlobalBounds().left + 50,
-                       bossSprite.getGlobalBounds().top + 115,
+                       bossSprite.getGlobalBounds().top + 30,
                        bossSprite.getGlobalBounds().width - 100,
-                       bossSprite.getGlobalBounds().height - 190);
+                       bossSprite.getGlobalBounds().height - 60);
 }

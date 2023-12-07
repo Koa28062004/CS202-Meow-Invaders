@@ -52,7 +52,8 @@ void Player::reset()
 
 Player::Player(const float &x, const float &y, sf::Texture *texture) : generator(std::chrono::system_clock::now().time_since_epoch().count()),
                                                                        explosion(EXPLOSION_ANIMATION_SPEED, 140, "assets/images/explosion.png"),
-                                                                       fire_timer(-1)
+                                                                       fire_timer(-1),
+                                                                       timer(-1)
 {
     initSprites(texture);
     reset();
@@ -78,9 +79,11 @@ void Player::die()
 {
     if (current_power == 3)
     {
+        shield_animation_over = 0;
         current_power = 0;
+        timer = 10;
     }
-    else
+    else if (current_power != 3 && timer <= 0)
         dead = 1;
 }
 
@@ -96,10 +99,10 @@ bool Player::get_dead_animation_over() const
 
 void Player::checkBulletOutside(Bullet &bullet)
 {
-    // if (bullet.y <= 2)
-    // {
-    //     bullet.bulletDead();
-    // }
+    if (bullet.y <= 2)
+    {
+        bullet.bulletDead();
+    }
 }
 
 void Player::updatePlayerPosition(sf::RenderWindow *mWindow)
@@ -123,21 +126,18 @@ void Player::updatePlayerPosition(sf::RenderWindow *mWindow)
 
 void Player::updateBullets()
 {
-    if (fire_timer <= 0)
+    if (RELOAD_DURATION - reload_timer >= FIRE_TIMER && isShoot)
     {
         playerSprite->setPosition(playerSprite->getPosition().x, playerSprite->getPosition().y - 7.f);
-    }
-    else
-    {
-        --fire_timer;
+        isShoot = false;
     }
 
     if (reload_timer == 0)
     {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("FIRE"))))
         {
-            fire_timer = FIRE_TIMER;
-            playerSprite->setPosition(playerSprite->getPosition().x, playerSprite->getPosition().y - 7.f);
+            isShoot = true;
+            playerSprite->setPosition(playerSprite->getPosition().x, playerSprite->getPosition().y + 7.f);
 
             if (1 == current_power)
             {
@@ -193,7 +193,7 @@ void Player::updatePower()
             current_power = power.getType();
             if (power.getType() == 3)
             {
-                // ++health;
+                
             }
             power.hit();
         }
@@ -241,6 +241,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
                     std::vector<Bullet> &boss_bullets,
                     sf::RenderWindow *mWindow)
 {
+    --timer;
     initKeybinds();
     updatePlayerPosition(mWindow);
     restartPower();
@@ -253,16 +254,8 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(enemyBullet.get_hitbox()))
             {
-                if (current_power == 3)
-                {
-                    current_power = 0;
-                    shield_animation_over = 0;
-                }
-                else
-                {
-                    die();
-                    enemyBullet.bulletDead();
-                }
+                die();
+                enemyBullet.bulletDead();
             }
         }
 
@@ -270,16 +263,8 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(bossBullet.get_hitbox()))
             {
-                if (current_power == 3)
-                {
-                    current_power = 0;
-                    shield_animation_over = 0;
-                }
-                else
-                {
-                    die();
-                    bossBullet.bulletDead();
-                }
+                die();
+                bossBullet.bulletDead();
             }
         }
 
@@ -287,13 +272,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(enemy.get_hitbox()))
             {
-                if (current_power == 3)
-                {
-                    current_power = 0;
-                    shield_animation_over = 0;
-                }
-                else
-                    die();
+                die();
                 enemy.hit();
             }
         }
@@ -302,16 +281,8 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(disaster.get_hitbox()))
             {
-                if (current_power == 3)
-                {
-                    current_power = 0;
-                    shield_animation_over = 0;
-                }
-                else
-                {
-                    die();
-                    disaster.hit();
-                }
+                die();
+                disaster.hit();
             }
         }
 
@@ -319,16 +290,8 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(randomDisaster.get_hitbox()))
             {
-                if (current_power == 3)
-                {
-                    current_power = 0;
-                    shield_animation_over = 0;
-                }
-                else
-                {
-                    die();
-                    randomDisaster.hit();
-                }
+                die();
+                randomDisaster.hit();
             }
         }
 
@@ -336,16 +299,8 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
         {
             if (get_hitbox().intersects(boss.get_hitbox()))
             {
-                if (current_power == 3)
-                {
-                    current_power = 0;
-                    shield_animation_over = 0;
-                }
-                else
-                {
-                    die();
-                    boss.hit();
-                }
+                die();
+                boss.hit();
             }
         }
 
@@ -476,8 +431,8 @@ void Player::draw(sf::RenderTarget *target)
 
 sf::IntRect Player::get_hitbox() const
 {
-    return sf::IntRect(playerSprite->getGlobalBounds().left,
-                       playerSprite->getGlobalBounds().top,
-                       playerSprite->getGlobalBounds().width,
-                       playerSprite->getGlobalBounds().height);
+    return sf::IntRect(playerSprite->getGlobalBounds().left + 7,
+                       playerSprite->getGlobalBounds().top + 13,
+                       playerSprite->getGlobalBounds().width - 14,
+                       playerSprite->getGlobalBounds().height - 25);
 }

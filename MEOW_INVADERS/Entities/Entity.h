@@ -45,9 +45,8 @@ protected:
     sf::Texture powerTex1;
     // 3 bullets
     sf::Texture powerTex2;
-    // +1 blood
+    // shield
     sf::Texture powerTex3;
-    // Mirror move
 };
 
 #endif

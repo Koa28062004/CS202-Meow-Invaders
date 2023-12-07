@@ -19,7 +19,8 @@ void EnemyManager::initDisaster()
 }
 
 EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE),
-                               shoot_boss(0, 60)
+                               shoot_boss(0, 60),
+                               randomMove(0)
 
 {
     if (!enemy_bullet_texture1.loadFromFile("assets/images/enemyBullet1.png"))
@@ -27,21 +28,21 @@ EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE),
         throw std::runtime_error("Error::EnemyManager::Can not load enemyBullet1.png");
     }
     enemy_bullet_sprite1.setTexture(enemy_bullet_texture1);
-    enemy_bullet_sprite1.setScale(sf::Vector2f(0.2, 0.2));
+    enemy_bullet_sprite1.setScale(sf::Vector2f(0.3, 0.3));
 
     if (!enemy_bullet_texture2.loadFromFile("assets/images/enemyBullet2.png"))
     {
         throw std::runtime_error("Error::EnemyManager::Can not load enemyBullet2.png");
     }
     enemy_bullet_sprite2.setTexture(enemy_bullet_texture2);
-    enemy_bullet_sprite2.setScale(sf::Vector2f(0.3, 0.3));
+    enemy_bullet_sprite2.setScale(sf::Vector2f(0.35, 0.35));
 
     if (!enemy_bullet_texture3.loadFromFile("assets/images/enemyBullet3.png"))
     {
         throw std::runtime_error("Error::EnemyManager::Can not load enemyBullet3.png");
     }
     enemy_bullet_sprite3.setTexture(enemy_bullet_texture3);
-    enemy_bullet_sprite3.setScale(sf::Vector2f(0.3, 0.3));
+    enemy_bullet_sprite3.setScale(sf::Vector2f(0.4, 0.4));
 
     if (!boss_bullet_texture.loadFromFile("assets/images/bossBullet.png"))
     {
@@ -101,27 +102,78 @@ bool EnemyManager::reached_player(int i_player_y) const
     return 0;
 }
 
+std::string EnemyManager::generateRandomLevelEnemy()
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, 2);
+
+    std::string i_level_enemy = "";
+    for (int i = 0; i < 2; ++i)
+    {
+        for (int j = 0; j < 8; ++j)
+        {
+            i_level_enemy += std::to_string(dis(gen)) + " ";
+        }
+        i_level_enemy += "\n";
+    }
+    return i_level_enemy;
+}
+
+std::string EnemyManager::generateRandomLevelDisaster()
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, 2);
+
+    std::string i_level_disaster = "";
+    for (int i = 0; i < 10; ++i)
+    {
+        char random_char = 'a' + dis(gen);
+        i_level_disaster += random_char;
+    }
+    return i_level_disaster;
+}
+
+std::string EnemyManager::generateRandomLevelBoss()
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, 1);
+
+    char i_boss_char = 'A' + dis(gen);
+    std::string i_level_boss(1, i_boss_char);
+    return i_level_boss;
+}
+
+int EnemyManager::getRandomNumber(int min, int max)
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(min, max);
+    return dis(gen);
+}
+
 void EnemyManager::reset(int level)
 {
     Enemy::collectiveDirection = 1;
+
+    randomMove = getRandomNumber(0, 2);
 
     std::string level_enemy = "";
     std::string level_disaster = "";
     std::string level_boss = "";
 
-    // move_pause = std::max<int>(ENEMY_MOVE_PAUSE_START_MIN, ENEMY_MOVE_PAUSE_START - ENEMY_MOVE_PAUSE_DECREASE * level);
-    // move_timer = move_pause;
-
     shoot_distribution = std::uniform_int_distribution<int>(0, std::max<int>(ENEMY_SHOOT_CHANCE_MIN, ENEMY_SHOOT_CHANCE - ENEMY_SHOOT_CHANCE_INCREASE * level));
 
-    enemy_bullets.clear();
-    boss_bullets.clear();
-    enemies.clear();
-    disasters.clear();
-    randomDisasters.clear();
-    bosses.clear();
+    // enemy_bullets.clear();
+    // boss_bullets.clear();
+    // enemies.clear();
+    // disasters.clear();
+    // randomDisasters.clear();
+    // bosses.clear();
 
-        switch (level)
+    switch (level)
     {
     case 0:
     {
@@ -139,28 +191,13 @@ void EnemyManager::reset(int level)
     {
         level_enemy = "1 0 1 0 1 0 1 0 1 2 1\n 0 1 2 1 2 1 0 1 0 1";
         level_disaster = "a c b a c a a b a b a b a b a b a c b a a c c c c c c c c";
+        level_boss = "B";
         break;
     }
-    case 3:
-    {
-        level_enemy = "2 1 1 1 1 1 1 1 0 0 \n 0 1 2 1 2 1 0 1 0 1 \n 0 1 2 1 2 1 0 1 0 1";
-        level_disaster = "a c b a c a a b a b a b a b a b a c b a c c c c c c c b b b b b b";
-        break;
-    }
-    case 4:
-    {
-        // CHECKBOARD PATTERN WITH A SOLID PATTERN! I'M A GENIUS!
-        level_enemy = "2222222222222222\n1111111111111111\n1010101010101010\n0101010101010101";
-        level_disaster = "a c b a c a a b a b a b a b a b a c b a c c c c c c c b b b b b b c b c b c a c a a a";
-        break;
-    }
-    case 5:
-    {
-        // EASY ENEMIES AT THE TOP AND HARD ENEMIES AT THE BOTTOM! IT'S A REVOLUTION IN LEVEL DESIGN!
-        level_enemy = "0000000000000000\n2222222222222222\n1111111111111111\n1111111111111111";
-        level_disaster = "acbacaabababababacbacccccccbbbbbb";
-        break;
-    }
+    default:
+        level_enemy = generateRandomLevelEnemy();
+        level_disaster = generateRandomLevelDisaster();
+        level_boss = generateRandomLevelBoss();
     }
 
     convertEnemy(level_enemy);
@@ -176,6 +213,10 @@ void EnemyManager::convertBoss(std::string level_boss)
         {
         case 'A':
             bosses.push_back(Boss(1, boss_bullet_sprite));
+            break;
+        case 'B':
+            bosses.push_back(Boss(2, boss_bullet_sprite));
+            break;
         }
     }
 }
@@ -246,7 +287,7 @@ void EnemyManager::updateEnemy(std::mt19937_64 &i_random_engine, int level)
 
     for (Enemy &enemy : enemies)
     {
-        enemy.movement(level);
+        enemy.movement(level, randomMove);
     }
 
     for (Enemy &enemy : enemies)
@@ -296,7 +337,7 @@ void EnemyManager::updateRandomDisaster(std::mt19937_64 &i_random_engine, int le
 
     for (Disaster &disaster : randomDisasters)
     {
-        disaster.movement(level);
+        disaster.movement(level, randomMove);
         disaster.update();
         disaster.checkOutside();
     }
@@ -311,7 +352,7 @@ void EnemyManager::updateDisaster(int level)
 {
     for (Disaster &disaster : disasters)
     {
-        disaster.movement(level);
+        disaster.movement(level, randomMove);
         disaster.update();
         disaster.checkOutside();
     }
@@ -360,12 +401,12 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine, int level)
     updateEnemy(i_random_engine, level);
     updateEnemyBullets();
     updateRandomDisaster(i_random_engine, level);
+    updateBossBullets();
     if (!enemies.size())
         updateDisaster(level);
     if (!enemies.size() && !disasters.size())
     {
         updateBoss(i_random_engine);
-        updateBossBullets();
     }
 }
 
@@ -382,22 +423,25 @@ void EnemyManager::draw(sf::RenderWindow *window)
     // Draw the bullet of the enemies
     for (Bullet &bullet : enemy_bullets)
     {
-        
-        if (bullet.type == 0) {
+
+        if (bullet.type == 0)
+        {
             enemy_bullet_sprite1.setPosition(bullet.x, bullet.y);
             window->draw(enemy_bullet_sprite1);
         }
-            
-        if (bullet.type == 1) {
+
+        if (bullet.type == 1)
+        {
             enemy_bullet_sprite2.setPosition(bullet.x, bullet.y);
             window->draw(enemy_bullet_sprite2);
         }
-            
-        if (bullet.type == 2) {
+
+        if (bullet.type == 2)
+        {
             enemy_bullet_sprite3.setPosition(bullet.x, bullet.y);
             window->draw(enemy_bullet_sprite3);
         }
-    
+
         if (debug)
             bullet.drawHitBoxBullet(window);
     }

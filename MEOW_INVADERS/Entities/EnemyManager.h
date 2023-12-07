@@ -44,8 +44,15 @@ private:
   void updateRandomDisaster(std::mt19937_64 &i_random_engine, int level);
   void updateBoss(std::mt19937_64 &i_random_engine);
 
+  std::string generateRandomLevelEnemy();
+  std::string generateRandomLevelDisaster();
+  std::string generateRandomLevelBoss();
+
+  int getRandomNumber(int min, int max);
+
   int move_pause;
   int move_timer;
+  int randomMove;
 
   // To use the randomness from the <random> library, we need to define the distribution.
   std::uniform_int_distribution<int> shoot_distribution;

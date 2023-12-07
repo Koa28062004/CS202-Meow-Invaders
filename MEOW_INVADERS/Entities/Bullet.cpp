@@ -50,8 +50,8 @@ void Bullet::update()
 
 sf::IntRect Bullet::get_hitbox() const
 {
-    return sf::IntRect(x + 8, y + 5,
-                       bullet.getGlobalBounds().width - 15,
+    return sf::IntRect(x + 12, y + 5,
+                       bullet.getGlobalBounds().width - 22,
                        bullet.getGlobalBounds().height - 7);
 }
 

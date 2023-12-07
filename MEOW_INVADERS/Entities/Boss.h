@@ -41,7 +41,9 @@ private:
 
     int type;
 
-    sf::Texture bossTex;
+    sf::Texture bossTex1;
+    sf::Texture bossTex2;
+    
     sf::Sprite bossSprite;
 
     sf::Texture bulletTex;

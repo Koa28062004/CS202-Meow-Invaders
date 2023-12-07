@@ -37,7 +37,7 @@ void Disaster::checkOutside()
     }
 }
 
-void Disaster::movement(int level)
+void Disaster::movement(int level, int randomMove)
 {
     switch (level)
     {
@@ -50,15 +50,22 @@ void Disaster::movement(int level)
     case 3:
         move3();
         break;
-    case 4:
-        move1();
-    case 5:
-        move2();
-        break;
-    case 6:
-        move3();
-        break;
     default:
+        switch (randomMove)
+        {
+        case 0:
+            move3();
+            break;
+        case 1:
+            move1();
+            break;
+        case 2:
+            move2();
+            break;
+        default:
+            // Handle unexpected cases or errors
+            break;
+        }
         break;
     }
 }
@@ -130,8 +137,8 @@ void Disaster::drawHitBoxEnemy(sf::RenderTarget *target)
 
 sf::IntRect Disaster::get_hitbox() const
 {
-    return sf::IntRect(disasterSprite.getGlobalBounds().left,
-                       disasterSprite.getGlobalBounds().top,
-                       disasterSprite.getGlobalBounds().width,
-                       disasterSprite.getGlobalBounds().height);
+    return sf::IntRect(disasterSprite.getGlobalBounds().left + 15,
+                       disasterSprite.getGlobalBounds().top + 13,
+                       disasterSprite.getGlobalBounds().width - 25,
+                       disasterSprite.getGlobalBounds().height - 25);
 }

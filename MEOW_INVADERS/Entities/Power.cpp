@@ -77,8 +77,8 @@ void Power::drawHitBoxPower(sf::RenderTarget *target)
 
 sf::IntRect Power::get_hitbox() const
 {
-    return sf::IntRect(powerSprite.getGlobalBounds().left,
-                       powerSprite.getGlobalBounds().top,
-                       powerSprite.getGlobalBounds().width,
-                       powerSprite.getGlobalBounds().height);
+    return sf::IntRect(powerSprite.getGlobalBounds().left + 5,
+                       powerSprite.getGlobalBounds().top + 5,
+                       powerSprite.getGlobalBounds().width - 10,
+                       powerSprite.getGlobalBounds().height - 10);
 }

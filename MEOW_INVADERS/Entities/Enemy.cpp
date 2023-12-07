@@ -58,6 +58,7 @@ Enemy::Enemy(int i_type, int i_x, int i_y, sf::Sprite enemyBulletSprite) : healt
                                                                            enemyBullet(enemyBulletSprite),
                                                                            current_frame(0),
                                                                            timeMovement(0)
+                                                                      
 {
     initEnemy1();
     initEnemy2();
@@ -112,9 +113,9 @@ void Enemy::hit()
     }
 }
 
-void Enemy::movement(int level)
+void Enemy::movement(int level, int randomMove)
 {
-    switch (level)
+    switch (level) 
     {
     case 1:
         move0();
@@ -125,16 +126,22 @@ void Enemy::movement(int level)
     case 3:
         move1();
         break;
-    case 4:
-        move0();
-        break;
-    case 5:
-        move1();
-        break;
-    case 6:
-        move2();
-        break;
     default:
+        switch (randomMove)
+        {
+        case 0:
+            move0();
+            break;
+        case 1:
+            move1();
+            break;
+        case 2:
+            move2();
+            break;
+        default:
+            // Handle unexpected cases or errors
+            break;
+        }
         break;
     }
 }
@@ -231,7 +238,7 @@ void Enemy::shoot(std::vector<Bullet> &i_enemy_bullets)
         i_enemy_bullets.push_back(Bullet(-1, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
         i_enemy_bullets[i_enemy_bullets.size() - 1].type = type;
         break;
-    } 
+    }
     case 2:
     {
         i_enemy_bullets.push_back(Bullet(0, ENEMY_BULLET_SPEED, enemySprite.getPosition().x, enemySprite.getPosition().y, enemyBullet));
@@ -273,9 +280,9 @@ void Enemy::draw(sf::RenderTarget *target)
     {
         enemySprite.setTexture(enemies[type][current_frame]);
         if (type == 0)
-            enemySprite.setScale(sf::Vector2f(0.45, 0.45));
-        else 
-            enemySprite.setScale(sf::Vector2f(0.65, 0.65));
+            enemySprite.setScale(sf::Vector2f(0.55, 0.55));
+        else
+            enemySprite.setScale(sf::Vector2f(0.75, 0.75));
         target->draw(enemySprite);
     }
 
@@ -297,8 +304,8 @@ void Enemy::drawHitBoxEnemy(sf::RenderTarget *target)
 
 sf::IntRect Enemy::get_hitbox() const
 {
-    return sf::IntRect(enemySprite.getGlobalBounds().left,
-                       enemySprite.getGlobalBounds().top,
-                       enemySprite.getGlobalBounds().width,
-                       enemySprite.getGlobalBounds().height);
+    return sf::IntRect(enemySprite.getGlobalBounds().left + 8,
+                       enemySprite.getGlobalBounds().top + 10,
+                       enemySprite.getGlobalBounds().width - 18,
+                       enemySprite.getGlobalBounds().height - 20);
 }

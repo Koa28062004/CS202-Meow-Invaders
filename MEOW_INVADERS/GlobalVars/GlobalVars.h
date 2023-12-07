@@ -30,7 +30,7 @@ constexpr int BOSS_HEALTH = 10;
 constexpr int POWER_DURATION = 500;
 
 // Draw the outline hit box to debug
-constexpr bool debug = 1;
+constexpr bool debug = 0;
 
 constexpr unsigned char EXPLOSION_ANIMATION_SPEED = 22;
 #endif

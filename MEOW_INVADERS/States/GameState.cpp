@@ -336,8 +336,7 @@ void GameState::updatingPlayingGame()
         isReset = false;
         isEnterClicked = false;
         checkClock = false;
-        if (level < 5)
-            enemyManager->reset(level++);
+        enemyManager->reset(level++);
     }
     else
     {
@@ -484,8 +483,7 @@ void GameState::draw(sf::RenderTarget *target)
         // Draw the level up background
         if (!isNextLevel)
         {
-            if (level < 5)
-                drawLevelUp(target);
+            drawLevelUp(target);
         }
         else
         {

@@ -51,9 +51,11 @@ private:
 
     // Variables
     bool dead;
+    bool isShoot = false;
 
     int reload_timer;
     int fire_timer;
+    int timer;
 
     int power_timer;
     int current_power;

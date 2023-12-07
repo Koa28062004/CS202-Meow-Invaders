@@ -856,7 +856,6 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o: \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GlobalVars/GlobalVars.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/EnemyManager.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Enemy.h \
-  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Boss.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/random \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/bernoulli_distribution.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/uniform_real_distribution.h \
@@ -905,5 +904,6 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Player.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/seed_seq.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/student_t_distribution.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/weibull_distribution.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Boss.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Power.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Animations/Animation.h

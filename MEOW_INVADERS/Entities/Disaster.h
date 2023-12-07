@@ -26,7 +26,7 @@ public:
     void update();
     void draw(sf::RenderTarget* target);
     void hit();
-    void movement(int level);
+    void movement(int level, int randomMove);
     void drawHitBoxEnemy(sf::RenderTarget* target);
     sf::IntRect get_hitbox() const;
 
