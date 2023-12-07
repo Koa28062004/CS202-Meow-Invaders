@@ -46,8 +46,8 @@ void Player::reset()
     dead_animation_over = 0;
     shield_animation_over = 0;
 
-    player_bullets.clear();
-    powers.clear();
+    // player_bullets.clear();
+    // powers.clear();
 }
 
 Player::Player(const float &x, const float &y, sf::Texture *texture) : generator(std::chrono::system_clock::now().time_since_epoch().count()),

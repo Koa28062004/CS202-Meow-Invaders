@@ -90,7 +90,6 @@ void EnemyManager::reset(int level)
     case 0:
     {
         level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
-        level_disaster = "a c b a c a a b a b ";
         break;
     }
     case 1:
