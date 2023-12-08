@@ -150,6 +150,13 @@ void MenuState::handleButtonPressed()
         states->push(new PreparedState(mWindow, supportedKeys, states, choice));
     }
 
+    // Continue
+    if (buttons["CONTINUE_STATE"]->isPressed() && this->getKeytime())
+    {
+        states->top()->setIsLoad(true);
+        states->push(new GameState(mWindow, supportedKeys, states, choice));
+    }
+
     // Setting
     if (buttons["SETTINGS_STATE"]->isPressed() && this->getKeytime())
     {

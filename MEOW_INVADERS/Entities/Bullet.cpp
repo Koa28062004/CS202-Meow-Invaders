@@ -18,12 +18,23 @@ Bullet::~Bullet()
 {
 }
 
+void Bullet::saveGame(std::string fileName)
+{
+    std::ofstream ofs;
+    ofs.open(fileName, std::ios::app);
+
+    ofs << step_x << " " << step_y << " " << x << " " << y << " " << type << std::endl;
+
+    ofs.close();
+}
+
 void Bullet::bulletDead()
 {
     this->dead = 1;
 }
 
-bool Bullet::getDead() {
+bool Bullet::getDead()
+{
     return this->dead;
 }
 

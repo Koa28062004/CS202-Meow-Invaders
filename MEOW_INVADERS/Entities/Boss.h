@@ -35,6 +35,14 @@ public:
 
     sf::IntRect get_hitbox() const;
     void drawHitBoxBoss(sf::RenderTarget* target);
+
+    // setter
+    void setHealth(int health);
+    void setIsSetPos(bool isSetPos);
+    void setPosition(int x, int y);
+
+    // save 
+    void saveGame(std::string fileName);
 private:
     // Init 
     void initBoss();

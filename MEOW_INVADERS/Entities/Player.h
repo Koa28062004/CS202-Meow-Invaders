@@ -18,36 +18,49 @@ public:
     // Functions
     void reset();
     void update(std::vector<Bullet> &enemy_bullets,
-                std::vector<Enemy> &enemies, 
+                std::vector<Enemy> &enemies,
                 std::vector<Disaster> &disasters,
                 std::vector<Disaster> &randomDisasters,
                 std::vector<Boss> &bosses,
                 std::vector<Bullet> &boss_bullets,
-                sf::RenderWindow* mWindow);
+                sf::RenderWindow *mWindow);
     void draw(sf::RenderTarget *target);
     void die();
 
     bool get_dead() const;
 
     void updateBullets();
-    void updatePlayerPosition(sf::RenderWindow* mWindow);
+    void updatePlayerPosition(sf::RenderWindow *mWindow);
     void restartPower();
-    
+
     void checkBulletOutside(Bullet &bullet);
     void drawHitBoxPlayer(sf::RenderTarget *target);
 
     void initKeys();
     void initKeybinds();
 
+    sf::Vector2f getPlayerPos();
+
     sf::IntRect get_hitbox() const;
     bool get_dead_animation_over() const;
+
+    // setter
+    void setVars(bool dead, bool isShoot);
+    void setTimer(int reload_timer, int fire_timer, int timer, int power_timer);
+    void setAnimation(int current_power, bool dead_animation_over, bool shield_animation_over);
+
+    // save
+    void saveGame(std::string fileName);
+
+    // load
+    void loadGame(std::ifstream &ifs);
 
 private:
     void initPower();
 
     void updatePower();
 
-    void drawBounds(sf::RenderTarget* target);
+    void drawBounds(sf::RenderTarget *target);
 
     // Variables
     bool dead;
@@ -56,11 +69,11 @@ private:
     int reload_timer;
     int fire_timer;
     int timer;
-
     int power_timer;
+
     int current_power;
     bool dead_animation_over;
-	bool shield_animation_over;
+    bool shield_animation_over;
 
     std::vector<Power> powers;
 

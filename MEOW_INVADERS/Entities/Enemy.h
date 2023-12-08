@@ -48,6 +48,18 @@ public:
     void drawHitBoxEnemy(sf::RenderTarget* target);
     
     static int collectiveDirection;
+
+    // setter
+    void setPosition(int x, int y);
+    void setDirection(int direction);
+    void setHealth(int health);
+    void setType(int type);
+    void setTime(int hit_timer, int timeMovement);
+    void setIsSetPos(bool isSetPos);
+    void setCurrentFrame(int current_frame);
+
+    // save
+    void saveGame(std::string fileName);
 private:
     // Init
     void initEnemy1();
@@ -74,12 +86,13 @@ private:
     sf::Sprite enemySprite;
     sf::Sprite enemyBullet;
 
-    bool isSetPos = false;
+    bool isSetPos;
     float randomValueX = 1.0f;
     float randomValueY = 2.0f;
 
     std::vector<std::vector<sf::Texture> > enemies;
     std::vector<sf::Texture> animations; 
+
     int current_frame;
 };
 

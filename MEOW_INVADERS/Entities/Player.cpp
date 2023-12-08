@@ -87,6 +87,12 @@ void Player::die()
         dead = 1;
 }
 
+sf::Vector2f Player::getPlayerPos()
+{
+    sf::Vector2f playerPosition = {playerSprite->getPosition().x, playerSprite->getPosition().y};
+    return playerPosition;
+}
+
 bool Player::get_dead() const
 {
     return dead;
@@ -193,7 +199,6 @@ void Player::updatePower()
             current_power = power.getType();
             if (power.getType() == 3)
             {
-                
             }
             power.hit();
         }
@@ -435,4 +440,107 @@ sf::IntRect Player::get_hitbox() const
                        playerSprite->getGlobalBounds().top + 13,
                        playerSprite->getGlobalBounds().width - 14,
                        playerSprite->getGlobalBounds().height - 25);
+}
+
+void Player::setVars(bool dead, bool isShoot)
+{
+    this->dead = dead;
+    this->isShoot = isShoot;
+}
+
+void Player::setTimer(int reload_timer, int fire_timer, int timer, int power_timer)
+{
+    this->reload_timer = reload_timer;
+    this->fire_timer = fire_timer;
+    this->timer = timer;
+    this->power_timer = power_timer;
+}
+
+void Player::setAnimation(int current_power, bool dead_animation_over, bool shield_animation_over)
+{
+    this->current_power = current_power;
+    this->dead_animation_over = dead_animation_over;
+    this->shield_animation_over = shield_animation_over;
+}
+
+void Player::loadGame(std::ifstream &ifs)
+{
+    ifs >> dead >> isShoot >> reload_timer >> fire_timer >>
+        timer >> power_timer >> current_power >> dead_animation_over >> shield_animation_over;
+
+    // player bullets
+    player_bullets.clear();
+    int size;
+    ifs >> size;
+    int step_x, step_y, x, y, type;
+    for (int i = 0; i < size; ++i)
+    {
+        ifs >> step_x >> step_y >> x >> y >> type;
+        player_bullets.push_back(Bullet(step_x, step_y, x, y, bullet_sprite));
+    }
+
+    // powers
+    powers.clear();
+    int power_size;
+    int power_type, i_x, i_y;
+    bool power_dead, power_isSetPos;
+    ifs >> power_size;
+    for (int i = 0; i < power_size; ++i)
+    {
+        ifs >> power_type >> power_dead >> power_isSetPos >> i_x >> i_y;
+        switch (power_type)
+        {
+        case 1:
+            powers.push_back(Power(1, &powerTex1));
+            break;
+        case 2:
+            powers.push_back(Power(2, &powerTex2));
+            break;
+        case 3:
+            powers.push_back(Power(3, &powerTex3));
+            break;
+        }
+        powers[powers.size() - 1].setDead(power_dead);
+        powers[powers.size() - 1].setIsSetPos(power_isSetPos);
+        powers[powers.size() - 1].setPosition(i_x, i_y);
+    }
+
+    // explosions
+    int animation_iterator;
+    int animation_speed;
+    int current_frame;
+    int frame_width;
+
+    ifs >> animation_iterator >> animation_speed >> current_frame >> frame_width;
+    explosion.setVars(animation_iterator, animation_speed, current_frame, frame_width);
+}
+
+void Player::saveGame(std::string fileName)
+{
+    std::ofstream ofs;
+    ofs.open(fileName, std::ios::app);
+
+    ofs << dead << " " << isShoot << " "
+        << " " << reload_timer << " " << fire_timer << " " << timer << " "
+        << power_timer << " " << current_power << " " << dead_animation_over << " " << shield_animation_over
+        << std::endl;
+
+    // player bullets
+    ofs << player_bullets.size() << std::endl;
+    for (Bullet &bullet : player_bullets)
+    {
+        bullet.saveGame(fileName);
+    }
+
+    // powers
+    ofs << powers.size() << std::endl;
+    for (Power &power : powers)
+    {
+        power.saveGame(fileName);
+    }
+
+    // Animation
+    explosion.saveGame(fileName);
+
+    ofs.close();
 }

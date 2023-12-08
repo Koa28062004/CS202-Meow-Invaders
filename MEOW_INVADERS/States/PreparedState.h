@@ -19,6 +19,8 @@ public:
     void update(const float &dt);
     void draw(sf::RenderTarget *target);
 
+    void saveGame(std::string fileName) {}
+
 private:
     // Initialization
     void initBackground();

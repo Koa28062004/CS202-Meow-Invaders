@@ -3,6 +3,7 @@
 
 #include <chrono>
 #include <random>
+#include <fstream>
 
 #include "State.h"
 #include "PauseState.h"
@@ -33,6 +34,11 @@ public:
     void handlePlayButton();
     void handleHomeButton();
     void handleSettingButton();
+
+    void saveGame(std::string fileName);
+
+    // Load game
+    void loadGame();
 
 private:
     // Initialization
@@ -92,6 +98,8 @@ private:
     bool isEnterClicked;
     bool checkClock;
     int choice;
+
+    sf::Vector2f playerPosition;
 };
 
 #endif

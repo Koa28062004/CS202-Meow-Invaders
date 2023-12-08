@@ -36,11 +36,20 @@ public:
     void move1();
     void move2();
     void move3();
+
+    // setter
+    void setHealth(int health);
+    void setIsSetPos(bool isSetPos);
+    void setPosition(int x, int y);
+
+    // save game
+    void saveGame(std::string fileName);
 private:
     int health;
     sf::Sprite disasterSprite;
     bool isSetPos;
     int value;
+    int type;
 };
 
 #endif

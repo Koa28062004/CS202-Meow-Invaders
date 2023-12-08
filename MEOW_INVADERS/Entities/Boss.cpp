@@ -23,6 +23,18 @@ Boss::Boss(int i_type, sf::Sprite boss_bullet_sprite) : type(i_type),
 {
     initBoss();
     bossSprite.setPosition(100, -300);
+
+    if (type == 1)
+    {
+        bossSprite.setTexture(bossTex1);
+        bossSprite.setScale(sf::Vector2f(0.9, 0.9));
+    }
+
+    if (type == 2)
+    {
+        bossSprite.setTexture(bossTex2);
+        bossSprite.setScale(sf::Vector2f(0.7, 0.7));
+    }
 }
 
 Boss::~Boss()
@@ -136,4 +148,30 @@ sf::IntRect Boss::get_hitbox() const
                        bossSprite.getGlobalBounds().top + 30,
                        bossSprite.getGlobalBounds().width - 100,
                        bossSprite.getGlobalBounds().height - 60);
+}
+
+void Boss::setHealth(int health)
+{
+    this->health = health;
+}
+
+void Boss::setIsSetPos(bool isSetPos)
+{
+    this->isSetPos = isSetPos;
+}
+
+void Boss::setPosition(int x, int y)
+{
+    bossSprite.setPosition(x, y);
+}
+
+void Boss::saveGame(std::string fileName)
+{
+    std::ofstream ofs;
+    ofs.open(fileName, std::ios::app);
+
+    ofs << type << " " << health << " " << isSetPos << " "
+        << bossSprite.getPosition().x << " " << bossSprite.getPosition().y << std::endl;
+
+    ofs.close();
 }

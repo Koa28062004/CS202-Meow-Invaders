@@ -36,6 +36,14 @@ public:
     void drawHitBoxPower(sf::RenderTarget *target);
     sf::IntRect get_hitbox() const;
 
+    // setter
+    void setDead(bool dead);
+    void setIsSetPos(bool isSetPos);
+    void setPosition(int x, int y);
+
+    // save
+    void saveGame(std::string fileName);
+
 private:
     // Power Up
     // 1 - Fast fire

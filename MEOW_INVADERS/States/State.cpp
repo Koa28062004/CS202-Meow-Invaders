@@ -1,5 +1,8 @@
 #include "State.h"
 
+bool State::isLoad = false;
+bool State::isSaved = true;
+
 // Init Fonts
 void State::initFonts()
 {
@@ -75,6 +78,14 @@ void State::initPlayerTextures()
     }
     this->playerTextures.push_back(tmp);
     this->isUnlocked.push_back(false);
+}
+
+void State::setIsLoad(bool isLoad) {
+    State::isLoad = isLoad;
+}
+
+void State::setIsSaved(bool isSaved) {
+    State::isSaved = isSaved;
 }
 
 void State::updateKeys()

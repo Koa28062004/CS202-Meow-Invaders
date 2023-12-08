@@ -30,6 +30,8 @@ public:
     void drawHitBoxBullet(sf::RenderTarget *target);
     bool getDead();
 
+    void saveGame(std::string fileName);
+
     int x;
     int y;
 

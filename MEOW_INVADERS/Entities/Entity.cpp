@@ -34,7 +34,7 @@ Entity::Entity()
 
 Entity::~Entity()
 {
-    delete playerTexture;
+    // delete playerTexture;
 }
 
 // Init Sprites

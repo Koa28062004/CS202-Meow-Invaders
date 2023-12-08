@@ -88,3 +88,24 @@ void Animation::reset()
     animation_iterator = 0;
     current_frame = 0;
 }
+
+void Animation::setVars(int animation_iterator,
+                        int animation_speed,
+                        int current_frame,
+                        int frame_width)
+{
+    this->animation_iterator = animation_iterator;
+    this->animation_speed = animation_speed;
+    this->current_frame = current_frame;
+    this->frame_width = frame_width;
+}
+
+void Animation::saveGame(std::string fileName)
+{
+    std::ofstream ofs;
+    ofs.open(fileName, std::ios::app);
+
+    ofs << animation_iterator << " " << animation_speed << " " << current_frame << " " << frame_width << std::endl;
+
+    ofs.close();
+}

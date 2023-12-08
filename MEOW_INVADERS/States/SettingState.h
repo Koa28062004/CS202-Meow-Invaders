@@ -17,6 +17,8 @@ public:
     void handleEvents(const sf::Event &event);
     void initKeybinds();
 
+    void saveGame(std::string fileName) {}
+
 private:
     // Init
     void initBackground();

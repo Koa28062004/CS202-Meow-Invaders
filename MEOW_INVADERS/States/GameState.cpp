@@ -24,7 +24,7 @@ void GameState::initKeybinds()
 // Init Player
 void GameState::initPlayer()
 {
-    this->player = new Player((float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2, &this->playerTextures[chosen]);
+    this->player = new Player(playerPosition.x, playerPosition.y, &this->playerTextures[chosen]);
     this->player->setEntityScale(0.35, 0.35);
 }
 
@@ -67,6 +67,8 @@ void GameState::initVariables()
     isEnterClicked = false;
     checkClock = false;
     gameOver = 0;
+    this->choice = choice;
+    playerPosition = {(float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2};
 }
 
 void GameState::initPausedButton()
@@ -124,13 +126,12 @@ GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *suppo
     initVariables();
     initKeybinds();
     initBackground();
-    initPlayer();
-    initEnemyManager();
-    initPausedMenu();
     initPausedButton();
     initFont();
     initGameOverButtons();
-    this->choice = choice;
+    initPlayer();
+    initEnemyManager();
+    initPausedMenu();
 }
 
 GameState::~GameState()
@@ -280,6 +281,9 @@ void GameState::updateLevelUp()
 
 void GameState::update(const float &dt)
 {
+    if (State::isLoad)
+        loadGame();
+
     updateKeys();
     initKeybinds();
 
@@ -353,8 +357,6 @@ void GameState::updatingPlayingGame()
 
 void GameState::drawPlayingGame(sf::RenderTarget *target)
 {
-    enemyManager->draw(mWindow);
-
     // Lose
     if (gameOver)
     {
@@ -471,6 +473,8 @@ void GameState::draw(sf::RenderTarget *target)
     target->draw(background);
 
     player->draw(target);
+    enemyManager->draw(mWindow);
+    
     drawPlayingGame(target);
 
     if (!isEnterClicked && level != 0 && enemyManager->get_enemies().size() == 0 && enemyManager->get_disasters().size() == 0 && enemyManager->get_bosses().size() == 0)
@@ -509,4 +513,61 @@ void GameState::draw(sf::RenderTarget *target)
             }
         }
     }
+}
+
+void GameState::loadGame()
+{
+    std::ifstream ifs;
+    ifs.open("config/save.txt");
+
+    // chosen
+    ifs >> chosen;
+    // player position
+    ifs >> playerPosition.x >> playerPosition.y;
+
+    delete player;
+    initPlayer();
+    initVariables();
+
+    // level
+    ifs >> level;
+    // paused menu
+    paused = true;
+    // isNextLevel
+    ifs >> isNextLevel;
+    // isReset
+    ifs >> isReset;
+
+    player->loadGame(ifs);
+
+    enemyManager->loadGame(ifs);
+
+    State::isLoad = false;
+}
+
+void GameState::saveGame(std::string fileName)
+{
+    std::ofstream ofs;
+    ofs.open(fileName);
+
+    // chosen of spaceship
+    ofs << chosen << std::endl;
+    // The position of spaceship
+    playerPosition = player->getPlayerPos();
+    ofs << playerPosition.x << " " << playerPosition.y << std::endl;
+    // level
+    ofs << level << std::endl;
+    // isNextLevel
+    ofs << isNextLevel << std::endl;
+    // isReset
+    ofs << isReset << std::endl;
+
+    // player saves game
+    player->saveGame(fileName);
+
+    // enemyManager saves game
+    enemyManager->saveGame(fileName);
+
+
+    ofs.close();
 }

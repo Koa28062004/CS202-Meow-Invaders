@@ -6,6 +6,7 @@ Disaster::Disaster(int type, sf::Texture *disasterTex) : health(1 + type),
     disasterSprite.setTexture(*disasterTex);
     disasterSprite.setScale(sf::Vector2f(0.25, 0.25));
     disasterSprite.setPosition(-200.f, -200.f);
+    this->type = type;
 }
 
 Disaster::~Disaster()
@@ -110,6 +111,20 @@ void Disaster::move3()
     disasterSprite.move(value, 3.f);
 }
 
+void Disaster::setHealth(int health)
+{
+    this->health = health;
+}
+
+void Disaster::setIsSetPos(bool isSetPos)
+{
+    this->isSetPos = isSetPos;
+}
+
+void Disaster::setPosition(int x, int y) {
+    disasterSprite.setPosition(x, y);
+}
+
 void Disaster::update()
 {
 }
@@ -141,4 +156,15 @@ sf::IntRect Disaster::get_hitbox() const
                        disasterSprite.getGlobalBounds().top + 13,
                        disasterSprite.getGlobalBounds().width - 25,
                        disasterSprite.getGlobalBounds().height - 25);
+}
+
+void Disaster::saveGame(std::string fileName)
+{
+    std::ofstream ofs;
+    ofs.open(fileName, std::ios::app);
+
+    ofs << type << " " << health << " " << isSetPos << " " << 
+        disasterSprite.getPosition().x << " " << disasterSprite.getPosition().y << std::endl;
+
+    ofs.close();
 }

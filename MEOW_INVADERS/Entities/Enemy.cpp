@@ -57,8 +57,9 @@ Enemy::Enemy(int i_type, int i_x, int i_y, sf::Sprite enemyBulletSprite) : healt
                                                                            y(i_y),
                                                                            enemyBullet(enemyBulletSprite),
                                                                            current_frame(0),
-                                                                           timeMovement(0)
-                                                                      
+                                                                           timeMovement(0),
+                                                                           isSetPos(false)
+
 {
     initEnemy1();
     initEnemy2();
@@ -74,6 +75,37 @@ Enemy::~Enemy()
 {
     // delete enemySprite;
     // delete enemyTex;
+}
+
+// setter
+void Enemy::setPosition(int x, int y) {
+    enemySprite.setPosition(x, y);
+}
+
+void Enemy::setDirection(int direction) {
+    this->direction = direction;
+}
+
+void Enemy::setHealth(int health) {
+    this->health = health;
+}
+
+void Enemy::setType(int type) {
+    this->type = type;
+}
+
+void Enemy::setTime(int hit_timer, int timeMovement) {
+    this->hit_timer = hit_timer;
+    this->timeMovement = timeMovement;
+}
+
+
+void Enemy::setIsSetPos(bool isSetPos) {
+    this->isSetPos = isSetPos;
+}
+
+void Enemy::setCurrentFrame(int current_frame) {
+    this->current_frame = current_frame;
 }
 
 int Enemy::get_health() const
@@ -115,7 +147,7 @@ void Enemy::hit()
 
 void Enemy::movement(int level, int randomMove)
 {
-    switch (level) 
+    switch (level)
     {
     case 1:
         move0();
@@ -308,4 +340,16 @@ sf::IntRect Enemy::get_hitbox() const
                        enemySprite.getGlobalBounds().top + 10,
                        enemySprite.getGlobalBounds().width - 18,
                        enemySprite.getGlobalBounds().height - 20);
+}
+
+void Enemy::saveGame(std::string fileName)
+{
+    std::ofstream ofs;
+    ofs.open(fileName, std::ios::app);
+
+    ofs << x << " " << y << " " << direction << " " << health << " " 
+        << type << " " << hit_timer << " " << timeMovement
+        << " " << isSetPos << " " << current_frame << std::endl;
+
+    ofs.close();
 }

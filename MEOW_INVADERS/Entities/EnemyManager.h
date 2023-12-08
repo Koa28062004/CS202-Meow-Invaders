@@ -7,14 +7,13 @@
 #include "Disaster.h"
 #include "Boss.h"
 #include <random>
+#include <fstream>
 
 class EnemyManager
 {
 public:
   EnemyManager();
   virtual ~EnemyManager();
-
-  bool reached_player(int i_player_y) const;
 
   void draw(sf::RenderWindow *window);
   void reset(int i_level);
@@ -29,9 +28,20 @@ public:
 
   void checkBulletOutside(Bullet &bullet);
 
-  void convertEnemy(std::string level_enemy);
-  void convertDisaster(std::string level_disaster);
-  void convertBoss(std::string level_boss);
+  void convertEnemy();
+  void convertDisaster();
+  void convertBoss();
+
+  // Save
+  void saveGame(std::string fileName);
+
+  // Load
+  void loadGame(std::ifstream& ifs);
+  void loadReset(std::ifstream& ifs);
+  void loadBullets(std::ifstream& ifs);
+  void loadEnemy(std::ifstream& ifs);
+  void loadDisasters(std::ifstream& ifs);
+  void loadBoss(std::ifstream& ifs);
 
 private:
   // Init
@@ -49,6 +59,9 @@ private:
   std::string generateRandomLevelBoss();
 
   int getRandomNumber(int min, int max);
+
+  std::ifstream ifs;
+  bool isLoad;
 
   int move_pause;
   int move_timer;
@@ -79,6 +92,10 @@ private:
 
   sf::Sprite boss_bullet_sprite;
   sf::Texture boss_bullet_texture;
+
+  std::string level_enemy = "";
+  std::string level_disaster = "";
+  std::string level_boss = "";
 };
 
 #endif

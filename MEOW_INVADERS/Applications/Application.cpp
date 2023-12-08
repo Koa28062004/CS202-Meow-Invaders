@@ -68,6 +68,8 @@ Application::Application()
     initWindow();
     initKeys();
     initStates();
+
+    fileName = "config/save.txt";
 }
 
 Application::~Application()
@@ -118,6 +120,8 @@ void Application::update()
 
         while (!states.empty() && states.top()->getQuit())
         {
+            if (states.top()->isSaved)
+                states.top()->saveGame(fileName);
             delete states.top();
             states.pop();
         }
@@ -134,13 +138,11 @@ void Application::updateDt()
 
 void Application::draw()
 {
-    mWindow->clear(sf::Color::White);
-
     // Draw items
-    if (!states.empty())
+    if (!states.empty() && !states.top()->isLoad)
     {
+        mWindow->clear(sf::Color::White);
         states.top()->draw();
+        mWindow->display();
     }
-
-    mWindow->display();
 }

@@ -82,3 +82,28 @@ sf::IntRect Power::get_hitbox() const
                        powerSprite.getGlobalBounds().width - 10,
                        powerSprite.getGlobalBounds().height - 10);
 }
+
+void Power::setDead(bool dead)
+{
+    this->dead = dead;
+}
+
+void Power::setIsSetPos(bool isSetPos)
+{
+    this->isSetPos = isSetPos;
+}
+
+void Power::setPosition(int x, int y)
+{
+    powerSprite.setPosition(x, y);
+}
+
+void Power::saveGame(std::string fileName)
+{
+    std::ofstream ofs;
+    ofs.open(fileName, std::ios::app);
+
+    ofs << type << " " << dead << " " << isSetPos << " " << (int)powerSprite.getPosition().x << " " << (int)powerSprite.getPosition().y << std::endl;
+
+    ofs.close();
+}

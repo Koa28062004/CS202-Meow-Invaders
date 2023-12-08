@@ -37,18 +37,25 @@ public:
     virtual void draw(sf::RenderTarget *target = nullptr) = 0;
     virtual void handleEvents(const sf::Event &event) = 0;
     virtual void initKeybinds() = 0;
+    virtual void saveGame(std::string fileName) = 0;
 
     // Initialization
     void initFonts();
     void initPlayerTextures();
 
     const bool getKeytime();
-    void updateKeytime(const float& dt);
+    void updateKeytime(const float &dt);
 
     // Update keybinds
     void updateKeys();
 
     bool paused;
+
+    static void setIsLoad(bool isLoad);
+    static void setIsSaved(bool isSaved);
+
+    static bool isLoad;
+    static bool isSaved;
 
 protected:
     sf::RenderWindow *mWindow;
@@ -78,7 +85,7 @@ protected:
     int chosen;
 
     float keytime;
-	float keytimeMax;
+    float keytimeMax;
 };
 
 #endif

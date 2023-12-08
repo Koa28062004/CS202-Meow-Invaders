@@ -37,6 +37,8 @@ private:
 
     sf::Clock dtClock;
 	float dt;
+
+    std::string fileName;
 };
 
 #endif

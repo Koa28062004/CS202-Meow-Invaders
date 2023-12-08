@@ -26,6 +26,8 @@ public:
     void initKeybinds();
     void initButtons();
 
+    void saveGame(std::string fileName) {}
+
 protected:
 private:
     sf::RectangleShape background;
