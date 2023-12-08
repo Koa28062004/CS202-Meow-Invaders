@@ -52,6 +52,7 @@ private:
     void initEnemyManager();
     void initFont();
     void initGameOverButtons();
+    void initPointer();
 
     // Functions
     void updatePausedButton();

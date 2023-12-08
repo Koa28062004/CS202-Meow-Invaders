@@ -116,6 +116,16 @@ void GameState::initGameOverButtons()
                                          sf::Color(0, 0, 0, 0));
 }
 
+void GameState::initPointer()
+{
+    enemy_bullets = &enemyManager->get_enemy_bullets();
+    boss_bullets = &enemyManager->get_boss_bullets();
+    enemies = &enemyManager->get_enemies();
+    disasters = &enemyManager->get_disasters();
+    randomDisasters = &enemyManager->get_randomDisasters();
+    bosses = &enemyManager->get_bosses();
+}
+
 GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states, int &choice)
     : State(window, supportedKeys, states, choice),
       mWindow(window),
@@ -132,6 +142,8 @@ GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *suppo
     initPlayer();
     initEnemyManager();
     initPausedMenu();
+
+    initPointer();
 }
 
 GameState::~GameState()
@@ -474,7 +486,7 @@ void GameState::draw(sf::RenderTarget *target)
 
     player->draw(target);
     enemyManager->draw(mWindow);
-    
+
     drawPlayingGame(target);
 
     if (!isEnterClicked && level != 0 && enemyManager->get_enemies().size() == 0 && enemyManager->get_disasters().size() == 0 && enemyManager->get_bosses().size() == 0)
@@ -532,7 +544,8 @@ void GameState::loadGame()
     // level
     ifs >> level;
     // paused menu
-    paused = true;
+    if (!gameOver) paused = true;
+    else paused = false;
     // isNextLevel
     ifs >> isNextLevel;
     // isReset
@@ -567,7 +580,6 @@ void GameState::saveGame(std::string fileName)
 
     // enemyManager saves game
     enemyManager->saveGame(fileName);
-
 
     ofs.close();
 }
