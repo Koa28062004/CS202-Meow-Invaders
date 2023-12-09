@@ -8,7 +8,7 @@ constexpr int BASE_SIZE = 8;
 constexpr int FAST_RELOAD_DURATION = 10;
 constexpr int RELOAD_DURATION = 35;
 constexpr int PLAYER_BULLET_SPEED = 5;
-constexpr int FIRE_TIMER = 5;
+constexpr int FIRE_TIMER = 20;
 
 // Enemy
 constexpr int ENEMY_HIT_TIMER_DURATION = 20;

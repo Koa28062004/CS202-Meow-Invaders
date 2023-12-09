@@ -59,8 +59,7 @@ private:
   std::string generateRandomLevelBoss();
 
   int getRandomNumber(int min, int max);
-
-  std::ifstream ifs;
+  
   bool isLoad;
 
   int move_pause;

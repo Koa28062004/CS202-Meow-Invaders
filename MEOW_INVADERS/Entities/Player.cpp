@@ -132,18 +132,11 @@ void Player::updatePlayerPosition(sf::RenderWindow *mWindow)
 
 void Player::updateBullets()
 {
-    if (RELOAD_DURATION - reload_timer >= FIRE_TIMER && isShoot)
-    {
-        playerSprite->setPosition(playerSprite->getPosition().x, playerSprite->getPosition().y - 7.f);
-        isShoot = false;
-    }
-
     if (reload_timer == 0)
     {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("FIRE"))))
         {
-            isShoot = true;
-            playerSprite->setPosition(playerSprite->getPosition().x, playerSprite->getPosition().y + 7.f);
+            playerSprite->setPosition(playerSprite->getPosition().x, playerSprite->getPosition().y + 11.f);
 
             if (1 == current_power)
             {
