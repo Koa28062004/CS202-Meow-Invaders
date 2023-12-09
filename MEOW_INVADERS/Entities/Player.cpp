@@ -132,7 +132,7 @@ void Player::updatePlayerPosition(sf::RenderWindow *mWindow)
 
 void Player::updateBullets()
 {
-    if (reload_timer == 0)
+    if (reload_timer == 0 && !dead)
     {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("FIRE"))))
         {
@@ -246,6 +246,52 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
     updatePower();
     updateBullets();
 
+    for (Bullet &bullet : player_bullets)
+    {
+        bullet.update();
+        checkBulletOutside(bullet);
+
+        if (0 == bullet.getDead())
+        {
+            // Optionally, you can add logic for handling collisions with enemies here
+            for (Enemy &enemy : enemies)
+            {
+                if (bullet.get_hitbox().intersects(enemy.get_hitbox()))
+                {
+                    bullet.bulletDead();
+                    enemy.hit();
+                }
+            }
+
+            for (Disaster &disaster : disasters)
+            {
+                if (bullet.get_hitbox().intersects(disaster.get_hitbox()))
+                {
+                    bullet.bulletDead();
+                    disaster.hit();
+                }
+            }
+
+            for (Disaster &disaster : randomDisasters)
+            {
+                if (bullet.get_hitbox().intersects(disaster.get_hitbox()))
+                {
+                    bullet.bulletDead();
+                    disaster.hit();
+                }
+            }
+
+            for (Boss &boss : bosses)
+            {
+                if (bullet.get_hitbox().intersects(boss.get_hitbox()))
+                {
+                    bullet.bulletDead();
+                    boss.hit();
+                }
+            }
+        }
+    }
+
     if (!dead)
     {
         for (Bullet &enemyBullet : enemy_bullets)
@@ -299,52 +345,6 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
             {
                 die();
                 boss.hit();
-            }
-        }
-
-        for (Bullet &bullet : player_bullets)
-        {
-            bullet.update();
-            checkBulletOutside(bullet);
-
-            if (0 == bullet.getDead())
-            {
-                // Optionally, you can add logic for handling collisions with enemies here
-                for (Enemy &enemy : enemies)
-                {
-                    if (bullet.get_hitbox().intersects(enemy.get_hitbox()))
-                    {
-                        bullet.bulletDead();
-                        enemy.hit();
-                    }
-                }
-
-                for (Disaster &disaster : disasters)
-                {
-                    if (bullet.get_hitbox().intersects(disaster.get_hitbox()))
-                    {
-                        bullet.bulletDead();
-                        disaster.hit();
-                    }
-                }
-
-                for (Disaster &disaster : randomDisasters)
-                {
-                    if (bullet.get_hitbox().intersects(disaster.get_hitbox()))
-                    {
-                        bullet.bulletDead();
-                        disaster.hit();
-                    }
-                }
-
-                for (Boss &boss : bosses)
-                {
-                    if (bullet.get_hitbox().intersects(boss.get_hitbox()))
-                    {
-                        bullet.bulletDead();
-                        boss.hit();
-                    }
-                }
             }
         }
     }
