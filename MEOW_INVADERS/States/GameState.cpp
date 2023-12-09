@@ -577,7 +577,7 @@ void GameState::saveGame(std::string fileName)
     ofs << playerPosition.x << " " << playerPosition.y << std::endl;
     // gameOver
     ofs << gameOver << std::endl;
-    //isEnterClicked
+    // isEnterClicked
     ofs << isEnterClicked << std::endl;
     // level
     ofs << level << std::endl;

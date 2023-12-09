@@ -19,7 +19,8 @@ Boss::Boss(int i_type, sf::Sprite boss_bullet_sprite) : type(i_type),
                                                         health(BOSS_HEALTH),
                                                         isSetPos(false),
                                                         direction(1),
-                                                        bulletSprite(boss_bullet_sprite)
+                                                        bulletSprite(boss_bullet_sprite),
+                                                        timer(10)
 {
     initBoss();
     bossSprite.setPosition(100, -300);
@@ -50,7 +51,13 @@ void Boss::hit()
 {
     if (health > 0)
     {
-        --health;
+        if (timer >= 0)
+        {
+            --health;
+            --timer;
+        }
+        else
+            timer = 10;
     }
     else
     {

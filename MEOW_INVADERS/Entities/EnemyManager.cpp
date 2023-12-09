@@ -156,24 +156,26 @@ void EnemyManager::reset(int level)
 
     // enemy_bullets.clear();
     // boss_bullets.clear();
-    // enemies.clear();
-    // disasters.clear();
+    enemies.clear();
+    disasters.clear();
     // randomDisasters.clear();
-    // bosses.clear();
+    bosses.clear();
 
     switch (level)
     {
     case 0:
     {
-        level_enemy = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
-        // level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
-        // level_boss = "A";
+        // level_enemy = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
+        level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
+        level_disaster = "a a c b a c a a b a b a b a b a b a";
+        level_boss = "A";
         break;
     }
     case 1:
     {
         level_enemy = "1 0 1 0 1 0 1 0 1 0 \n 1 0 0 1 0 1 0 1";
         level_disaster = "a c b a c a a b a b a b a b a b a";
+        level_boss = "B";
         break;
     }
     case 2:
@@ -187,6 +189,7 @@ void EnemyManager::reset(int level)
         level_enemy = generateRandomLevelEnemy();
         level_disaster = generateRandomLevelDisaster();
         level_boss = generateRandomLevelBoss();
+        break;
     }
 
     convertEnemy();
@@ -515,7 +518,7 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine, int level)
     updateRandomDisaster(i_random_engine, level);
     updateBossBullets();
     if (!enemies.size())
-        updateDisaster(level);
+         updateDisaster(level);
     if (!enemies.size() && !disasters.size())
     {
         updateBoss(i_random_engine);
