@@ -541,10 +541,12 @@ void GameState::loadGame()
     initPlayer();
     initVariables();
 
+    // gameOver
+    ifs >> gameOver;
     // level
     ifs >> level;
     // paused menu
-    if (!gameOver) paused = true;
+    if (!gameOver || !isNextLevel) paused = true;
     else paused = false;
     // isNextLevel
     ifs >> isNextLevel;
@@ -568,6 +570,8 @@ void GameState::saveGame(std::string fileName)
     // The position of spaceship
     playerPosition = player->getPlayerPos();
     ofs << playerPosition.x << " " << playerPosition.y << std::endl;
+    // gameOver
+    ofs << gameOver << std::endl;
     // level
     ofs << level << std::endl;
     // isNextLevel

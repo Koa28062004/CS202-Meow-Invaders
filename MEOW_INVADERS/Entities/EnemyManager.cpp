@@ -165,6 +165,7 @@ void EnemyManager::reset(int level)
     {
     case 0:
     {
+        // level_enemy = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
         level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
         level_boss = "A";
         break;

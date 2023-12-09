@@ -347,7 +347,7 @@ void Enemy::saveGame(std::string fileName)
     std::ofstream ofs;
     ofs.open(fileName, std::ios::app);
 
-    ofs << x << " " << y << " " << direction << " " << health << " " 
+    ofs << enemySprite.getPosition().x << " " << enemySprite.getPosition().y << " " << direction << " " << health << " " 
         << type << " " << hit_timer << " " << timeMovement
         << " " << isSetPos << " " << current_frame << std::endl;
 
