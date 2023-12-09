@@ -543,15 +543,20 @@ void GameState::loadGame()
 
     // gameOver
     ifs >> gameOver;
+    // isEnterClicked
+    ifs >> isEnterClicked;
     // level
     ifs >> level;
-    // paused menu
-    if (!gameOver || !isNextLevel) paused = true;
-    else paused = false;
     // isNextLevel
     ifs >> isNextLevel;
     // isReset
     ifs >> isReset;
+
+    // paused menu
+    if (!gameOver || !isNextLevel)
+        paused = true;
+    else
+        paused = false;
 
     player->loadGame(ifs);
 
@@ -572,6 +577,8 @@ void GameState::saveGame(std::string fileName)
     ofs << playerPosition.x << " " << playerPosition.y << std::endl;
     // gameOver
     ofs << gameOver << std::endl;
+    //isEnterClicked
+    ofs << isEnterClicked << std::endl;
     // level
     ofs << level << std::endl;
     // isNextLevel
