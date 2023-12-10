@@ -368,7 +368,7 @@ sf::IntRect Enemy::get_hitbox() const
                        enemySprite.getGlobalBounds().height - 20);
 }
 
-void Enemy::saveGameExplosion(std::ifstream& ifs)
+void Enemy::loadGameExplosion(std::ifstream& ifs)
 {
     // explosions
     int animation_iterator;

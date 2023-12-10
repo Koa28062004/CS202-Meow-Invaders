@@ -62,7 +62,8 @@ public:
 
     // save
     void saveGame(std::string fileName);
-    void saveGameExplosion(std::ifstream& ifs);
+    // load game
+    void loadGameExplosion(std::ifstream& ifs);
 private:
     // Init
     void initEnemy1();

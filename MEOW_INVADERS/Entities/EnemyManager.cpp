@@ -240,6 +240,7 @@ void EnemyManager::loadDisasters(std::ifstream &ifs)
         disasters[disasters.size() - 1].setHealth(health);
         disasters[disasters.size() - 1].setIsSetPos(isSetPos);
         disasters[disasters.size() - 1].setPosition(i_x, i_y);
+        disasters[disasters.size() - 1].loadGameExplosion(ifs);
     }
 
     randomDisasters.clear();
@@ -256,6 +257,7 @@ void EnemyManager::loadDisasters(std::ifstream &ifs)
         randomDisasters[randomDisasters.size() - 1].setHealth(health);
         randomDisasters[randomDisasters.size() - 1].setIsSetPos(isSetPos);
         randomDisasters[randomDisasters.size() - 1].setPosition(i_x, i_y);
+        randomDisasters[randomDisasters.size() - 1].loadGameExplosion(ifs);
     }
 }
 
@@ -283,7 +285,7 @@ void EnemyManager::loadEnemy(std::ifstream &ifs)
         enemies[enemies.size() - 1].setIsSetPos(isSetPos);
         enemies[enemies.size() - 1].setCurrentFrame(current_frame);
         enemies[enemies.size() - 1].setPosition(i_x, i_y);
-        enemies[enemies.size() - 1].saveGameExplosion(ifs);
+        enemies[enemies.size() - 1].loadGameExplosion(ifs);
     }
 }
 
@@ -460,7 +462,7 @@ void EnemyManager::updateRandomDisaster(std::mt19937_64 &i_random_engine, int le
 
     // delete disaster
     randomDisasters.erase(remove_if(randomDisasters.begin(), randomDisasters.end(), [](Disaster &disaster)
-                                    { return 0 == disaster.getDead(); }),
+                                    { return 1 == disaster.getDead(); }),
                           randomDisasters.end());
 }
 
@@ -475,7 +477,7 @@ void EnemyManager::updateDisaster(int level)
 
     // delete disaster
     disasters.erase(remove_if(disasters.begin(), disasters.end(), [](Disaster &disaster)
-                              { return 0 == disaster.getDead(); }),
+                              { return 1 == disaster.getDead(); }),
                     disasters.end());
 }
 

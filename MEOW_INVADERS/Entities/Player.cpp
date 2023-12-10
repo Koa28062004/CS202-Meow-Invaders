@@ -259,7 +259,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
             // Optionally, you can add logic for handling collisions with enemies here
             for (Enemy &enemy : enemies)
             {
-                if (bullet.get_hitbox().intersects(enemy.get_hitbox()))
+                if (bullet.get_hitbox().intersects(enemy.get_hitbox()) && enemy.get_health() > 0)
                 {
                     bullet.bulletDead();
                     enemy.hit();
@@ -268,7 +268,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
 
             for (Disaster &disaster : disasters)
             {
-                if (bullet.get_hitbox().intersects(disaster.get_hitbox()))
+                if (bullet.get_hitbox().intersects(disaster.get_hitbox()) && disaster.get_health() > 0)
                 {
                     bullet.bulletDead();
                     disaster.hit();
@@ -277,7 +277,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
 
             for (Disaster &disaster : randomDisasters)
             {
-                if (bullet.get_hitbox().intersects(disaster.get_hitbox()))
+                if (bullet.get_hitbox().intersects(disaster.get_hitbox()) && disaster.get_health() > 0)
                 {
                     bullet.bulletDead();
                     disaster.hit();
@@ -317,7 +317,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
 
         for (Enemy &enemy : enemies)
         {
-            if (get_hitbox().intersects(enemy.get_hitbox()))
+            if (get_hitbox().intersects(enemy.get_hitbox()) && enemy.get_health() > 0)
             {
                 die();
                 enemy.hit();
@@ -326,7 +326,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
 
         for (Disaster &disaster : disasters)
         {
-            if (get_hitbox().intersects(disaster.get_hitbox()))
+            if (get_hitbox().intersects(disaster.get_hitbox())  && disaster.get_health() > 0)
             {
                 die();
                 disaster.hit();
@@ -335,7 +335,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
 
         for (Disaster &randomDisaster : randomDisasters)
         {
-            if (get_hitbox().intersects(randomDisaster.get_hitbox()))
+            if (get_hitbox().intersects(randomDisaster.get_hitbox()) && randomDisaster.get_health() > 0)
             {
                 die();
                 randomDisaster.hit();

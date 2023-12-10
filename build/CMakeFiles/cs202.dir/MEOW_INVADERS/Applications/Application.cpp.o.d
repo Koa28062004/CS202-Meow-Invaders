@@ -905,9 +905,9 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o: \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Bullet.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Disaster.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GlobalVars/GlobalVars.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Animations/Animation.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/EnemyManager.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Enemy.h \
-  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Animations/Animation.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Boss.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Power.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PauseState.h \

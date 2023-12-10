@@ -1,7 +1,9 @@
 #include "Disaster.h"
 
-Disaster::Disaster(int type, sf::Texture *disasterTex) : health(1 + type),
-                                                         isSetPos(false)
+Disaster::Disaster(int type, sf::Texture *disasterTex) : health(type),
+                                                         isSetPos(false),
+                                                         explosion(EXPLOSION_ANIMATION_SPEED, 140, 4),
+                                                         dead_animation_over(0)
 {
     disasterSprite.setTexture(*disasterTex);
     disasterSprite.setScale(sf::Vector2f(0.25, 0.25));
@@ -27,6 +29,10 @@ void Disaster::hit()
 
 bool Disaster::getDead()
 {
+    return dead_animation_over;
+}
+
+int Disaster::get_health() {
     return health;
 }
 
@@ -121,18 +127,32 @@ void Disaster::setIsSetPos(bool isSetPos)
     this->isSetPos = isSetPos;
 }
 
-void Disaster::setPosition(int x, int y) {
+void Disaster::setPosition(int x, int y)
+{
     disasterSprite.setPosition(x, y);
 }
 
 void Disaster::update()
 {
+    if (health == 0)
+    {
+        dead_animation_over = explosion.update();
+    }
 }
 
 void Disaster::draw(sf::RenderTarget *target)
 {
-    if (isSetPos)
-        target->draw(disasterSprite);
+    if (health != 0)
+    {
+        if (isSetPos)
+            target->draw(disasterSprite);
+    }
+    else
+    {
+        int i_x = disasterSprite.getPosition().x;
+        int i_y = disasterSprite.getPosition().y;
+        explosion.drawEnemyExplosion(i_x, i_y, target);
+    }
 
     if (debug)
         drawHitBoxEnemy(target);
@@ -158,13 +178,26 @@ sf::IntRect Disaster::get_hitbox() const
                        disasterSprite.getGlobalBounds().height - 25);
 }
 
+void Disaster::loadGameExplosion(std::ifstream &ifs)
+{
+    // explosions
+    int animation_iterator;
+    int animation_speed;
+    int current_frame;
+    int frame_width;
+
+    ifs >> animation_iterator >> animation_speed >> current_frame >> frame_width;
+    explosion.setVars(animation_iterator, animation_speed, current_frame, frame_width);
+}
+
 void Disaster::saveGame(std::string fileName)
 {
     std::ofstream ofs;
     ofs.open(fileName, std::ios::app);
 
-    ofs << type << " " << health << " " << isSetPos << " " << 
-        disasterSprite.getPosition().x << " " << disasterSprite.getPosition().y << std::endl;
+    ofs << type << " " << health << " " << isSetPos << " " << disasterSprite.getPosition().x << " " << disasterSprite.getPosition().y << std::endl;
 
+    // save explosion
+    explosion.saveGame(fileName);
     ofs.close();
 }

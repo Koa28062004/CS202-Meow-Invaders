@@ -16,6 +16,7 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Audio.hpp"
 #include "GlobalVars/GlobalVars.h"
+#include "Animations/Animation.h"
 
 class Disaster
 {
@@ -31,6 +32,7 @@ public:
     sf::IntRect get_hitbox() const;
 
     bool getDead();
+    int get_health();
     void checkOutside();
 
     void move1();
@@ -44,12 +46,16 @@ public:
 
     // save game
     void saveGame(std::string fileName);
+    // load game
+    void loadGameExplosion(std::ifstream& ifs);
 private:
     int health;
     sf::Sprite disasterSprite;
     bool isSetPos;
     int value;
     int type;
+    Animation explosion;
+    bool dead_animation_over;
 };
 
 #endif
