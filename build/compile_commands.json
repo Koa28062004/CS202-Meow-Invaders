@@ -79,6 +79,12 @@
 },
 {
   "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/build",
+  "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders-1/external -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/States/InstructionState.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/InstructionState.cpp",
+  "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/InstructionState.cpp",
+  "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/States/InstructionState.cpp.o"
+},
+{
+  "directory": "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/build",
   "command": "/usr/bin/clang++  -I/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS -I/Users/macbookair/Desktop/CS202-Meow-Invaders-1/external -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -o CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o -c /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/MenuState.cpp",
   "file": "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/MenuState.cpp",
   "output": "CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o"

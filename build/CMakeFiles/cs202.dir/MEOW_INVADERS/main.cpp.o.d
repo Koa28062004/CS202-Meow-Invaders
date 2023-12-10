@@ -915,4 +915,5 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/main.cpp.o: \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/SettingState.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GUI/TextBox.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/MenuState.h \
-  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PreparedState.h
+  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PreparedState.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/InstructionState.h

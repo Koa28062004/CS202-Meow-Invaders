@@ -66,8 +66,8 @@ void MenuState::initButtons()
     tmp.setString("Options");
     tmp.setCharacterSize(40);
     // Options
-    buttons["OPTIONS_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 500, 0, 0,
-                                          &font, "Options",
+    buttons["INSTRUCTION_STATE"] = new Button(mWindow->getSize().x / 2 - tmp.getGlobalBounds().width / 2, 500, 0, 0,
+                                          &font, "Instructions",
                                           sf::Color(0, 0, 0, 0),
                                           sf::Color(0, 0, 0, 0),
                                           sf::Color(0, 0, 0, 0));
@@ -155,6 +155,12 @@ void MenuState::handleButtonPressed()
     {
         states->top()->setIsLoad(true);
         states->push(new GameState(mWindow, supportedKeys, states, choice));
+    }
+
+    // Instructions
+    if (buttons["INSTRUCTION_STATE"]->isPressed() && this->getKeytime())
+    {
+        states->push(new InstructionState(mWindow, supportedKeys, states, choice));
     }
 
     // Setting

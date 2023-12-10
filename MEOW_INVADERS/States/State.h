@@ -78,7 +78,6 @@ protected:
     // Resources
     std::vector<sf::Sprite> playerSprites;
     std::vector<sf::Texture> playerTextures;
-    std::vector<bool> isUnlocked;
 
     Player *player;
     EnemyManager *enemyManager;

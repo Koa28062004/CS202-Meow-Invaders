@@ -49,35 +49,30 @@ void State::initPlayerTextures()
         throw std::runtime_error("Error::Failed to load spaceship1.png");
     }
     this->playerTextures.push_back(tmp);
-    this->isUnlocked.push_back(true);
 
     if (!tmp.loadFromFile("assets/images/spaceship2.png"))
     {
         throw std::runtime_error("Error::Failed to load spaceship2.png");
     }
     this->playerTextures.push_back(tmp);
-    this->isUnlocked.push_back(true);
 
     if (!tmp.loadFromFile("assets/images/spaceship3.png"))
     {
         throw std::runtime_error("Error::Failed to load spaceship3.png");
     }
     this->playerTextures.push_back(tmp);
-    this->isUnlocked.push_back(true);
 
     if (!tmp.loadFromFile("assets/images/spaceship4.png"))
     {
         throw std::runtime_error("Error::Failed to load spaceship4.png");
     }
     this->playerTextures.push_back(tmp);
-    this->isUnlocked.push_back(false);
 
     if (!tmp.loadFromFile("assets/images/spaceship5.png"))
     {
         throw std::runtime_error("Error::Failed to load spaceship5.png");
     }
     this->playerTextures.push_back(tmp);
-    this->isUnlocked.push_back(false);
 }
 
 void State::setIsLoad(bool isLoad) {

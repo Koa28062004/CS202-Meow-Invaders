@@ -85,7 +85,6 @@ private:
     int x;
     int y;
 
-    sf::Texture enemyTex;
     sf::Sprite enemySprite;
     sf::Sprite enemyBullet;
 

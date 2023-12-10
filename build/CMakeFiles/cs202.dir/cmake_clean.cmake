@@ -27,6 +27,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/cs202.dir/MEOW_INVADERS/GUI/TextBox.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/States/GameState.cpp.o.d"
+  "CMakeFiles/cs202.dir/MEOW_INVADERS/States/InstructionState.cpp.o"
+  "CMakeFiles/cs202.dir/MEOW_INVADERS/States/InstructionState.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/States/MenuState.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/States/PauseState.cpp.o"

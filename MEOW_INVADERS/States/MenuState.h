@@ -4,6 +4,7 @@
 #include "GameState.h"
 #include "PreparedState.h"
 #include "SettingState.h"
+#include "InstructionState.h"
 #include "GUI/Button.h"
 
 class MenuState : public State
