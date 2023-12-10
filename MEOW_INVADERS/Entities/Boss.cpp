@@ -20,7 +20,10 @@ Boss::Boss(int i_type, sf::Sprite boss_bullet_sprite) : type(i_type),
                                                         isSetPos(false),
                                                         direction(1),
                                                         bulletSprite(boss_bullet_sprite),
-                                                        timer(10)
+                                                        timer(10),
+                                                        explosion(EXPLOSION_BOSS_ANIMATION_SPEED, 140, 6),
+                                                        dead_animation_over(0)
+
 {
     initBoss();
     bossSprite.setPosition(100, -300);
@@ -42,7 +45,12 @@ Boss::~Boss()
 {
 }
 
-int Boss::getDead()
+bool Boss::getDead()
+{
+    return dead_animation_over;
+}
+
+int Boss::get_health()
 {
     return health;
 }
@@ -62,6 +70,8 @@ void Boss::hit()
 
 void Boss::movement()
 {
+    if (health <= 0)
+        return;
     if (!isSetPos)
     {
         bossSprite.setPosition(100, -300);
@@ -98,13 +108,22 @@ void Boss::update()
     {
         --timer;
     }
-    else {
+    else
+    {
         timer = 0;
+    }
+
+    if (health == 0)
+    {
+        dead_animation_over = explosion.update();
     }
 }
 
 void Boss::shoot(std::vector<Bullet> &i_boss_bullets)
 {
+    if (health <= 0)
+        return;
+
     sf::Vector2f bossCenter = {bossSprite.getPosition().x + bossSprite.getGlobalBounds().width / 2,
                                bossSprite.getPosition().y + bossSprite.getGlobalBounds().height / 2};
 
@@ -120,19 +139,28 @@ void Boss::draw(sf::RenderTarget *target)
 {
     if (isSetPos)
     {
-        if (type == 1)
+        if (health > 0)
         {
-            bossSprite.setTexture(bossTex1);
-            bossSprite.setScale(sf::Vector2f(0.9, 0.9));
-        }
+            if (type == 1)
+            {
+                bossSprite.setTexture(bossTex1);
+                bossSprite.setScale(sf::Vector2f(0.9, 0.9));
+            }
 
-        if (type == 2)
+            if (type == 2)
+            {
+                bossSprite.setTexture(bossTex2);
+                bossSprite.setScale(sf::Vector2f(0.7, 0.7));
+            }
+
+            target->draw(bossSprite);
+        }
+        else
         {
-            bossSprite.setTexture(bossTex2);
-            bossSprite.setScale(sf::Vector2f(0.7, 0.7));
+            int i_x = bossSprite.getPosition().x;
+            int i_y = bossSprite.getPosition().y;
+            explosion.drawBossExplosion(i_x, i_y, target);
         }
-
-        target->draw(bossSprite);
     }
 
     if (debug)
@@ -172,6 +200,18 @@ void Boss::setIsSetPos(bool isSetPos)
 void Boss::setPosition(int x, int y)
 {
     bossSprite.setPosition(x, y);
+}
+
+void Boss::loadGameExplosion(std::ifstream &ifs)
+{
+    // explosions
+    int animation_iterator;
+    int animation_speed;
+    int current_frame;
+    int frame_width;
+
+    ifs >> animation_iterator >> animation_speed >> current_frame >> frame_width;
+    explosion.setVars(animation_iterator, animation_speed, current_frame, frame_width);
 }
 
 void Boss::saveGame(std::string fileName)

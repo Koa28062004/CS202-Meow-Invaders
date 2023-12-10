@@ -18,6 +18,7 @@
 
 #include "Bullet.h"
 #include "GlobalVars/GlobalVars.h"
+#include "Animations/Animation.h"
 
 class Boss {
 public:
@@ -31,7 +32,8 @@ public:
     void hit();
     void shoot(std::vector<Bullet>& i_boss_bullets);
 
-    int getDead();
+    bool getDead();
+    int get_health();
 
     sf::IntRect get_hitbox() const;
     void drawHitBoxBoss(sf::RenderTarget* target);
@@ -43,6 +45,8 @@ public:
 
     // save 
     void saveGame(std::string fileName);
+    // load game
+    void loadGameExplosion(std::ifstream& ifs);
 private:
     // Init 
     void initBoss();
@@ -65,6 +69,8 @@ private:
     int direction;
     float randomValueX = 2.0f;
     float randomValueY = 3.0f;
+    Animation explosion;
+    bool dead_animation_over;
 };
 
 #endif

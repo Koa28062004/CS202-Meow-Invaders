@@ -245,7 +245,7 @@ void GameState::handleGameOver()
 void GameState::updatePausedInput()
 {
     // Pause menu
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("PAUSE"))))
+    if (isNextLevel && sf::Keyboard::isKeyPressed(sf::Keyboard::Key(keybinds.at("PAUSE"))))
     {
         if (!pauseKeyPressed)
         {
@@ -340,6 +340,8 @@ void GameState::update(const float &dt)
     // Pause update
     else
     {
+        if (!isNextLevel)
+            return;
         pauseState->update(paused, mousePosView);
         pauseState->updateKeytime(dt);
     }

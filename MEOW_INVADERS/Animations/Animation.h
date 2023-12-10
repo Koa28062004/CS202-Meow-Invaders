@@ -13,6 +13,7 @@ public:
 
     void drawExplosion(int i_x, int i_y, sf::RenderTarget *target);
     void drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target);
+    void drawBossExplosion(int i_x, int i_y, sf::RenderTarget *target);
 
     void reset();
 
@@ -29,6 +30,7 @@ private:
     // init
     void initExplosion();
     void initEnemyExplosion();
+    void initBossExplosion();
 
     int animation_iterator;
     int animation_speed;
@@ -37,8 +39,9 @@ private:
 
     int total_frames;
 
-    std::vector<sf::Texture> explosions; // explosions for player
-    std::vector<sf::Texture> enemyExplosions;
+    std::vector<sf::Texture> playerExplosions; // explosions for player
+    std::vector<sf::Texture> enemyExplosions; // explosion for enemy and disaster
+    std::vector<sf::Texture> bossExplosions; // explosion for boss
 };
 
 #endif

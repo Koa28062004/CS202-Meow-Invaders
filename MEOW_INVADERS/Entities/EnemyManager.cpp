@@ -166,8 +166,8 @@ void EnemyManager::reset(int level)
     case 0:
     {
         // level_enemy = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
-        level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
-        level_disaster = "a a c b a c a a b a b a b a b a b a";
+        // level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
+        // level_disaster = "a a c b a c a a b a b a b a b a b a";
         level_boss = "A";
         break;
     }
@@ -219,6 +219,7 @@ void EnemyManager::loadBoss(std::ifstream &ifs)
         bosses[bosses.size() - 1].setHealth(health);
         bosses[bosses.size() - 1].setIsSetPos(isSetPos);
         bosses[bosses.size() - 1].setPosition(i_x, i_y);
+        bosses[bosses.size() - 1].loadGameExplosion(ifs);
     }
 }
 
@@ -496,7 +497,7 @@ void EnemyManager::updateBoss(std::mt19937_64 &i_random_engine)
 
     // Delete Boss
     bosses.erase(remove_if(bosses.begin(), bosses.end(), [](Boss &boss)
-                           { return 0 == boss.getDead(); }),
+                           { return 1 == boss.getDead(); }),
                  bosses.end());
 }
 

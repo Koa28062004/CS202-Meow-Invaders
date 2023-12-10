@@ -286,7 +286,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
 
             for (Boss &boss : bosses)
             {
-                if (bullet.get_hitbox().intersects(boss.get_hitbox()))
+                if (bullet.get_hitbox().intersects(boss.get_hitbox()) && boss.get_health() > 0)
                 {
                     bullet.bulletDead();
                     boss.hit();
@@ -344,7 +344,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
 
         for (Boss &boss : bosses)
         {
-            if (get_hitbox().intersects(boss.get_hitbox()))
+            if (get_hitbox().intersects(boss.get_hitbox()) && boss.get_health() > 0)
             {
                 die();
                 boss.hit();
