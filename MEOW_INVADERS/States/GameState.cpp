@@ -347,7 +347,7 @@ void GameState::update(const float &dt)
 
 void GameState::updatingPlayingGame()
 {
-    if (isReset && enemyManager->get_enemies().size() == 0 && enemyManager->get_disasters().size() == 0 && enemyManager->get_bosses().size() == 0)
+    if (isReset && enemyManager->get_enemies().size() == 0 && enemyManager->get_disasters().size() == 0 && enemyManager->get_bosses().size() == 0 && enemyManager->get_boss_bullets().size() == 0 && enemyManager->get_enemy_bullets().size() == 0)
     {
         isReset = false;
         isEnterClicked = false;
@@ -489,7 +489,7 @@ void GameState::draw(sf::RenderTarget *target)
 
     drawPlayingGame(target);
 
-    if (!isEnterClicked && level != 0 && enemyManager->get_enemies().size() == 0 && enemyManager->get_disasters().size() == 0 && enemyManager->get_bosses().size() == 0)
+    if (!isEnterClicked && level != 0 && enemyManager->get_enemies().size() == 0 && enemyManager->get_disasters().size() == 0 && enemyManager->get_bosses().size() == 0 && enemyManager->get_boss_bullets().size() == 0 && enemyManager->get_enemy_bullets().size() == 0)
     {
         isNextLevel = false;
     }
@@ -503,7 +503,7 @@ void GameState::draw(sf::RenderTarget *target)
         }
         else
         {
-            if (enemyManager->get_enemies().size() == 0 && enemyManager->get_disasters().size() == 0 && enemyManager->get_bosses().size() == 0)
+            if (enemyManager->get_enemies().size() == 0 && enemyManager->get_disasters().size() == 0 && enemyManager->get_bosses().size() == 0 && enemyManager->get_boss_bullets().size() == 0 && enemyManager->get_enemy_bullets().size() == 0)
             {
                 drawLevelScreen(target);
             }

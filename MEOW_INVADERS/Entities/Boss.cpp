@@ -21,7 +21,7 @@ Boss::Boss(int i_type, sf::Sprite boss_bullet_sprite) : type(i_type),
                                                         direction(1),
                                                         bulletSprite(boss_bullet_sprite),
                                                         timer(10),
-                                                        explosion(EXPLOSION_BOSS_ANIMATION_SPEED, 140, 6),
+                                                        explosion(EXPLOSION_BOSS_ANIMATION_SPEED, 140, 3),
                                                         dead_animation_over(0)
 
 {

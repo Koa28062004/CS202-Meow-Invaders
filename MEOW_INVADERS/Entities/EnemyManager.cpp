@@ -67,40 +67,6 @@ void EnemyManager::initEnemyExplosion()
     enemyExplosions.push_back(tmpTex);
 }
 
-void EnemyManager::initBossExplosion()
-{
-    sf::Texture tmpTex;
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion1.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion2.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion3.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion4.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion5.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion6.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-}
-
 void EnemyManager::initDisaster()
 {
     if (!disasterTex1.loadFromFile("assets/images/disaster1.png"))
@@ -153,7 +119,6 @@ EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE),
     boss_bullet_sprite.setScale(sf::Vector2f(0.2, 0.2));
 
     initDisaster();
-    initBossExplosion();
     initEnemyExplosion();
 
     initEnemy1();
@@ -268,11 +233,11 @@ void EnemyManager::reset(int level)
 
     shoot_distribution = std::uniform_int_distribution<int>(0, std::max<int>(ENEMY_SHOOT_CHANCE_MIN, ENEMY_SHOOT_CHANCE - ENEMY_SHOOT_CHANCE_INCREASE * level));
 
-    // enemy_bullets.clear();
-    // boss_bullets.clear();
+    enemy_bullets.clear();
+    boss_bullets.clear();
     enemies.clear();
     disasters.clear();
-    // randomDisasters.clear();
+    randomDisasters.clear();
     bosses.clear();
 
     switch (level)
@@ -633,8 +598,9 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine, int level)
 {
     updateEnemy(i_random_engine, level);
     updateEnemyBullets();
-    updateRandomDisaster(i_random_engine, level);
     updateBossBullets();
+    if (enemies.size())
+        updateRandomDisaster(i_random_engine, level);
     if (!enemies.size())
         updateDisaster(level);
     if (!enemies.size() && !disasters.size())
@@ -715,7 +681,7 @@ void EnemyManager::draw(sf::RenderWindow *window)
     for (Boss &boss : bosses)
     {
         int current_frame = boss.getCurrentFrame();
-        boss.draw(window, bossExplosions[current_frame]);
+        boss.draw(window, enemyExplosions[current_frame]);
     }
 }
 

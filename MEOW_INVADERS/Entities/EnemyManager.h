@@ -47,7 +47,6 @@ private:
   // Init
   void initDisaster();
   void initEnemyExplosion();
-  void initBossExplosion();
   void initEnemy1();
   void initEnemy2();
   void initEnemy3();
@@ -102,7 +101,6 @@ private:
   std::string level_boss = "";
 
   std::vector<sf::Texture> enemyExplosions; // explosion for enemy and disaster
-  std::vector<sf::Texture> bossExplosions;  // explosion for boss
 
   std::vector<std::vector<sf::Texture>> enemiesAnimations;
   std::vector<sf::Texture> animations;
