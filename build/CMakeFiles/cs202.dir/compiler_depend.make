@@ -5113,6 +5113,7 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/Enemy.cpp.o: /Users/macbookair/Deskt
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stdint.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Animations/Animation.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Bullet.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Enemy.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GlobalVars/GlobalVars.h \
@@ -6015,6 +6016,7 @@ CMakeFiles/cs202.dir/MEOW_INVADERS/Entities/EnemyManager.cpp.o: /Users/macbookai
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/stdint.h \
+  /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Animations/Animation.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Boss.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Bullet.h \
   /Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Disaster.h \

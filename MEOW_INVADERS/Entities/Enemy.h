@@ -18,6 +18,7 @@
 #include "SFML/Audio.hpp"
 
 #include "Bullet.h"
+#include "Animations/Animation.h"
 #include "GlobalVars/GlobalVars.h"
 
 class Enemy
@@ -45,6 +46,7 @@ public:
 	int get_type() const;
 	int get_x() const;
 	int get_y() const;
+    bool get_dead() const;
     void drawHitBoxEnemy(sf::RenderTarget* target);
     
     static int collectiveDirection;
@@ -60,6 +62,7 @@ public:
 
     // save
     void saveGame(std::string fileName);
+    void saveGameExplosion(std::ifstream& ifs);
 private:
     // Init
     void initEnemy1();
@@ -75,6 +78,7 @@ private:
     
     int hit_timer;
     int timeMovement;
+    bool dead_animation_over;
 
     // type of enemy
     int type;
@@ -94,6 +98,7 @@ private:
     std::vector<sf::Texture> animations; 
 
     int current_frame;
+    Animation explosion;
 };
 
 #endif

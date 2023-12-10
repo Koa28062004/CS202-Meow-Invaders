@@ -283,6 +283,7 @@ void EnemyManager::loadEnemy(std::ifstream &ifs)
         enemies[enemies.size() - 1].setIsSetPos(isSetPos);
         enemies[enemies.size() - 1].setCurrentFrame(current_frame);
         enemies[enemies.size() - 1].setPosition(i_x, i_y);
+        enemies[enemies.size() - 1].saveGameExplosion(ifs);
     }
 }
 
@@ -417,7 +418,7 @@ void EnemyManager::updateEnemy(std::mt19937_64 &i_random_engine, int level)
 
     // delete enemy whenever it hit.
     enemies.erase(remove_if(enemies.begin(), enemies.end(), [](Enemy &enemy)
-                            { return 0 == enemy.get_health(); }),
+                            { return 1 == enemy.get_dead(); }),
                   enemies.end());
 }
 

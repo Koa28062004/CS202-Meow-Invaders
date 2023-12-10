@@ -7,11 +7,13 @@
 class Animation
 {
 public:
-    Animation(int i_animation_speed, int i_frame_width, const std::string &i_texture_location);
+    Animation(int i_animation_speed, int i_frame_width, int total_frame);
 
     bool update();
 
     void drawExplosion(int i_x, int i_y, sf::RenderTarget *target);
+    void drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target);
+
     void reset();
 
     // setter
@@ -26,6 +28,7 @@ public:
 private:
     // init
     void initExplosion();
+    void initEnemyExplosion();
 
     int animation_iterator;
     int animation_speed;
@@ -34,7 +37,8 @@ private:
 
     int total_frames;
 
-    std::vector<sf::Texture> explosions;
+    std::vector<sf::Texture> explosions; // explosions for player
+    std::vector<sf::Texture> enemyExplosions;
 };
 
 #endif

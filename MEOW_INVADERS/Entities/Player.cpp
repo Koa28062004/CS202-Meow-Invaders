@@ -51,7 +51,7 @@ void Player::reset()
 }
 
 Player::Player(const float &x, const float &y, sf::Texture *texture) : generator(std::chrono::system_clock::now().time_since_epoch().count()),
-                                                                       explosion(EXPLOSION_ANIMATION_SPEED, 140, "assets/images/explosion.png"),
+                                                                       explosion(EXPLOSION_ANIMATION_SPEED, 140, 4),
                                                                        fire_timer(-1),
                                                                        timer(-1)
 {
@@ -183,17 +183,20 @@ void Player::updatePower()
         break;
     }
 
-    for (Power &power : powers)
+    if (!dead)
     {
-        power.move();
-        power.checkPowerOutside();
-        if (get_hitbox().intersects(power.get_hitbox()))
+        for (Power &power : powers)
         {
-            current_power = power.getType();
-            if (power.getType() == 3)
+            power.move();
+            power.checkPowerOutside();
+            if (get_hitbox().intersects(power.get_hitbox()))
             {
+                current_power = power.getType();
+                if (power.getType() == 3)
+                {
+                }
+                power.hit();
             }
-            power.hit();
         }
     }
 

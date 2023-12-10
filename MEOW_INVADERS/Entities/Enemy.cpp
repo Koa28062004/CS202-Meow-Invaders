@@ -58,7 +58,9 @@ Enemy::Enemy(int i_type, int i_x, int i_y, sf::Sprite enemyBulletSprite) : healt
                                                                            enemyBullet(enemyBulletSprite),
                                                                            current_frame(0),
                                                                            timeMovement(0),
-                                                                           isSetPos(false)
+                                                                           isSetPos(false),
+                                                                           explosion(EXPLOSION_ENEMY_ANIMATION_SPEED, 140, 4),
+                                                                           dead_animation_over(0)
 
 {
     initEnemy1();
@@ -78,33 +80,39 @@ Enemy::~Enemy()
 }
 
 // setter
-void Enemy::setPosition(int x, int y) {
+void Enemy::setPosition(int x, int y)
+{
     enemySprite.setPosition(x, y);
 }
 
-void Enemy::setDirection(int direction) {
+void Enemy::setDirection(int direction)
+{
     this->direction = direction;
 }
 
-void Enemy::setHealth(int health) {
+void Enemy::setHealth(int health)
+{
     this->health = health;
 }
 
-void Enemy::setType(int type) {
+void Enemy::setType(int type)
+{
     this->type = type;
 }
 
-void Enemy::setTime(int hit_timer, int timeMovement) {
+void Enemy::setTime(int hit_timer, int timeMovement)
+{
     this->hit_timer = hit_timer;
     this->timeMovement = timeMovement;
 }
 
-
-void Enemy::setIsSetPos(bool isSetPos) {
+void Enemy::setIsSetPos(bool isSetPos)
+{
     this->isSetPos = isSetPos;
 }
 
-void Enemy::setCurrentFrame(int current_frame) {
+void Enemy::setCurrentFrame(int current_frame)
+{
     this->current_frame = current_frame;
 }
 
@@ -131,6 +139,11 @@ int Enemy::get_x() const
 int Enemy::get_y() const
 {
     return y;
+}
+
+bool Enemy::get_dead() const
+{
+    return dead_animation_over;
 }
 
 void Enemy::hit()
@@ -304,18 +317,31 @@ void Enemy::update_current_frame()
 void Enemy::update()
 {
     update_current_frame();
+    if (health == 0)
+    {
+        dead_animation_over = explosion.update();
+    }
 }
 
 void Enemy::draw(sf::RenderTarget *target)
 {
     if (isSetPos)
     {
-        enemySprite.setTexture(enemies[type][current_frame]);
-        if (type == 0)
-            enemySprite.setScale(sf::Vector2f(0.55, 0.55));
+        if (health != 0)
+        {
+            enemySprite.setTexture(enemies[type][current_frame]);
+            if (type == 0)
+                enemySprite.setScale(sf::Vector2f(0.55, 0.55));
+            else
+                enemySprite.setScale(sf::Vector2f(0.75, 0.75));
+            target->draw(enemySprite);
+        }
         else
-            enemySprite.setScale(sf::Vector2f(0.75, 0.75));
-        target->draw(enemySprite);
+        {
+            int i_x = enemySprite.getPosition().x;
+            int i_y = enemySprite.getPosition().y;
+            explosion.drawEnemyExplosion(i_x, i_y, target);
+        }
     }
 
     if (debug)
@@ -342,14 +368,28 @@ sf::IntRect Enemy::get_hitbox() const
                        enemySprite.getGlobalBounds().height - 20);
 }
 
+void Enemy::saveGameExplosion(std::ifstream& ifs)
+{
+    // explosions
+    int animation_iterator;
+    int animation_speed;
+    int current_frame;
+    int frame_width;
+
+    ifs >> animation_iterator >> animation_speed >> current_frame >> frame_width;
+    explosion.setVars(animation_iterator, animation_speed, current_frame, frame_width);
+}
+
 void Enemy::saveGame(std::string fileName)
 {
     std::ofstream ofs;
     ofs.open(fileName, std::ios::app);
 
-    ofs << enemySprite.getPosition().x << " " << enemySprite.getPosition().y << " " << direction << " " << health << " " 
+    ofs << enemySprite.getPosition().x << " " << enemySprite.getPosition().y << " " << direction << " " << health << " "
         << type << " " << hit_timer << " " << timeMovement
         << " " << isSetPos << " " << current_frame << std::endl;
 
+    // save explosions
+    explosion.saveGame(fileName);
     ofs.close();
 }

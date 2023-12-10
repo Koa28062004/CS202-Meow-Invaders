@@ -49,15 +49,10 @@ int Boss::getDead()
 
 void Boss::hit()
 {
-    if (health > 0)
+    if (health > 0 && timer >= 0)
     {
-        if (timer >= 0)
-        {
-            --health;
-            --timer;
-        }
-        else
-            timer = 10;
+        --health;
+        timer = 10;
     }
     else
     {
@@ -99,6 +94,13 @@ void Boss::movement()
 
 void Boss::update()
 {
+    if (timer > 0)
+    {
+        --timer;
+    }
+    else {
+        timer = 0;
+    }
 }
 
 void Boss::shoot(std::vector<Bullet> &i_boss_bullets)

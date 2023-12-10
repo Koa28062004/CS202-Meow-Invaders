@@ -40,14 +40,34 @@ void Animation::initExplosion()
     explosions.push_back(tmpTex);
 }
 
-Animation::Animation(int i_animation_speed, int i_frame_width, const std::string &i_texture_location) : animation_iterator(0),
-                                                                                                        animation_speed(std::max<int>(1, i_animation_speed)),
-                                                                                                        current_frame(0),
-                                                                                                        frame_width(i_frame_width)
+void Animation::initEnemyExplosion()
+{
+    sf::Texture tmpTex;
+    if (!tmpTex.loadFromFile("assets/images/enemyExplosion1.png"))
+    {
+    }
+    enemyExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/enemyExplosion2.png"))
+    {
+    }
+    enemyExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/enemyExplosion3.png"))
+    {
+    }
+    enemyExplosions.push_back(tmpTex);
+}
+
+Animation::Animation(int i_animation_speed, int i_frame_width, int total_frame) : animation_iterator(0),
+                                                                                  animation_speed(std::max<int>(1, i_animation_speed)),
+                                                                                  current_frame(0),
+                                                                                  frame_width(i_frame_width)
 {
     initExplosion();
+    initEnemyExplosion();
     // texture.loadFromFile(i_texture_location);
-    total_frames = 4;
+    this->total_frames = total_frame;
     // sprite.setTexture(texture);
     // sprite.setScale(sf::Vector2f(0.4, 0.4));
 }
@@ -77,6 +97,16 @@ void Animation::drawExplosion(int i_x, int i_y, sf::RenderTarget *target)
 {
     sf::Sprite sprite;
     sprite.setTexture(explosions[current_frame]);
+    sprite.setScale(sf::Vector2f(0.2, 0.2));
+    sprite.setPosition(i_x, i_y);
+
+    target->draw(sprite);
+}
+
+void Animation::drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target)
+{
+    sf::Sprite sprite;
+    sprite.setTexture(enemyExplosions[current_frame]);
     sprite.setScale(sf::Vector2f(0.2, 0.2));
     sprite.setPosition(i_x, i_y);
 
