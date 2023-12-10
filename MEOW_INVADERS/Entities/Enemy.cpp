@@ -2,54 +2,6 @@
 
 int Enemy::collectiveDirection = 1;
 
-void Enemy::initEnemy1()
-{
-    sf::Texture tmp;
-    if (!tmp.loadFromFile("assets/images/enemy11.png"))
-    {
-    }
-    animations.push_back(tmp);
-
-    if (!tmp.loadFromFile("assets/images/enemy12.png"))
-    {
-    }
-    animations.push_back(tmp);
-    enemies.push_back(animations);
-    animations.clear();
-}
-
-void Enemy::initEnemy2()
-{
-    sf::Texture tmp;
-    if (!tmp.loadFromFile("assets/images/enemy21.png"))
-    {
-    }
-    animations.push_back(tmp);
-
-    if (!tmp.loadFromFile("assets/images/enemy22.png"))
-    {
-    }
-    animations.push_back(tmp);
-    enemies.push_back(animations);
-    animations.clear();
-}
-
-void Enemy::initEnemy3()
-{
-    sf::Texture tmp;
-    if (!tmp.loadFromFile("assets/images/enemy31.png"))
-    {
-    }
-    animations.push_back(tmp);
-
-    if (!tmp.loadFromFile("assets/images/enemy32.png"))
-    {
-    }
-    animations.push_back(tmp);
-    enemies.push_back(animations);
-    animations.clear();
-}
-
 Enemy::Enemy(int i_type, int i_x, int i_y, sf::Sprite enemyBulletSprite) : health(1 + i_type),
                                                                            hit_timer(0),
                                                                            type(i_type),
@@ -59,13 +11,11 @@ Enemy::Enemy(int i_type, int i_x, int i_y, sf::Sprite enemyBulletSprite) : healt
                                                                            current_frame(0),
                                                                            timeMovement(0),
                                                                            isSetPos(false),
-                                                                           explosion(EXPLOSION_ENEMY_ANIMATION_SPEED, 140, 4),
+                                                                           explosion(EXPLOSION_ENEMY_ANIMATION_SPEED, 140, 3),
                                                                            dead_animation_over(0)
 
 {
-    initEnemy1();
-    initEnemy2();
-    initEnemy3();
+    
 
     direction = 1;
     // enemySprite.setTexture(*enemyTex);
@@ -299,6 +249,11 @@ void Enemy::shoot(std::vector<Bullet> &i_enemy_bullets)
     }
 }
 
+int Enemy::getCurrentFrame()
+{
+    return explosion.getCurrentFrame();
+}
+
 void Enemy::update_current_frame()
 {
     ++timeMovement;
@@ -314,6 +269,10 @@ void Enemy::update_current_frame()
     }
 }
 
+int Enemy::getEnemyCurrentFrame() {
+    return current_frame;
+}
+
 void Enemy::update()
 {
     update_current_frame();
@@ -323,13 +282,14 @@ void Enemy::update()
     }
 }
 
-void Enemy::draw(sf::RenderTarget *target)
+void Enemy::draw(sf::RenderTarget *target, sf::Texture texture, sf::Texture enemyTex)
 {
     if (isSetPos)
     {
         if (health != 0)
         {
-            enemySprite.setTexture(enemies[type][current_frame]);
+            enemySprite.setTexture(enemyTex);
+            // enemySprite.setTexture(enemies[type][current_frame]);
             if (type == 0)
                 enemySprite.setScale(sf::Vector2f(0.55, 0.55));
             else
@@ -338,9 +298,10 @@ void Enemy::draw(sf::RenderTarget *target)
         }
         else
         {
+            int current_frame = explosion.getCurrentFrame();
             int i_x = enemySprite.getPosition().x;
             int i_y = enemySprite.getPosition().y;
-            explosion.drawEnemyExplosion(i_x, i_y, target);
+            explosion.drawEnemyExplosion(i_x, i_y, target, texture);
         }
     }
 
@@ -368,7 +329,7 @@ sf::IntRect Enemy::get_hitbox() const
                        enemySprite.getGlobalBounds().height - 20);
 }
 
-void Enemy::loadGameExplosion(std::ifstream& ifs)
+void Enemy::loadGameExplosion(std::ifstream &ifs)
 {
     // explosions
     int animation_iterator;

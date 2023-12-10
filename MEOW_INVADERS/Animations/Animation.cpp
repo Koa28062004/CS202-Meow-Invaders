@@ -1,110 +1,18 @@
 #include "Animation.h"
 
-void Animation::initExplosion()
-{
-    sf::Texture tmpTex;
-    sf::Sprite tmpSprite;
-    if (!tmpTex.loadFromFile("assets/images/explosion1.png"))
-    {
-    }
-    // tmpSprite.setTexture(tmpTex);
-    // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
-    playerExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/explosion2.png"))
-    {
-    }
-    // tmpSprite.setTexture(tmpTex);
-    // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
-    playerExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/explosion3.png"))
-    {
-    }
-    // tmpSprite.setTexture(tmpTex);
-    // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
-    playerExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/explosion4.png"))
-    {
-    }
-    // tmpSprite.setTexture(tmpTex);
-    // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
-    playerExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/explosion5.png"))
-    {
-    }
-    // tmpSprite.setTexture(tmpTex);
-    // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
-    playerExplosions.push_back(tmpTex);
-}
-
-void Animation::initEnemyExplosion()
-{
-    sf::Texture tmpTex;
-    if (!tmpTex.loadFromFile("assets/images/enemyExplosion1.png"))
-    {
-    }
-    enemyExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/enemyExplosion2.png"))
-    {
-    }
-    enemyExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/enemyExplosion3.png"))
-    {
-    }
-    enemyExplosions.push_back(tmpTex);
-}
-
-void Animation::initBossExplosion()
-{
-    sf::Texture tmpTex;
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion1.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion2.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion3.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion4.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion5.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-
-    if (!tmpTex.loadFromFile("assets/images/bossExplosion6.png"))
-    {
-    }
-    bossExplosions.push_back(tmpTex);
-}
-
 Animation::Animation(int i_animation_speed, int i_frame_width, int total_frame) : animation_iterator(0),
                                                                                   animation_speed(std::max<int>(1, i_animation_speed)),
                                                                                   current_frame(0),
                                                                                   frame_width(i_frame_width)
 {
-    initExplosion();
-    initEnemyExplosion();
-    initBossExplosion();
     // texture.loadFromFile(i_texture_location);
     this->total_frames = total_frame;
     // sprite.setTexture(texture);
     // sprite.setScale(sf::Vector2f(0.4, 0.4));
+}
+
+int Animation::getCurrentFrame() {
+    return current_frame;
 }
 
 bool Animation::update()
@@ -128,30 +36,27 @@ bool Animation::update()
     return output;
 }
 
-void Animation::drawExplosion(int i_x, int i_y, sf::RenderTarget *target)
+void Animation::drawExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture)
 {
-    sf::Sprite sprite;
-    sprite.setTexture(playerExplosions[current_frame]);
+    sprite.setTexture(texture);
     sprite.setScale(sf::Vector2f(0.2, 0.2));
     sprite.setPosition(i_x, i_y);
 
     target->draw(sprite);
 }
 
-void Animation::drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target)
+void Animation::drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture)
 {
-    sf::Sprite sprite;
-    sprite.setTexture(enemyExplosions[current_frame]);
+    sprite.setTexture(texture);
     sprite.setScale(sf::Vector2f(0.2, 0.2));
     sprite.setPosition(i_x, i_y);
 
     target->draw(sprite);
 }
 
-void Animation::drawBossExplosion(int i_x, int i_y, sf::RenderTarget *target)
+void Animation::drawBossExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture)
 {
-    sf::Sprite sprite;
-    sprite.setTexture(bossExplosions[current_frame]);
+    sprite.setTexture(texture);
     sprite.setScale(sf::Vector2f(1, 1));
     sprite.setPosition(i_x, i_y);
 

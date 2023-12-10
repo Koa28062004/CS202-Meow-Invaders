@@ -57,6 +57,7 @@ public:
 
 private:
     void initPower();
+    void initExplosion();
 
     void updatePower();
 
@@ -87,6 +88,8 @@ private:
     std::map<std::string, int> keybinds;
 
     std::default_random_engine generator;
+
+    std::vector<sf::Texture> playerExplosions; // explosions for player
 
     Animation explosion;
 };

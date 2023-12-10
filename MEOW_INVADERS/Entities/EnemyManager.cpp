@@ -1,5 +1,106 @@
 #include "EnemyManager.h"
 
+void EnemyManager::initEnemy1()
+{
+    sf::Texture tmp;
+    if (!tmp.loadFromFile("assets/images/enemy11.png"))
+    {
+    }
+    animations.push_back(tmp);
+
+    if (!tmp.loadFromFile("assets/images/enemy12.png"))
+    {
+    }
+    animations.push_back(tmp);
+    enemiesAnimations.push_back(animations);
+    animations.clear();
+}
+
+void EnemyManager::initEnemy2()
+{
+    sf::Texture tmp;
+    if (!tmp.loadFromFile("assets/images/enemy21.png"))
+    {
+    }
+    animations.push_back(tmp);
+
+    if (!tmp.loadFromFile("assets/images/enemy22.png"))
+    {
+    }
+    animations.push_back(tmp);
+    enemiesAnimations.push_back(animations);
+    animations.clear();
+}
+
+void EnemyManager::initEnemy3()
+{
+    sf::Texture tmp;
+    if (!tmp.loadFromFile("assets/images/enemy31.png"))
+    {
+    }
+    animations.push_back(tmp);
+
+    if (!tmp.loadFromFile("assets/images/enemy32.png"))
+    {
+    }
+    animations.push_back(tmp);
+    enemiesAnimations.push_back(animations);
+    animations.clear();
+}
+
+void EnemyManager::initEnemyExplosion()
+{
+    sf::Texture tmpTex;
+    if (!tmpTex.loadFromFile("assets/images/enemyExplosion1.png"))
+    {
+    }
+    enemyExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/enemyExplosion2.png"))
+    {
+    }
+    enemyExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/enemyExplosion3.png"))
+    {
+    }
+    enemyExplosions.push_back(tmpTex);
+}
+
+void EnemyManager::initBossExplosion()
+{
+    sf::Texture tmpTex;
+    if (!tmpTex.loadFromFile("assets/images/bossExplosion1.png"))
+    {
+    }
+    bossExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/bossExplosion2.png"))
+    {
+    }
+    bossExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/bossExplosion3.png"))
+    {
+    }
+    bossExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/bossExplosion4.png"))
+    {
+    }
+    bossExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/bossExplosion5.png"))
+    {
+    }
+    bossExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/bossExplosion6.png"))
+    {
+    }
+    bossExplosions.push_back(tmpTex);
+}
+
 void EnemyManager::initDisaster()
 {
     if (!disasterTex1.loadFromFile("assets/images/disaster1.png"))
@@ -52,6 +153,19 @@ EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE),
     boss_bullet_sprite.setScale(sf::Vector2f(0.2, 0.2));
 
     initDisaster();
+    initBossExplosion();
+    initEnemyExplosion();
+
+    initEnemy1();
+    initEnemy2();
+    initEnemy3();
+
+    enemy_bullets.clear();
+    boss_bullets.clear();
+    enemies.clear();
+    disasters.clear();
+    randomDisasters.clear();
+    bosses.clear();
 }
 
 EnemyManager::~EnemyManager()
@@ -165,9 +279,9 @@ void EnemyManager::reset(int level)
     {
     case 0:
     {
-        // level_enemy = "0 0 0 0 0 0 0 0 \n 0 0 0 0 0 0 0 0";
-        // level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
-        // level_disaster = "a a c b a c a a b a b a b a b a b a";
+        // level_enemy = "0";
+        level_enemy = "1 0 2 0 1 0 2 0 \n 2 1 0 1 0 1 0 2";
+        level_disaster = "a a c b a c a a b a b a b a b a b a";
         level_boss = "A";
         break;
     }
@@ -522,7 +636,7 @@ void EnemyManager::update(std::mt19937_64 &i_random_engine, int level)
     updateRandomDisaster(i_random_engine, level);
     updateBossBullets();
     if (!enemies.size())
-         updateDisaster(level);
+        updateDisaster(level);
     if (!enemies.size() && !disasters.size())
     {
         updateBoss(i_random_engine);
@@ -568,19 +682,24 @@ void EnemyManager::draw(sf::RenderWindow *window)
     // Draw the enemies
     for (Enemy &enemy : enemies)
     {
-        enemy.draw(window);
+        int current_frame1 = enemy.getCurrentFrame();
+        int current_frame2 = enemy.getEnemyCurrentFrame();
+        int type = enemy.get_type();
+        enemy.draw(window, enemyExplosions[current_frame1], enemiesAnimations[type][current_frame2]);
     }
 
     // Draw the disasters
     for (Disaster &disaster : disasters)
     {
-        disaster.draw(window);
+        int current_frame = disaster.getCurrentFrame();
+        disaster.draw(window, enemyExplosions[current_frame]);
     }
 
     // Draw the random Disasters
     for (Disaster &randomDisaster : randomDisasters)
     {
-        randomDisaster.draw(window);
+        int current_frame = randomDisaster.getCurrentFrame();
+        randomDisaster.draw(window, enemyExplosions[current_frame]);
     }
 
     for (Bullet &bullet : boss_bullets)
@@ -595,7 +714,8 @@ void EnemyManager::draw(sf::RenderWindow *window)
     // Draw the boss
     for (Boss &boss : bosses)
     {
-        boss.draw(window);
+        int current_frame = boss.getCurrentFrame();
+        boss.draw(window, bossExplosions[current_frame]);
     }
 }
 

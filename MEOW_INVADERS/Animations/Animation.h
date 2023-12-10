@@ -11,9 +11,9 @@ public:
 
     bool update();
 
-    void drawExplosion(int i_x, int i_y, sf::RenderTarget *target);
-    void drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target);
-    void drawBossExplosion(int i_x, int i_y, sf::RenderTarget *target);
+    void drawExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture);
+    void drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture);
+    void drawBossExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture);
 
     void reset();
 
@@ -23,15 +23,12 @@ public:
                  int current_frame,
                  int frame_width);
 
+    int getCurrentFrame();
+
     // save
     void saveGame(std::string fileName);
 
 private:
-    // init
-    void initExplosion();
-    void initEnemyExplosion();
-    void initBossExplosion();
-
     int animation_iterator;
     int animation_speed;
     int current_frame;
@@ -39,9 +36,7 @@ private:
 
     int total_frames;
 
-    std::vector<sf::Texture> playerExplosions; // explosions for player
-    std::vector<sf::Texture> enemyExplosions; // explosion for enemy and disaster
-    std::vector<sf::Texture> bossExplosions; // explosion for boss
+    sf::Sprite sprite;
 };
 
 #endif

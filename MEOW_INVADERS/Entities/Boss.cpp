@@ -26,7 +26,7 @@ Boss::Boss(int i_type, sf::Sprite boss_bullet_sprite) : type(i_type),
 
 {
     initBoss();
-    bossSprite.setPosition(100, -300);
+    bossSprite.setPosition(-1000, -1000);
 
     if (type == 1)
     {
@@ -53,6 +53,11 @@ bool Boss::getDead()
 int Boss::get_health()
 {
     return health;
+}
+
+int Boss::getCurrentFrame()
+{
+    return explosion.getCurrentFrame();
 }
 
 void Boss::hit()
@@ -135,7 +140,7 @@ void Boss::shoot(std::vector<Bullet> &i_boss_bullets)
     i_boss_bullets.push_back(Bullet(0, -ENEMY_BULLET_SPEED, bossCenter.x, bossCenter.y, bulletSprite));
 }
 
-void Boss::draw(sf::RenderTarget *target)
+void Boss::draw(sf::RenderTarget *target, sf::Texture texture)
 {
     if (isSetPos)
     {
@@ -159,7 +164,7 @@ void Boss::draw(sf::RenderTarget *target)
         {
             int i_x = bossSprite.getPosition().x;
             int i_y = bossSprite.getPosition().y;
-            explosion.drawBossExplosion(i_x, i_y, target);
+            explosion.drawBossExplosion(i_x, i_y, target, texture);
         }
     }
 
@@ -182,9 +187,9 @@ void Boss::drawHitBoxBoss(sf::RenderTarget *target)
 sf::IntRect Boss::get_hitbox() const
 {
     return sf::IntRect(bossSprite.getGlobalBounds().left + 50,
-                       bossSprite.getGlobalBounds().top + 30,
+                       bossSprite.getGlobalBounds().top + 70,
                        bossSprite.getGlobalBounds().width - 100,
-                       bossSprite.getGlobalBounds().height - 60);
+                       bossSprite.getGlobalBounds().height - 135);
 }
 
 void Boss::setHealth(int health)

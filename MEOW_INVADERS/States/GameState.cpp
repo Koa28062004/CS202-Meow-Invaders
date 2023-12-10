@@ -67,7 +67,6 @@ void GameState::initVariables()
     isEnterClicked = false;
     checkClock = false;
     gameOver = 0;
-    this->choice = choice;
     playerPosition = {(float)mWindow->getSize().x / 2, (float)mWindow->getSize().y / 2};
 }
 
@@ -144,6 +143,7 @@ GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *suppo
     initPausedMenu();
 
     initPointer();
+    this->choice = choice;
 }
 
 GameState::~GameState()
@@ -340,8 +340,6 @@ void GameState::update(const float &dt)
     // Pause update
     else
     {
-        if (!isNextLevel)
-            return;
         pauseState->update(paused, mousePosView);
         pauseState->updateKeytime(dt);
     }

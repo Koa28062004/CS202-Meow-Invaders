@@ -1,5 +1,45 @@
 #include "Player.h"
 
+void Player::initExplosion()
+{
+    sf::Texture tmpTex;
+    sf::Sprite tmpSprite;
+    if (!tmpTex.loadFromFile("assets/images/explosion1.png"))
+    {
+    }
+    // tmpSprite.setTexture(tmpTex);
+    // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
+    playerExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/explosion2.png"))
+    {
+    }
+    // tmpSprite.setTexture(tmpTex);
+    // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
+    playerExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/explosion3.png"))
+    {
+    }
+    // tmpSprite.setTexture(tmpTex);
+    // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
+    playerExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/explosion4.png"))
+    {
+    }
+    // tmpSprite.setTexture(tmpTex);
+    // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
+    playerExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/explosion5.png"))
+    {
+    }
+    // tmpSprite.setTexture(tmpTex);
+    // tmpSprite.setScale(sf::Vector2f(0.4, 0.4));
+    playerExplosions.push_back(tmpTex);
+}
+
 // Init Keys
 void Player::initKeys()
 {
@@ -61,6 +101,7 @@ Player::Player(const float &x, const float &y, sf::Texture *texture) : generator
 
     initKeys();
     initKeybinds();
+    initExplosion();
 
     // Set bullet sprites
     if (!bullet_texture.loadFromFile("assets/images/playerBullet.png"))
@@ -73,6 +114,7 @@ Player::Player(const float &x, const float &y, sf::Texture *texture) : generator
 
 Player::~Player()
 {
+    playerExplosions.clear();
 }
 
 void Player::die()
@@ -228,10 +270,10 @@ void Player::restartPower()
     {
         current_power = -1;
     }
-    if (0 == shield_animation_over)
-    {
-        shield_animation_over = explosion.update();
-    }
+    // if (0 == shield_animation_over)
+    // {
+    //     shield_animation_over = explosion.update();
+    // }
 }
 
 void Player::update(std::vector<Bullet> &enemy_bullets,
@@ -326,7 +368,7 @@ void Player::update(std::vector<Bullet> &enemy_bullets,
 
         for (Disaster &disaster : disasters)
         {
-            if (get_hitbox().intersects(disaster.get_hitbox())  && disaster.get_health() > 0)
+            if (get_hitbox().intersects(disaster.get_hitbox()) && disaster.get_health() > 0)
             {
                 die();
                 disaster.hit();
@@ -423,9 +465,10 @@ void Player::draw(sf::RenderTarget *target)
     {
         if (!dead)
             target->draw(*this->playerSprite);
-        else if (0 == dead_animation_over)
+        else if (0 == dead_animation_over && dead)
         {
-            explosion.drawExplosion(playerSprite->getPosition().x - playerSprite->getGlobalBounds().width / 2, playerSprite->getPosition().y - playerSprite->getGlobalBounds().height / 2, target);
+            int current_frame = explosion.getCurrentFrame();
+            explosion.drawExplosion(playerSprite->getPosition().x - playerSprite->getGlobalBounds().width / 2, playerSprite->getPosition().y - playerSprite->getGlobalBounds().height / 2, target, playerExplosions[current_frame]);
         }
     }
 }

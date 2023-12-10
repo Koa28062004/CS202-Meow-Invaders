@@ -25,7 +25,7 @@ public:
     ~Disaster();
 
     void update();
-    void draw(sf::RenderTarget* target);
+    void draw(sf::RenderTarget* target, sf::Texture texture);
     void hit();
     void movement(int level, int randomMove);
     void drawHitBoxEnemy(sf::RenderTarget* target);
@@ -33,6 +33,7 @@ public:
 
     bool getDead();
     int get_health();
+    int getCurrentFrame();
     void checkOutside();
 
     void move1();

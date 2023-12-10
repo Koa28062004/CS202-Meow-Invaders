@@ -36,16 +36,21 @@ public:
   void saveGame(std::string fileName);
 
   // Load
-  void loadGame(std::ifstream& ifs);
-  void loadReset(std::ifstream& ifs);
-  void loadBullets(std::ifstream& ifs);
-  void loadEnemy(std::ifstream& ifs);
-  void loadDisasters(std::ifstream& ifs);
-  void loadBoss(std::ifstream& ifs);
+  void loadGame(std::ifstream &ifs);
+  void loadReset(std::ifstream &ifs);
+  void loadBullets(std::ifstream &ifs);
+  void loadEnemy(std::ifstream &ifs);
+  void loadDisasters(std::ifstream &ifs);
+  void loadBoss(std::ifstream &ifs);
 
 private:
   // Init
   void initDisaster();
+  void initEnemyExplosion();
+  void initBossExplosion();
+  void initEnemy1();
+  void initEnemy2();
+  void initEnemy3();
 
   void updateEnemy(std::mt19937_64 &i_random_engine, int level);
   void updateEnemyBullets();
@@ -59,7 +64,7 @@ private:
   std::string generateRandomLevelBoss();
 
   int getRandomNumber(int min, int max);
-  
+
   bool isLoad;
 
   int move_pause;
@@ -95,6 +100,12 @@ private:
   std::string level_enemy = "";
   std::string level_disaster = "";
   std::string level_boss = "";
+
+  std::vector<sf::Texture> enemyExplosions; // explosion for enemy and disaster
+  std::vector<sf::Texture> bossExplosions;  // explosion for boss
+
+  std::vector<std::vector<sf::Texture>> enemiesAnimations;
+  std::vector<sf::Texture> animations;
 };
 
 #endif

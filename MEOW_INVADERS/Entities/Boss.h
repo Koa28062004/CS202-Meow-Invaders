@@ -26,7 +26,7 @@ public:
     ~Boss();
 
     void update();
-    void draw(sf::RenderTarget* target);
+    void draw(sf::RenderTarget* target, sf::Texture texture);
 
     void movement();
     void hit();
@@ -34,6 +34,7 @@ public:
 
     bool getDead();
     int get_health();
+    int getCurrentFrame();
 
     sf::IntRect get_hitbox() const;
     void drawHitBoxBoss(sf::RenderTarget* target);

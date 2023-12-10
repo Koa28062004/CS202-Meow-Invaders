@@ -2,7 +2,7 @@
 
 Disaster::Disaster(int type, sf::Texture *disasterTex) : health(type),
                                                          isSetPos(false),
-                                                         explosion(EXPLOSION_ANIMATION_SPEED, 140, 4),
+                                                         explosion(EXPLOSION_ANIMATION_SPEED, 140, 3),
                                                          dead_animation_over(0)
 {
     disasterSprite.setTexture(*disasterTex);
@@ -13,6 +13,10 @@ Disaster::Disaster(int type, sf::Texture *disasterTex) : health(type),
 
 Disaster::~Disaster()
 {
+}
+
+int Disaster::getCurrentFrame() {
+    return explosion.getCurrentFrame();
 }
 
 void Disaster::hit()
@@ -140,7 +144,7 @@ void Disaster::update()
     }
 }
 
-void Disaster::draw(sf::RenderTarget *target)
+void Disaster::draw(sf::RenderTarget *target, sf::Texture texture)
 {
     if (health != 0)
     {
@@ -151,7 +155,7 @@ void Disaster::draw(sf::RenderTarget *target)
     {
         int i_x = disasterSprite.getPosition().x;
         int i_y = disasterSprite.getPosition().y;
-        explosion.drawEnemyExplosion(i_x, i_y, target);
+        explosion.drawEnemyExplosion(i_x, i_y, target, texture);
     }
 
     if (debug)
