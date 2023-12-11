@@ -3,39 +3,39 @@
 cmake_policy(SET CMP0009 NEW)
 
 # SOURCES at CMakeLists.txt:7 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/*.cpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/*.cpp")
 set(OLD_GLOB
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Animations/Animation.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Applications/Application.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Boss.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Bullet.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Disaster.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Enemy.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/EnemyManager.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Entity.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Player.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Power.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GUI/Button.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GUI/TextBox.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/GameState.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/InstructionState.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/MenuState.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PauseState.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PreparedState.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/SettingState.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/State.cpp"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/main.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Animations/Animation.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Applications/Application.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Boss.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Bullet.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Disaster.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Enemy.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/EnemyManager.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Entity.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Player.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/Entities/Power.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GUI/Button.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/GUI/TextBox.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/GameState.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/InstructionState.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/MenuState.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PauseState.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/PreparedState.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/SettingState.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/States/State.cpp"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/main.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/build/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/build/CMakeFiles/cmake.verify_globs")
 endif()
 
 # HEADERS at CMakeLists.txt:8 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/*.h MEOW_INVADERS/*.hpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/MEOW_INVADERS/*.h MEOW_INVADERS/*.hpp")
 set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/build/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/build/CMakeFiles/cmake.verify_globs")
 endif()

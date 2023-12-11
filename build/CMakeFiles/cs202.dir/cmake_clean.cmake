@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/cs202"
-  "/Users/macbookair/Desktop/CS202-Meow-Invaders-1/cs202.pdb"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/cs202"
+  "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/cs202.pdb"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Animations/Animation.cpp.o"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Animations/Animation.cpp.o.d"
   "CMakeFiles/cs202.dir/MEOW_INVADERS/Applications/Application.cpp.o"

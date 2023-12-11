@@ -12,8 +12,9 @@ public:
     bool update();
 
     void drawExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture);
-    void drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture);
+    void drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture, int type);
     void drawBossExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture);
+    void drawDisasterExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture);
 
     void reset();
 

@@ -53,7 +53,7 @@ private:
     void initBoss();
 
     int type;
-    int timer;
+    int bossTimer;
 
     sf::Texture bossTex1;
     sf::Texture bossTex2;

@@ -301,7 +301,7 @@ void Enemy::draw(sf::RenderTarget *target, sf::Texture texture, sf::Texture enem
             int current_frame = explosion.getCurrentFrame();
             int i_x = enemySprite.getPosition().x;
             int i_y = enemySprite.getPosition().y;
-            explosion.drawEnemyExplosion(i_x, i_y, target, texture);
+            explosion.drawEnemyExplosion(i_x, i_y, target, texture, type);
         }
     }
 

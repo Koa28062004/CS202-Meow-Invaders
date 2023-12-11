@@ -45,11 +45,24 @@ void Animation::drawExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Te
     target->draw(sprite);
 }
 
-void Animation::drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture)
+void Animation::drawDisasterExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture)
+{
+    sprite.setTexture(texture);
+    sprite.setScale(sf::Vector2f(0.3, 0.3));
+    sprite.setPosition(i_x, i_y);
+
+    target->draw(sprite);
+}
+
+void Animation::drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture, int type)
 {
     sprite.setTexture(texture);
     sprite.setScale(sf::Vector2f(0.2, 0.2));
     sprite.setPosition(i_x, i_y);
+    if (type == 0)
+        sprite.setColor(sf::Color(117, 143, 94, 255));
+    if (type == 2)
+        sprite.setColor(sf::Color(142, 13, 24, 255));
 
     target->draw(sprite);
 }
@@ -57,7 +70,7 @@ void Animation::drawEnemyExplosion(int i_x, int i_y, sf::RenderTarget *target, s
 void Animation::drawBossExplosion(int i_x, int i_y, sf::RenderTarget *target, sf::Texture texture)
 {
     sprite.setTexture(texture);
-    sprite.setScale(sf::Vector2f(1, 1));
+    sprite.setScale(sf::Vector2f(0.75, 0.75));
     sprite.setPosition(i_x, i_y);
 
     target->draw(sprite);

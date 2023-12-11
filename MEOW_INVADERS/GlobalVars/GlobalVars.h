@@ -33,6 +33,6 @@ constexpr int POWER_DURATION = 500;
 constexpr bool debug = 0;
 
 constexpr unsigned int EXPLOSION_ANIMATION_SPEED = 22;
-constexpr unsigned int EXPLOSION_ENEMY_ANIMATION_SPEED = 27;
-constexpr unsigned int EXPLOSION_BOSS_ANIMATION_SPEED = 30;
+constexpr unsigned int EXPLOSION_ENEMY_ANIMATION_SPEED = 25;
+constexpr unsigned int EXPLOSION_BOSS_ANIMATION_SPEED = 15;
 #endif

@@ -20,8 +20,8 @@ Boss::Boss(int i_type, sf::Sprite boss_bullet_sprite) : type(i_type),
                                                         isSetPos(false),
                                                         direction(1),
                                                         bulletSprite(boss_bullet_sprite),
-                                                        timer(10),
-                                                        explosion(EXPLOSION_BOSS_ANIMATION_SPEED, 140, 3),
+                                                        bossTimer(5),
+                                                        explosion(EXPLOSION_BOSS_ANIMATION_SPEED, 140, 5),
                                                         dead_animation_over(0)
 
 {
@@ -62,10 +62,10 @@ int Boss::getCurrentFrame()
 
 void Boss::hit()
 {
-    if (health > 0 && timer >= 0)
+    if (health > 0 && bossTimer == 0)
     {
         --health;
-        timer = 10;
+        bossTimer = 5;
     }
     else
     {
@@ -109,13 +109,13 @@ void Boss::movement()
 
 void Boss::update()
 {
-    if (timer > 0)
+    if (bossTimer > 0)
     {
-        --timer;
+        --bossTimer;
     }
     else
     {
-        timer = 0;
+        bossTimer = 0;
     }
 
     if (health == 0)

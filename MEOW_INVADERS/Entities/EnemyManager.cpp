@@ -85,6 +85,54 @@ void EnemyManager::initDisaster()
     }
 }
 
+void EnemyManager::initDisasterExplosion()
+{
+    sf::Texture tmpTex;
+    if (!tmpTex.loadFromFile("assets/images/disasterExplosion1.png"))
+    {
+    }
+    disasterExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/disasterExplosion2.png"))
+    {
+    }
+    disasterExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/disasterExplosion3.png"))
+    {
+    }
+    disasterExplosions.push_back(tmpTex);
+}
+
+void EnemyManager::initBossExplosion()
+{
+    sf::Texture tmpTex;
+    if (!tmpTex.loadFromFile("assets/images/bossExplosion1.png"))
+    {
+    }
+    bossExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/bossExplosion2.png"))
+    {
+    }
+    bossExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/bossExplosion3.png"))
+    {
+    }
+    bossExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/bossExplosion4.png"))
+    {
+    }
+    bossExplosions.push_back(tmpTex);
+
+    if (!tmpTex.loadFromFile("assets/images/bossExplosion5.png"))
+    {
+    }
+    bossExplosions.push_back(tmpTex);
+}
+
 EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE),
                                shoot_boss(0, 60),
                                randomMove(0)
@@ -120,6 +168,8 @@ EnemyManager::EnemyManager() : shoot_distribution(0, ENEMY_SHOOT_CHANCE),
 
     initDisaster();
     initEnemyExplosion();
+    initDisasterExplosion();
+    initBossExplosion();
 
     initEnemy1();
     initEnemy2();
@@ -141,6 +191,9 @@ EnemyManager::~EnemyManager()
     disasters.clear();
     randomDisasters.clear();
     bosses.clear();
+    enemyExplosions.clear();
+    bossExplosions.clear();
+    disasterExplosions.clear();
 }
 
 std::vector<Bullet> &EnemyManager::get_enemy_bullets()
@@ -658,14 +711,14 @@ void EnemyManager::draw(sf::RenderWindow *window)
     for (Disaster &disaster : disasters)
     {
         int current_frame = disaster.getCurrentFrame();
-        disaster.draw(window, enemyExplosions[current_frame]);
+        disaster.draw(window, disasterExplosions[current_frame]);
     }
 
     // Draw the random Disasters
     for (Disaster &randomDisaster : randomDisasters)
     {
         int current_frame = randomDisaster.getCurrentFrame();
-        randomDisaster.draw(window, enemyExplosions[current_frame]);
+        randomDisaster.draw(window, disasterExplosions[current_frame]);
     }
 
     for (Bullet &bullet : boss_bullets)
@@ -681,7 +734,7 @@ void EnemyManager::draw(sf::RenderWindow *window)
     for (Boss &boss : bosses)
     {
         int current_frame = boss.getCurrentFrame();
-        boss.draw(window, enemyExplosions[current_frame]);
+        boss.draw(window, bossExplosions[current_frame]);
     }
 }
 

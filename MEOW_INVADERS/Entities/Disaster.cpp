@@ -155,7 +155,7 @@ void Disaster::draw(sf::RenderTarget *target, sf::Texture texture)
     {
         int i_x = disasterSprite.getPosition().x;
         int i_y = disasterSprite.getPosition().y;
-        explosion.drawEnemyExplosion(i_x, i_y, target, texture);
+        explosion.drawDisasterExplosion(i_x, i_y, target, texture);
     }
 
     if (debug)
