@@ -1,3 +1,3 @@
-/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/build/CMakeFiles/cs202.dir
-/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/build/CMakeFiles/edit_cache.dir
-/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Desktop/CS202-Meow-Invaders-1/build/CMakeFiles/rebuild_cache.dir
+/Users/macbookair/Desktop/CS202-Meow-Invaders-1/build/CMakeFiles/cs202.dir
+/Users/macbookair/Desktop/CS202-Meow-Invaders-1/build/CMakeFiles/edit_cache.dir
+/Users/macbookair/Desktop/CS202-Meow-Invaders-1/build/CMakeFiles/rebuild_cache.dir

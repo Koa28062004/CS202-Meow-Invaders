@@ -24,7 +24,7 @@ constexpr int ENEMY_MOVE_PAUSE_START = 63;
 constexpr int ENEMY_BULLET_SPEED = 2;
 constexpr int ENEMY_ANIMATION_SPEED = 22;
 
-constexpr int BOSS_HEALTH = 10;
+constexpr int BOSS_HEALTH = 15;
 
 // Power
 constexpr int POWER_DURATION = 500;
@@ -33,6 +33,6 @@ constexpr int POWER_DURATION = 500;
 constexpr bool debug = 0;
 
 constexpr unsigned int EXPLOSION_ANIMATION_SPEED = 22;
-constexpr unsigned int EXPLOSION_ENEMY_ANIMATION_SPEED = 25;
+constexpr unsigned int EXPLOSION_ENEMY_ANIMATION_SPEED = 22;
 constexpr unsigned int EXPLOSION_BOSS_ANIMATION_SPEED = 15;
 #endif
